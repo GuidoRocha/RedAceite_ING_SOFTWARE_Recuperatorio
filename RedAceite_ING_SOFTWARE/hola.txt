@@ -1,6 +1,0 @@
-Patrones
-- Facade
-- Composite
-- Factory
-- Singleton
-- IunitOfWork
