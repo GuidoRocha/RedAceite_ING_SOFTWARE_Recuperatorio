@@ -1,0 +1,144 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SERVICES.Dominio
+{
+    /// <summary>
+    /// Representa un usuario del sistema, incluyendo sus credenciales,
+    /// estado, accesos (patentes y familias), y datos de recuperación.
+    /// </summary>
+    public class Usuario
+    {
+        /// <summary>
+        /// Identificador único del usuario.
+        /// </summary>
+        public Guid IdUsuario { get; set; }
+
+        /// <summary>
+        /// Nombre de usuario utilizado para iniciar sesión.
+        /// </summary>
+        public string UserName { get; set; }
+
+        /// <summary>
+        /// Contraseña del usuario (almacenada hasheada).
+        /// </summary>
+        public string Password { get; set; }
+
+        /// <summary>
+        /// Estado del usuario (por ejemplo: "Habilitado" o "Deshabilitado").
+        /// </summary>
+        public string Estado { get; set; }
+
+        /// <summary>
+        /// Lista de accesos asignados al usuario (pueden ser patentes o familias).
+        /// </summary>
+        public List<Acceso> Accesos = new List<Acceso>();
+
+        /// <summary>
+        /// Número de teléfono del usuario (usado para recuperación por SMS).
+        /// </summary>
+        public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// Código OTP actual asignado al usuario.
+        /// </summary>
+        public string OTP { get; set; }
+
+        /// <summary>
+        /// Fecha y hora de expiración del OTP.
+        /// </summary>
+        public DateTime? OTPExpiry { get; set; }
+
+        /// <summary>
+        /// Enum que representa los posibles estados del usuario.
+        /// </summary>
+        public enum EstadoUsuario
+        {
+            Deshabilitado = 0,
+            Habilitado = 1
+        }
+
+        /// <summary>
+        /// Constructor por defecto que inicializa el ID del usuario con un nuevo Guid.
+        /// </summary>
+        public Usuario()
+        {
+            IdUsuario = Guid.NewGuid();
+        }
+
+        /// <summary>
+        /// Constructor que permite inicializar el usuario con un ID específico.
+        /// </summary>
+        /// <param name="idUsuario">ID del usuario.</param>
+        public Usuario(Guid idUsuario)
+        {
+            this.IdUsuario = idUsuario;
+        }
+
+        /// <summary>
+        /// Obtiene todas las patentes individuales asignadas al usuario,
+        /// incluyendo las contenidas en familias (de forma recursiva).
+        /// </summary>
+        /// <returns>Lista de objetos <see cref="Patente"/> únicos.</returns>
+        public List<Patente> GetPatentes()
+        {
+            List<Patente> patentes = new List<Patente>();
+            GetAllPatentes(Accesos, patentes);
+            return patentes;
+        }
+
+        /// <summary>
+        /// Método recursivo para recorrer los accesos y extraer todas las patentes únicas.
+        /// </summary>
+        /// <param name="accesos">Lista de accesos del usuario.</param>
+        /// <param name="patentesReturn">Lista acumuladora donde se agregan las patentes.</param>
+        public void GetAllPatentes(List<Acceso> accesos, List<Patente> patentesReturn)
+        {
+            foreach (var acceso in accesos)
+            {
+                if (acceso.GetCount() == 0)
+                {
+                    if (!patentesReturn.Any(o => o.Id == acceso.Id))
+                        patentesReturn.Add(acceso as Patente);
+                }
+                else
+                {
+                    GetAllPatentes((acceso as Familia).Accesos, patentesReturn);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Obtiene todas las familias (grupos de permisos) asignadas al usuario.
+        /// </summary>
+        /// <returns>Lista de objetos <see cref="Familia"/> únicos.</returns>
+        public List<Familia> GetFamilias()
+        {
+            List<Familia> familias = new List<Familia>();
+            GetAllFamilias(Accesos, familias);
+            return familias;
+        }
+
+        /// <summary>
+        /// Método recursivo para recorrer los accesos y extraer todas las familias únicas.
+        /// </summary>
+        /// <param name="accesos">Lista de accesos del usuario.</param>
+        /// <param name="famililaReturn">Lista acumuladora de familias encontradas.</param>
+        private void GetAllFamilias(List<Acceso> accesos, List<Familia> famililaReturn)
+        {
+            foreach (var acceso in accesos)
+            {
+                if (acceso.GetCount() > 0)
+                {
+                    if (!famililaReturn.Any(o => o.Id == acceso.Id))
+                        famililaReturn.Add(acceso as Familia);
+
+                    GetAllFamilias((acceso as Familia).Accesos, famililaReturn);
+                }
+            }
+        }
+    }
+}

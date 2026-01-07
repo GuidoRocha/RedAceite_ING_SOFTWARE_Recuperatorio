@@ -4,3 +4,9 @@ C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_S
 C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DAL\obj\Debug\DAL.dll
 C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DAL\obj\Debug\DAL.pdb
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\bin\Debug\DAL.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\bin\Debug\DAL.pdb
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.pdb

@@ -1,0 +1,6 @@
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DAL\bin\Debug\DAL.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DAL\bin\Debug\DAL.pdb
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DAL\obj\Debug\DAL.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DAL\obj\Debug\DAL.pdb

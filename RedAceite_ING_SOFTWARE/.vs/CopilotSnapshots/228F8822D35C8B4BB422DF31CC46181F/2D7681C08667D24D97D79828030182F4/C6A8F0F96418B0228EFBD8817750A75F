@@ -1,0 +1,91 @@
+﻿using RedAceite_ING_SOFTWARE.Forms;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using SERVICES.Forms; // o ajusta el namespace del formulario de login
+
+
+namespace RedAceite_ING_SOFTWARE
+{
+    internal static class Program
+    {
+        /// <summary>
+        /// Punto de entrada principal para la aplicación.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            // Configurar manejador de excepciones no controladas para toda la aplicación
+            // Esto nos ayudará a detectar cualquier error que cause el cierre inesperado
+            Application.ThreadException += new System.Threading.ThreadExceptionEventHandler(Application_ThreadException);
+            AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+
+            // Configuración de estilos visuales de la aplicación
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
+            // ===== MODO DE PRUEBA: Descomenta la siguiente línea para probar FrmPrincipal sin login =====
+            // Application.Run(new FrmPrincipal());
+            // return;
+            // ===== FIN MODO DE PRUEBA =====
+
+            try
+            {
+                // Variable para controlar si se debe abrir el formulario principal
+                bool abrirPrincipal = false;
+                
+                // Crear y mostrar el formulario de login
+                using (var login = new LogIn())
+                {
+                    // Mostrar el login como diálogo modal y esperar resultado
+                    DialogResult loginResult = login.ShowDialog();
+                    
+                    // Guardar el resultado antes de que se cierre el formulario
+                    abrirPrincipal = (loginResult == DialogResult.OK);
+                }
+                // Al salir del using, el login se cierra y dispone automáticamente
+                
+                // Ahora que el login está completamente cerrado, abrir el formulario principal
+                if (abrirPrincipal)
+                {
+                    // Dar un momento para que todo se limpie
+                    Application.DoEvents();
+                    
+                    // Iniciar la aplicación con el formulario principal
+                    // Application.Run mantiene la aplicación ejecutándose hasta que se cierre FrmPrincipal
+                    Application.Run(new FrmPrincipal());
+                }
+            }
+            catch (Exception ex)
+            {
+                // Capturar cualquier error durante el inicio de la aplicación
+                MessageBox.Show($"Error fatal al iniciar la aplicación:\n\n{ex.Message}\n\nStack Trace:\n{ex.StackTrace}", 
+                    "Error Fatal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Manejador de excepciones no controladas en el thread de UI
+        /// </summary>
+        static void Application_ThreadException(object sender, System.Threading.ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show($"Error no controlado en la aplicación:\n\n{e.Exception.Message}\n\nStack Trace:\n{e.Exception.StackTrace}",
+                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        /// <summary>
+        /// Manejador de excepciones no controladas en el dominio de aplicación
+        /// </summary>
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = e.ExceptionObject as Exception;
+            if (ex != null)
+            {
+                MessageBox.Show($"Error fatal no controlado:\n\n{ex.Message}\n\nStack Trace:\n{ex.StackTrace}",
+                    "Error Fatal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
+}

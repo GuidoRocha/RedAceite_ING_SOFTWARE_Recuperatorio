@@ -1,0 +1,258 @@
+﻿namespace RedAceite_ING_SOFTWARE.Forms
+{
+    partial class FrmGestionProveedores
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.dgvProveedores = new System.Windows.Forms.DataGridView();
+            this.btnAgregarProveedor = new System.Windows.Forms.Button();
+            this.btnModificarProveedor = new System.Windows.Forms.Button();
+            this.btnDeshabilitarProveedor = new System.Windows.Forms.Button();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.grpFiltros = new System.Windows.Forms.GroupBox();
+            this.btnLimpiarFiltros = new System.Windows.Forms.Button();
+            this.btnFiltrar = new System.Windows.Forms.Button();
+            this.txtFiltroRegion = new System.Windows.Forms.TextBox();
+            this.txtFiltroRazonSocial = new System.Windows.Forms.TextBox();
+            this.txtFiltroCUIT = new System.Windows.Forms.TextBox();
+            this.lblFiltroRegion = new System.Windows.Forms.Label();
+            this.lblFiltroRazonSocial = new System.Windows.Forms.Label();
+            this.lblFiltroCUIT = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).BeginInit();
+            this.grpFiltros.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // dgvProveedores
+            // 
+            this.dgvProveedores.AllowUserToAddRows = false;
+            this.dgvProveedores.AllowUserToDeleteRows = false;
+            this.dgvProveedores.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProveedores.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProveedores.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProveedores.Location = new System.Drawing.Point(12, 160);
+            this.dgvProveedores.MultiSelect = false;
+            this.dgvProveedores.Name = "dgvProveedores";
+            this.dgvProveedores.ReadOnly = true;
+            this.dgvProveedores.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvProveedores.Size = new System.Drawing.Size(960, 400);
+            this.dgvProveedores.TabIndex = 0;
+            // 
+            // btnAgregarProveedor
+            // 
+            this.btnAgregarProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.btnAgregarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAgregarProveedor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnAgregarProveedor.ForeColor = System.Drawing.Color.White;
+            this.btnAgregarProveedor.Location = new System.Drawing.Point(12, 570);
+            this.btnAgregarProveedor.Name = "btnAgregarProveedor";
+            this.btnAgregarProveedor.Size = new System.Drawing.Size(150, 40);
+            this.btnAgregarProveedor.TabIndex = 1;
+            this.btnAgregarProveedor.Text = "+ Agregar Proveedor";
+            this.btnAgregarProveedor.UseVisualStyleBackColor = false;
+            this.btnAgregarProveedor.Click += new System.EventHandler(this.btnAgregarProveedor_Click);
+            // 
+            // btnModificarProveedor
+            // 
+            this.btnModificarProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnModificarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnModificarProveedor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnModificarProveedor.ForeColor = System.Drawing.Color.White;
+            this.btnModificarProveedor.Location = new System.Drawing.Point(168, 570);
+            this.btnModificarProveedor.Name = "btnModificarProveedor";
+            this.btnModificarProveedor.Size = new System.Drawing.Size(180, 40);
+            this.btnModificarProveedor.TabIndex = 2;
+            this.btnModificarProveedor.Text = "Modificar Proveedor";
+            this.btnModificarProveedor.UseVisualStyleBackColor = false;
+            this.btnModificarProveedor.Click += new System.EventHandler(this.btnModificarProveedor_Click);
+            // 
+            // btnDeshabilitarProveedor
+            // 
+            this.btnDeshabilitarProveedor.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.btnDeshabilitarProveedor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeshabilitarProveedor.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold);
+            this.btnDeshabilitarProveedor.ForeColor = System.Drawing.Color.White;
+            this.btnDeshabilitarProveedor.Location = new System.Drawing.Point(354, 570);
+            this.btnDeshabilitarProveedor.Name = "btnDeshabilitarProveedor";
+            this.btnDeshabilitarProveedor.Size = new System.Drawing.Size(190, 40);
+            this.btnDeshabilitarProveedor.TabIndex = 3;
+            this.btnDeshabilitarProveedor.Text = "Deshabilitar Proveedor";
+            this.btnDeshabilitarProveedor.UseVisualStyleBackColor = false;
+            this.btnDeshabilitarProveedor.Click += new System.EventHandler(this.btnDeshabilitarProveedor_Click);
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.Location = new System.Drawing.Point(12, 15);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(255, 26);
+            this.lblTitulo.TabIndex = 4;
+            this.lblTitulo.Text = "Gestión de Proveedores";
+            // 
+            // grpFiltros
+            // 
+            this.grpFiltros.Controls.Add(this.btnLimpiarFiltros);
+            this.grpFiltros.Controls.Add(this.btnFiltrar);
+            this.grpFiltros.Controls.Add(this.txtFiltroRegion);
+            this.grpFiltros.Controls.Add(this.txtFiltroRazonSocial);
+            this.grpFiltros.Controls.Add(this.txtFiltroCUIT);
+            this.grpFiltros.Controls.Add(this.lblFiltroRegion);
+            this.grpFiltros.Controls.Add(this.lblFiltroRazonSocial);
+            this.grpFiltros.Controls.Add(this.lblFiltroCUIT);
+            this.grpFiltros.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.grpFiltros.Location = new System.Drawing.Point(12, 50);
+            this.grpFiltros.Name = "grpFiltros";
+            this.grpFiltros.Size = new System.Drawing.Size(960, 100);
+            this.grpFiltros.TabIndex = 5;
+            this.grpFiltros.TabStop = false;
+            this.grpFiltros.Text = "Filtros";
+            // 
+            // btnLimpiarFiltros
+            // 
+            this.btnLimpiarFiltros.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(158)))), ((int)(((byte)(158)))));
+            this.btnLimpiarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiarFiltros.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.btnLimpiarFiltros.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiarFiltros.Location = new System.Drawing.Point(850, 55);
+            this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
+            this.btnLimpiarFiltros.Size = new System.Drawing.Size(100, 30);
+            this.btnLimpiarFiltros.TabIndex = 7;
+            this.btnLimpiarFiltros.Text = "Limpiar";
+            this.btnLimpiarFiltros.UseVisualStyleBackColor = false;
+            this.btnLimpiarFiltros.Click += new System.EventHandler(this.btnLimpiarFiltros_Click);
+            // 
+            // btnFiltrar
+            // 
+            this.btnFiltrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
+            this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFiltrar.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold);
+            this.btnFiltrar.ForeColor = System.Drawing.Color.White;
+            this.btnFiltrar.Location = new System.Drawing.Point(744, 55);
+            this.btnFiltrar.Name = "btnFiltrar";
+            this.btnFiltrar.Size = new System.Drawing.Size(100, 30);
+            this.btnFiltrar.TabIndex = 6;
+            this.btnFiltrar.Text = "Filtrar";
+            this.btnFiltrar.UseVisualStyleBackColor = false;
+            this.btnFiltrar.Click += new System.EventHandler(this.btnFiltrar_Click);
+            // 
+            // txtFiltroRegion
+            // 
+            this.txtFiltroRegion.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtFiltroRegion.Location = new System.Drawing.Point(515, 60);
+            this.txtFiltroRegion.Name = "txtFiltroRegion";
+            this.txtFiltroRegion.Size = new System.Drawing.Size(200, 21);
+            this.txtFiltroRegion.TabIndex = 5;
+            // 
+            // txtFiltroRazonSocial
+            // 
+            this.txtFiltroRazonSocial.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtFiltroRazonSocial.Location = new System.Drawing.Point(267, 60);
+            this.txtFiltroRazonSocial.Name = "txtFiltroRazonSocial";
+            this.txtFiltroRazonSocial.Size = new System.Drawing.Size(220, 21);
+            this.txtFiltroRazonSocial.TabIndex = 4;
+            // 
+            // txtFiltroCUIT
+            // 
+            this.txtFiltroCUIT.Font = new System.Drawing.Font("Arial", 9F);
+            this.txtFiltroCUIT.Location = new System.Drawing.Point(20, 60);
+            this.txtFiltroCUIT.Name = "txtFiltroCUIT";
+            this.txtFiltroCUIT.Size = new System.Drawing.Size(220, 21);
+            this.txtFiltroCUIT.TabIndex = 3;
+            // 
+            // lblFiltroRegion
+            // 
+            this.lblFiltroRegion.AutoSize = true;
+            this.lblFiltroRegion.Font = new System.Drawing.Font("Arial", 9F);
+            this.lblFiltroRegion.Location = new System.Drawing.Point(512, 35);
+            this.lblFiltroRegion.Name = "lblFiltroRegion";
+            this.lblFiltroRegion.Size = new System.Drawing.Size(48, 15);
+            this.lblFiltroRegion.TabIndex = 2;
+            this.lblFiltroRegion.Text = "Región:";
+            // 
+            // lblFiltroRazonSocial
+            // 
+            this.lblFiltroRazonSocial.AutoSize = true;
+            this.lblFiltroRazonSocial.Font = new System.Drawing.Font("Arial", 9F);
+            this.lblFiltroRazonSocial.Location = new System.Drawing.Point(264, 35);
+            this.lblFiltroRazonSocial.Name = "lblFiltroRazonSocial";
+            this.lblFiltroRazonSocial.Size = new System.Drawing.Size(82, 15);
+            this.lblFiltroRazonSocial.TabIndex = 1;
+            this.lblFiltroRazonSocial.Text = "Razón Social:";
+            // 
+            // lblFiltroCUIT
+            // 
+            this.lblFiltroCUIT.AutoSize = true;
+            this.lblFiltroCUIT.Font = new System.Drawing.Font("Arial", 9F);
+            this.lblFiltroCUIT.Location = new System.Drawing.Point(17, 35);
+            this.lblFiltroCUIT.Name = "lblFiltroCUIT";
+            this.lblFiltroCUIT.Size = new System.Drawing.Size(37, 15);
+            this.lblFiltroCUIT.TabIndex = 0;
+            this.lblFiltroCUIT.Text = "CUIT:";
+            // 
+            // FrmGestionProveedores
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(984, 621);
+            this.Controls.Add(this.grpFiltros);
+            this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.btnDeshabilitarProveedor);
+            this.Controls.Add(this.btnModificarProveedor);
+            this.Controls.Add(this.btnAgregarProveedor);
+            this.Controls.Add(this.dgvProveedores);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
+            this.Name = "FrmGestionProveedores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Gestión de Proveedores - RedAceite";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvProveedores)).EndInit();
+            this.grpFiltros.ResumeLayout(false);
+            this.grpFiltros.PerformLayout();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.DataGridView dgvProveedores;
+        private System.Windows.Forms.Button btnAgregarProveedor;
+        private System.Windows.Forms.Button btnModificarProveedor;
+        private System.Windows.Forms.Button btnDeshabilitarProveedor;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.GroupBox grpFiltros;
+        private System.Windows.Forms.Button btnLimpiarFiltros;
+        private System.Windows.Forms.Button btnFiltrar;
+        private System.Windows.Forms.TextBox txtFiltroRegion;
+        private System.Windows.Forms.TextBox txtFiltroRazonSocial;
+        private System.Windows.Forms.TextBox txtFiltroCUIT;
+        private System.Windows.Forms.Label lblFiltroRegion;
+        private System.Windows.Forms.Label lblFiltroRazonSocial;
+        private System.Windows.Forms.Label lblFiltroCUIT;
+    }
+}

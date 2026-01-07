@@ -9,3 +9,12 @@ C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_
 C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\BLL\obj\Debug\BLL.csproj.Up2Date
 C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\BLL\obj\Debug\BLL.dll
 C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\BLL\obj\Debug\BLL.pdb
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\BLL\bin\Debug\BLL.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\BLL\bin\Debug\BLL.pdb
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\BLL\bin\Debug\DAL.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\BLL\bin\Debug\DAL.pdb
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\BLL\obj\Debug\BLL.csproj.AssemblyReference.cache
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\BLL\obj\Debug\BLL.csproj.Up2Date
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\BLL\obj\Debug\BLL.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\BLL\obj\Debug\BLL.pdb

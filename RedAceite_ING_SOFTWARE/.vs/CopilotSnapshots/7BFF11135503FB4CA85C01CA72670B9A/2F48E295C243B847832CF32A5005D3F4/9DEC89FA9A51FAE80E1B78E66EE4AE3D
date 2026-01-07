@@ -1,0 +1,102 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SERVICES.Dominio
+{
+    /// <summary>
+    /// Representa un proveedor del sistema.
+    /// Contiene información del proveedor como nombre, CUIT, DNI, dirección, contacto, etc.
+    /// </summary>
+    public class Proveedor
+    {
+        /// <summary>
+        /// Identificador único del proveedor (GUID).
+        /// </summary>
+        public Guid IdProveedor { get; set; }
+
+        /// <summary>
+        /// ID simple para mostrar en el sistema (incremental).
+        /// </summary>
+        public int IdSimple { get; set; }
+
+        /// <summary>
+        /// Nombre del proveedor.
+        /// </summary>
+        public string Nombre { get; set; }
+
+        /// <summary>
+        /// CUIT del proveedor (no modificable una vez registrado).
+        /// </summary>
+        public string CUIT { get; set; }
+
+        /// <summary>
+        /// DNI del proveedor (no modificable una vez registrado).
+        /// </summary>
+        public string DNI { get; set; }
+
+        /// <summary>
+        /// Dirección del proveedor.
+        /// </summary>
+        public string Direccion { get; set; }
+
+        /// <summary>
+        /// Teléfono del proveedor.
+        /// </summary>
+        public string Telefono { get; set; }
+
+        /// <summary>
+        /// Correo electrónico del proveedor.
+        /// </summary>
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Razón social del proveedor.
+        /// </summary>
+        public string RazonSocial { get; set; }
+
+        /// <summary>
+        /// Región del proveedor (opcional, para filtrado).
+        /// </summary>
+        public string Region { get; set; }
+
+        /// <summary>
+        /// Estado del proveedor (Activo/Inactivo).
+        /// </summary>
+        public bool Activo { get; set; }
+
+        /// <summary>
+        /// Fecha de creación del registro del proveedor.
+        /// </summary>
+        public DateTime FechaCreacion { get; set; }
+
+        /// <summary>
+        /// Fecha de última modificación del proveedor.
+        /// </summary>
+        public DateTime? FechaModificacion { get; set; }
+
+        /// <summary>
+        /// Constructor por defecto que inicializa el ID del proveedor con un nuevo Guid
+        /// y establece la fecha de creación al momento actual.
+        /// </summary>
+        public Proveedor()
+        {
+            IdProveedor = Guid.NewGuid();
+            FechaCreacion = DateTime.Now;
+            Activo = true; // Por defecto, el proveedor está activo
+        }
+
+        /// <summary>
+        /// Constructor que permite inicializar el proveedor con un ID específico.
+        /// </summary>
+        /// <param name="idProveedor">ID del proveedor.</param>
+        public Proveedor(Guid idProveedor)
+        {
+            this.IdProveedor = idProveedor;
+            FechaCreacion = DateTime.Now;
+            Activo = true;
+        }
+    }
+}

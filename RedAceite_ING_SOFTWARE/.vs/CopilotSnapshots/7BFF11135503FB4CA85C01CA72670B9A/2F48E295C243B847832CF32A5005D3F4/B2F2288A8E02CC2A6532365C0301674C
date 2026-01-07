@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<configuration>
+	<configSections>
+ </configSections>
+ <appSettings>
+	 <!-- 25/10/2025 -->
+		<add key="BackendType" value="1" />
+	 <!-- Configuración del tipo de logger -->
+	 <add key="LoggerType" value="database" />
+	 
+	 
+
+	 <!-- Archivos multi idioma -->
+	 <!--	 <add key="LanguagePath" value="C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\I18n\" /> -->
+
+	 <!-- Archivos multi idioma PC ESCRITORIO -->
+	 <add key="LanguagePath" value="C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\I18n\" /> 
+	 
+
+
+	 <!-- Ruta para el archivo de configuración del idioma del usuario -->
+	 <!--	<add key="UserLanguageConfigPath" value="C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\config.txt" /> -->
+
+	 <!-- Ruta para el archivo de configuración del idioma del usuario PC ESCRITORIO-->
+	 <add key="UserLanguageConfigPath" value="C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\config.txt" />
+
+
+
+
+
+ </appSettings>
+	<connectionStrings>
+  <add name="ConexionCarniceria" connectionString="Data Source=JARVIS\SQLEXPRESS; Initial Catalog=Trabajo_GODZ_Carniceria;Integrated Security=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" />
+  <add name="MainConString" connectionString="Data Source=JARVIS\SQLEXPRESS;Initial Catalog=Trabajo_GODZ_Carniceria;Integrated Security=True"
+   providerName="System.Data.SqlClient" />
+		
+<!-- Ruta SQL de Usuarios-->
+		<!-- <add name="Usuarios_conexiones" connectionString="Data Source=GUIDO-ROCHA\SQLEXPRESS;Initial Catalog=RedAceiteUser;Integrated Security=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" />-->
+<!-- Ruta SQL de Usuarios PC DE ESCRITORIO-->
+		<add name="Usuarios_conexiones" connectionString="Data Source=GuidoPC;Initial Catalog=RedAceiteUser;Integrated Security=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" /> 
+		
+<!-- Ruta SQL de logs-->
+		<!--  <add name="LogDatabase" connectionString="Data Source=GUIDO-ROCHA\SQLEXPRESS;Initial Catalog=RedAceiteLog;Integrated Security=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" />-->
+<!-- Ruta SQL de logs PC DE ESCRITORIO-->		
+  <add name="LogDatabase" connectionString="Data Source=GuidoPC;Initial Catalog=RedAceiteLog;Integrated Security=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" /> 
+		
+<!-- =============================================== -->
+<!-- CADENA DE CONEXIÓN PARA BASE DE DATOS DE REMITOS -->
+<!-- =============================================== -->
+		
+<!-- Ruta SQL de Remitos - CONFIGURAR CON TU SERVIDOR Y BASE DE DATOS -->
+<!-- IMPORTANTE: Debes crear la base de datos "RedAceiteRemitos" antes de ejecutar la aplicación -->
+<!-- Ejemplo para SQL Server Express: Data Source=NOMBRE_SERVIDOR\SQLEXPRESS;Initial Catalog=RedAceiteRemitos;Integrated Security=True;TrustServerCertificate=True -->
+		
+		<!-- Ruta SQL de Remitos PC DE ESCRITORIO -->
+		<add name="Remitos_conexiones" connectionString="Data Source=GuidoPC;Initial Catalog=RedAceiteRemito;Integrated Security=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" />
+		
+		<!-- Ruta SQL de Remitos -->
+		<!-- <add name="Remitos_conexiones" connectionString="Data Source=GUIDO-ROCHA\SQLEXPRESS;Initial Catalog=RedAceiteRemitos;Integrated Security=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" /> -->
+
+		
+<!-- =============================================== -->
+		
+
+  <add name="RedAceite_ING_SOFTWARE.Properties.Settings.Trabajo_GODZ_LogConnectionString"
+   connectionString="Data Source=PF4FN00E\SQLEXPRESS;Initial Catalog=Trabajo_GODZ_Log;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" />
+		<!--
+  <add name="RedAceite_ING_SOFTWARE.Properties.Settings.RedAceiteLogConnectionString"
+   connectionString="Data Source=PF4FN00E\SQLEXPRESS;Initial Catalog=RedAceiteLog;Integrated Security=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" />
+  <add name="RedAceite_ING_SOFTWARE.Properties.Settings.RedAceiteUserConnectionString"
+   connectionString="Data Source=PF4FN00E\SQLEXPRESS;Initial Catalog=RedAceiteUser;Integrated Security=True;TrustServerCertificate=True"
+   providerName="System.Data.SqlClient" />    -->
+ </connectionStrings>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.7.2" />
+    </startup>
+</configuration>
