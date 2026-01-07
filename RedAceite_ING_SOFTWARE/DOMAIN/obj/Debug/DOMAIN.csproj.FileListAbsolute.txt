@@ -1,0 +1,6 @@
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DOMAIN\bin\Debug\DOMAIN.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DOMAIN\bin\Debug\DOMAIN.pdb
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DOMAIN\obj\Debug\DOMAIN.csproj.AssemblyReference.cache
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DOMAIN\obj\Debug\DOMAIN.csproj.CoreCompileInputs.cache
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DOMAIN\obj\Debug\DOMAIN.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\DOMAIN\obj\Debug\DOMAIN.pdb

@@ -1,0 +1,173 @@
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe.config
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.pdb
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.pdb
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll.config
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.AssemblyReference.cache
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.SuggestedBindingRedirects.cache
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe.config
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\SERVICES.Forms.LogIn.resources
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmPrincipal.resources
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Properties.Resources.resources
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.GenerateResource.cache
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.CoreCompileInputs.cache
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceit.EA85C1A6.Up2Date
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.pdb
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe.config
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.pdb
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.pdb
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll.config
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.AssemblyReference.cache
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.SuggestedBindingRedirects.cache
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe.config
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\SERVICES.Forms.LogIn.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmPrincipal.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Properties.Resources.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.GenerateResource.cache
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.CoreCompileInputs.cache
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceit.EA85C1A6.Up2Date
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.pdb
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearUsuario.resources
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearRol.resources
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearUsuario.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe.config
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.pdb
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.pdb
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll.config
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.AssemblyReference.cache
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.SuggestedBindingRedirects.cache
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe.config
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearRol.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearUsuario.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\SERVICES.Forms.LogIn.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmPrincipal.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Properties.Resources.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.GenerateResource.cache
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.CoreCompileInputs.cache
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceit.EA85C1A6.Up2Date
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.pdb
+C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmGenerarRemito.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmGenerarRemito.resources
+C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmGestionProveedores.resources

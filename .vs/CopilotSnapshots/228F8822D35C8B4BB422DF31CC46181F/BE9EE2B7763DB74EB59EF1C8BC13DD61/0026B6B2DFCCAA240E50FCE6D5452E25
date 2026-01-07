@@ -1,0 +1,121 @@
+﻿using RedAceite_ING_SOFTWARE.Forms;
+using SERVICES.DAL.Contratos;
+using SERVICES.Dominio;
+using SERVICES.Facade;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+
+
+namespace SERVICES.Forms
+{
+    public partial class LogIn : Form, ILanguageObserver
+    {
+        public LogIn()
+        {
+            InitializeComponent();
+
+
+            // setea cultura actual y traduce el form (mismo patrón del original)
+            var code = LanguageService.LoadUserLanguage();
+            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
+
+            InitializeLanguageComboBox();
+            LanguageService.TranslateForm(this);
+
+        }
+
+        public void UpdateLanguage()
+        {
+            LanguageService.TranslateForm(this);
+            this.Refresh();
+        }
+
+        private void ButtonIngresar_Click(object sender, EventArgs e)
+        {
+            string username = txtusuario.Text;
+            string password = txtcontraseña.Text;
+
+            try
+            {
+                if (UserService.Login(username, password))
+                {
+                    Usuario user = UserService.GetUsuarioByUsername(username);
+                    SesionService.UsuarioLogueado = user;
+                    this.Hide();
+                    var frmPrincipal = new FrmPrincipal(
+                    //ServiceFactory.VentaService,
+                    //ServiceFactory.ClienteService
+                    );
+                    frmPrincipal.Show();
+                    this.Hide();
+
+                    frmPrincipal.FormClosed += (s, args) => this.Close();
+
+                    LoggerService.WriteLog($"El usuario {username} inició sesión correctamente.", TraceLevel.Info);
+                }
+                else
+                {
+                    LoggerService.WriteLog($"Intento fallido de inicio de sesión por el usuario {username}.", TraceLevel.Warning);
+                    MessageBox.Show(LanguageService.Translate("Inicio_Sesion_Fallido_UsuarioContrasena"));
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+
+                MessageBox.Show($"{LanguageService.Translate("OcurrioErrorDuranteInicioSesion")}{ex.Message}");
+            }
+        }
+
+        private void cbLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedLanguage = cbLanguage.SelectedItem.ToString() == "Español" ? "es-ES" : "en-US";
+
+            LanguageService.SaveUserLanguage(selectedLanguage);
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(selectedLanguage);
+
+            LanguageService.TranslateForm(this);
+            this.Refresh();
+        }
+
+        private void CheckPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckPass.Checked)
+            {
+                txtcontraseña.PasswordChar = '\0';
+            }
+            else
+            {
+                txtcontraseña.PasswordChar = '*';
+            }
+        }
+
+
+        // Método para inicializar el ComboBox con las opciones de idioma
+        private void InitializeLanguageComboBox()
+        {
+            cbLanguage.Items.Add("Español");
+            cbLanguage.Items.Add("Inglés");
+            cbLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
+
+
+
+            // Seleccionar el idioma actual
+            string currentLanguage = LanguageService.LoadUserLanguage();
+            cbLanguage.SelectedItem = currentLanguage == "es-ES" ? "Español" : "Inglés";
+            cbLanguage.SelectedIndexChanged += cbLanguage_SelectedIndexChanged;
+        }
+    }
+}

@@ -1,0 +1,124 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\users\\botmaker\\desktop\\uai\\ing software 2.0\\redaceite_ing_software\\redaceite_ing_software\\redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\users\\botmaker\\desktop\\uai\\ing software 2.0\\redaceite_ing_software\\redaceite_ing_software\\redaceite_ing_software\\forms\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\users\\botmaker\\desktop\\uai\\ing software 2.0\\redaceite_ing_software\\redaceite_ing_software\\redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\users\\botmaker\\desktop\\uai\\ing software 2.0\\redaceite_ing_software\\redaceite_ing_software\\redaceite_ing_software\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\users\\botmaker\\desktop\\uai\\ing software 2.0\\redaceite_ing_software\\redaceite_ing_software\\redaceite_ing_software\\forms\\frmcrearusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmcrearusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\users\\botmaker\\desktop\\uai\\ing software 2.0\\redaceite_ing_software\\redaceite_ing_software\\redaceite_ing_software\\forms\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmprincipal.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 1,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedHeight": 360,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmLogin.cs",
+              "DocumentMoniker": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs",
+              "ToolTip": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAArwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T20:52:04.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmPrincipal.cs",
+              "DocumentMoniker": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "ToolTip": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "ViewState": "AgIAAPgAAAAAAAAAAAAnwA8BAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T00:08:39.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "FrmPrincipal.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.Designer.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.Designer.cs",
+              "ToolTip": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.Designer.cs",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.Designer.cs",
+              "ViewState": "AgIAAOoBAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T00:07:35.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmPrincipal.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "ToolTip": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs [Dise\u00F1o]",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T23:49:38.918Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Program.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Program.cs",
+              "ToolTip": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Program.cs",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T23:46:24.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmCrearUsuario.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs",
+              "ToolTip": "C:\\Users\\Botmaker\\Desktop\\Uai\\ING SOFTWARE 2.0\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs [Dise\u00F1o]",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-06T23:52:17.049Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

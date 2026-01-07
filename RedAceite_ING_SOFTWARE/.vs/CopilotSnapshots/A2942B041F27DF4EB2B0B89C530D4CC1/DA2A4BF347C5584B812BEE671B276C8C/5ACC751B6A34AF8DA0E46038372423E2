@@ -1,0 +1,237 @@
+﻿using SERVICES.Dominio;
+using SERVICES.Facade;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RedAceite_ING_SOFTWARE.Forms
+{
+    /// <summary>
+    /// Formulario principal para la gestión de proveedores.
+    /// Permite listar, filtrar y gestionar proveedores (alta, baja y modificación).
+    /// </summary>
+    public partial class FrmGestionProveedores : Form
+    {
+        public FrmGestionProveedores()
+        {
+            InitializeComponent();
+            CargarProveedores();
+        }
+
+        /// <summary>
+        /// Carga todos los proveedores activos en el DataGridView.
+        /// </summary>
+        private void CargarProveedores()
+        {
+            try
+            {
+                var proveedores = ProveedorService.ObtenerProveedoresActivos();
+                dgvProveedores.DataSource = null;
+                dgvProveedores.DataSource = proveedores;
+
+                // Configurar columnas
+                ConfigurarColumnas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar proveedores: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Configura las columnas del DataGridView.
+        /// </summary>
+        private void ConfigurarColumnas()
+        {
+            if (dgvProveedores.Columns.Count == 0) return;
+
+            // Ocultar columnas que no se deben mostrar
+            dgvProveedores.Columns["IdProveedor"].Visible = false;
+            dgvProveedores.Columns["FechaCreacion"].Visible = false;
+            dgvProveedores.Columns["FechaModificacion"].Visible = false;
+            dgvProveedores.Columns["Activo"].Visible = false;
+
+            // Configurar orden y encabezados
+            dgvProveedores.Columns["IdSimple"].HeaderText = "ID";
+            dgvProveedores.Columns["IdSimple"].DisplayIndex = 0;
+            dgvProveedores.Columns["IdSimple"].Width = 50;
+
+            dgvProveedores.Columns["CUIT"].HeaderText = "CUIT";
+            dgvProveedores.Columns["CUIT"].DisplayIndex = 1;
+            dgvProveedores.Columns["CUIT"].Width = 100;
+
+            dgvProveedores.Columns["Nombre"].HeaderText = "Nombre";
+            dgvProveedores.Columns["Nombre"].DisplayIndex = 2;
+            dgvProveedores.Columns["Nombre"].Width = 150;
+
+            dgvProveedores.Columns["RazonSocial"].HeaderText = "Razón Social";
+            dgvProveedores.Columns["RazonSocial"].DisplayIndex = 3;
+            dgvProveedores.Columns["RazonSocial"].Width = 150;
+
+            dgvProveedores.Columns["Direccion"].HeaderText = "Dirección";
+            dgvProveedores.Columns["Direccion"].DisplayIndex = 4;
+            dgvProveedores.Columns["Direccion"].Width = 200;
+
+            dgvProveedores.Columns["Telefono"].HeaderText = "Teléfono";
+            dgvProveedores.Columns["Telefono"].DisplayIndex = 5;
+            dgvProveedores.Columns["Telefono"].Width = 100;
+
+            dgvProveedores.Columns["Email"].HeaderText = "Email";
+            dgvProveedores.Columns["Email"].DisplayIndex = 6;
+            dgvProveedores.Columns["Email"].Width = 150;
+
+            dgvProveedores.Columns["Region"].HeaderText = "Región";
+            dgvProveedores.Columns["Region"].DisplayIndex = 7;
+            dgvProveedores.Columns["Region"].Width = 100;
+
+            dgvProveedores.Columns["DNI"].HeaderText = "DNI";
+            dgvProveedores.Columns["DNI"].DisplayIndex = 8;
+            dgvProveedores.Columns["DNI"].Width = 100;
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Agregar Proveedor.
+        /// </summary>
+        private void btnAgregarProveedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var frmAlta = new FrmAltaProveedor();
+                if (frmAlta.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProveedores();
+                    MessageBox.Show("Proveedor agregado exitosamente.", "Éxito", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir formulario de alta: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Modificar Proveedor.
+        /// </summary>
+        private void btnModificarProveedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvProveedores.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un proveedor para modificar.", "Advertencia", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var proveedorSeleccionado = (Proveedor)dgvProveedores.SelectedRows[0].DataBoundItem;
+                var frmModificar = new FrmModificarProveedor(proveedorSeleccionado.IdProveedor);
+                if (frmModificar.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProveedores();
+                    MessageBox.Show("Proveedor modificado exitosamente.", "Éxito", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al modificar proveedor: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Deshabilitar Proveedor.
+        /// </summary>
+        private void btnDeshabilitarProveedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvProveedores.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un proveedor para deshabilitar.", "Advertencia", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var proveedorSeleccionado = (Proveedor)dgvProveedores.SelectedRows[0].DataBoundItem;
+                
+                var confirmacion = MessageBox.Show(
+                    $"¿Está seguro que desea deshabilitar al proveedor '{proveedorSeleccionado.Nombre}'?", 
+                    "Confirmar", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.Yes)
+                {
+                    ProveedorService.DeshabilitarProveedor(proveedorSeleccionado.IdProveedor);
+                    LoggerService.WriteLog($"Proveedor deshabilitado: {proveedorSeleccionado.Nombre} (ID: {proveedorSeleccionado.IdSimple})", 
+                        System.Diagnostics.TraceLevel.Info);
+                    CargarProveedores();
+                    MessageBox.Show("Proveedor deshabilitado exitosamente.", "Éxito", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al deshabilitar proveedor: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Filtrar.
+        /// </summary>
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string cuit = txtFiltroCUIT.Text.Trim();
+                string razonSocial = txtFiltroRazonSocial.Text.Trim();
+                string region = txtFiltroRegion.Text.Trim();
+
+                if (string.IsNullOrWhiteSpace(cuit) && 
+                    string.IsNullOrWhiteSpace(razonSocial) && 
+                    string.IsNullOrWhiteSpace(region))
+                {
+                    CargarProveedores();
+                    return;
+                }
+
+                var proveedoresFiltrados = ProveedorService.FiltrarProveedores(cuit, razonSocial, region);
+                dgvProveedores.DataSource = null;
+                dgvProveedores.DataSource = proveedoresFiltrados;
+                ConfigurarColumnas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al filtrar proveedores: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Limpiar Filtros.
+        /// </summary>
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            txtFiltroCUIT.Clear();
+            txtFiltroRazonSocial.Clear();
+            txtFiltroRegion.Clear();
+            CargarProveedores();
+        }
+    }
+}

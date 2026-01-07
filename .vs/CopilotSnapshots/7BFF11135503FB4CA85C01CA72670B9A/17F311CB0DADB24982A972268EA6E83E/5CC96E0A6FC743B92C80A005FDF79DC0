@@ -1,0 +1,215 @@
+﻿# 🚀 INICIO RÁPIDO - Sistema de Proveedores
+
+## ⚡ Pasos para Empezar (5 minutos)
+
+### 1️⃣ Crear la Base de Datos (2 minutos)
+
+Abre **SQL Server Management Studio** y ejecuta:
+
+```sql
+-- PASO 1: Crear la base de datos
+CREATE DATABASE RedAceiteProveedores;
+GO
+
+-- PASO 2: Usar la base de datos
+USE RedAceiteProveedores;
+GO
+
+-- PASO 3: Crear la tabla
+CREATE TABLE Proveedor (
+    IdProveedor UNIQUEIDENTIFIER PRIMARY KEY DEFAULT NEWID(),
+    IdSimple INT IDENTITY(1,1) NOT NULL,
+    Nombre NVARCHAR(100) NOT NULL,
+    CUIT NVARCHAR(11) NOT NULL UNIQUE,
+    DNI NVARCHAR(10) NULL UNIQUE,
+    Direccion NVARCHAR(200) NULL,
+    Telefono NVARCHAR(20) NULL,
+    Email NVARCHAR(100) NULL,
+    RazonSocial NVARCHAR(150) NULL,
+    Region NVARCHAR(50) NULL,
+    Activo BIT NOT NULL DEFAULT 1,
+    FechaCreacion DATETIME NOT NULL DEFAULT GETDATE(),
+    FechaModificacion DATETIME NULL
+);
+GO
+
+-- PASO 4: Crear índices
+CREATE INDEX IX_Proveedor_CUIT ON Proveedor(CUIT);
+CREATE INDEX IX_Proveedor_DNI ON Proveedor(DNI) WHERE DNI IS NOT NULL;
+CREATE INDEX IX_Proveedor_RazonSocial ON Proveedor(RazonSocial);
+CREATE INDEX IX_Proveedor_Region ON Proveedor(Region);
+CREATE INDEX IX_Proveedor_Activo ON Proveedor(Activo);
+GO
+
+-- PASO 5: Insertar datos de prueba
+INSERT INTO Proveedor (Nombre, CUIT, DNI, Direccion, Telefono, Email, RazonSocial, Region, Activo)
+VALUES 
+    ('Proveedor Demo 1', '20123456789', '12345678', 'Av. Corrientes 1234, CABA', '011-4567-8900', 'demo1@email.com', 'Demo S.A.', 'CABA', 1),
+    ('Proveedor Demo 2', '27987654321', '98765432', 'Av. Santa Fe 5678, CABA', '011-4321-0987', 'demo2@email.com', 'Demo SRL', 'CABA', 1);
+GO
+```
+
+### 2️⃣ Configurar la Conexión (1 minuto)
+
+Abre `RedAceite_ING_SOFTWARE\App.config` y modifica la línea (aproximadamente línea 58):
+
+**CAMBIAR DE:**
+```xml
+<add name="Proveedores_conexiones" 
+     connectionString="Data Source=GuidoPC;Initial Catalog=RedAceiteProveedores;..." />
+```
+
+**CAMBIAR A:**
+```xml
+<add name="Proveedores_conexiones" 
+     connectionString="Data Source=TU_SERVIDOR_AQUI;Initial Catalog=RedAceiteProveedores;Integrated Security=True;TrustServerCertificate=True"
+     providerName="System.Data.SqlClient" />
+```
+
+**Ejemplos de TU_SERVIDOR_AQUI:**
+- `localhost` → Si SQL Server está en tu PC
+- `.\SQLEXPRESS` → Si usas SQL Server Express
+- `NOMBRE_PC\SQLEXPRESS` → Reemplaza NOMBRE_PC con el nombre de tu computadora
+
+### 3️⃣ Abrir el Formulario desde tu Aplicación (2 minutos)
+
+Agrega un botón en tu menú principal y en el evento `Click`:
+
+```csharp
+using RedAceite_ING_SOFTWARE.Forms;
+
+// En el evento Click de tu botón o menú:
+private void btnGestionProveedores_Click(object sender, EventArgs e)
+{
+    var frmProveedores = new FrmGestionProveedores();
+    frmProveedores.ShowDialog();
+}
+```
+
+### ✅ ¡Listo! Ya puedes usar el sistema
+
+---
+
+## 📱 Guía Rápida de Uso
+
+### ➕ AGREGAR un Proveedor
+1. Click en botón verde **"+ Agregar Proveedor"**
+2. Completar:
+   - ✅ Nombre (obligatorio)
+   - ✅ CUIT (obligatorio, 11 dígitos)
+   - DNI, Dirección, etc. (opcionales)
+3. Click en **"Guardar"**
+
+### ✏️ MODIFICAR un Proveedor
+1. Seleccionar proveedor de la lista
+2. Click en botón azul **"Modificar Proveedor"**
+3. Editar datos (CUIT y DNI no se pueden cambiar)
+4. Click en **"Guardar"**
+
+### ❌ DESHABILITAR un Proveedor
+1. Seleccionar proveedor de la lista
+2. Click en botón rojo **"Deshabilitar Proveedor"**
+3. Confirmar
+
+### 🔍 FILTRAR Proveedores
+1. Escribir en campos de filtro:
+   - CUIT
+   - Razón Social
+   - Región
+2. Click en **"Filtrar"**
+3. Para limpiar: Click en **"Limpiar"**
+
+---
+
+## 🆘 Solución de Problemas Rápida
+
+### ❌ Error: "No se puede conectar a la base de datos"
+**Solución**: Verifica en `App.config` que el nombre del servidor sea correcto.
+
+Para saber tu nombre de servidor:
+1. Abre **SQL Server Management Studio**
+2. El nombre aparece cuando te conectas
+
+### ❌ Error: "El proveedor ya existe"
+**Solución**: Ya hay un proveedor con ese CUIT o DNI. Usa uno diferente.
+
+### ❌ Error: "El CUIT debe tener 11 dígitos"
+**Solución**: El CUIT debe tener exactamente 11 números (sin contar guiones).
+- ✅ Correcto: `20-12345678-9` o `20123456789`
+- ❌ Incorrecto: `20-1234567-9` (10 dígitos)
+
+---
+
+## 📋 Formato de Datos
+
+### CUIT
+- **Formato**: XX-XXXXXXXX-X
+- **Ejemplo**: `20-12345678-9`
+- **Nota**: Se formatea automáticamente mientras escribes
+
+### Email
+- **Formato**: usuario@dominio.com
+- **Ejemplo**: `proveedor@email.com`
+
+### Teléfono
+- **Formato**: Libre
+- **Ejemplos**: 
+  - `011-4567-8900`
+  - `(011) 4567-8900`
+  - `01145678900`
+
+---
+
+## 📊 Campos del Formulario
+
+### Formulario de Alta/Modificación
+
+| Campo | Obligatorio | Longitud Máx. | Notas |
+|-------|-------------|---------------|-------|
+| Nombre | ✅ Sí | 100 caracteres | - |
+| CUIT | ✅ Sí | 11 dígitos | No modificable después del alta |
+| DNI | ❌ No | 10 dígitos | No modificable después del alta |
+| Dirección | ❌ No | 200 caracteres | - |
+| Teléfono | ❌ No | 20 caracteres | - |
+| Email | ❌ No | 100 caracteres | Debe ser válido |
+| Razón Social | ❌ No | 150 caracteres | - |
+| Región | ❌ No | 50 caracteres | - |
+
+---
+
+## 🎯 Atajos de Teclado (en el formulario principal)
+
+- **F5**: Recargar lista de proveedores
+- **Esc**: Cerrar formulario
+- **Enter** (con proveedor seleccionado): Abrir modificación
+
+---
+
+## 💡 Consejos
+
+1. **Usa el ID Simple**: Es más fácil de recordar que el GUID
+2. **Los proveedores deshabilitados no se eliminan**: Quedan guardados pero no se muestran
+3. **Puedes filtrar por texto parcial**: No necesitas escribir completo
+4. **Los filtros se pueden combinar**: Usa CUIT + Región juntos
+
+---
+
+## 🔐 Seguridad
+
+- ✅ No se pueden crear proveedores duplicados (mismo CUIT o DNI)
+- ✅ No se puede modificar CUIT o DNI después del alta
+- ✅ Todas las operaciones se registran en el log
+- ✅ Los proveedores no se eliminan físicamente (soft delete)
+
+---
+
+## 📞 Soporte
+
+Si tienes problemas:
+1. Revisa `README_PROVEEDORES.md` para más detalles
+2. Verifica los logs del sistema
+3. Revisa la sección de Troubleshooting
+
+---
+
+**¡Disfruta del sistema de gestión de proveedores!** 🎉

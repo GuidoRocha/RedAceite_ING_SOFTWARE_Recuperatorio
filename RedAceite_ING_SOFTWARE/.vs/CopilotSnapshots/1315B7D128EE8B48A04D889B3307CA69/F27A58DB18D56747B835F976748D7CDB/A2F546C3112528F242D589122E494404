@@ -1,0 +1,465 @@
+﻿namespace RedAceite_ING_SOFTWARE.Forms
+{
+    partial class FrmGenerarRemito
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGenerarRemito));
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblTransportista = new System.Windows.Forms.Label();
+            this.lblTelefono = new System.Windows.Forms.Label();
+            this.lblDomicilioTransportista = new System.Windows.Forms.Label();
+            this.lblNombreGenerador = new System.Windows.Forms.Label();
+            this.lblDomicilioPlanta = new System.Windows.Forms.Label();
+            this.lblTipoResiduo = new System.Windows.Forms.Label();
+            this.lblCantidad = new System.Windows.Forms.Label();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.lblFechaEntrega = new System.Windows.Forms.Label();
+            this.pnlLineaFirma = new System.Windows.Forms.Panel();
+            this.lblFirma = new System.Windows.Forms.Label();
+            this.lblTextoInformativo = new System.Windows.Forms.Label();
+            this.lblSeRequiere = new System.Windows.Forms.Label();
+            this.lblCuit = new System.Windows.Forms.Label();
+            this.lblNombreFantasia = new System.Windows.Forms.Label();
+            this.lblDireccion = new System.Windows.Forms.Label();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblWhatsApp = new System.Windows.Forms.Label();
+            this.txtNombreGenerador = new System.Windows.Forms.TextBox();
+            this.txtDomicilioPlanta = new System.Windows.Forms.TextBox();
+            this.txtCantidad = new System.Windows.Forms.TextBox();
+            this.txtCuit = new System.Windows.Forms.TextBox();
+            this.txtNombreFantasia = new System.Windows.Forms.TextBox();
+            this.txtDireccion = new System.Windows.Forms.TextBox();
+            this.cmbTipoResiduo = new System.Windows.Forms.ComboBox();
+            this.cmbEstado = new System.Windows.Forms.ComboBox();
+            this.btnGenerarRemito = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pnlLineaFirma.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // lblTitulo
+            // 
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitulo.Location = new System.Drawing.Point(15, 12);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(444, 16);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Resolución SPA n°063/96 - Resoluciones OPDS n°04/08 y 198/10";
+            // 
+            // lblTransportista
+            // 
+            this.lblTransportista.AutoSize = true;
+            this.lblTransportista.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransportista.Location = new System.Drawing.Point(15, 41);
+            this.lblTransportista.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTransportista.Name = "lblTransportista";
+            this.lblTransportista.Size = new System.Drawing.Size(226, 15);
+            this.lblTransportista.TabIndex = 1;
+            this.lblTransportista.Text = "Nombre del Transportista:  Hugo Rocha";
+            // 
+            // lblTelefono
+            // 
+            this.lblTelefono.AutoSize = true;
+            this.lblTelefono.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTelefono.Location = new System.Drawing.Point(300, 41);
+            this.lblTelefono.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTelefono.Name = "lblTelefono";
+            this.lblTelefono.Size = new System.Drawing.Size(130, 15);
+            this.lblTelefono.TabIndex = 2;
+            this.lblTelefono.Text = "Tel: (011)114-4917473";
+            // 
+            // lblDomicilioTransportista
+            // 
+            this.lblDomicilioTransportista.AutoSize = true;
+            this.lblDomicilioTransportista.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDomicilioTransportista.Location = new System.Drawing.Point(15, 61);
+            this.lblDomicilioTransportista.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDomicilioTransportista.Name = "lblDomicilioTransportista";
+            this.lblDomicilioTransportista.Size = new System.Drawing.Size(298, 15);
+            this.lblDomicilioTransportista.TabIndex = 3;
+            this.lblDomicilioTransportista.Text = "Domicilio:  Mendoza 3149 San Andres Prov. de Bs.As.";
+            // 
+            // lblNombreGenerador
+            // 
+            this.lblNombreGenerador.AutoSize = true;
+            this.lblNombreGenerador.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreGenerador.Location = new System.Drawing.Point(15, 89);
+            this.lblNombreGenerador.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNombreGenerador.Name = "lblNombreGenerador";
+            this.lblNombreGenerador.Size = new System.Drawing.Size(137, 15);
+            this.lblNombreGenerador.TabIndex = 4;
+            this.lblNombreGenerador.Text = "Nombre del Generador:";
+            // 
+            // lblDomicilioPlanta
+            // 
+            this.lblDomicilioPlanta.AutoSize = true;
+            this.lblDomicilioPlanta.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDomicilioPlanta.Location = new System.Drawing.Point(15, 122);
+            this.lblDomicilioPlanta.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDomicilioPlanta.Name = "lblDomicilioPlanta";
+            this.lblDomicilioPlanta.Size = new System.Drawing.Size(130, 15);
+            this.lblDomicilioPlanta.TabIndex = 5;
+            this.lblDomicilioPlanta.Text = "Domicilio de la Planta:";
+            // 
+            // lblTipoResiduo
+            // 
+            this.lblTipoResiduo.AutoSize = true;
+            this.lblTipoResiduo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTipoResiduo.Location = new System.Drawing.Point(15, 154);
+            this.lblTipoResiduo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTipoResiduo.Name = "lblTipoResiduo";
+            this.lblTipoResiduo.Size = new System.Drawing.Size(101, 15);
+            this.lblTipoResiduo.TabIndex = 6;
+            this.lblTipoResiduo.Text = "Tipo de Residuo:";
+            // 
+            // lblCantidad
+            // 
+            this.lblCantidad.AutoSize = true;
+            this.lblCantidad.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCantidad.Location = new System.Drawing.Point(15, 187);
+            this.lblCantidad.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCantidad.Name = "lblCantidad";
+            this.lblCantidad.Size = new System.Drawing.Size(60, 15);
+            this.lblCantidad.TabIndex = 7;
+            this.lblCantidad.Text = "Cantidad:";
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEstado.Location = new System.Drawing.Point(15, 219);
+            this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(49, 15);
+            this.lblEstado.TabIndex = 8;
+            this.lblEstado.Text = "Estado:";
+            // 
+            // lblFechaEntrega
+            // 
+            this.lblFechaEntrega.AutoSize = true;
+            this.lblFechaEntrega.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFechaEntrega.Location = new System.Drawing.Point(15, 252);
+            this.lblFechaEntrega.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblFechaEntrega.Name = "lblFechaEntrega";
+            this.lblFechaEntrega.Size = new System.Drawing.Size(180, 15);
+            this.lblFechaEntrega.TabIndex = 9;
+            this.lblFechaEntrega.Text = "Fecha de Entrega: DD/MM/AAAA";
+            // 
+            // pnlLineaFirma
+            // 
+            this.pnlLineaFirma.Controls.Add(this.lblFirma);
+            this.pnlLineaFirma.Location = new System.Drawing.Point(300, 246);
+            this.pnlLineaFirma.Name = "pnlLineaFirma";
+            this.pnlLineaFirma.Size = new System.Drawing.Size(240, 30);
+            this.pnlLineaFirma.TabIndex = 10;
+            this.pnlLineaFirma.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlLineaFirma_Paint);
+            // 
+            // lblFirma
+            // 
+            this.lblFirma.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblFirma.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFirma.Location = new System.Drawing.Point(0, 0);
+            this.lblFirma.Name = "lblFirma";
+            this.lblFirma.Size = new System.Drawing.Size(240, 30);
+            this.lblFirma.TabIndex = 0;
+            this.lblFirma.Text = "Firma";
+            this.lblFirma.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblTextoInformativo
+            // 
+            this.lblTextoInformativo.Font = new System.Drawing.Font("Arial", 7.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTextoInformativo.Location = new System.Drawing.Point(15, 288);
+            this.lblTextoInformativo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblTextoInformativo.Name = "lblTextoInformativo";
+            this.lblTextoInformativo.Size = new System.Drawing.Size(525, 49);
+            this.lblTextoInformativo.TabIndex = 11;
+            this.lblTextoInformativo.Text = resources.GetString("lblTextoInformativo.Text");
+            // 
+            // lblSeRequiere
+            // 
+            this.lblSeRequiere.AutoSize = true;
+            this.lblSeRequiere.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSeRequiere.Location = new System.Drawing.Point(15, 345);
+            this.lblSeRequiere.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblSeRequiere.Name = "lblSeRequiere";
+            this.lblSeRequiere.Size = new System.Drawing.Size(109, 15);
+            this.lblSeRequiere.TabIndex = 12;
+            this.lblSeRequiere.Text = "Se requiere envío:";
+            // 
+            // lblCuit
+            // 
+            this.lblCuit.AutoSize = true;
+            this.lblCuit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCuit.Location = new System.Drawing.Point(15, 370);
+            this.lblCuit.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblCuit.Name = "lblCuit";
+            this.lblCuit.Size = new System.Drawing.Size(42, 15);
+            this.lblCuit.TabIndex = 13;
+            this.lblCuit.Text = "*CUIT:";
+            // 
+            // lblNombreFantasia
+            // 
+            this.lblNombreFantasia.AutoSize = true;
+            this.lblNombreFantasia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombreFantasia.Location = new System.Drawing.Point(15, 398);
+            this.lblNombreFantasia.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblNombreFantasia.Name = "lblNombreFantasia";
+            this.lblNombreFantasia.Size = new System.Drawing.Size(128, 15);
+            this.lblNombreFantasia.TabIndex = 14;
+            this.lblNombreFantasia.Text = "*Nombre de Fantasía:";
+            // 
+            // lblDireccion
+            // 
+            this.lblDireccion.AutoSize = true;
+            this.lblDireccion.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.Location = new System.Drawing.Point(15, 427);
+            this.lblDireccion.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDireccion.Name = "lblDireccion";
+            this.lblDireccion.Size = new System.Drawing.Size(67, 15);
+            this.lblDireccion.TabIndex = 15;
+            this.lblDireccion.Text = "*Dirección:";
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.Font = new System.Drawing.Font("Arial", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmail.Location = new System.Drawing.Point(15, 455);
+            this.lblEmail.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(525, 33);
+            this.lblEmail.TabIndex = 16;
+            this.lblEmail.Text = "*Dirección de mail a nuestra casilla:  Info@readaceite.com.ar\r\n                  " +
+    "                                              hugorocha7473@hotmail.com.ar";
+            // 
+            // lblWhatsApp
+            // 
+            this.lblWhatsApp.AutoSize = true;
+            this.lblWhatsApp.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblWhatsApp.Location = new System.Drawing.Point(15, 488);
+            this.lblWhatsApp.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblWhatsApp.Name = "lblWhatsApp";
+            this.lblWhatsApp.Size = new System.Drawing.Size(124, 15);
+            this.lblWhatsApp.TabIndex = 17;
+            this.lblWhatsApp.Text = "📱 (011)114-4917473";
+            // 
+            // txtNombreGenerador
+            // 
+            this.txtNombreGenerador.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreGenerador.Location = new System.Drawing.Point(150, 87);
+            this.txtNombreGenerador.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombreGenerador.Name = "txtNombreGenerador";
+            this.txtNombreGenerador.Size = new System.Drawing.Size(391, 21);
+            this.txtNombreGenerador.TabIndex = 18;
+            // 
+            // txtDomicilioPlanta
+            // 
+            this.txtDomicilioPlanta.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDomicilioPlanta.Location = new System.Drawing.Point(150, 119);
+            this.txtDomicilioPlanta.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDomicilioPlanta.Name = "txtDomicilioPlanta";
+            this.txtDomicilioPlanta.Size = new System.Drawing.Size(391, 21);
+            this.txtDomicilioPlanta.TabIndex = 19;
+            // 
+            // txtCantidad
+            // 
+            this.txtCantidad.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCantidad.Location = new System.Drawing.Point(86, 184);
+            this.txtCantidad.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCantidad.Name = "txtCantidad";
+            this.txtCantidad.Size = new System.Drawing.Size(151, 21);
+            this.txtCantidad.TabIndex = 20;
+            // 
+            // txtCuit
+            // 
+            this.txtCuit.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCuit.Location = new System.Drawing.Point(64, 367);
+            this.txtCuit.Margin = new System.Windows.Forms.Padding(2);
+            this.txtCuit.Name = "txtCuit";
+            this.txtCuit.Size = new System.Drawing.Size(151, 21);
+            this.txtCuit.TabIndex = 21;
+            // 
+            // txtNombreFantasia
+            // 
+            this.txtNombreFantasia.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNombreFantasia.Location = new System.Drawing.Point(150, 396);
+            this.txtNombreFantasia.Margin = new System.Windows.Forms.Padding(2);
+            this.txtNombreFantasia.Name = "txtNombreFantasia";
+            this.txtNombreFantasia.Size = new System.Drawing.Size(391, 21);
+            this.txtNombreFantasia.TabIndex = 22;
+            // 
+            // txtDireccion
+            // 
+            this.txtDireccion.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDireccion.Location = new System.Drawing.Point(90, 424);
+            this.txtDireccion.Margin = new System.Windows.Forms.Padding(2);
+            this.txtDireccion.Name = "txtDireccion";
+            this.txtDireccion.Size = new System.Drawing.Size(451, 21);
+            this.txtDireccion.TabIndex = 23;
+            // 
+            // cmbTipoResiduo
+            // 
+            this.cmbTipoResiduo.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbTipoResiduo.FormattingEnabled = true;
+            this.cmbTipoResiduo.Location = new System.Drawing.Point(120, 152);
+            this.cmbTipoResiduo.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbTipoResiduo.Name = "cmbTipoResiduo";
+            this.cmbTipoResiduo.Size = new System.Drawing.Size(151, 23);
+            this.cmbTipoResiduo.TabIndex = 24;
+            this.cmbTipoResiduo.SelectedIndexChanged += new System.EventHandler(this.cmbTipoResiduo_SelectedIndexChanged);
+            // 
+            // cmbEstado
+            // 
+            this.cmbEstado.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbEstado.FormattingEnabled = true;
+            this.cmbEstado.Location = new System.Drawing.Point(86, 217);
+            this.cmbEstado.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbEstado.Name = "cmbEstado";
+            this.cmbEstado.Size = new System.Drawing.Size(151, 23);
+            this.cmbEstado.TabIndex = 25;
+            // 
+            // btnGenerarRemito
+            // 
+            this.btnGenerarRemito.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.btnGenerarRemito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenerarRemito.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerarRemito.ForeColor = System.Drawing.Color.White;
+            this.btnGenerarRemito.Location = new System.Drawing.Point(300, 512);
+            this.btnGenerarRemito.Margin = new System.Windows.Forms.Padding(2);
+            this.btnGenerarRemito.Name = "btnGenerarRemito";
+            this.btnGenerarRemito.Size = new System.Drawing.Size(120, 32);
+            this.btnGenerarRemito.TabIndex = 26;
+            this.btnGenerarRemito.Text = "Generar Remito";
+            this.btnGenerarRemito.UseVisualStyleBackColor = false;
+            this.btnGenerarRemito.Click += new System.EventHandler(this.btnGenerarRemito_Click);
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(67)))), ((int)(((byte)(54)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Arial", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(428, 512);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(2);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(112, 32);
+            this.btnCancelar.TabIndex = 27;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(297, 227);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(253, 13);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "_________________________________________";
+            // 
+            // FrmGenerarRemito
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.ClientSize = new System.Drawing.Size(562, 561);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnGenerarRemito);
+            this.Controls.Add(this.cmbEstado);
+            this.Controls.Add(this.cmbTipoResiduo);
+            this.Controls.Add(this.txtDireccion);
+            this.Controls.Add(this.txtNombreFantasia);
+            this.Controls.Add(this.txtCuit);
+            this.Controls.Add(this.txtCantidad);
+            this.Controls.Add(this.txtDomicilioPlanta);
+            this.Controls.Add(this.txtNombreGenerador);
+            this.Controls.Add(this.lblWhatsApp);
+            this.Controls.Add(this.lblEmail);
+            this.Controls.Add(this.lblDireccion);
+            this.Controls.Add(this.lblNombreFantasia);
+            this.Controls.Add(this.lblCuit);
+            this.Controls.Add(this.lblSeRequiere);
+            this.Controls.Add(this.lblTextoInformativo);
+            this.Controls.Add(this.pnlLineaFirma);
+            this.Controls.Add(this.lblFechaEntrega);
+            this.Controls.Add(this.lblEstado);
+            this.Controls.Add(this.lblCantidad);
+            this.Controls.Add(this.lblTipoResiduo);
+            this.Controls.Add(this.lblDomicilioPlanta);
+            this.Controls.Add(this.lblNombreGenerador);
+            this.Controls.Add(this.lblDomicilioTransportista);
+            this.Controls.Add(this.lblTelefono);
+            this.Controls.Add(this.lblTransportista);
+            this.Controls.Add(this.lblTitulo);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximizeBox = false;
+            this.Name = "FrmGenerarRemito";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Generar Remito - RedAceite";
+            this.pnlLineaFirma.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblTransportista;
+        private System.Windows.Forms.Label lblTelefono;
+        private System.Windows.Forms.Label lblDomicilioTransportista;
+        private System.Windows.Forms.Label lblNombreGenerador;
+        private System.Windows.Forms.Label lblDomicilioPlanta;
+        private System.Windows.Forms.Label lblTipoResiduo;
+        private System.Windows.Forms.Label lblCantidad;
+        private System.Windows.Forms.Label lblEstado;
+        private System.Windows.Forms.Label lblFechaEntrega;
+        private System.Windows.Forms.Panel pnlLineaFirma;
+        private System.Windows.Forms.Label lblFirma;
+        private System.Windows.Forms.Label lblTextoInformativo;
+        private System.Windows.Forms.Label lblSeRequiere;
+        private System.Windows.Forms.Label lblCuit;
+        private System.Windows.Forms.Label lblNombreFantasia;
+        private System.Windows.Forms.Label lblDireccion;
+        private System.Windows.Forms.Label lblEmail;
+        private System.Windows.Forms.Label lblWhatsApp;
+        private System.Windows.Forms.TextBox txtNombreGenerador;
+        private System.Windows.Forms.TextBox txtDomicilioPlanta;
+        private System.Windows.Forms.TextBox txtCantidad;
+        private System.Windows.Forms.TextBox txtCuit;
+        private System.Windows.Forms.TextBox txtNombreFantasia;
+        private System.Windows.Forms.TextBox txtDireccion;
+        private System.Windows.Forms.ComboBox cmbTipoResiduo;
+        private System.Windows.Forms.ComboBox cmbEstado;
+        private System.Windows.Forms.Button btnGenerarRemito;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Label label1;
+    }
+}
