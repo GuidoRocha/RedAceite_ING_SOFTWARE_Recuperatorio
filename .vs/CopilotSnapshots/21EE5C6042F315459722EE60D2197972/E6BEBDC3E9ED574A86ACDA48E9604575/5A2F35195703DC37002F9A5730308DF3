@@ -1,0 +1,49 @@
+﻿using System;
+using System.Diagnostics;
+
+namespace DOMAIN
+{
+    /// <summary>
+    /// Representa un registro de log del sistema.
+    /// Contiene información sobre un evento, su nivel de severidad y la fecha de ocurrencia.
+    /// </summary>
+    public class Log
+    {
+        /// <summary>
+        /// Mensaje descriptivo del evento registrado.
+        /// </summary>
+        public string Message { get; set; }
+
+        /// <summary>
+        /// Nivel de traza del evento (Info, Warning, Error, etc.).
+        /// </summary>
+        public TraceLevel TraceLevel { get; set; }
+
+        /// <summary>
+        /// Fecha y hora en que ocurrió el evento.
+        /// </summary>
+        public DateTime Date { get; set; }
+
+        /// <summary>
+        /// Constructor por defecto.
+        /// </summary>
+        public Log()
+        {
+            Date = DateTime.Now;
+            TraceLevel = TraceLevel.Info;
+        }
+
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="Log"/>.
+        /// </summary>
+        /// <param name="message">Mensaje del evento.</param>
+        /// <param name="traceLevel">Nivel de traza del evento (por defecto: Info).</param>
+        /// <param name="date">Fecha del evento (si no se especifica, se toma la fecha actual).</param>
+        public Log(string message, TraceLevel traceLevel = TraceLevel.Info, DateTime date = default)
+        {
+            Message = message;
+            TraceLevel = traceLevel;
+            Date = (date == default) ? DateTime.Now : date;
+        }
+    }
+}

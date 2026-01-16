@@ -1,5 +1,6 @@
 using SERVICES.Facade;
-using SERVICES.Dominio;
+using DOMAIN;
+using BLL;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +19,14 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// </summary>
     public partial class FrmGenerarRemito : Form
     {
+        private readonly RemitoService _remitoService;
+        private readonly ProveedorService _proveedorService;
+
         public FrmGenerarRemito()
         {
             InitializeComponent();
+            _remitoService = new RemitoService();
+            _proveedorService = new ProveedorService();
             ConfigurarComboBoxes();
             CargarProveedoresHabilitados();
             MostrarFechaActual();
@@ -34,7 +40,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             // Por defecto, el checkbox de "Se requiere envío" está desmarcado
             chkRequiereEnvio.Checked = false;
-            
+
             // Deshabilitar los campos de envío al iniciar el formulario
             HabilitarCamposEnvio(false);
         }
@@ -48,7 +54,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             txtCuit.Enabled = habilitar;
             txtNombreFantasia.Enabled = habilitar;
             txtDireccion.Enabled = habilitar;
-            
+
             // Si se deshabilitan, limpiar los campos
             if (!habilitar)
             {
@@ -158,11 +164,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
             try
             {
                 // Obtener solo los proveedores activos/habilitados
-                var proveedoresActivos = ProveedorService.ObtenerProveedoresActivos();
-                
+                var proveedoresActivos = _proveedorService.ObtenerProveedoresActivos();
+
                 // Limpiar el ComboBox antes de cargar
                 cmbNombreGenerador.Items.Clear();
-                
+
                 // Verificar si hay proveedores disponibles
                 if (proveedoresActivos != null && proveedoresActivos.Count > 0)
                 {
@@ -170,19 +176,19 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     cmbNombreGenerador.DataSource = proveedoresActivos;
                     cmbNombreGenerador.DisplayMember = "Nombre"; // Mostrar el nombre del proveedor
                     cmbNombreGenerador.ValueMember = "IdProveedor"; // Valor interno será el ID
-                    
+
                     // Deseleccionar por defecto - esto es importante para evitar que se autocomplete al cargar
                     cmbNombreGenerador.SelectedIndex = -1;
                 }
                 else
                 {
-                    MessageBox.Show("No hay proveedores habilitados en el sistema. Por favor, habilite al menos un proveedor antes de generar un remito.", 
+                    MessageBox.Show("No hay proveedores habilitados en el sistema. Por favor, habilite al menos un proveedor antes de generar un remito.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar proveedores: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al cargar proveedores: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
@@ -320,8 +326,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 string nombreGenerador = proveedorSeleccionado.Nombre;
 
                 // Si todas las validaciones pasan, proceder a generar el remito
-                // Llamar al servicio de fachada RemitoService para generar el remito
-                Guid idRemito = RemitoService.GenerarRemito(
+                // Llamar al servicio BLL.RemitoService para generar el remito
+                Guid idRemito = _remitoService.GenerarRemito(
                     nombreGenerador,
                     txtDomicilioPlanta.Text.Trim(),
                     cmbTipoResiduo.SelectedItem.ToString(),
@@ -333,11 +339,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 );
 
                 // Registrar el evento en el log
-                LoggerService.WriteLog($"Se generó el remito con ID: {idRemito} para el generador {nombreGenerador}.", 
+                LoggerService.WriteLog($"Se generó el remito con ID: {idRemito} para el generador {nombreGenerador}.",
                     System.Diagnostics.TraceLevel.Info);
 
                 MessageBox.Show($"Remito generado exitosamente.\nID del Remito: {idRemito}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                
+
                 // Limpiar los campos después de generar el remito
                 LimpiarFormulario();
             }
@@ -363,7 +369,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             txtCuit.Clear();
             txtNombreFantasia.Clear();
             txtDireccion.Clear();
-            
+
             // Actualizar la fecha después de limpiar
             MostrarFechaActual();
         }

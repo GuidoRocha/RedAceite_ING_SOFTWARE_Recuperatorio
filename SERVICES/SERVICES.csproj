@@ -114,16 +114,12 @@
     <Compile Include="DAL\Contratos\IGenericServiceDAL.cs" />
     <Compile Include="DAL\Contratos\ILanguageObserver.cs" />
     <Compile Include="DAL\Contratos\ILoggerStrategy.cs" />
-    <Compile Include="DAL\Contratos\IProveedorDAL.cs" />
-    <Compile Include="DAL\Contratos\IRemitoDAL.cs" />
     <Compile Include="DAL\Contratos\IUsuarioDAL.cs" />
     <Compile Include="DAL\FactoryServices\DALFactory.cs" />
     <Compile Include="DAL\FactoryServices\LoggerFactory.cs" />
     <Compile Include="DAL\Implementaciones\SQL\FamiliaRepository.cs" />
     <Compile Include="DAL\Implementaciones\SQL\Helpers\SqlHelper.cs" />
     <Compile Include="DAL\Implementaciones\SQL\LoggerRepository.cs" />
-    <Compile Include="DAL\Implementaciones\SQL\ProveedorRepository.cs" />
-    <Compile Include="DAL\Implementaciones\SQL\RemitoRepository.cs" />
     <Compile Include="DAL\Implementaciones\SQL\UsuarioRepository.cs" />
     <Compile Include="DAL\Implementaciones\Strategy\DatabaseLoggerStrategy.cs" />
     <Compile Include="DAL\Implementaciones\Strategy\FileLoggerStrateg.cs" />
@@ -132,8 +128,6 @@
     <Compile Include="Dominio\Familia.cs" />
     <Compile Include="Dominio\Log.cs" />
     <Compile Include="Dominio\Patente.cs" />
-    <Compile Include="Dominio\Proveedor.cs" />
-    <Compile Include="Dominio\Remito.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="DTO\LanguageOption.cs" />
     <Compile Include="DTO\UsuarioFamiliaDto.cs" />
@@ -141,15 +135,11 @@
     <Compile Include="Facade\FamiliaService.cs" />
     <Compile Include="Facade\LanguageService.cs" />
     <Compile Include="Facade\LoggerService.cs" />
-    <Compile Include="Facade\ProveedorService.cs" />
-    <Compile Include="Facade\RemitoService.cs" />
     <Compile Include="Facade\SesionService.cs" />
     <Compile Include="Facade\UserService.cs" />
     <Compile Include="Logic\FamiliaLogic.cs" />
     <Compile Include="Logic\LanguageLogic.cs" />
     <Compile Include="Logic\LoggerLogic.cs" />
-    <Compile Include="Logic\ProveedorLogic.cs" />
-    <Compile Include="Logic\RemitoLogic.cs" />
     <Compile Include="Logic\SesionLogic.cs" />
     <Compile Include="Logic\UserLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,6 +172,12 @@
     <None Include="Trabajo_GODZ_LogDataSet.xss">
       <DependentUpon>Trabajo_GODZ_LogDataSet.xsd</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DOMAIN\DOMAIN.csproj">
+      <Project>{4bc6dee5-678f-45d9-a3e6-53784877dbc6}</Project>
+      <Name>DOMAIN</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

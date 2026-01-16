@@ -10,12 +10,14 @@ namespace RedAceite_ING_SOFTWARE
         [STAThread]
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            
+              Application.EnableVisualStyles();
+              Application.SetCompatibleTextRenderingDefault(false);
+
             // Iniciar la aplicación con el formulario de Login
             // El Login se encarga de abrir el FrmPrincipal cuando el usuario se loguea exitosamente
-            Application.Run(new LogIn());
+             Application.Run(new LogIn());
+
+            //Application.Run(new FrmCrearUsuario());
         }
     }
 }

@@ -1,4 +1,5 @@
-using SERVICES.Dominio;
+using DOMAIN;
+using BLL;
 using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
@@ -20,9 +21,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
     {
         // ID del proveedor que se está modificando
         private Guid _idProveedor;
-        
+
         // Proveedor original cargado desde la base de datos
         private Proveedor _proveedorOriginal;
+
+        private readonly ProveedorService _proveedorService;
 
         /// <summary>
         /// Constructor que recibe el ID del proveedor a modificar.
@@ -32,6 +35,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             InitializeComponent();
             _idProveedor = idProveedor;
+            _proveedorService = new ProveedorService();
             CargarDatosProveedor();
         }
 
@@ -43,11 +47,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
             try
             {
                 // Obtener el proveedor desde el servicio
-                _proveedorOriginal = ProveedorService.ObtenerProveedorPorId(_idProveedor);
+                _proveedorOriginal = _proveedorService.ObtenerProveedorPorId(_idProveedor);
 
                 if (_proveedorOriginal == null)
                 {
-                    MessageBox.Show("El proveedor no existe.", "Error", 
+                    MessageBox.Show("El proveedor no existe.", "Error",
                         MessageBoxButtons.OK, MessageBoxIcon.Error);
                     this.Close();
                     return;
@@ -55,7 +59,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 // Cargar los datos en los controles del formulario
                 txtNombre.Text = _proveedorOriginal.Nombre;
-                
+
                 // Formatear CUIT para mostrar con guiones (XX-XXXXXXXX-X)
                 string cuit = _proveedorOriginal.CUIT;
                 if (!string.IsNullOrWhiteSpace(cuit) && !cuit.Contains("-") && cuit.Length == 11)
@@ -66,13 +70,13 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 {
                     txtCUIT.Text = cuit;
                 }
-                
+
                 txtDNI.Text = _proveedorOriginal.DNI;
                 txtDireccion.Text = _proveedorOriginal.Direccion;
                 txtTelefono.Text = _proveedorOriginal.Telefono;
                 txtEmail.Text = _proveedorOriginal.Email;
                 txtRazonSocial.Text = _proveedorOriginal.RazonSocial;
-                
+
                 // Seleccionar la región en el ComboBox
                 if (!string.IsNullOrWhiteSpace(_proveedorOriginal.Region))
                 {
@@ -86,14 +90,14 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 // Deshabilitar CUIT y DNI porque no se pueden modificar según los requisitos
                 txtCUIT.Enabled = false;
                 txtDNI.Enabled = false;
-                
+
                 // Cambiar el color de fondo para indicar que no son editables
                 txtCUIT.BackColor = Color.LightGray;
                 txtDNI.BackColor = Color.LightGray;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar los datos del proveedor: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al cargar los datos del proveedor: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
                 this.Close();
@@ -114,19 +118,19 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     return;
                 }
 
+                // Actualizar los datos del proveedor original
+                _proveedorOriginal.Nombre = txtNombre.Text.Trim();
+                _proveedorOriginal.Direccion = txtDireccion.Text.Trim();
+                _proveedorOriginal.Telefono = txtTelefono.Text.Trim();
+                _proveedorOriginal.Email = txtEmail.Text.Trim();
+                _proveedorOriginal.RazonSocial = txtRazonSocial.Text.Trim();
+                _proveedorOriginal.Region = cmbRegion.SelectedItem?.ToString() ?? "";
+
                 // Modificar el proveedor usando el servicio
-                ProveedorService.ModificarProveedor(
-                    _idProveedor,
-                    txtNombre.Text.Trim(),
-                    txtDireccion.Text.Trim(),
-                    txtTelefono.Text.Trim(),
-                    txtEmail.Text.Trim(),
-                    txtRazonSocial.Text.Trim(),
-                    cmbRegion.SelectedItem?.ToString() ?? ""  // Obtener región del ComboBox
-                );
+                _proveedorService.ModificarProveedor(_proveedorOriginal);
 
                 // Registrar en el log
-                LoggerService.WriteLog($"Proveedor modificado: {txtNombre.Text} (ID: {_proveedorOriginal.IdSimple})", 
+                LoggerService.WriteLog($"Proveedor modificado: {txtNombre.Text} (ID: {_proveedorOriginal.IdSimple})",
                     System.Diagnostics.TraceLevel.Info);
 
                 this.DialogResult = DialogResult.OK;
@@ -134,7 +138,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al modificar el proveedor: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al modificar el proveedor: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
@@ -149,7 +153,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // Validar que el nombre no esté vacío
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                MessageBox.Show("El nombre del proveedor es obligatorio.", "Validación", 
+                MessageBox.Show("El nombre del proveedor es obligatorio.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtNombre.Focus();
                 return false;
@@ -168,7 +172,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 }
                 catch
                 {
-                    MessageBox.Show("El formato del correo electrónico no es válido.", "Validación", 
+                    MessageBox.Show("El formato del correo electrónico no es válido.", "Validación",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEmail.Focus();
                     return false;

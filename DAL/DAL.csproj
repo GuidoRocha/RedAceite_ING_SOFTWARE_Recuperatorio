@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,9 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Contratos\IGenericRepository.cs" />
+    <Compile Include="Contratos\IProveedorRepository.cs" />
+    <Compile Include="Contratos\IRemitoRepository.cs" />
     <Compile Include="Contratos\IUnitOfWork.cs" />
+    <Compile Include="Helpers\SqlHelper.cs" />
+    <Compile Include="Implementaciones\ProveedorRepository.cs" />
+    <Compile Include="Implementaciones\RemitoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DOMAIN\DOMAIN.csproj">
+      <Project>{4BC6DEE5-678F-45D9-A3E6-53784877DBC6}</Project>
+      <Name>DOMAIN</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

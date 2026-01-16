@@ -1,12 +1,8 @@
+using BLL;
+using DOMAIN;
 using SERVICES.Facade;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RedAceite_ING_SOFTWARE.Forms
@@ -16,9 +12,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// </summary>
     public partial class FrmAltaProveedor : Form
     {
+        private readonly ProveedorService _proveedorService;
+
         public FrmAltaProveedor()
         {
             InitializeComponent();
+            _proveedorService = new ProveedorService();
         }
 
         /// <summary>
@@ -39,19 +38,22 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 string cuitLimpio = txtCUIT.Text.Replace("-", "").Replace(" ", "");
 
                 // Crear el proveedor
-                Guid idProveedor = ProveedorService.CrearProveedor(
-                    txtNombre.Text.Trim(),
-                    cuitLimpio,  // Guardar CUIT sin guiones
-                    txtDNI.Text.Trim(),
-                    txtDireccion.Text.Trim(),
-                    txtTelefono.Text.Trim(),
-                    txtEmail.Text.Trim(),
-                    txtRazonSocial.Text.Trim(),
-                    cmbRegion.SelectedItem?.ToString() ?? ""  // Obtener región del ComboBox
-                );
+                var proveedor = new Proveedor
+                {
+                    Nombre = txtNombre.Text.Trim(),
+                    CUIT = cuitLimpio,
+                    DNI = txtDNI.Text.Trim(),
+                    Direccion = txtDireccion.Text.Trim(),
+                    Telefono = txtTelefono.Text.Trim(),
+                    Email = txtEmail.Text.Trim(),
+                    RazonSocial = txtRazonSocial.Text.Trim(),
+                    Region = cmbRegion.SelectedItem?.ToString() ?? ""
+                };
+
+                _proveedorService.CrearProveedor(proveedor);
 
                 // Registrar en el log
-                LoggerService.WriteLog($"Proveedor creado: {txtNombre.Text} (CUIT: {cuitLimpio})", 
+                LoggerService.WriteLog($"Proveedor creado: {txtNombre.Text} (CUIT: {cuitLimpio})",
                     System.Diagnostics.TraceLevel.Info);
 
                 this.DialogResult = DialogResult.OK;
@@ -59,7 +61,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al crear el proveedor: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al crear el proveedor: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
@@ -73,7 +75,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                MessageBox.Show("El nombre del proveedor es obligatorio.", "Validación", 
+                MessageBox.Show("El nombre del proveedor es obligatorio.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtNombre.Focus();
                 return false;
@@ -81,7 +83,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             if (string.IsNullOrWhiteSpace(txtCUIT.Text))
             {
-                MessageBox.Show("El CUIT del proveedor es obligatorio.", "Validación", 
+                MessageBox.Show("El CUIT del proveedor es obligatorio.", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCUIT.Focus();
                 return false;
@@ -91,7 +93,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             string cuitLimpio = txtCUIT.Text.Replace("-", "").Replace(" ", "");
             if (cuitLimpio.Length != 11 || !cuitLimpio.All(char.IsDigit))
             {
-                MessageBox.Show("El CUIT debe tener 11 dígitos. Formato: XX-XXXXXXXX-X", "Validación", 
+                MessageBox.Show("El CUIT debe tener 11 dígitos. Formato: XX-XXXXXXXX-X", "Validación",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtCUIT.Focus();
                 return false;
@@ -109,7 +111,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 }
                 catch
                 {
-                    MessageBox.Show("El formato del correo electrónico no es válido.", "Validación", 
+                    MessageBox.Show("El formato del correo electrónico no es válido.", "Validación",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtEmail.Focus();
                     return false;
@@ -137,10 +139,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // Guardar la posición actual del cursor
             int cursorPosition = txtCUIT.SelectionStart;
             string textBeforeChange = txtCUIT.Text;
-            
+
             // Obtener solo los dígitos del texto actual
             string digitsOnly = new string(txtCUIT.Text.Where(char.IsDigit).ToArray());
-            
+
             // Limitar a 11 dígitos
             if (digitsOnly.Length > 11)
             {
@@ -149,17 +151,17 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Construir el texto formateado
             string formattedText = "";
-            
+
             if (digitsOnly.Length > 0)
             {
                 // Primeros 2 dígitos
                 formattedText = digitsOnly.Substring(0, Math.Min(2, digitsOnly.Length));
-                
+
                 if (digitsOnly.Length > 2)
                 {
                     // Agregar primer guion y siguientes 8 dígitos
                     formattedText += "-" + digitsOnly.Substring(2, Math.Min(8, digitsOnly.Length - 2));
-                    
+
                     if (digitsOnly.Length > 10)
                     {
                         // Agregar segundo guion y último dígito
@@ -173,10 +175,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             {
                 // Calcular nueva posición del cursor
                 int newCursorPosition;
-                
+
                 // Contar cuántos dígitos hay en total
                 int totalDigits = digitsOnly.Length;
-                
+
                 // Determinar la nueva posición basándonos en la cantidad de dígitos
                 if (totalDigits <= 2)
                 {
@@ -193,10 +195,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     // Si tenemos 11 dígitos, agregamos 2 por ambos guiones
                     newCursorPosition = totalDigits + 2;
                 }
-                
+
                 // Actualizar el texto
                 txtCUIT.Text = formattedText;
-                
+
                 // Posicionar el cursor al final (después del último carácter ingresado)
                 txtCUIT.SelectionStart = Math.Min(newCursorPosition, txtCUIT.Text.Length);
             }

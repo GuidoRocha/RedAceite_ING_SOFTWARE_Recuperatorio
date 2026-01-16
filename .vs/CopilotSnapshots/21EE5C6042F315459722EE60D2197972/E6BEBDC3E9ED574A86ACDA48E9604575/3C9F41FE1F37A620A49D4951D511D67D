@@ -1,0 +1,79 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace DOMAIN
+{
+    /// <summary>
+    /// Representa una familia de accesos compuesta por múltiples accesos (patentes u otras familias).
+    /// Implementa el patrón Composite como nodo contenedor.
+    /// </summary>
+    public class Familia : Acceso
+    {
+        private List<Acceso> accesos = new List<Acceso>();
+
+        /// <summary>
+        /// Descripción de la familia de accesos.
+        /// </summary>
+        public string Descripcion { get; set; }
+
+        /// <summary>
+        /// Constructor por defecto que inicializa una nueva familia vacía.
+        /// </summary>
+        public Familia()
+        {
+            Id = Guid.NewGuid();
+        }
+
+        /// <summary>
+        /// Constructor que inicializa una nueva familia, opcionalmente con un acceso inicial.
+        /// </summary>
+        /// <param name="acceso">Acceso inicial a agregar (puede ser null).</param>
+        public Familia(Acceso acceso) : this()
+        {
+            if (acceso != null)
+                accesos.Add(acceso);
+        }
+
+        /// <summary>
+        /// Agrega un componente de acceso (Patente o Familia) a la familia actual.
+        /// </summary>
+        /// <param name="component">Componente de acceso a agregar.</param>
+        public override void Add(Acceso component)
+        {
+            if (component != null && !accesos.Any(a => a.Id == component.Id))
+            {
+                accesos.Add(component);
+            }
+        }
+
+        /// <summary>
+        /// Elimina un componente de acceso de la familia.
+        /// </summary>
+        /// <param name="component">Componente de acceso a eliminar.</param>
+        public override void Remove(Acceso component)
+        {
+            if (component != null)
+            {
+                accesos.RemoveAll(o => o.Id == component.Id);
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la cantidad de accesos hijos que contiene esta familia.
+        /// </summary>
+        /// <returns>Número de accesos hijos.</returns>
+        public override int GetCount()
+        {
+            return accesos.Count;
+        }
+
+        /// <summary>
+        /// Lista de accesos que componen esta familia.
+        /// </summary>
+        public List<Acceso> Accesos
+        {
+            get { return accesos; }
+        }
+    }
+}

@@ -10,3 +10,12 @@ C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debu
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.pdb
+C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\bin\Debug\DAL.dll
+C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\bin\Debug\DAL.pdb
+C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\bin\Debug\DOMAIN.dll
+C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\bin\Debug\DOMAIN.pdb
+C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.csproj.AssemblyReference.cache
+C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.csproj.Up2Date
+C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.dll
+C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\DAL\obj\Debug\DAL.pdb

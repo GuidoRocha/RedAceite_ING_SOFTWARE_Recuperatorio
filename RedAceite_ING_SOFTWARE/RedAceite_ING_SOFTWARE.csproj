@@ -192,6 +192,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{4b5fde76-cebc-4f4f-9c5a-f3279818620d}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DOMAIN\DOMAIN.csproj">
+      <Project>{4bc6dee5-678f-45d9-a3e6-53784877dbc6}</Project>
+      <Name>DOMAIN</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SERVICES\SERVICES.csproj">
       <Project>{40236129-2ad3-4665-b8be-79613b76fff2}</Project>
       <Name>SERVICES</Name>

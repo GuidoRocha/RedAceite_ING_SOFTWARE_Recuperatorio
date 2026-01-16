@@ -76,9 +76,8 @@
             this.panelSidebar.Controls.Add(this.panelLogo);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
-            this.panelSidebar.Margin = new System.Windows.Forms.Padding(4);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(267, 862);
+            this.panelSidebar.Size = new System.Drawing.Size(200, 700);
             this.panelSidebar.TabIndex = 0;
             // 
             // btnUsuarios
@@ -91,11 +90,10 @@
             this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 423);
-            this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4);
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 345);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnUsuarios.Size = new System.Drawing.Size(267, 55);
+            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnUsuarios.Size = new System.Drawing.Size(200, 45);
             this.btnUsuarios.TabIndex = 7;
             this.btnUsuarios.Text = "👥 Usuarios";
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -108,10 +106,9 @@
             this.panelUsuariosSubmenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(35)))), ((int)(((byte)(38)))));
             this.panelUsuariosSubmenu.Controls.Add(this.btnCrearUsuario);
             this.panelUsuariosSubmenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelUsuariosSubmenu.Location = new System.Drawing.Point(0, 374);
-            this.panelUsuariosSubmenu.Margin = new System.Windows.Forms.Padding(4);
+            this.panelUsuariosSubmenu.Location = new System.Drawing.Point(0, 305);
             this.panelUsuariosSubmenu.Name = "panelUsuariosSubmenu";
-            this.panelUsuariosSubmenu.Size = new System.Drawing.Size(267, 49);
+            this.panelUsuariosSubmenu.Size = new System.Drawing.Size(200, 40);
             this.panelUsuariosSubmenu.TabIndex = 8;
             this.panelUsuariosSubmenu.Visible = false;
             // 
@@ -125,10 +122,9 @@
             this.btnCrearUsuario.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btnCrearUsuario.ForeColor = System.Drawing.Color.LightGray;
             this.btnCrearUsuario.Location = new System.Drawing.Point(0, 0);
-            this.btnCrearUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.btnCrearUsuario.Name = "btnCrearUsuario";
-            this.btnCrearUsuario.Padding = new System.Windows.Forms.Padding(47, 0, 0, 0);
-            this.btnCrearUsuario.Size = new System.Drawing.Size(267, 49);
+            this.btnCrearUsuario.Padding = new System.Windows.Forms.Padding(35, 0, 0, 0);
+            this.btnCrearUsuario.Size = new System.Drawing.Size(200, 40);
             this.btnCrearUsuario.TabIndex = 0;
             this.btnCrearUsuario.Text = "Crear";
             this.btnCrearUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -145,11 +141,10 @@
             this.btnProveedores.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnProveedores.ForeColor = System.Drawing.Color.White;
             this.btnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProveedores.Location = new System.Drawing.Point(0, 319);
-            this.btnProveedores.Margin = new System.Windows.Forms.Padding(4);
+            this.btnProveedores.Location = new System.Drawing.Point(0, 260);
             this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnProveedores.Size = new System.Drawing.Size(267, 55);
+            this.btnProveedores.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnProveedores.Size = new System.Drawing.Size(200, 45);
             this.btnProveedores.TabIndex = 6;
             this.btnProveedores.Text = "🏢 Proveedores";
             this.btnProveedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -166,11 +161,10 @@
             this.btnRemitos.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnRemitos.ForeColor = System.Drawing.Color.White;
             this.btnRemitos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemitos.Location = new System.Drawing.Point(0, 264);
-            this.btnRemitos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRemitos.Location = new System.Drawing.Point(0, 215);
             this.btnRemitos.Name = "btnRemitos";
-            this.btnRemitos.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnRemitos.Size = new System.Drawing.Size(267, 55);
+            this.btnRemitos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnRemitos.Size = new System.Drawing.Size(200, 45);
             this.btnRemitos.TabIndex = 4;
             this.btnRemitos.Text = "📄 Remitos";
             this.btnRemitos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -187,11 +181,10 @@
             this.btnManifiestos.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnManifiestos.ForeColor = System.Drawing.Color.White;
             this.btnManifiestos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManifiestos.Location = new System.Drawing.Point(0, 209);
-            this.btnManifiestos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnManifiestos.Location = new System.Drawing.Point(0, 170);
             this.btnManifiestos.Name = "btnManifiestos";
-            this.btnManifiestos.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnManifiestos.Size = new System.Drawing.Size(267, 55);
+            this.btnManifiestos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnManifiestos.Size = new System.Drawing.Size(200, 45);
             this.btnManifiestos.TabIndex = 3;
             this.btnManifiestos.Text = "📋 Manifiestos";
             this.btnManifiestos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -208,11 +201,10 @@
             this.btnInicio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnInicio.ForeColor = System.Drawing.Color.White;
             this.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInicio.Location = new System.Drawing.Point(0, 154);
-            this.btnInicio.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInicio.Location = new System.Drawing.Point(0, 125);
             this.btnInicio.Name = "btnInicio";
-            this.btnInicio.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
-            this.btnInicio.Size = new System.Drawing.Size(267, 55);
+            this.btnInicio.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnInicio.Size = new System.Drawing.Size(200, 45);
             this.btnInicio.TabIndex = 9;
             this.btnInicio.Text = "🏠 Inicio";
             this.btnInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -226,9 +218,8 @@
             this.panelLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(4);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(267, 154);
+            this.panelLogo.Size = new System.Drawing.Size(200, 125);
             this.panelLogo.TabIndex = 1;
             this.panelLogo.Click += new System.EventHandler(this.panelLogo_Click);
             // 
@@ -239,9 +230,8 @@
             this.lblLogo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblLogo.ForeColor = System.Drawing.Color.White;
             this.lblLogo.Location = new System.Drawing.Point(0, 0);
-            this.lblLogo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(267, 154);
+            this.lblLogo.Size = new System.Drawing.Size(200, 125);
             this.lblLogo.TabIndex = 0;
             this.lblLogo.Text = "RedAceite";
             this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -255,10 +245,9 @@
             this.panelTopBar.Controls.Add(this.btnNotifications);
             this.panelTopBar.Controls.Add(this.lblTitle);
             this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTopBar.Location = new System.Drawing.Point(267, 0);
-            this.panelTopBar.Margin = new System.Windows.Forms.Padding(4);
+            this.panelTopBar.Location = new System.Drawing.Point(200, 0);
             this.panelTopBar.Name = "panelTopBar";
-            this.panelTopBar.Size = new System.Drawing.Size(1154, 74);
+            this.panelTopBar.Size = new System.Drawing.Size(1179, 60);
             this.panelTopBar.TabIndex = 1;
             // 
             // lblUserName
@@ -266,10 +255,9 @@
             this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblUserName.Location = new System.Drawing.Point(961, 27);
-            this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUserName.Location = new System.Drawing.Point(1034, 22);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(68, 23);
+            this.lblUserName.Size = new System.Drawing.Size(56, 19);
             this.lblUserName.TabIndex = 3;
             this.lblUserName.Text = "Usuario";
             // 
@@ -281,10 +269,9 @@
             this.btnProfile.FlatAppearance.BorderSize = 0;
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnProfile.Location = new System.Drawing.Point(1054, 18);
-            this.btnProfile.Margin = new System.Windows.Forms.Padding(4);
+            this.btnProfile.Location = new System.Drawing.Point(1103, 15);
             this.btnProfile.Name = "btnProfile";
-            this.btnProfile.Size = new System.Drawing.Size(53, 49);
+            this.btnProfile.Size = new System.Drawing.Size(40, 40);
             this.btnProfile.TabIndex = 2;
             this.btnProfile.Text = "U";
             this.btnProfile.UseVisualStyleBackColor = false;
@@ -297,10 +284,9 @@
             this.btnNotifications.FlatAppearance.BorderSize = 0;
             this.btnNotifications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNotifications.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnNotifications.Location = new System.Drawing.Point(888, 18);
-            this.btnNotifications.Margin = new System.Windows.Forms.Padding(4);
+            this.btnNotifications.Location = new System.Drawing.Point(979, 15);
             this.btnNotifications.Name = "btnNotifications";
-            this.btnNotifications.Size = new System.Drawing.Size(53, 49);
+            this.btnNotifications.Size = new System.Drawing.Size(40, 40);
             this.btnNotifications.TabIndex = 1;
             this.btnNotifications.Text = "🔔";
             this.btnNotifications.UseVisualStyleBackColor = true;
@@ -310,10 +296,9 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(27, 22);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitle.Location = new System.Drawing.Point(20, 18);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(188, 32);
+            this.lblTitle.Size = new System.Drawing.Size(147, 25);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "Menu Principal";
             // 
@@ -322,11 +307,10 @@
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panelMain.Controls.Add(this.panelDashboard);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(267, 74);
-            this.panelMain.Margin = new System.Windows.Forms.Padding(4);
+            this.panelMain.Location = new System.Drawing.Point(200, 60);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
-            this.panelMain.Size = new System.Drawing.Size(1154, 788);
+            this.panelMain.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
+            this.panelMain.Size = new System.Drawing.Size(1179, 640);
             this.panelMain.TabIndex = 2;
             // 
             // panelDashboard
@@ -335,10 +319,9 @@
             this.panelDashboard.Controls.Add(this.panelRemitos);
             this.panelDashboard.Controls.Add(this.panelStats);
             this.panelDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDashboard.Location = new System.Drawing.Point(27, 25);
-            this.panelDashboard.Margin = new System.Windows.Forms.Padding(4);
+            this.panelDashboard.Location = new System.Drawing.Point(20, 20);
             this.panelDashboard.Name = "panelDashboard";
-            this.panelDashboard.Size = new System.Drawing.Size(1100, 738);
+            this.panelDashboard.Size = new System.Drawing.Size(1139, 600);
             this.panelDashboard.TabIndex = 0;
             // 
             // panelManifiestos
@@ -347,20 +330,18 @@
             this.panelManifiestos.Controls.Add(this.lblManifiestosCount);
             this.panelManifiestos.Controls.Add(this.lblManifiestos);
             this.panelManifiestos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelManifiestos.Location = new System.Drawing.Point(387, 12);
-            this.panelManifiestos.Margin = new System.Windows.Forms.Padding(4);
+            this.panelManifiestos.Location = new System.Drawing.Point(290, 10);
             this.panelManifiestos.Name = "panelManifiestos";
-            this.panelManifiestos.Size = new System.Drawing.Size(293, 148);
+            this.panelManifiestos.Size = new System.Drawing.Size(220, 120);
             this.panelManifiestos.TabIndex = 3;
             this.panelManifiestos.Click += new System.EventHandler(this.panelManifiestos_Click);
             // 
             // lblManifiestosCount
             // 
             this.lblManifiestosCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.lblManifiestosCount.Location = new System.Drawing.Point(13, 62);
-            this.lblManifiestosCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblManifiestosCount.Location = new System.Drawing.Point(10, 50);
             this.lblManifiestosCount.Name = "lblManifiestosCount";
-            this.lblManifiestosCount.Size = new System.Drawing.Size(267, 62);
+            this.lblManifiestosCount.Size = new System.Drawing.Size(200, 50);
             this.lblManifiestosCount.TabIndex = 1;
             this.lblManifiestosCount.Text = "963";
             this.lblManifiestosCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -369,10 +350,9 @@
             // lblManifiestos
             // 
             this.lblManifiestos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblManifiestos.Location = new System.Drawing.Point(13, 18);
-            this.lblManifiestos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblManifiestos.Location = new System.Drawing.Point(10, 15);
             this.lblManifiestos.Name = "lblManifiestos";
-            this.lblManifiestos.Size = new System.Drawing.Size(267, 31);
+            this.lblManifiestos.Size = new System.Drawing.Size(200, 25);
             this.lblManifiestos.TabIndex = 0;
             this.lblManifiestos.Text = "Manifiestos";
             this.lblManifiestos.Click += new System.EventHandler(this.panelManifiestos_Click);
@@ -383,10 +363,9 @@
             this.panelRemitos.Controls.Add(this.lblRemitosCount);
             this.panelRemitos.Controls.Add(this.lblRemitos);
             this.panelRemitos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelRemitos.Location = new System.Drawing.Point(13, 12);
-            this.panelRemitos.Margin = new System.Windows.Forms.Padding(4);
+            this.panelRemitos.Location = new System.Drawing.Point(10, 10);
             this.panelRemitos.Name = "panelRemitos";
-            this.panelRemitos.Size = new System.Drawing.Size(293, 148);
+            this.panelRemitos.Size = new System.Drawing.Size(220, 120);
             this.panelRemitos.TabIndex = 1;
             this.panelRemitos.Click += new System.EventHandler(this.panelRemitos_Click);
             // 
@@ -394,10 +373,9 @@
             // 
             this.lblRemitosCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lblRemitosCount.ForeColor = System.Drawing.Color.White;
-            this.lblRemitosCount.Location = new System.Drawing.Point(13, 62);
-            this.lblRemitosCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRemitosCount.Location = new System.Drawing.Point(10, 50);
             this.lblRemitosCount.Name = "lblRemitosCount";
-            this.lblRemitosCount.Size = new System.Drawing.Size(267, 62);
+            this.lblRemitosCount.Size = new System.Drawing.Size(200, 50);
             this.lblRemitosCount.TabIndex = 1;
             this.lblRemitosCount.Text = "9,328";
             this.lblRemitosCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -407,10 +385,9 @@
             // 
             this.lblRemitos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblRemitos.ForeColor = System.Drawing.Color.White;
-            this.lblRemitos.Location = new System.Drawing.Point(13, 18);
-            this.lblRemitos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRemitos.Location = new System.Drawing.Point(10, 15);
             this.lblRemitos.Name = "lblRemitos";
-            this.lblRemitos.Size = new System.Drawing.Size(267, 31);
+            this.lblRemitos.Size = new System.Drawing.Size(200, 25);
             this.lblRemitos.TabIndex = 0;
             this.lblRemitos.Text = "Remitos";
             this.lblRemitos.Click += new System.EventHandler(this.panelRemitos_Click);
@@ -419,33 +396,30 @@
             // 
             this.panelStats.BackColor = System.Drawing.Color.White;
             this.panelStats.Controls.Add(this.lblStatsTitle);
-            this.panelStats.Location = new System.Drawing.Point(13, 185);
-            this.panelStats.Margin = new System.Windows.Forms.Padding(4);
+            this.panelStats.Location = new System.Drawing.Point(10, 150);
             this.panelStats.Name = "panelStats";
-            this.panelStats.Size = new System.Drawing.Size(1040, 406);
+            this.panelStats.Size = new System.Drawing.Size(780, 330);
             this.panelStats.TabIndex = 0;
             // 
             // lblStatsTitle
             // 
             this.lblStatsTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblStatsTitle.Location = new System.Drawing.Point(20, 18);
-            this.lblStatsTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStatsTitle.Location = new System.Drawing.Point(15, 15);
             this.lblStatsTitle.Name = "lblStatsTitle";
-            this.lblStatsTitle.Size = new System.Drawing.Size(400, 37);
+            this.lblStatsTitle.Size = new System.Drawing.Size(300, 30);
             this.lblStatsTitle.TabIndex = 0;
             this.lblStatsTitle.Text = "Estadísticas";
             // 
             // FrmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1421, 862);
+            this.ClientSize = new System.Drawing.Size(1379, 700);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelTopBar);
             this.Controls.Add(this.panelSidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.MinimumSize = new System.Drawing.Size(1415, 776);
+            this.MinimumSize = new System.Drawing.Size(1065, 638);
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RedAceite - Sistema de Gestión";

@@ -1,0 +1,471 @@
+﻿using DOMAIN; // ✅ Usar DOMAIN para entidades de negocio
+using SERVICES.Facade;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RedAceite_ING_SOFTWARE.Forms
+{
+    /// <summary>
+    /// Formulario principal para la gestión de proveedores.
+    /// Permite listar, filtrar y gestionar proveedores (alta, baja y modificación).
+    /// </summary>
+    public partial class FrmGestionProveedores : Form
+    {
+        public FrmGestionProveedores()
+        {
+            InitializeComponent();
+            
+            // Suscribirse a los eventos del DataGridView
+            dgvProveedores.CellFormatting += dgvProveedores_CellFormatting;
+            dgvProveedores.DataBindingComplete += dgvProveedores_DataBindingComplete;
+            
+            // Configurar el estado inicial de los botones (deshabilitados hasta seleccionar un proveedor)
+            ConfigurarEstadoBotones();
+            
+            // Cargar proveedores al final, después de suscribirse a los eventos
+            CargarProveedores();
+        }
+
+        /// <summary>
+        /// Carga todos los proveedores (activos e inactivos) en el DataGridView.
+        /// </summary>
+        private void CargarProveedores()
+        {
+            try
+            {
+                // Obtener TODOS los proveedores (activos e inactivos)
+                var proveedores = ProveedorService.ObtenerTodosLosProveedores();
+                
+                // Asignar el DataSource - esto disparará automáticamente el evento DataBindingComplete
+                dgvProveedores.DataSource = proveedores;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar proveedores: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Evento que se dispara cuando el DataGridView ha terminado de enlazar los datos.
+        /// Este es el momento correcto para configurar las columnas, ya que están completamente generadas.
+        /// </summary>
+        private void dgvProveedores_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Configurar columnas DESPUÉS de que el grid haya terminado de cargar los datos
+            ConfigurarColumnas();
+        }
+
+        /// <summary>
+        /// Evento que se dispara al formatear cada celda del DataGridView.
+        /// Pinta las filas de proveedores inactivos en gris oscuro y formatea el CUIT.
+        /// </summary>
+        private void dgvProveedores_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < dgvProveedores.Rows.Count)
+                {
+                    var row = dgvProveedores.Rows[e.RowIndex];
+                    var proveedor = row.DataBoundItem as Proveedor;
+
+                    if (proveedor != null)
+                    {
+                        // Formatear el CUIT para mostrarlo con guiones (XX-XXXXXXXX-X)
+                        if (dgvProveedores.Columns[e.ColumnIndex].Name == "CUIT" && e.Value != null)
+                        {
+                            string cuit = e.Value.ToString();
+                            // Solo formatear si no tiene guiones y tiene 11 caracteres
+                            if (!cuit.Contains("-") && cuit.Length == 11)
+                            {
+                                e.Value = $"{cuit.Substring(0, 2)}-{cuit.Substring(2, 8)}-{cuit.Substring(10, 1)}";
+                                e.FormattingApplied = true;
+                            }
+                        }
+
+                        // Si el proveedor NO está activo, pintar la fila en gris
+                        if (!proveedor.Activo)
+                        {
+                            // Pintar la fila completa en gris oscuro para proveedores inactivos
+                            e.CellStyle.BackColor = Color.LightGray;
+                            e.CellStyle.ForeColor = Color.DarkGray;
+                            e.CellStyle.SelectionBackColor = Color.Gray;
+                            e.CellStyle.SelectionForeColor = Color.White;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                // Evitar que errores en el formateo afecten el funcionamiento general
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Evento que se dispara cuando cambia la selección en el DataGridView.
+        /// Habilita o deshabilita botones según el estado del proveedor seleccionado.
+        /// </summary>
+        private void dgvProveedores_SelectionChanged(object sender, EventArgs e)
+        {
+            ConfigurarEstadoBotones();
+        }
+
+        /// <summary>
+        /// Configura el estado (habilitado/deshabilitado) de los botones
+        /// según si hay un proveedor seleccionado y su estado (activo/inactivo).
+        /// </summary>
+        private void ConfigurarEstadoBotones()
+        {
+            // Verificar si hay una fila seleccionada
+            if (dgvProveedores.SelectedRows.Count > 0)
+            {
+                // Obtener el proveedor seleccionado
+                var proveedorSeleccionado = dgvProveedores.SelectedRows[0].DataBoundItem as Proveedor;
+
+                if (proveedorSeleccionado != null)
+                {
+                    // Si el proveedor está ACTIVO:
+                    // - Habilitar botón Modificar
+                    // - Habilitar botón Deshabilitar
+                    // - Deshabilitar botón Habilitar
+                    if (proveedorSeleccionado.Activo)
+                    {
+                        btnModificarProveedor.Enabled = true;
+                        btnDeshabilitarProveedor.Enabled = true;
+                        btnHabilitarProveedor.Enabled = false;
+                    }
+                    // Si el proveedor está INACTIVO:
+                    // - Deshabilitar botón Modificar (no se puede modificar un proveedor inactivo)
+                    // - Deshabilitar botón Deshabilitar (ya está deshabilitado)
+                    // - Habilitar botón Habilitar
+                    else
+                    {
+                        btnModificarProveedor.Enabled = false;
+                        btnDeshabilitarProveedor.Enabled = false;
+                        btnHabilitarProveedor.Enabled = true;
+                    }
+                }
+            }
+            else
+            {
+                // Si NO hay ningún proveedor seleccionado, deshabilitar todos los botones de acción
+                btnModificarProveedor.Enabled = false;
+                btnDeshabilitarProveedor.Enabled = false;
+                btnHabilitarProveedor.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Configura las columnas del DataGridView.
+        /// IMPORTANTE: Este método solo debe llamarse desde el evento DataBindingComplete
+        /// para asegurar que las columnas ya estén generadas.
+        /// </summary>
+        private void ConfigurarColumnas()
+        {
+            // Verificar que haya columnas para configurar
+            if (dgvProveedores.Columns.Count == 0) return;
+
+            try
+            {
+                // Ocultar columnas que no se deben mostrar (con verificación de existencia)
+                if (dgvProveedores.Columns.Contains("IdProveedor"))
+                    dgvProveedores.Columns["IdProveedor"].Visible = false;
+                if (dgvProveedores.Columns.Contains("FechaCreacion"))
+                    dgvProveedores.Columns["FechaCreacion"].Visible = false;
+                if (dgvProveedores.Columns.Contains("FechaModificacion"))
+                    dgvProveedores.Columns["FechaModificacion"].Visible = false;
+                
+                // Ocultar la columna Activo - los proveedores inactivos se identificaran por el color gris de la fila
+                if (dgvProveedores.Columns.Contains("Activo"))
+                    dgvProveedores.Columns["Activo"].Visible = false;
+
+                // Configurar orden y encabezados (con verificación de existencia)
+                if (dgvProveedores.Columns.Contains("IdSimple"))
+                {
+                    dgvProveedores.Columns["IdSimple"].HeaderText = "ID";
+                    dgvProveedores.Columns["IdSimple"].DisplayIndex = 0;
+                    dgvProveedores.Columns["IdSimple"].Width = 50;
+                }
+
+                if (dgvProveedores.Columns.Contains("CUIT"))
+                {
+                    dgvProveedores.Columns["CUIT"].HeaderText = "CUIT";
+                    dgvProveedores.Columns["CUIT"].DisplayIndex = 1;
+                    dgvProveedores.Columns["CUIT"].Width = 120;
+                    // El CUIT se formateará en el evento CellFormatting
+                }
+
+                if (dgvProveedores.Columns.Contains("Nombre"))
+                {
+                    dgvProveedores.Columns["Nombre"].HeaderText = "Nombre";
+                    dgvProveedores.Columns["Nombre"].DisplayIndex = 2;
+                    dgvProveedores.Columns["Nombre"].Width = 150;
+                }
+
+                if (dgvProveedores.Columns.Contains("RazonSocial"))
+                {
+                    dgvProveedores.Columns["RazonSocial"].HeaderText = "Razón Social";
+                    dgvProveedores.Columns["RazonSocial"].DisplayIndex = 3;
+                    dgvProveedores.Columns["RazonSocial"].Width = 150;
+                }
+
+                if (dgvProveedores.Columns.Contains("Direccion"))
+                {
+                    dgvProveedores.Columns["Direccion"].HeaderText = "Dirección";
+                    dgvProveedores.Columns["Direccion"].DisplayIndex = 4;
+                    dgvProveedores.Columns["Direccion"].Width = 200;
+                }
+
+                if (dgvProveedores.Columns.Contains("Telefono"))
+                {
+                    dgvProveedores.Columns["Telefono"].HeaderText = "Teléfono";
+                    dgvProveedores.Columns["Telefono"].DisplayIndex = 5;
+                    dgvProveedores.Columns["Telefono"].Width = 100;
+                }
+
+                if (dgvProveedores.Columns.Contains("Email"))
+                {
+                    dgvProveedores.Columns["Email"].HeaderText = "Email";
+                    dgvProveedores.Columns["Email"].DisplayIndex = 6;
+                    dgvProveedores.Columns["Email"].Width = 150;
+                }
+
+                if (dgvProveedores.Columns.Contains("Region"))
+                {
+                    dgvProveedores.Columns["Region"].HeaderText = "Región";
+                    dgvProveedores.Columns["Region"].DisplayIndex = 7;
+                    dgvProveedores.Columns["Region"].Width = 100;
+                }
+
+                if (dgvProveedores.Columns.Contains("DNI"))
+                {
+                    dgvProveedores.Columns["DNI"].HeaderText = "DNI";
+                    dgvProveedores.Columns["DNI"].DisplayIndex = 8;
+                    dgvProveedores.Columns["DNI"].Width = 100;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Registrar el error pero no mostrar mensaje al usuario
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Agregar Proveedor.
+        /// </summary>
+        private void btnAgregarProveedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var frmAlta = new FrmAltaProveedor();
+                if (frmAlta.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProveedores();
+                    MessageBox.Show("Proveedor agregado exitosamente.", "Éxito", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir formulario de alta: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Modificar Proveedor.
+        /// Solo permite modificar proveedores que estén activos.
+        /// </summary>
+        private void btnModificarProveedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvProveedores.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un proveedor para modificar.", "Advertencia", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var proveedorSeleccionado = (Proveedor)dgvProveedores.SelectedRows[0].DataBoundItem;
+                
+                // Verificar que el proveedor esté activo antes de permitir modificarlo
+                if (!proveedorSeleccionado.Activo)
+                {
+                    MessageBox.Show("No se puede modificar un proveedor inactivo. Primero debe habilitarlo.", 
+                        "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var frmModificar = new FrmModificarProveedor(proveedorSeleccionado.IdProveedor);
+                if (frmModificar.ShowDialog() == DialogResult.OK)
+                {
+                    CargarProveedores();
+                    MessageBox.Show("Proveedor modificado exitosamente.", "Éxito", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al modificar proveedor: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Deshabilitar Proveedor.
+        /// Realiza un soft-delete del proveedor (cambia su estado a inactivo).
+        /// </summary>
+        private void btnDeshabilitarProveedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvProveedores.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un proveedor para deshabilitar.", "Advertencia", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var proveedorSeleccionado = (Proveedor)dgvProveedores.SelectedRows[0].DataBoundItem;
+                
+                // Pedir confirmación antes de deshabilitar
+                var confirmacion = MessageBox.Show(
+                    $"¿Está seguro que desea deshabilitar al proveedor '{proveedorSeleccionado.Nombre}'?", 
+                    "Confirmar", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.Yes)
+                {
+                    // Llamar al servicio para deshabilitar el proveedor
+                    ProveedorService.DeshabilitarProveedor(proveedorSeleccionado.IdProveedor);
+                    
+                    // Registrar la acción en el log
+                    LoggerService.WriteLog($"Proveedor deshabilitado: {proveedorSeleccionado.Nombre} (ID: {proveedorSeleccionado.IdSimple})", 
+                        System.Diagnostics.TraceLevel.Info);
+                    
+                    // Recargar la lista para reflejar el cambio
+                    CargarProveedores();
+                    
+                    MessageBox.Show("Proveedor deshabilitado exitosamente.", "Éxito", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al deshabilitar proveedor: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Habilitar Proveedor.
+        /// Reactiva un proveedor que había sido deshabilitado previamente.
+        /// </summary>
+        private void btnHabilitarProveedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvProveedores.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Debe seleccionar un proveedor para habilitar.", "Advertencia", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var proveedorSeleccionado = (Proveedor)dgvProveedores.SelectedRows[0].DataBoundItem;
+                
+                // Pedir confirmación antes de habilitar
+                var confirmacion = MessageBox.Show(
+                    $"¿Está seguro que desea habilitar al proveedor '{proveedorSeleccionado.Nombre}'?", 
+                    "Confirmar", 
+                    MessageBoxButtons.YesNo, 
+                    MessageBoxIcon.Question);
+
+                if (confirmacion == DialogResult.Yes)
+                {
+                    // Llamar al servicio para habilitar el proveedor
+                    ProveedorService.HabilitarProveedor(proveedorSeleccionado.IdProveedor);
+                    
+                    // Registrar la acción en el log
+                    LoggerService.WriteLog($"Proveedor habilitado: {proveedorSeleccionado.Nombre} (ID: {proveedorSeleccionado.IdSimple})", 
+                        System.Diagnostics.TraceLevel.Info);
+                    
+                    // Recargar la lista para reflejar el cambio
+                    CargarProveedores();
+                    
+                    MessageBox.Show("Proveedor habilitado exitosamente.", "Éxito", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al habilitar proveedor: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Filtrar.
+        /// Filtra los proveedores según los criterios ingresados.
+        /// </summary>
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string cuit = txtFiltroCUIT.Text.Trim();
+                string razonSocial = txtFiltroRazonSocial.Text.Trim();
+                string region = txtFiltroRegion.Text.Trim();
+
+                // Si no hay ningún filtro aplicado, cargar todos los proveedores
+                if (string.IsNullOrWhiteSpace(cuit) && 
+                    string.IsNullOrWhiteSpace(razonSocial) && 
+                    string.IsNullOrWhiteSpace(region))
+                {
+                    CargarProveedores();
+                    return;
+                }
+
+                // Aplicar los filtros
+                var proveedoresFiltrados = ProveedorService.FiltrarProveedores(cuit, razonSocial, region);
+                dgvProveedores.DataSource = proveedoresFiltrados;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al filtrar proveedores: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Limpiar Filtros.
+        /// Limpia los campos de filtro y recarga todos los proveedores.
+        /// </summary>
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            // Limpiar todos los campos de filtro
+            txtFiltroCUIT.Clear();
+            txtFiltroRazonSocial.Clear();
+            txtFiltroRegion.Clear();
+            
+            // Recargar todos los proveedores
+            CargarProveedores();
+        }
+    }
+}

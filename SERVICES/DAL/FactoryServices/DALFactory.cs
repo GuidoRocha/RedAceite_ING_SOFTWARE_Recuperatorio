@@ -1,30 +1,21 @@
 ﻿using SERVICES.DAL.Contratos;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Configuration;
 using SERVICES.DAL.Implementaciones.SQL;
-
 
 namespace SERVICES.DAL.FactoryServices
 {
     /// <summary>
     /// Fábrica de acceso a datos que implementa el patrón Factory y Singleton.
-    /// Proporciona instancias únicas de repositorios según el tipo de backend configurado.
+    /// Proporciona instancias únicas de repositorios SOLO para servicios cross-cutting (Usuarios, Familias).
     /// </summary>
-    internal class DALFactory
+    public class DALFactory
     {
         // Instancias singleton de los repositorios
         private static IUsuarioDAL _UsuarioRepository;
-        private static IRemitoDAL _RemitoRepository;
-        private static IProveedorDAL _ProveedorRepository;
-        
+
         private static readonly int backendType;
         private static readonly object _lock = new object();
-        private static readonly object _lockRemito = new object();
-        private static readonly object _lockProveedor = new object();
 
         /// <summary>
         /// Constructor estático que inicializa el tipo de backend desde la configuración de la aplicación.
@@ -64,64 +55,6 @@ namespace SERVICES.DAL.FactoryServices
         }
 
         /// <summary>
-        /// Obtiene una instancia del repositorio de remitos según el backend configurado.
-        /// Implementa un patrón singleton y garantiza que solo se cree una instancia.
-        /// </summary>
-        public static IRemitoDAL RemitoRepository
-        {
-            get
-            {
-                if (_RemitoRepository == null)
-                {
-                    lock (_lockRemito)
-                    {
-                        if (_RemitoRepository == null)
-                        {
-                            switch ((BackendType)backendType)
-                            {
-                                case BackendType.SqlServer:
-                                    _RemitoRepository = new RemitoRepository();
-                                    break;
-                                default:
-                                    throw new NotSupportedException("Backend no soportado.");
-                            }
-                        }
-                    }
-                }
-                return _RemitoRepository;
-            }
-        }
-
-        /// <summary>
-        /// Obtiene una instancia del repositorio de proveedores según el backend configurado.
-        /// Implementa un patrón singleton y garantiza que solo se cree una instancia.
-        /// </summary>
-        public static IProveedorDAL ProveedorRepository
-        {
-            get
-            {
-                if (_ProveedorRepository == null)
-                {
-                    lock (_lockProveedor)
-                    {
-                        if (_ProveedorRepository == null)
-                        {
-                            switch ((BackendType)backendType)
-                            {
-                                case BackendType.SqlServer:
-                                    _ProveedorRepository = new ProveedorRepository();
-                                    break;
-                                default:
-                                    throw new NotSupportedException("Backend no soportado.");
-                            }
-                        }
-                    }
-                }
-                return _ProveedorRepository;
-            }
-        }
-
-        /// <summary>
         /// Enumeración que define los tipos de backend compatibles para la fábrica.
         /// </summary>
         internal enum BackendType
@@ -130,7 +63,6 @@ namespace SERVICES.DAL.FactoryServices
             /// Backend de base de datos SQL Server.
             /// </summary>
             SqlServer = 1
-
         }
     }
 }

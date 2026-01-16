@@ -1,0 +1,135 @@
+﻿using DOMAIN;
+using System;
+using System.Collections.Generic;
+
+namespace SERVICES.Facade
+{
+    /// <summary>
+    /// Servicio de fachada para operaciones relacionadas con proveedores.
+    /// Proporciona una interfaz simplificada que puede ser consumida por la UI o una futura API.
+    /// Delega toda la lógica de negocio a la capa BLL.
+    /// </summary>
+    public static class ProveedorService
+    {
+        private static readonly BLL.ProveedorService _proveedorService = new BLL.ProveedorService();
+
+        /// <summary>
+        /// Crea un nuevo proveedor en el sistema.
+        /// </summary>
+        /// <param name="nombre">Nombre del proveedor.</param>
+        /// <param name="cuit">CUIT del proveedor.</param>
+        /// <param name="dni">DNI del proveedor.</param>
+        /// <param name="direccion">Dirección del proveedor.</param>
+        /// <param name="telefono">Teléfono del proveedor.</param>
+        /// <param name="email">Correo electrónico del proveedor.</param>
+        /// <param name="razonSocial">Razón social del proveedor.</param>
+        /// <param name="region">Región del proveedor.</param>
+        /// <returns>El ID del proveedor creado.</returns>
+        public static Guid CrearProveedor(string nombre, string cuit, string dni, string direccion, 
+            string telefono, string email, string razonSocial, string region)
+        {
+            var proveedor = new Proveedor
+            {
+                Nombre = nombre,
+                CUIT = cuit,
+                DNI = dni,
+                Direccion = direccion,
+                Telefono = telefono,
+                Email = email,
+                RazonSocial = razonSocial,
+                Region = region
+            };
+
+            _proveedorService.CrearProveedor(proveedor);
+            return proveedor.IdProveedor;
+        }
+
+        /// <summary>
+        /// Modifica un proveedor existente en el sistema.
+        /// </summary>
+        /// <param name="idProveedor">ID del proveedor a modificar.</param>
+        /// <param name="nombre">Nombre del proveedor.</param>
+        /// <param name="direccion">Dirección del proveedor.</param>
+        /// <param name="telefono">Teléfono del proveedor.</param>
+        /// <param name="email">Correo electrónico del proveedor.</param>
+        /// <param name="razonSocial">Razón social del proveedor.</param>
+        /// <param name="region">Región del proveedor.</param>
+        public static void ModificarProveedor(Guid idProveedor, string nombre, string direccion, 
+            string telefono, string email, string razonSocial, string region)
+        {
+            var proveedor = _proveedorService.ObtenerProveedorPorId(idProveedor);
+            if (proveedor == null)
+            {
+                throw new Exception("El proveedor no existe.");
+            }
+
+            // Mantener CUIT y DNI sin cambios
+            proveedor.Nombre = nombre;
+            proveedor.Direccion = direccion;
+            proveedor.Telefono = telefono;
+            proveedor.Email = email;
+            proveedor.RazonSocial = razonSocial;
+            proveedor.Region = region;
+
+            _proveedorService.ModificarProveedor(proveedor);
+        }
+
+        /// <summary>
+        /// Deshabilita un proveedor en el sistema.
+        /// </summary>
+        /// <param name="idProveedor">ID del proveedor a deshabilitar.</param>
+        public static void DeshabilitarProveedor(Guid idProveedor)
+        {
+            _proveedorService.DeshabilitarProveedor(idProveedor);
+        }
+
+        /// <summary>
+        /// Habilita un proveedor en el sistema.
+        /// </summary>
+        /// <param name="idProveedor">ID del proveedor a habilitar.</param>
+        public static void HabilitarProveedor(Guid idProveedor)
+        {
+            _proveedorService.HabilitarProveedor(idProveedor);
+        }
+
+        /// <summary>
+        /// Obtiene todos los proveedores activos.
+        /// </summary>
+        /// <returns>Una lista de proveedores activos.</returns>
+        public static List<Proveedor> ObtenerProveedoresActivos()
+        {
+            return _proveedorService.ObtenerProveedoresActivos();
+        }
+
+        /// <summary>
+        /// Obtiene todos los proveedores (activos e inactivos).
+        /// </summary>
+        /// <returns>Una lista de todos los proveedores.</returns>
+        public static List<Proveedor> ObtenerTodosLosProveedores()
+        {
+            return _proveedorService.ObtenerTodosLosProveedores();
+        }
+
+        /// <summary>
+        /// Obtiene un proveedor por su ID.
+        /// </summary>
+        /// <param name="idProveedor">El ID del proveedor.</param>
+        /// <returns>El proveedor correspondiente, si existe.</returns>
+        public static Proveedor ObtenerProveedorPorId(Guid idProveedor)
+        {
+            return _proveedorService.ObtenerProveedorPorId(idProveedor);
+        }
+
+        /// <summary>
+        /// Filtra proveedores por criterios específicos.
+        /// </summary>
+        /// <param name="cuit">CUIT para filtrar (opcional).</param>
+        /// <param name="razonSocial">Razón social para filtrar (opcional).</param>
+        /// <param name="region">Región para filtrar (opcional).</param>
+        /// <returns>Una lista de proveedores que coinciden con los criterios.</returns>
+        public static List<Proveedor> FiltrarProveedores(string cuit, string razonSocial, string region)
+        {
+            return _proveedorService.FiltrarProveedores(cuit, razonSocial, region);
+        }
+    }
+}

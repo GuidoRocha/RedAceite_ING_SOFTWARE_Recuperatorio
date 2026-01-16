@@ -1,4 +1,5 @@
-using SERVICES.Dominio;
+using DOMAIN;
+using BLL;
 using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
@@ -18,17 +19,21 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// </summary>
     public partial class FrmGestionProveedores : Form
     {
+        private readonly ProveedorService _proveedorService;
+
         public FrmGestionProveedores()
         {
             InitializeComponent();
-            
+
+            _proveedorService = new ProveedorService();
+
             // Suscribirse a los eventos del DataGridView
             dgvProveedores.CellFormatting += dgvProveedores_CellFormatting;
             dgvProveedores.DataBindingComplete += dgvProveedores_DataBindingComplete;
-            
+
             // Configurar el estado inicial de los botones (deshabilitados hasta seleccionar un proveedor)
             ConfigurarEstadoBotones();
-            
+
             // Cargar proveedores al final, después de suscribirse a los eventos
             CargarProveedores();
         }
@@ -41,14 +46,14 @@ namespace RedAceite_ING_SOFTWARE.Forms
             try
             {
                 // Obtener TODOS los proveedores (activos e inactivos)
-                var proveedores = ProveedorService.ObtenerTodosLosProveedores();
-                
+                var proveedores = _proveedorService.ObtenerTodosLosProveedores();
+
                 // Asignar el DataSource - esto disparará automáticamente el evento DataBindingComplete
                 dgvProveedores.DataSource = proveedores;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al cargar proveedores: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al cargar proveedores: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
@@ -183,7 +188,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     dgvProveedores.Columns["FechaCreacion"].Visible = false;
                 if (dgvProveedores.Columns.Contains("FechaModificacion"))
                     dgvProveedores.Columns["FechaModificacion"].Visible = false;
-                
+
                 // Ocultar la columna Activo - los proveedores inactivos se identificaran por el color gris de la fila
                 if (dgvProveedores.Columns.Contains("Activo"))
                     dgvProveedores.Columns["Activo"].Visible = false;
@@ -271,13 +276,13 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 if (frmAlta.ShowDialog() == DialogResult.OK)
                 {
                     CargarProveedores();
-                    MessageBox.Show("Proveedor agregado exitosamente.", "Éxito", 
+                    MessageBox.Show("Proveedor agregado exitosamente.", "Éxito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al abrir formulario de alta: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al abrir formulario de alta: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
@@ -293,17 +298,17 @@ namespace RedAceite_ING_SOFTWARE.Forms
             {
                 if (dgvProveedores.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Debe seleccionar un proveedor para modificar.", "Advertencia", 
+                    MessageBox.Show("Debe seleccionar un proveedor para modificar.", "Advertencia",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 var proveedorSeleccionado = (Proveedor)dgvProveedores.SelectedRows[0].DataBoundItem;
-                
+
                 // Verificar que el proveedor esté activo antes de permitir modificarlo
                 if (!proveedorSeleccionado.Activo)
                 {
-                    MessageBox.Show("No se puede modificar un proveedor inactivo. Primero debe habilitarlo.", 
+                    MessageBox.Show("No se puede modificar un proveedor inactivo. Primero debe habilitarlo.",
                         "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
@@ -312,13 +317,13 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 if (frmModificar.ShowDialog() == DialogResult.OK)
                 {
                     CargarProveedores();
-                    MessageBox.Show("Proveedor modificado exitosamente.", "Éxito", 
+                    MessageBox.Show("Proveedor modificado exitosamente.", "Éxito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al modificar proveedor: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al modificar proveedor: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
@@ -334,39 +339,39 @@ namespace RedAceite_ING_SOFTWARE.Forms
             {
                 if (dgvProveedores.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Debe seleccionar un proveedor para deshabilitar.", "Advertencia", 
+                    MessageBox.Show("Debe seleccionar un proveedor para deshabilitar.", "Advertencia",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 var proveedorSeleccionado = (Proveedor)dgvProveedores.SelectedRows[0].DataBoundItem;
-                
+
                 // Pedir confirmación antes de deshabilitar
                 var confirmacion = MessageBox.Show(
-                    $"¿Está seguro que desea deshabilitar al proveedor '{proveedorSeleccionado.Nombre}'?", 
-                    "Confirmar", 
-                    MessageBoxButtons.YesNo, 
+                    $"¿Está seguro que desea deshabilitar al proveedor '{proveedorSeleccionado.Nombre}'?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
                 if (confirmacion == DialogResult.Yes)
                 {
                     // Llamar al servicio para deshabilitar el proveedor
-                    ProveedorService.DeshabilitarProveedor(proveedorSeleccionado.IdProveedor);
-                    
+                    _proveedorService.DeshabilitarProveedor(proveedorSeleccionado.IdProveedor);
+
                     // Registrar la acción en el log
-                    LoggerService.WriteLog($"Proveedor deshabilitado: {proveedorSeleccionado.Nombre} (ID: {proveedorSeleccionado.IdSimple})", 
+                    LoggerService.WriteLog($"Proveedor deshabilitado: {proveedorSeleccionado.Nombre} (ID: {proveedorSeleccionado.IdSimple})",
                         System.Diagnostics.TraceLevel.Info);
-                    
+
                     // Recargar la lista para reflejar el cambio
                     CargarProveedores();
-                    
-                    MessageBox.Show("Proveedor deshabilitado exitosamente.", "Éxito", 
+
+                    MessageBox.Show("Proveedor deshabilitado exitosamente.", "Éxito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al deshabilitar proveedor: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al deshabilitar proveedor: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
@@ -382,39 +387,39 @@ namespace RedAceite_ING_SOFTWARE.Forms
             {
                 if (dgvProveedores.SelectedRows.Count == 0)
                 {
-                    MessageBox.Show("Debe seleccionar un proveedor para habilitar.", "Advertencia", 
+                    MessageBox.Show("Debe seleccionar un proveedor para habilitar.", "Advertencia",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 var proveedorSeleccionado = (Proveedor)dgvProveedores.SelectedRows[0].DataBoundItem;
-                
+
                 // Pedir confirmación antes de habilitar
                 var confirmacion = MessageBox.Show(
-                    $"¿Está seguro que desea habilitar al proveedor '{proveedorSeleccionado.Nombre}'?", 
-                    "Confirmar", 
-                    MessageBoxButtons.YesNo, 
+                    $"¿Está seguro que desea habilitar al proveedor '{proveedorSeleccionado.Nombre}'?",
+                    "Confirmar",
+                    MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
                 if (confirmacion == DialogResult.Yes)
                 {
                     // Llamar al servicio para habilitar el proveedor
-                    ProveedorService.HabilitarProveedor(proveedorSeleccionado.IdProveedor);
-                    
+                    _proveedorService.HabilitarProveedor(proveedorSeleccionado.IdProveedor);
+
                     // Registrar la acción en el log
-                    LoggerService.WriteLog($"Proveedor habilitado: {proveedorSeleccionado.Nombre} (ID: {proveedorSeleccionado.IdSimple})", 
+                    LoggerService.WriteLog($"Proveedor habilitado: {proveedorSeleccionado.Nombre} (ID: {proveedorSeleccionado.IdSimple})",
                         System.Diagnostics.TraceLevel.Info);
-                    
+
                     // Recargar la lista para reflejar el cambio
                     CargarProveedores();
-                    
-                    MessageBox.Show("Proveedor habilitado exitosamente.", "Éxito", 
+
+                    MessageBox.Show("Proveedor habilitado exitosamente.", "Éxito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al habilitar proveedor: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al habilitar proveedor: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
@@ -433,8 +438,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 string region = txtFiltroRegion.Text.Trim();
 
                 // Si no hay ningún filtro aplicado, cargar todos los proveedores
-                if (string.IsNullOrWhiteSpace(cuit) && 
-                    string.IsNullOrWhiteSpace(razonSocial) && 
+                if (string.IsNullOrWhiteSpace(cuit) &&
+                    string.IsNullOrWhiteSpace(razonSocial) &&
                     string.IsNullOrWhiteSpace(region))
                 {
                     CargarProveedores();
@@ -442,12 +447,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 }
 
                 // Aplicar los filtros
-                var proveedoresFiltrados = ProveedorService.FiltrarProveedores(cuit, razonSocial, region);
+                var proveedoresFiltrados = _proveedorService.FiltrarProveedores(cuit, razonSocial, region);
                 dgvProveedores.DataSource = proveedoresFiltrados;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error al filtrar proveedores: {ex.Message}", "Error", 
+                MessageBox.Show($"Error al filtrar proveedores: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
@@ -463,7 +468,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             txtFiltroCUIT.Clear();
             txtFiltroRazonSocial.Clear();
             txtFiltroRegion.Clear();
-            
+
             // Recargar todos los proveedores
             CargarProveedores();
         }

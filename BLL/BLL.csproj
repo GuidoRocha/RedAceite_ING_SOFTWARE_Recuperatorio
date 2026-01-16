@@ -41,6 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Proveedor\ProveedorService.cs" />
+    <Compile Include="Remito\RemitoService.cs" />
     <Compile Include="ServiceFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -48,6 +50,14 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{63a64b83-9f51-43f8-838a-709a932b54d7}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DOMAIN\DOMAIN.csproj">
+      <Project>{4bc6dee5-678f-45d9-a3e6-53784877dbc6}</Project>
+      <Name>DOMAIN</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SERVICES\SERVICES.csproj">
+      <Project>{40236129-2ad3-4665-b8be-79613b76fff2}</Project>
+      <Name>SERVICES</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
