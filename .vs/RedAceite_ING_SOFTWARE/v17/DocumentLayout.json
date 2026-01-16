@@ -3,15 +3,19 @@
   "WorkspaceRootPath": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\redaceite_ing_software\\forms\\frmgestionproveedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmgestionproveedores.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B5FDE76-CEBC-4F4F-9C5A-F3279818620D}|BLL\\BLL.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\bll\\remito\\remitoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4B5FDE76-CEBC-4F4F-9C5A-F3279818620D}|BLL\\BLL.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\bll\\remito\\remitoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B5FDE76-CEBC-4F4F-9C5A-F3279818620D}|BLL\\BLL.csproj|solutionrelative:bll\\remito\\remitoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -31,15 +35,11 @@
       "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmgenerarremito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\redaceite_ing_software\\forms\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\redaceite_ing_software\\forms\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\redaceite_ing_software\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\redaceite_ing_software\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -47,7 +47,7 @@
       "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmgenerarremito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{4B5FDE76-CEBC-4F4F-9C5A-F3279818620D}|BLL\\BLL.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\bll\\proveedor\\proveedorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{4B5FDE76-CEBC-4F4F-9C5A-F3279818620D}|BLL\\BLL.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\bll\\proveedor\\proveedorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{4B5FDE76-CEBC-4F4F-9C5A-F3279818620D}|BLL\\BLL.csproj|solutionrelative:bll\\proveedor\\proveedorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -117,6 +117,34 @@
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\Logic\\RemitoLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:SERVICES\\Logic\\RemitoLogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\services\\dominio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|solutionrelative:services\\dominio\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\services\\dal\\contratos\\iusuariodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|solutionrelative:services\\dal\\contratos\\iusuariodal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\services\\dal\\implementaciones\\sql\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|solutionrelative:services\\dal\\implementaciones\\sql\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\services\\logic\\userlogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|solutionrelative:services\\logic\\userlogic.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\services\\facade\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|solutionrelative:services\\facade\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\redaceite_ing_software\\forms\\frmcrearusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmcrearusuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\redaceite_ing_software\\forms\\frmcrearusuario.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\frmcrearusuario.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -126,7 +154,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 360,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -134,19 +162,110 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "FrmAltaProveedor.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmAltaProveedor.cs",
-              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmAltaProveedor.cs",
-              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmAltaProveedor.cs [Dise\u00F1o]",
-              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmAltaProveedor.cs [Dise\u00F1o]",
+              "DocumentIndex": 34,
+              "Title": "FrmCrearUsuario.cs",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAABRwCQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T02:46:03.242Z",
+              "WhenOpened": "2026-01-16T20:03:05.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\Facade\\UserService.cs",
+              "RelativeDocumentMoniker": "SERVICES\\Facade\\UserService.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\Facade\\UserService.cs",
+              "RelativeToolTip": "SERVICES\\Facade\\UserService.cs",
+              "ViewState": "AgIAAAYBAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T20:02:30.75Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "UserLogic.cs",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\Logic\\UserLogic.cs",
+              "RelativeDocumentMoniker": "SERVICES\\Logic\\UserLogic.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\Logic\\UserLogic.cs",
+              "RelativeToolTip": "SERVICES\\Logic\\UserLogic.cs",
+              "ViewState": "AgIAADoCAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T20:01:07.326Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "UsuarioRepository.cs",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\DAL\\Implementaciones\\SQL\\UsuarioRepository.cs",
+              "RelativeDocumentMoniker": "SERVICES\\DAL\\Implementaciones\\SQL\\UsuarioRepository.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\DAL\\Implementaciones\\SQL\\UsuarioRepository.cs",
+              "RelativeToolTip": "SERVICES\\DAL\\Implementaciones\\SQL\\UsuarioRepository.cs",
+              "ViewState": "AgIAANcBAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:59:25.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IUsuarioDAL.cs",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\DAL\\Contratos\\IUsuarioDAL.cs",
+              "RelativeDocumentMoniker": "SERVICES\\DAL\\Contratos\\IUsuarioDAL.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\DAL\\Contratos\\IUsuarioDAL.cs",
+              "RelativeToolTip": "SERVICES\\DAL\\Contratos\\IUsuarioDAL.cs",
+              "ViewState": "AgIAAJ4AAAAAAAAAAIBYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:58:04.896Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\Dominio\\Usuario.cs",
+              "RelativeDocumentMoniker": "SERVICES\\Dominio\\Usuario.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\SERVICES\\Dominio\\Usuario.cs",
+              "RelativeToolTip": "SERVICES\\Dominio\\Usuario.cs",
+              "ViewState": "AgIAAKsAAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T19:57:21.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FrmGestionProveedores.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs [Dise\u00F1o]",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:34:26.307Z",
               "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 35,
+              "Title": "FrmCrearUsuario.Designer.cs",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.Designer.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.Designer.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.Designer.cs",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.Designer.cs",
+              "ViewState": "AgIAAP4AAAAAAAAAAEBVwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T20:03:52.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "FrmGestionProveedores.cs",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs",
               "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs",
@@ -159,19 +278,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "FrmGestionProveedores.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs",
-              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs",
-              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs [Dise\u00F1o]",
-              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmGestionProveedores.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T02:34:26.307Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "RemitoService.cs",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\BLL\\Remito\\RemitoService.cs",
               "RelativeDocumentMoniker": "BLL\\Remito\\RemitoService.cs",
@@ -179,12 +286,11 @@
               "RelativeToolTip": "BLL\\Remito\\RemitoService.cs",
               "ViewState": "AgIAANIAAAAAAAAAAAAowAEBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T14:22:17.314Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T14:22:17.314Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "FrmLogin.cs",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs",
               "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs",
@@ -192,12 +298,11 @@
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs",
               "ViewState": "AgIAACAAAAAAAAAAAAAAACwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T20:52:04.84Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-07T20:52:04.84Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "FrmPrincipal.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
               "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
@@ -209,6 +314,30 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmPrincipal.cs",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
+              "ViewState": "AgIAAM4AAAAAAAAAAADwv8wAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-07T00:08:39.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FrmAltaProveedor.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmAltaProveedor.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmAltaProveedor.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmAltaProveedor.cs [Dise\u00F1o]",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmAltaProveedor.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-16T02:46:03.242Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 8,
               "Title": "FrmLogin.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs",
@@ -216,21 +345,7 @@
               "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs [Dise\u00F1o]",
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmLogin.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T14:53:02.45Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FrmPrincipal.cs",
-              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
-              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
-              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
-              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmPrincipal.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-07T00:08:39.192Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-16T14:53:02.45Z"
             },
             {
               "$type": "Document",
@@ -242,20 +357,18 @@
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmGenerarRemito.cs",
               "ViewState": "AgIAAOQAAAAAAAAAAAAtwPwAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T14:22:41.198Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T14:22:41.198Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "FrmGenerarRemito.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmGenerarRemito.cs",
               "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\FrmGenerarRemito.cs",
               "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmGenerarRemito.cs [Dise\u00F1o]",
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmGenerarRemito.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T14:48:38.488Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-01-15T14:48:38.488Z"
             },
             {
               "$type": "Document",
@@ -267,8 +380,7 @@
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T23:46:24.814Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-06T23:46:24.814Z"
             },
             {
               "$type": "Document",
@@ -305,7 +417,8 @@
               "RelativeToolTip": "DAL\\Contratos\\IProveedorRepository.cs",
               "ViewState": "AgIAADgAAAAAAAAAAAAUwEkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T01:56:46.076Z"
+              "WhenOpened": "2026-01-16T01:56:46.076Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -352,7 +465,8 @@
               "RelativeToolTip": "DAL\\Implementaciones\\ProveedorRepository.cs",
               "ViewState": "AgIAADQBAAAAAAAAAAAkwEwBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-16T01:58:08.139Z"
+              "WhenOpened": "2026-01-16T01:58:08.139Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -364,8 +478,7 @@
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmAltaProveedor.cs",
               "ViewState": "AgIAAKAAAAAAAAAAAAAUwM4AAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T15:55:09.852Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-01-15T15:55:09.852Z"
             },
             {
               "$type": "Document",
@@ -401,7 +514,8 @@
               "RelativeToolTip": "SERVICES\\Logic\\ProveedorLogic.cs",
               "ViewState": "AgIAANMAAAAAAAAAAIBJwJAAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T22:54:02.55Z"
+              "WhenOpened": "2026-01-15T22:54:02.55Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -413,7 +527,8 @@
               "RelativeToolTip": "DOMAIN\\Proveedor.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-15T15:31:58.207Z"
+              "WhenOpened": "2026-01-15T15:31:58.207Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -461,7 +576,8 @@
               "RelativeToolTip": "SERVICES\\app.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-01-09T01:45:06.44Z"
+              "WhenOpened": "2026-01-09T01:45:06.44Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -473,7 +589,8 @@
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\App.config",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2026-01-09T01:45:12.371Z"
+              "WhenOpened": "2026-01-09T01:45:12.371Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -484,7 +601,8 @@
               "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs [Dise\u00F1o]",
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\FrmCrearUsuario.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-06T23:52:17.049Z"
+              "WhenOpened": "2026-01-06T23:52:17.049Z",
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

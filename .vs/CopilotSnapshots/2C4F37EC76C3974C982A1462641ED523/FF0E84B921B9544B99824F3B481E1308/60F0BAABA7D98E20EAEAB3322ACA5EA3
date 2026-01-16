@@ -19,7 +19,6 @@ namespace SERVICES.Logic
     public class UserLogic
     {
         private readonly IUsuarioDAL _usuarioRepository;
-        
         /// <summary>
         /// Constructor que inicializa el repositorio de usuarios.
         /// </summary>
@@ -27,7 +26,6 @@ namespace SERVICES.Logic
         {
             _usuarioRepository = DALFactory.UsuarioRepository;
         }
-
         /// <summary>
         /// Valida las credenciales de un usuario.
         /// </summary>
@@ -61,109 +59,35 @@ namespace SERVICES.Logic
         /// <param name="plainPassword">Contraseña en texto plano.</param>
         public void CreateUser(Usuario usuario, string plainPassword)
         {
-            // Validar datos del usuario
-            ValidarUsuario(usuario);
 
             // Verificar si el nombre de usuario ya existe
-            if (_usuarioRepository.ExisteUsuarioPorUsername(usuario.UserName))
+            var existingUser = _usuarioRepository.GetUsuarioByUsername(usuario.UserName);
+            if (existingUser != null)
             {
                 throw new Exception($"El nombre de usuario '{usuario.UserName}' ya está en uso.");
+
+
             }
 
-            // Verificar si el DNI ya existe (solo si se proporcionó)
-            if (!string.IsNullOrWhiteSpace(usuario.DNI) && _usuarioRepository.ExisteUsuarioPorDNI(usuario.DNI))
-            {
-                throw new Exception($"Ya existe un usuario registrado con el DNI '{usuario.DNI}'.");
-            }
-
-            // Encriptar contraseña
             usuario.Password = CryptographyService.HashMd5(plainPassword);
-            
-            // Crear usuario
             _usuarioRepository.CreateUsuario(usuario);
         }
-
-        /// <summary>
-        /// Actualiza los datos de un usuario existente.
-        /// </summary>
-        /// <param name="usuario">Usuario con los datos actualizados.</param>
-        public void UpdateUsuario(Usuario usuario)
-        {
-            // Validar datos del usuario (sin validar Username/DNI ya que no se pueden modificar)
-            ValidarDatosPersonales(usuario);
-
-            // Verificar que el usuario existe
-            var usuarioExistente = _usuarioRepository.GetUsuarioById(usuario.IdUsuario);
-            if (usuarioExistente == null)
-            {
-                throw new Exception("El usuario no existe en el sistema.");
-            }
-
-            // Actualizar usuario
-            _usuarioRepository.UpdateUsuario(usuario);
-        }
-
-        /// <summary>
-        /// Obtiene un usuario por su ID.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <returns>Usuario encontrado o null si no existe.</returns>
-        public Usuario GetUsuarioById(Guid idUsuario)
-        {
-            return _usuarioRepository.GetUsuarioById(idUsuario);
-        }
-
-        /// <summary>
-        /// Obtiene todos los usuarios activos del sistema.
-        /// </summary>
-        /// <returns>Lista de usuarios activos.</returns>
-        public List<Usuario> GetUsuariosActivos()
-        {
-            return _usuarioRepository.GetUsuariosActivos();
-        }
-
         /// <summary>
         /// Deshabilita un usuario.
         /// </summary>
         /// <param name="idUsuario">ID del usuario a deshabilitar.</param>
         public void DisableUser(Guid idUsuario)
         {
-            var usuario = _usuarioRepository.GetUsuarioById(idUsuario);
-            if (usuario == null)
-            {
-                throw new Exception("El usuario no existe en el sistema.");
-            }
-
             _usuarioRepository.DisableUsuario(idUsuario);
-            
-            // Registrar en log
-            LoggerService.WriteLog(
-                $"Usuario deshabilitado: {usuario.UserName} (DNI: {usuario.DNI})",
-                System.Diagnostics.TraceLevel.Warning
-            );
         }
-
         /// <summary>
         /// Habilita un usuario.
         /// </summary>
         /// <param name="idUsuario">ID del usuario a habilitar.</param>
         public void EnabledUsuario(Guid idUsuario)
         {
-            var usuario = _usuarioRepository.GetUsuarioById(idUsuario);
-            if (usuario == null)
-            {
-                throw new Exception("El usuario no existe en el sistema.");
-            }
-
             _usuarioRepository.EnabledUsuario(idUsuario);
-            
-            // Registrar en log
-            LoggerService.WriteLog(
-                $"Usuario habilitado: {usuario.UserName} (DNI: {usuario.DNI})",
-                System.Diagnostics.TraceLevel.Info
-            );
         }
-
         /// <summary>
         /// Actualiza los accesos de un usuario.
         /// </summary>
@@ -173,7 +97,6 @@ namespace SERVICES.Logic
         {
             _usuarioRepository.UpdateAccesos(idUsuario, accesos);
         }
-
         /// <summary>
         /// Obtiene todos los usuarios registrados.
         /// </summary>
@@ -182,7 +105,6 @@ namespace SERVICES.Logic
         {
             return _usuarioRepository.GetAll();
         }
-
         /// <summary>
         /// Obtiene un usuario por su nombre de usuario.
         /// </summary>
@@ -192,7 +114,6 @@ namespace SERVICES.Logic
         {
             return _usuarioRepository.GetUsuarioByUsername(username);
         }
-
         /// <summary>
         /// Obtiene una lista de usuarios junto con sus familias (roles).
         /// </summary>
@@ -201,7 +122,6 @@ namespace SERVICES.Logic
         {
             return _usuarioRepository.GetUsuariosConFamilias();
         }
-
         /// <summary>
         /// Crea una nueva patente.
         /// </summary>
@@ -210,7 +130,6 @@ namespace SERVICES.Logic
         {
             _usuarioRepository.CreatePatente(patente);
         }
-
         /// <summary>
         /// Genera un código OTP de 6 dígitos.
         /// </summary>
@@ -220,7 +139,6 @@ namespace SERVICES.Logic
             var random = new Random();
             return random.Next(100000, 999999).ToString(); // Genera un número de 6 dígitos
         }
-
         /// <summary>
         /// Envía un código OTP por SMS utilizando Twilio.
         /// </summary>
@@ -255,7 +173,6 @@ namespace SERVICES.Logic
                 throw;
             }
         }
-
         /// <summary>
         /// Inicia el proceso de recuperación de contraseña enviando un OTP al usuario.
         /// </summary>
@@ -281,7 +198,6 @@ namespace SERVICES.Logic
 
             }
         }
-
         /// <summary>
         /// Valida un código OTP ingresado por el usuario.
         /// </summary>
@@ -297,7 +213,6 @@ namespace SERVICES.Logic
             }
             return false; // OTP inválido o expirado
         }
-
         /// <summary>
         /// Cambia la contraseña de un usuario.
         /// </summary>
@@ -317,6 +232,8 @@ namespace SERVICES.Logic
                 throw new Exception("Contraseña no Cambiada");
             }
         }
+
+
 
         public bool SendOTP_VerifyAPI(string phoneNumber)
         {
@@ -369,206 +286,5 @@ namespace SERVICES.Logic
             }
         }
 
-        // ===== GESTIÓN DE FAMILIAS =====
-
-        /// <summary>
-        /// Asigna una familia a un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <param name="idFamilia">ID de la familia.</param>
-        public void AsignarFamiliaAUsuario(Guid idUsuario, Guid idFamilia)
-        {
-            _usuarioRepository.AsignarFamiliaAUsuario(idUsuario, idFamilia);
-            
-            var usuario = _usuarioRepository.GetUsuarioById(idUsuario);
-            LoggerService.WriteLog(
-                $"Familia asignada al usuario: {usuario.UserName}",
-                System.Diagnostics.TraceLevel.Info
-            );
-        }
-
-        /// <summary>
-        /// Remueve una familia de un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <param name="idFamilia">ID de la familia.</param>
-        public void RemoverFamiliaDeUsuario(Guid idUsuario, Guid idFamilia)
-        {
-            _usuarioRepository.RemoverFamiliaDeUsuario(idUsuario, idFamilia);
-            
-            var usuario = _usuarioRepository.GetUsuarioById(idUsuario);
-            LoggerService.WriteLog(
-                $"Familia removida del usuario: {usuario.UserName}",
-                System.Diagnostics.TraceLevel.Info
-            );
-        }
-
-        /// <summary>
-        /// Obtiene las familias asignadas a un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <returns>Lista de familias.</returns>
-        public List<Familia> GetFamiliasByUsuario(Guid idUsuario)
-        {
-            return _usuarioRepository.GetFamiliasByUsuarioId(idUsuario);
-        }
-
-        // ===== GESTIÓN DE PATENTES =====
-
-        /// <summary>
-        /// Asigna una patente a un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <param name="idPatente">ID de la patente.</param>
-        public void AsignarPatenteAUsuario(Guid idUsuario, Guid idPatente)
-        {
-            _usuarioRepository.AsignarPatenteAUsuario(idUsuario, idPatente);
-            
-            var usuario = _usuarioRepository.GetUsuarioById(idUsuario);
-            LoggerService.WriteLog(
-                $"Patente asignada al usuario: {usuario.UserName}",
-                System.Diagnostics.TraceLevel.Info
-            );
-        }
-
-        /// <summary>
-        /// Remueve una patente de un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <param name="idPatente">ID de la patente.</param>
-        public void RemoverPatenteDeUsuario(Guid idUsuario, Guid idPatente)
-        {
-            _usuarioRepository.RemoverPatenteDeUsuario(idUsuario, idPatente);
-            
-            var usuario = _usuarioRepository.GetUsuarioById(idUsuario);
-            LoggerService.WriteLog(
-                $"Patente removida del usuario: {usuario.UserName}",
-                System.Diagnostics.TraceLevel.Info
-            );
-        }
-
-        /// <summary>
-        /// Obtiene las patentes asignadas directamente a un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <returns>Lista de patentes.</returns>
-        public List<Patente> GetPatentesByUsuario(Guid idUsuario)
-        {
-            return _usuarioRepository.GetPatentesByUsuarioId(idUsuario);
-        }
-
-        // ===== VALIDACIONES =====
-
-        /// <summary>
-        /// Valida los datos completos de un usuario.
-        /// </summary>
-        /// <param name="usuario">Usuario a validar.</param>
-        private void ValidarUsuario(Usuario usuario)
-        {
-            if (string.IsNullOrWhiteSpace(usuario.UserName))
-            {
-                throw new ArgumentException("El nombre de usuario es obligatorio.");
-            }
-
-            if (string.IsNullOrWhiteSpace(usuario.Telefono))
-            {
-                throw new ArgumentException("El teléfono es obligatorio.");
-            }
-
-            if (string.IsNullOrWhiteSpace(usuario.Nombre))
-            {
-                throw new ArgumentException("El nombre es obligatorio.");
-            }
-
-            if (string.IsNullOrWhiteSpace(usuario.Apellido))
-            {
-                throw new ArgumentException("El apellido es obligatorio.");
-            }
-
-            if (string.IsNullOrWhiteSpace(usuario.Email))
-            {
-                throw new ArgumentException("El email es obligatorio.");
-            }
-
-            // Validar formato de email
-            if (!ValidarFormatoEmail(usuario.Email))
-            {
-                throw new ArgumentException("El formato del email no es válido.");
-            }
-
-            // Validar formato de DNI si se proporcionó
-            if (!string.IsNullOrWhiteSpace(usuario.DNI) && !ValidarFormatoDNI(usuario.DNI))
-            {
-                throw new ArgumentException("El formato del DNI no es válido.");
-            }
-        }
-
-        /// <summary>
-        /// Valida solo los datos personales (para modificación, sin Username/DNI).
-        /// </summary>
-        /// <param name="usuario">Usuario a validar.</param>
-        private void ValidarDatosPersonales(Usuario usuario)
-        {
-            if (string.IsNullOrWhiteSpace(usuario.Telefono))
-            {
-                throw new ArgumentException("El teléfono es obligatorio.");
-            }
-
-            if (string.IsNullOrWhiteSpace(usuario.Nombre))
-            {
-                throw new ArgumentException("El nombre es obligatorio.");
-            }
-
-            if (string.IsNullOrWhiteSpace(usuario.Apellido))
-            {
-                throw new ArgumentException("El apellido es obligatorio.");
-            }
-
-            if (string.IsNullOrWhiteSpace(usuario.Email))
-            {
-                throw new ArgumentException("El email es obligatorio.");
-            }
-
-            // Validar formato de email
-            if (!ValidarFormatoEmail(usuario.Email))
-            {
-                throw new ArgumentException("El formato del email no es válido.");
-            }
-        }
-
-        /// <summary>
-        /// Valida el formato de un email.
-        /// </summary>
-        /// <param name="email">Email a validar.</param>
-        /// <returns>True si el formato es válido.</returns>
-        private bool ValidarFormatoEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Valida el formato de un DNI.
-        /// </summary>
-        /// <param name="dni">DNI a validar.</param>
-        /// <returns>True si el formato es válido.</returns>
-        private bool ValidarFormatoDNI(string dni)
-        {
-            // DNI debe tener entre 7 y 8 dígitos
-            if (string.IsNullOrWhiteSpace(dni) || dni.Length < 7 || dni.Length > 8)
-            {
-                return false;
-            }
-
-            // Todos los caracteres deben ser dígitos
-            return dni.All(char.IsDigit);
-        }
     }
 }

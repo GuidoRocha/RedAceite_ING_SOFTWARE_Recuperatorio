@@ -40,47 +40,9 @@ namespace SERVICES.Facade
             var usuario = new Usuario
             {
                 UserName = username,
-                Telefono = telefono
+                PhoneNumber = telefono
             };
             _userLogic.CreateUser(usuario, password);
-        }
-
-        /// <summary>
-        /// Registra un nuevo usuario en el sistema con todos los datos.
-        /// </summary>
-        /// <param name="usuario">Objeto Usuario con todos los datos.</param>
-        /// <param name="password">Contraseña en texto plano.</param>
-        public static void RegisterUsuario(Usuario usuario, string password)
-        {
-            _userLogic.CreateUser(usuario, password);
-        }
-
-        /// <summary>
-        /// Actualiza los datos de un usuario existente.
-        /// </summary>
-        /// <param name="usuario">Usuario con los datos actualizados.</param>
-        public static void UpdateUsuario(Usuario usuario)
-        {
-            _userLogic.UpdateUsuario(usuario);
-        }
-
-        /// <summary>
-        /// Obtiene un usuario por su ID.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <returns>Usuario encontrado o null si no existe.</returns>
-        public static Usuario GetUsuarioById(Guid idUsuario)
-        {
-            return _userLogic.GetUsuarioById(idUsuario);
-        }
-
-        /// <summary>
-        /// Obtiene todos los usuarios activos del sistema.
-        /// </summary>
-        /// <returns>Lista de usuarios activos.</returns>
-        public static List<Usuario> GetUsuariosActivos()
-        {
-            return _userLogic.GetUsuariosActivos();
         }
 
         /// <summary>
@@ -177,90 +139,6 @@ namespace SERVICES.Facade
         public static void ChangePassword(string username, string newPassword)
         {
             _userLogic.ChangePassword(username, newPassword);
-        }
-
-        // ===== GESTIÓN DE FAMILIAS =====
-
-        /// <summary>
-        /// Asigna una familia a un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <param name="idFamilia">ID de la familia.</param>
-        public static void AsignarFamiliaAUsuario(Guid idUsuario, Guid idFamilia)
-        {
-            _userLogic.AsignarFamiliaAUsuario(idUsuario, idFamilia);
-        }
-
-        /// <summary>
-        /// Remueve una familia de un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <param name="idFamilia">ID de la familia.</param>
-        public static void RemoverFamiliaDeUsuario(Guid idUsuario, Guid idFamilia)
-        {
-            _userLogic.RemoverFamiliaDeUsuario(idUsuario, idFamilia);
-        }
-
-        /// <summary>
-        /// Obtiene las familias asignadas a un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <returns>Lista de familias.</returns>
-        public static List<Familia> GetFamiliasByUsuario(Guid idUsuario)
-        {
-            return _userLogic.GetFamiliasByUsuario(idUsuario);
-        }
-
-        // ===== GESTIÓN DE PATENTES =====
-
-        /// <summary>
-        /// Asigna una patente a un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <param name="idPatente">ID de la patente.</param>
-        public static void AsignarPatenteAUsuario(Guid idUsuario, Guid idPatente)
-        {
-            _userLogic.AsignarPatenteAUsuario(idUsuario, idPatente);
-        }
-
-        /// <summary>
-        /// Remueve una patente de un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <param name="idPatente">ID de la patente.</param>
-        public static void RemoverPatenteDeUsuario(Guid idUsuario, Guid idPatente)
-        {
-            _userLogic.RemoverPatenteDeUsuario(idUsuario, idPatente);
-        }
-
-        /// <summary>
-        /// Obtiene las patentes asignadas directamente a un usuario.
-        /// </summary>
-        /// <param name="idUsuario">ID del usuario.</param>
-        /// <returns>Lista de patentes.</returns>
-        public static List<Patente> GetPatentesByUsuario(Guid idUsuario)
-        {
-            return _userLogic.GetPatentesByUsuario(idUsuario);
-        }
-
-        // ===== UTILIDADES =====
-
-        /// <summary>
-        /// Obtiene todas las familias disponibles en el sistema.
-        /// </summary>
-        /// <returns>Lista de todas las familias.</returns>
-        public static List<Familia> GetAllFamilias()
-        {
-            return FamiliaService.GetAllFamilias();
-        }
-
-        /// <summary>
-        /// Obtiene todas las patentes disponibles en el sistema.
-        /// </summary>
-        /// <returns>Lista de todas las patentes.</returns>
-        public static List<Patente> GetAllPatentes()
-        {
-            return FamiliaService.GetAllPatentes();
         }
     }
 }

@@ -38,40 +38,9 @@ namespace SERVICES.Dominio
         public List<Acceso> Accesos = new List<Acceso>();
 
         /// <summary>
-        /// Número de teléfono del usuario (obligatorio).
-        /// </summary>
-        public string Telefono { get; set; }
-
-        /// <summary>
-        /// Nombre del usuario (obligatorio).
-        /// </summary>
-        public string Nombre { get; set; }
-
-        /// <summary>
-        /// Apellido del usuario (obligatorio).
-        /// </summary>
-        public string Apellido { get; set; }
-
-        /// <summary>
-        /// Correo electrónico del usuario (obligatorio).
-        /// </summary>
-        public string Email { get; set; }
-
-        /// <summary>
-        /// DNI del usuario (opcional).
-        /// </summary>
-        public string DNI { get; set; }
-
-        /// <summary>
         /// Número de teléfono del usuario (usado para recuperación por SMS).
-        /// OBSOLETO: Use Telefono en su lugar.
         /// </summary>
-        [Obsolete("Use Telefono en su lugar. Esta propiedad se mantiene por compatibilidad con código existente.")]
-        public string PhoneNumber 
-        { 
-            get => Telefono; 
-            set => Telefono = value; 
-        }
+        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Código OTP actual asignado al usuario.
