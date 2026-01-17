@@ -222,6 +222,30 @@ namespace RedAceite_ING_SOFTWARE.Forms
         private void cmbNombreGenerador_SelectedIndexChanged(object sender, EventArgs e)
         {
             AutocompletarDatosProveedor();
+            
+            // Habilitar o deshabilitar el botón de editar según si hay un proveedor seleccionado
+            ActualizarEstadoBotonEditar();
+        }
+
+        /// <summary>
+        /// Actualiza el estado del botón Editar Proveedor según la selección actual.
+        /// El botón solo se habilita cuando hay un proveedor válido seleccionado.
+        /// </summary>
+        private void ActualizarEstadoBotonEditar()
+        {
+            // Habilitar el botón solo si hay un proveedor seleccionado
+            bool hayProveedorSeleccionado = cmbNombreGenerador.SelectedItem != null && 
+                                            cmbNombreGenerador.SelectedIndex >= 0;
+            
+            btnEditarProveedor.Enabled = hayProveedorSeleccionado;
+            
+            // Log para debugging
+            if (hayProveedorSeleccionado)
+            {
+                var proveedor = (Proveedor)cmbNombreGenerador.SelectedItem;
+                LoggerService.WriteLog($"Botón editar habilitado para proveedor: {proveedor.Nombre}",
+                    System.Diagnostics.TraceLevel.Verbose);
+            }
         }
 
         /// <summary>
@@ -325,6 +349,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 var proveedorSeleccionado = (Proveedor)cmbNombreGenerador.SelectedItem;
                 string nombreGenerador = proveedorSeleccionado.Nombre;
 
+                // **FIX: Si NO se requiere envío, usar los datos del proveedor seleccionado**
+                string cuitFinal = chkRequiereEnvio.Checked ? txtCuit.Text.Trim() : proveedorSeleccionado.CUIT;
+                string nombreFantasiaFinal = chkRequiereEnvio.Checked ? txtNombreFantasia.Text.Trim() : proveedorSeleccionado.RazonSocial;
+                string direccionFinal = chkRequiereEnvio.Checked ? txtDireccion.Text.Trim() : proveedorSeleccionado.Direccion;
+
                 // Si todas las validaciones pasan, proceder a generar el remito
                 // Llamar al servicio BLL.RemitoService para generar el remito
                 Guid idRemito = _remitoService.GenerarRemito(
@@ -333,9 +362,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     cmbTipoResiduo.SelectedItem.ToString(),
                     cantidad,
                     cmbEstado.SelectedItem.ToString(),
-                    txtCuit.Text.Trim(),
-                    txtNombreFantasia.Text.Trim(),
-                    txtDireccion.Text.Trim()
+                    cuitFinal,
+                    nombreFantasiaFinal,
+                    direccionFinal
                 );
 
                 // Registrar el evento en el log
@@ -381,6 +410,166 @@ namespace RedAceite_ING_SOFTWARE.Forms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Agregar Proveedor (+).
+        /// Abre el formulario de alta de proveedor y actualiza la lista al finalizar.
+        /// </summary>
+        private void btnAgregarProveedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                LoggerService.WriteLog("Usuario solicitó agregar nuevo proveedor desde FrmGenerarRemito",
+                    System.Diagnostics.TraceLevel.Info);
+
+                // Crear instancia del formulario de alta de proveedor
+                using (var frmAlta = new FrmAltaProveedor())
+                {
+                    // Mostrar el formulario como diálogo modal
+                    var resultado = frmAlta.ShowDialog();
+
+                    // Si el proveedor se creó exitosamente, recargar la lista
+                    if (resultado == DialogResult.OK)
+                    {
+                        // Obtener el ID del proveedor recién creado
+                        Guid idProveedorNuevo = frmAlta.IdProveedorCreado;
+
+                        // Recargar la lista de proveedores
+                        RecargarProveedoresYSeleccionar(idProveedorNuevo);
+
+                        LoggerService.WriteLog($"Proveedor {idProveedorNuevo} agregado y preseleccionado desde FrmGenerarRemito",
+                            System.Diagnostics.TraceLevel.Info);
+                    }
+                    else
+                    {
+                        LoggerService.WriteLog("Usuario canceló la creación de proveedor",
+                            System.Diagnostics.TraceLevel.Info);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al agregar proveedor: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Editar Proveedor (??).
+        /// Abre el formulario de modificación con el proveedor seleccionado y actualiza la lista al finalizar.
+        /// </summary>
+        private void btnEditarProveedor_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Validar que haya un proveedor seleccionado
+                if (cmbNombreGenerador.SelectedItem == null || cmbNombreGenerador.SelectedIndex < 0)
+                {
+                    MessageBox.Show("Debe seleccionar un proveedor para editarlo.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Obtener el proveedor seleccionado
+                var proveedorSeleccionado = (Proveedor)cmbNombreGenerador.SelectedItem;
+                Guid idProveedorAEditar = proveedorSeleccionado.IdProveedor;
+
+                LoggerService.WriteLog($"Usuario solicitó editar proveedor: {proveedorSeleccionado.Nombre} (ID: {idProveedorAEditar})",
+                    System.Diagnostics.TraceLevel.Info);
+
+                // Crear instancia del formulario de modificación pasando el ID del proveedor
+                using (var frmModificar = new FrmModificarProveedor(idProveedorAEditar))
+                {
+                    // Mostrar el formulario como diálogo modal
+                    var resultado = frmModificar.ShowDialog();
+
+                    // Si el proveedor se modificó exitosamente, recargar la lista
+                    if (resultado == DialogResult.OK)
+                    {
+                        // Recargar la lista de proveedores y mantener seleccionado el que se editó
+                        RecargarProveedoresYSeleccionar(idProveedorAEditar);
+
+                        LoggerService.WriteLog($"Proveedor {proveedorSeleccionado.Nombre} modificado exitosamente desde FrmGenerarRemito",
+                            System.Diagnostics.TraceLevel.Info);
+
+                        // Mostrar mensaje de confirmación
+                        MessageBox.Show($"El proveedor '{proveedorSeleccionado.Nombre}' ha sido actualizado correctamente.",
+                            "Modificación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        LoggerService.WriteLog($"Usuario canceló la modificación del proveedor {proveedorSeleccionado.Nombre}",
+                            System.Diagnostics.TraceLevel.Info);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al editar proveedor: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Recarga la lista de proveedores y preselecciona el proveedor especificado.
+        /// </summary>
+        /// <param name="idProveedorASeleccionar">ID del proveedor a preseleccionar.</param>
+        private void RecargarProveedoresYSeleccionar(Guid idProveedorASeleccionar)
+        {
+            try
+            {
+                LoggerService.WriteLog($"Iniciando recarga de proveedores. ID a preseleccionar: {idProveedorASeleccionar}",
+                    System.Diagnostics.TraceLevel.Verbose);
+
+                // Obtener proveedores activos actualizados
+                var proveedoresActivos = _proveedorService.ObtenerProveedoresActivos();
+
+                if (proveedoresActivos != null && proveedoresActivos.Count > 0)
+                {
+                    LoggerService.WriteLog($"Se cargaron {proveedoresActivos.Count} proveedores activos",
+                        System.Diagnostics.TraceLevel.Verbose);
+
+                    // Actualizar el DataSource del ComboBox
+                    cmbNombreGenerador.DataSource = null; // Limpiar primero
+                    cmbNombreGenerador.DataSource = proveedoresActivos;
+                    cmbNombreGenerador.DisplayMember = "Nombre";
+                    cmbNombreGenerador.ValueMember = "IdProveedor";
+
+                    // Buscar y seleccionar el proveedor recién creado/modificado
+                    var proveedorASeleccionar = proveedoresActivos.FirstOrDefault(p => p.IdProveedor == idProveedorASeleccionar);
+                    
+                    if (proveedorASeleccionar != null)
+                    {
+                        cmbNombreGenerador.SelectedItem = proveedorASeleccionar;
+                        
+                        LoggerService.WriteLog($"Proveedor '{proveedorASeleccionar.Nombre}' preseleccionado automáticamente",
+                            System.Diagnostics.TraceLevel.Info);
+                    }
+                    else
+                    {
+                        // Si no se encuentra, seleccionar el primero
+                        cmbNombreGenerador.SelectedIndex = 0;
+                        
+                        LoggerService.WriteLog($"Proveedor con ID {idProveedorASeleccionar} no encontrado. Seleccionado el primer proveedor de la lista.",
+                            System.Diagnostics.TraceLevel.Warning);
+                    }
+                }
+                else
+                {
+                    LoggerService.WriteLog("No se encontraron proveedores activos después de recargar",
+                        System.Diagnostics.TraceLevel.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteLog($"Error al recargar proveedores: {ex.Message}",
+                    System.Diagnostics.TraceLevel.Error);
+                LoggerService.WriteException(ex);
+                throw;
+            }
         }
     }
 }

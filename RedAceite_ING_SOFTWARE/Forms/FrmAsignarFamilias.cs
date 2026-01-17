@@ -1,0 +1,206 @@
+using SERVICES.Dominio;
+using SERVICES.Facade;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RedAceite_ING_SOFTWARE.Forms
+{
+    /// <summary>
+    /// Formulario para asignar y desasignar familias a un usuario.
+    /// </summary>
+    public partial class FrmAsignarFamilias : Form
+    {
+        private Guid _idUsuario;
+        private Usuario _usuarioActual;
+        private List<Familia> _todasLasFamilias;
+        private List<Familia> _familiasAsignadas;
+
+        public FrmAsignarFamilias(Guid idUsuario)
+        {
+            InitializeComponent();
+            _idUsuario = idUsuario;
+            CargarDatos();
+        }
+
+        /// <summary>
+        /// Carga los datos del usuario y las familias disponibles.
+        /// </summary>
+        private void CargarDatos()
+        {
+            try
+            {
+                // Obtener usuario actual
+                _usuarioActual = UserService.GetUsuarioById(_idUsuario);
+                if (_usuarioActual == null)
+                {
+                    MessageBox.Show("No se encontró el usuario especificado.", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                    return;
+                }
+
+                // Mostrar nombre del usuario en el título
+                lblUsuario.Text = $"Usuario: {_usuarioActual.UserName} - {_usuarioActual.Nombre} {_usuarioActual.Apellido}";
+
+                // Obtener todas las familias del sistema
+                _todasLasFamilias = UserService.GetAllFamilias();
+
+                // Obtener familias ya asignadas al usuario
+                _familiasAsignadas = UserService.GetFamiliasByUsuario(_idUsuario);
+
+                // Cargar las listas
+                CargarListaDisponibles();
+                CargarListaAsignadas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar datos: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+                this.Close();
+            }
+        }
+
+        /// <summary>
+        /// Carga la lista de familias disponibles (no asignadas).
+        /// </summary>
+        private void CargarListaDisponibles()
+        {
+            lstDisponibles.Items.Clear();
+
+            // Familias disponibles = todas - asignadas
+            var familiasDisponibles = _todasLasFamilias
+                .Where(f => !_familiasAsignadas.Any(fa => fa.Id == f.Id))
+                .ToList();
+
+            foreach (var familia in familiasDisponibles)
+            {
+                lstDisponibles.Items.Add(new FamiliaItem
+                {
+                    Id = familia.Id,
+                    Nombre = familia.Nombre
+                });
+            }
+        }
+
+        /// <summary>
+        /// Carga la lista de familias asignadas.
+        /// </summary>
+        private void CargarListaAsignadas()
+        {
+            lstAsignadas.Items.Clear();
+
+            foreach (var familia in _familiasAsignadas)
+            {
+                lstAsignadas.Items.Add(new FamiliaItem
+                {
+                    Id = familia.Id,
+                    Nombre = familia.Nombre
+                });
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Asignar (>>).
+        /// </summary>
+        private void btnAsignar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lstDisponibles.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar una familia para asignar.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var familiaSeleccionada = (FamiliaItem)lstDisponibles.SelectedItem;
+
+                // Asignar la familia al usuario
+                UserService.AsignarFamiliaAUsuario(_idUsuario, familiaSeleccionada.Id);
+
+                // Actualizar las listas
+                var familia = _todasLasFamilias.First(f => f.Id == familiaSeleccionada.Id);
+                _familiasAsignadas.Add(familia);
+
+                CargarListaDisponibles();
+                CargarListaAsignadas();
+
+                MessageBox.Show($"Familia '{familiaSeleccionada.Nombre}' asignada exitosamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al asignar familia: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Desasignar (<<).
+        /// </summary>
+        private void btnDesasignar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (lstAsignadas.SelectedItem == null)
+                {
+                    MessageBox.Show("Debe seleccionar una familia para desasignar.", "Advertencia",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                var familiaSeleccionada = (FamiliaItem)lstAsignadas.SelectedItem;
+
+                // Desasignar la familia del usuario
+                UserService.RemoverFamiliaDeUsuario(_idUsuario, familiaSeleccionada.Id);
+
+                // Actualizar las listas
+                _familiasAsignadas.RemoveAll(f => f.Id == familiaSeleccionada.Id);
+
+                CargarListaDisponibles();
+                CargarListaAsignadas();
+
+                MessageBox.Show($"Familia '{familiaSeleccionada.Nombre}' desasignada exitosamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al desasignar familia: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Cerrar.
+        /// </summary>
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        /// <summary>
+        /// Clase auxiliar para mostrar las familias en los ListBox.
+        /// </summary>
+        private class FamiliaItem
+        {
+            public Guid Id { get; set; }
+            public string Nombre { get; set; }
+
+            public override string ToString()
+            {
+                return Nombre;
+            }
+        }
+    }
+}

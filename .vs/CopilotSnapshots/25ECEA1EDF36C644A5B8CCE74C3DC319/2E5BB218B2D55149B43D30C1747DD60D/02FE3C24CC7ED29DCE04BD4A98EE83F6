@@ -1,0 +1,279 @@
+﻿using DAL.Contratos;
+using DAL.Implementaciones;
+using DOMAIN;
+using SERVICES.DTO;
+using SERVICES.Facade;
+using System;
+using System.Configuration;
+using System.IO;
+
+namespace BLL.Remito
+{
+    /// <summary>
+    /// Servicio de lógica de negocio para la generación y gestión de PDFs de remitos.
+    /// Coordina la generación del archivo PDF y su registro en la base de datos.
+    /// </summary>
+    public class RemitoPdfService
+    {
+        private readonly IRemitoPdfRepository _remitoPdfRepository;
+        private readonly IRemitoRepository _remitoRepository;
+        private readonly PdfService _pdfService;
+        private readonly string _rutaPdfRemitos;
+        private readonly string _rutaLogoRemito;
+
+        /// <summary>
+        /// Constructor que inicializa los repositorios y servicios necesarios.
+        /// </summary>
+        public RemitoPdfService()
+        {
+            _remitoPdfRepository = new RemitoPdfRepository();
+            _remitoRepository = new RemitoRepository();
+            _pdfService = new PdfService();
+
+            // Obtener rutas desde configuración
+            _rutaPdfRemitos = ConfigurationManager.AppSettings["RutaPDFRemitos"];
+            _rutaLogoRemito = ConfigurationManager.AppSettings["RutaLogoRemito"];
+
+            // Validar que las rutas estén configuradas
+            ValidarConfiguracion();
+        }
+
+        /// <summary>
+        /// Genera un archivo PDF para un remito específico y guarda el registro en la base de datos.
+        /// </summary>
+        /// <param name="idRemito">ID del remito para el cual generar el PDF.</param>
+        /// <returns>El registro RemitoPDF creado.</returns>
+        public RemitoPDF GenerarPdfRemito(Guid idRemito)
+        {
+            LoggerService.WriteLog($"[RemitoPdfService] Iniciando generación de PDF para remito {idRemito}",
+                System.Diagnostics.TraceLevel.Info);
+
+            try
+            {
+                // 1. Validar que el remito existe
+                var remito = _remitoRepository.GetById(idRemito);
+                if (remito == null)
+                {
+                    throw new Exception($"El remito con ID {idRemito} no existe en el sistema.");
+                }
+
+                LoggerService.WriteLog($"[RemitoPdfService] Remito encontrado: {remito.NombreGenerador}",
+                    System.Diagnostics.TraceLevel.Verbose);
+
+                // 2. Verificar que NO existe ya un PDF para este remito
+                if (_remitoPdfRepository.ExistePdfParaRemito(idRemito))
+                {
+                    LoggerService.WriteLog($"[RemitoPdfService] Ya existe un PDF para el remito {idRemito}",
+                        System.Diagnostics.TraceLevel.Warning);
+                    throw new Exception($"Ya existe un PDF generado para el remito {idRemito}");
+                }
+
+                // 3. Crear DTO con los datos del remito
+                var datosRemito = MapearRemitoADto(remito);
+
+                LoggerService.WriteLog($"[RemitoPdfService] Datos del remito mapeados. Número: {datosRemito.NumeroRemito}",
+                    System.Diagnostics.TraceLevel.Verbose);
+
+                // 4. Generar nombre de archivo único
+                string nombreArchivo = GenerarNombreArchivo(remito);
+                string rutaCompleta = Path.Combine(_rutaPdfRemitos, nombreArchivo);
+
+                LoggerService.WriteLog($"[RemitoPdfService] Nombre de archivo generado: {nombreArchivo}",
+                    System.Diagnostics.TraceLevel.Info);
+
+                // 5. Validar que la carpeta de destino existe
+                ValidarYCrearCarpetaDestino();
+
+                // 6. Generar el archivo PDF
+                bool pdfGenerado = _pdfService.GenerarPdfRemito(datosRemito, rutaCompleta, _rutaLogoRemito);
+
+                if (!pdfGenerado)
+                {
+                    throw new Exception("Error al generar el archivo PDF.");
+                }
+
+                LoggerService.WriteLog($"[RemitoPdfService] PDF generado exitosamente en: {rutaCompleta}",
+                    System.Diagnostics.TraceLevel.Info);
+
+                // 7. Calcular hash MD5 del archivo
+                string hashMD5 = _pdfService.CalcularHashMD5(rutaCompleta);
+
+                LoggerService.WriteLog($"[RemitoPdfService] Hash MD5 calculado: {hashMD5}",
+                    System.Diagnostics.TraceLevel.Verbose);
+
+                // 8. Obtener tamaño del archivo
+                long tamañoBytes = _pdfService.ObtenerTamañoArchivo(rutaCompleta);
+
+                LoggerService.WriteLog($"[RemitoPdfService] Tamaño del archivo: {tamañoBytes} bytes ({tamañoBytes / 1024.0:N2} KB)",
+                    System.Diagnostics.TraceLevel.Verbose);
+
+                // 9. Crear registro en la base de datos
+                var remitoPdf = new RemitoPDF
+                {
+                    IdRemitoPDF = Guid.NewGuid(),
+                    IdRemito = idRemito,
+                    NombreArchivo = nombreArchivo,
+                    FechaGeneracion = DateTime.Now,
+                    TamañoBytes = tamañoBytes,
+                    HashMD5 = hashMD5
+                };
+
+                _remitoPdfRepository.GuardarRegistroPdf(remitoPdf);
+
+                LoggerService.WriteLog($"[RemitoPdfService] Registro PDF guardado en BD. ID: {remitoPdf.IdRemitoPDF}",
+                    System.Diagnostics.TraceLevel.Info);
+
+                LoggerService.WriteLog($"[RemitoPdfService] Generación de PDF completada exitosamente para remito {idRemito}",
+                    System.Diagnostics.TraceLevel.Info);
+
+                return remitoPdf;
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteLog($"[RemitoPdfService] Error al generar PDF para remito {idRemito}: {ex.Message}",
+                    System.Diagnostics.TraceLevel.Error);
+                LoggerService.WriteException(ex);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene el registro PDF asociado a un remito.
+        /// </summary>
+        /// <param name="idRemito">ID del remito.</param>
+        /// <returns>El registro RemitoPDF si existe, null en caso contrario.</returns>
+        public RemitoPDF ObtenerPdfPorIdRemito(Guid idRemito)
+        {
+            try
+            {
+                return _remitoPdfRepository.ObtenerPorIdRemito(idRemito);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteLog($"[RemitoPdfService] Error al obtener PDF para remito {idRemito}: {ex.Message}",
+                    System.Diagnostics.TraceLevel.Error);
+                LoggerService.WriteException(ex);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Verifica si existe un PDF generado para un remito.
+        /// </summary>
+        /// <param name="idRemito">ID del remito.</param>
+        /// <returns>True si existe, false en caso contrario.</returns>
+        public bool ExistePdfParaRemito(Guid idRemito)
+        {
+            return _remitoPdfRepository.ExistePdfParaRemito(idRemito);
+        }
+
+        /// <summary>
+        /// Obtiene la ruta completa del archivo PDF de un remito.
+        /// </summary>
+        /// <param name="idRemito">ID del remito.</param>
+        /// <returns>Ruta completa del archivo PDF, o null si no existe.</returns>
+        public string ObtenerRutaCompletaPdf(Guid idRemito)
+        {
+            var remitoPdf = _remitoPdfRepository.ObtenerPorIdRemito(idRemito);
+            
+            if (remitoPdf == null)
+                return null;
+
+            return Path.Combine(_rutaPdfRemitos, remitoPdf.NombreArchivo);
+        }
+
+        #region Métodos Privados
+
+        /// <summary>
+        /// Mapea un objeto Remito a un DTO para generación de PDF.
+        /// </summary>
+        private DatosRemitoPdfDto MapearRemitoADto(DOMAIN.Remito remito)
+        {
+            var dto = new DatosRemitoPdfDto
+            {
+                IdRemito = remito.IdRemito,
+                FechaCreacion = remito.FechaCreacion,
+                NombreGenerador = remito.NombreGenerador,
+                DomicilioPlanta = remito.DomicilioPlanta,
+                TipoResiduo = remito.TipoResiduo,
+                Cantidad = remito.Cantidad,
+                Estado = remito.Estado,
+                RequiereEnvio = !string.IsNullOrWhiteSpace(remito.Cuit),
+                Cuit = remito.Cuit,
+                NombreFantasia = remito.NombreFantasia,
+                DireccionEnvio = remito.Direccion
+            };
+
+            // Generar número de remito
+            dto.GenerarNumeroRemito();
+
+            return dto;
+        }
+
+        /// <summary>
+        /// Genera un nombre de archivo único para el PDF del remito.
+        /// Formato: {FechaYYYYMMDD}_{IdProveedor8chars}_{IdRemito8chars}.pdf
+        /// </summary>
+        private string GenerarNombreArchivo(DOMAIN.Remito remito)
+        {
+            string fecha = DateTime.Now.ToString("yyyyMMdd");
+            
+            // Usar los primeros 8 caracteres del GUID (sin guiones)
+            string idRemitoCorto = remito.IdRemito.ToString("N").Substring(0, 8);
+            
+            // Si hay un IdProveedor disponible, usarlo; si no, usar un identificador del generador
+            string identificadorGenerador = remito.NombreGenerador
+                .Replace(" ", "")
+                .Replace(".", "")
+                .ToUpper();
+            
+            if (identificadorGenerador.Length > 8)
+                identificadorGenerador = identificadorGenerador.Substring(0, 8);
+            
+            return $"{fecha}_{identificadorGenerador}_{idRemitoCorto}.pdf";
+        }
+
+        /// <summary>
+        /// Valida que las rutas configuradas sean válidas.
+        /// </summary>
+        private void ValidarConfiguracion()
+        {
+            if (string.IsNullOrWhiteSpace(_rutaPdfRemitos))
+            {
+                throw new Exception(
+                    "La configuración 'RutaPDFRemitos' no está definida en App.config");
+            }
+
+            if (string.IsNullOrWhiteSpace(_rutaLogoRemito))
+            {
+                throw new Exception(
+                    "La configuración 'RutaLogoRemito' no está definida en App.config");
+            }
+
+            if (!File.Exists(_rutaLogoRemito))
+            {
+                LoggerService.WriteLog($"[RemitoPdfService] ADVERTENCIA: Logo no encontrado en: {_rutaLogoRemito}",
+                    System.Diagnostics.TraceLevel.Warning);
+            }
+        }
+
+        /// <summary>
+        /// Valida que la carpeta de destino exista, y la crea si no existe.
+        /// </summary>
+        private void ValidarYCrearCarpetaDestino()
+        {
+            if (!Directory.Exists(_rutaPdfRemitos))
+            {
+                LoggerService.WriteLog($"[RemitoPdfService] Carpeta de destino no existe. Creando: {_rutaPdfRemitos}",
+                    System.Diagnostics.TraceLevel.Info);
+
+                Directory.CreateDirectory(_rutaPdfRemitos);
+
+                LoggerService.WriteLog($"[RemitoPdfService] Carpeta creada exitosamente: {_rutaPdfRemitos}",
+                    System.Diagnostics.TraceLevel.Info);
+            }
+        }
+
+        #endregion
+    }
+}

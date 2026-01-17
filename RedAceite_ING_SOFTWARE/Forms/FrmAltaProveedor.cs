@@ -14,10 +14,16 @@ namespace RedAceite_ING_SOFTWARE.Forms
     {
         private readonly ProveedorService _proveedorService;
 
+        /// <summary>
+        /// ID del proveedor creado. Se establece después de guardar exitosamente.
+        /// </summary>
+        public Guid IdProveedorCreado { get; private set; }
+
         public FrmAltaProveedor()
         {
             InitializeComponent();
             _proveedorService = new ProveedorService();
+            IdProveedorCreado = Guid.Empty;
         }
 
         /// <summary>
@@ -52,9 +58,15 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 _proveedorService.CrearProveedor(proveedor);
 
+                // Guardar el ID del proveedor creado para que pueda ser accedido desde el formulario padre
+                IdProveedorCreado = proveedor.IdProveedor;
+
                 // Registrar en el log
-                LoggerService.WriteLog($"Proveedor creado: {txtNombre.Text} (CUIT: {cuitLimpio})",
+                LoggerService.WriteLog($"Proveedor creado: {txtNombre.Text} (CUIT: {cuitLimpio}) con ID: {IdProveedorCreado}",
                     System.Diagnostics.TraceLevel.Info);
+
+                MessageBox.Show("Proveedor creado exitosamente.", "Éxito",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 this.DialogResult = DialogResult.OK;
                 this.Close();

@@ -1,8 +1,10 @@
 using DAL.Contratos;
 using DAL.Implementaciones;
-using DOMAIN;
+using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
+using DomainRemito = DOMAIN.Remito;
+using BLL.Remito;
 
 namespace BLL
 {
@@ -13,13 +15,15 @@ namespace BLL
     public class RemitoService
     {
         private readonly IRemitoRepository _remitoRepository;
+        private readonly RemitoPdfService _remitoPdfService;
 
         /// <summary>
-        /// Constructor que inicializa el repositorio de remitos.
+        /// Constructor que inicializa el repositorio de remitos y el servicio de PDF.
         /// </summary>
         public RemitoService()
         {
             _remitoRepository = new RemitoRepository();
+            _remitoPdfService = new RemitoPdfService();
         }
 
         /// <summary>
@@ -29,6 +33,7 @@ namespace BLL
         public RemitoService(IRemitoRepository remitoRepository)
         {
             _remitoRepository = remitoRepository;
+            _remitoPdfService = new RemitoPdfService();
         }
 
         /// <summary>
@@ -54,7 +59,7 @@ namespace BLL
             string direccion)
         {
             // Crear el objeto remito con los datos proporcionados
-            var remito = new Remito
+            var remito = new DomainRemito
             {
                 NombreGenerador = nombreGenerador,
                 DomicilioPlanta = domicilioPlanta,
@@ -72,6 +77,55 @@ namespace BLL
             // Validar y crear el remito
             CrearRemito(remito);
 
+            // **INTEGRACIÓN CON INVENTARIO: Registrar entrada automática en inventario**
+            try
+            {
+                var inventarioService = new InventarioService();
+                inventarioService.RegistrarEntradaDesdeRemito(
+                    tipoResiduo, 
+                    estado, 
+                    cantidad, 
+                    remito.IdRemito, 
+                    $"Generador: {nombreGenerador}"
+                );
+
+                LoggerService.WriteLog(
+                    $"Inventario actualizado automáticamente para remito {remito.IdRemito}",
+                    System.Diagnostics.TraceLevel.Info);
+            }
+            catch (Exception ex)
+            {
+                // Si falla la actualización del inventario, registramos advertencia
+                // pero no cancelamos el remito ya creado
+                LoggerService.WriteLog(
+                    $"Advertencia: Remito {remito.IdRemito} creado pero error al actualizar inventario. {ex.Message}",
+                    System.Diagnostics.TraceLevel.Warning);
+                LoggerService.WriteException(ex);
+            }
+
+            // **INTEGRACIÓN CON PDF: Generar PDF del remito automáticamente**
+            try
+            {
+                LoggerService.WriteLog(
+                    $"Iniciando generación de PDF para remito {remito.IdRemito}",
+                    System.Diagnostics.TraceLevel.Info);
+
+                var remitoPdf = _remitoPdfService.GenerarPdfRemito(remito.IdRemito);
+
+                LoggerService.WriteLog(
+                    $"PDF generado exitosamente para remito {remito.IdRemito}. Archivo: {remitoPdf.NombreArchivo}",
+                    System.Diagnostics.TraceLevel.Info);
+            }
+            catch (Exception ex)
+            {
+                // Si falla la generación del PDF, registramos advertencia
+                // pero NO cancelamos el remito (según decisión acordada)
+                LoggerService.WriteLog(
+                    $"ADVERTENCIA: Remito {remito.IdRemito} creado pero error al generar PDF. {ex.Message}",
+                    System.Diagnostics.TraceLevel.Warning);
+                LoggerService.WriteException(ex);
+            }
+
             return remito.IdRemito;
         }
 
@@ -80,7 +134,7 @@ namespace BLL
         /// Valida los datos antes de persistirlos en la base de datos.
         /// </summary>
         /// <param name="remito">El remito a crear.</param>
-        public void CrearRemito(Remito remito)
+        public void CrearRemito(DomainRemito remito)
         {
             // Validaciones de negocio
             ValidarRemito(remito);
@@ -117,7 +171,7 @@ namespace BLL
         /// </summary>
         /// <param name="idRemito">El ID del remito.</param>
         /// <returns>El remito correspondiente, si existe.</returns>
-        public Remito ObtenerRemitoPorId(Guid idRemito)
+        public DomainRemito ObtenerRemitoPorId(Guid idRemito)
         {
             return _remitoRepository.GetRemitoById(idRemito);
         }
@@ -126,7 +180,7 @@ namespace BLL
         /// Obtiene todos los remitos registrados en el sistema.
         /// </summary>
         /// <returns>Una lista de todos los remitos.</returns>
-        public List<Remito> ObtenerTodosLosRemitos()
+        public List<DomainRemito> ObtenerTodosLosRemitos()
         {
             return _remitoRepository.GetAllRemitos();
         }
@@ -136,7 +190,7 @@ namespace BLL
         /// </summary>
         /// <param name="cuit">El CUIT del generador.</param>
         /// <returns>Una lista de remitos asociados al CUIT especificado.</returns>
-        public List<Remito> ObtenerRemitosPorCuit(string cuit)
+        public List<DomainRemito> ObtenerRemitosPorCuit(string cuit)
         {
             if (string.IsNullOrWhiteSpace(cuit))
             {
@@ -152,7 +206,7 @@ namespace BLL
         /// <param name="fechaInicio">Fecha de inicio del rango.</param>
         /// <param name="fechaFin">Fecha de fin del rango.</param>
         /// <returns>Una lista de remitos dentro del rango de fechas.</returns>
-        public List<Remito> ObtenerRemitosPorFechaRango(DateTime fechaInicio, DateTime fechaFin)
+        public List<DomainRemito> ObtenerRemitosPorFechaRango(DateTime fechaInicio, DateTime fechaFin)
         {
             if (fechaInicio > fechaFin)
             {
@@ -188,7 +242,7 @@ namespace BLL
         /// Actualiza un remito existente.
         /// </summary>
         /// <param name="remito">El remito con los datos actualizados.</param>
-        public void ActualizarRemito(Remito remito)
+        public void ActualizarRemito(DomainRemito remito)
         {
             // Validar el remito
             ValidarRemito(remito);
@@ -207,7 +261,7 @@ namespace BLL
         /// Valida los datos de un remito antes de persistirlo.
         /// </summary>
         /// <param name="remito">El remito a validar.</param>
-        private void ValidarRemito(Remito remito)
+        private void ValidarRemito(DomainRemito remito)
         {
             if (remito == null)
             {

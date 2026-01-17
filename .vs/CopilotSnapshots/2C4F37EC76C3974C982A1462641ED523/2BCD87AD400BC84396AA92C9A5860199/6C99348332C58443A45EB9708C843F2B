@@ -1,0 +1,290 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RedAceite_ING_SOFTWARE.Forms
+{
+    public partial class FrmPrincipal : Form
+    {
+        // Variable para mantener referencia al formulario hijo activo actualmente
+        private Form activeForm = null;
+
+        public FrmPrincipal()
+        {
+            InitializeComponent();
+            
+            // Suscribirse al evento Load para configurar el diseño después de que el formulario se haya cargado
+            this.Load += FrmPrincipal_Load;
+        }
+
+        /// <summary>
+        /// Evento que se ejecuta cuando el formulario se carga completamente
+        /// Aquí configuramos elementos visuales que necesitan que el formulario ya esté inicializado
+        /// </summary>
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                // Hacer que el botón de perfil sea circular usando una región redondeada
+                // Se hace aquí porque el botón ya tiene su tamaño final
+                btnProfile.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnProfile.Width, btnProfile.Height, 20, 20));
+            }
+            catch (Exception ex)
+            {
+                // Si hay algún error al crear el botón circular, continuar sin él
+                // No es crítico para el funcionamiento de la aplicación
+                System.Diagnostics.Debug.WriteLine("Error al crear botón circular: " + ex.Message);
+            }
+        }
+
+        // Importación de función de Windows API para crear regiones redondeadas
+        // Esto se usa para hacer el botón de perfil circular
+        [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
+        /// <summary>
+        /// Método para abrir un formulario hijo dentro del panel principal
+        /// Esto permite que los formularios se abran dentro de la ventana principal
+        /// en lugar de abrir ventanas nuevas
+        /// </summary>
+        /// <param name="childForm">El formulario que se quiere abrir</param>
+        private void OpenChildForm(Form childForm)
+        {
+            try
+            {
+                // Si hay un formulario activo, cerrarlo primero
+                if (activeForm != null)
+                {
+                    activeForm.Close();
+                    activeForm.Dispose();
+                }
+                
+                // Configurar el nuevo formulario como hijo
+                activeForm = childForm;
+                childForm.TopLevel = false; // No es una ventana de nivel superior
+                childForm.FormBorderStyle = FormBorderStyle.None; // Sin bordes
+                childForm.Dock = DockStyle.Fill; // Llenar todo el panel
+                
+                // Limpiar el panel antes de agregar el nuevo formulario
+                panelMain.Controls.Clear();
+                
+                // Agregar el formulario al panel principal
+                panelMain.Controls.Add(childForm);
+                panelMain.Tag = childForm;
+                childForm.BringToFront(); // Traer al frente
+                childForm.Show(); // Mostrar el formulario
+            }
+            catch (Exception ex)
+            {
+                // Si hay un error al abrir el formulario hijo, mostrar mensaje
+                MessageBox.Show($"Error al abrir el formulario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ===== EVENTOS DE LOS BOTONES DEL SIDEBAR =====
+
+        /// <summary>
+        /// Evento cuando se hace clic en el botón Inicio
+        /// Vuelve a mostrar el dashboard principal
+        /// </summary>
+        private void btnInicio_Click(object sender, EventArgs e)
+        {
+            VolverAInicio();
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el logo RedAceite
+        /// Vuelve a mostrar el dashboard principal
+        /// </summary>
+        private void lblLogo_Click(object sender, EventArgs e)
+        {
+            VolverAInicio();
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el panel del logo
+        /// Vuelve a mostrar el dashboard principal
+        /// </summary>
+        private void panelLogo_Click(object sender, EventArgs e)
+        {
+            VolverAInicio();
+        }
+
+        /// <summary>
+        /// Método que vuelve a la vista principal (dashboard)
+        /// Cierra cualquier formulario hijo abierto y muestra el dashboard
+        /// </summary>
+        private void VolverAInicio()
+        {
+            // Cerrar cualquier formulario hijo abierto
+            if (activeForm != null)
+            {
+                activeForm.Close();
+                activeForm.Dispose();
+                activeForm = null;
+            }
+
+            // Limpiar el panel principal
+            panelMain.Controls.Clear();
+
+            // Volver a agregar el dashboard
+            panelMain.Controls.Add(panelDashboard);
+            panelDashboard.Dock = DockStyle.Fill;
+            panelDashboard.BringToFront();
+
+            // Cambiar el título
+            lblTitle.Text = "Menu Principal";
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el botón Manifiestos
+        /// </summary>
+        private void btnManifiestos_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Manifiestos";
+            // TODO: Abrir formulario de manifiestos cuando esté disponible
+            MessageBox.Show("Funcionalidad de Manifiestos próximamente", "Manifiestos", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el botón Remitos
+        /// Abre el formulario FrmGenerarRemito
+        /// </summary>
+        private void btnRemitos_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Remitos";
+            // Intentar abrir el formulario de generar remito
+            try
+            {
+                OpenChildForm(new FrmGenerarRemito());
+            }
+            catch (Exception ex)
+            {
+                // Si hay algún error, mostrar mensaje con detalles
+                MessageBox.Show($"Error al abrir Remitos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el botón Proveedores
+        /// Abre el formulario FrmGestionProveedores
+        /// </summary>
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Proveedores";
+            // Abrir el formulario de gestión de proveedores
+            try
+            {
+                OpenChildForm(new FrmGestionProveedores());
+            }
+            catch (Exception ex)
+            {
+                // Si hay algún error, mostrar mensaje con detalles
+                MessageBox.Show($"Error al abrir Proveedores: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el botón Usuarios
+        /// Muestra/oculta el submenú de usuarios
+        /// </summary>
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            // Alternar visibilidad del submenú (mostrar/ocultar)
+            panelUsuariosSubmenu.Visible = !panelUsuariosSubmenu.Visible;
+        }
+
+        /// <summary>
+        /// Evento cuando el mouse pasa por encima del botón Usuarios
+        /// Muestra automáticamente el submenú
+        /// </summary>
+        private void btnUsuarios_MouseEnter(object sender, EventArgs e)
+        {
+            // Mostrar submenú al pasar el mouse por encima
+            panelUsuariosSubmenu.Visible = true;
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el submenú "Crear" de Usuarios
+        /// Abre el formulario FrmCrearUsuario
+        /// </summary>
+        private void btnCrearUsuario_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Crear Usuario";
+            // Abrir el formulario de crear usuario
+            try
+            {
+                OpenChildForm(new FrmCrearUsuario());
+            }
+            catch (Exception ex)
+            {
+                // Si hay algún error, mostrar mensaje con detalles
+                MessageBox.Show($"Error al abrir Crear Usuario: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el submenú "Gestionar" de Usuarios
+        /// Abre el formulario FrmGestionUsuarios
+        /// </summary>
+        private void btnGestionarUsuarios_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Gestión de Usuarios";
+            // Abrir el formulario de gestión de usuarios
+            try
+            {
+                OpenChildForm(new FrmGestionUsuarios());
+            }
+            catch (Exception ex)
+            {
+                // Si hay algún error, mostrar mensaje con detalles
+                MessageBox.Show($"Error al abrir Gestión de Usuarios: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // ===== EVENTOS DE LA BARRA SUPERIOR =====
+
+        /// <summary>
+        /// Evento cuando se hace clic en el botón de notificaciones
+        /// </summary>
+        private void btnNotifications_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("No hay notificaciones nuevas", "Notificaciones", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el botón de perfil de usuario
+        /// </summary>
+        private void btnProfile_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Configuración de perfil próximamente", "Perfil", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // ===== EVENTOS DE LOS PANELES DEL DASHBOARD =====
+        // Estos permiten hacer clic en los paneles informativos para navegar
+
+        /// <summary>
+        /// Evento cuando se hace clic en el panel de Remitos del dashboard
+        /// Redirige al evento del botón Remitos
+        /// </summary>
+        private void panelRemitos_Click(object sender, EventArgs e)
+        {
+            btnRemitos_Click(sender, e);
+        }
+
+        /// <summary>
+        /// Evento cuando se hace clic en el panel de Manifiestos del dashboard
+        /// Redirige al evento del botón Manifiestos
+        /// </summary>
+        private void panelManifiestos_Click(object sender, EventArgs e)
+        {
+            btnManifiestos_Click(sender, e);
+        }
+    }
+}

@@ -1,0 +1,329 @@
+﻿using iText.IO.Image;
+using iText.Kernel.Colors;
+using iText.Kernel.Font;
+using iText.Kernel.Geom;
+using iText.Kernel.Pdf;
+using iText.Layout;
+using iText.Layout.Borders;
+using iText.Layout.Element;
+using iText.Layout.Properties;
+using SERVICES.DTO;
+using System;
+using System.IO;
+
+namespace SERVICES.Helpers
+{
+    /// <summary>
+    /// Helper para generar archivos PDF de remitos utilizando iText7.
+    /// Maneja toda la lógica técnica de creación y formateo del documento.
+    /// </summary>
+    public class PdfGeneratorHelper
+    {
+        /// <summary>
+        /// Crea un archivo PDF de remito con los datos proporcionados.
+        /// </summary>
+        /// <param name="datos">Datos del remito a incluir en el PDF.</param>
+        /// <param name="rutaDestino">Ruta completa donde se guardará el archivo PDF.</param>
+        /// <param name="rutaLogo">Ruta completa del archivo de logo a incluir.</param>
+        public void CrearRemitoPdf(DatosRemitoPdfDto datos, string rutaDestino, string rutaLogo)
+        {
+            // Crear el escritor PDF
+            using (PdfWriter writer = new PdfWriter(rutaDestino))
+            {
+                // Crear el documento PDF con tamaño A4
+                using (PdfDocument pdf = new PdfDocument(writer))
+                {
+                    using (Document document = new Document(pdf, PageSize.A4))
+                    {
+                        // Configurar márgenes
+                        document.SetMargins(30, 30, 30, 30);
+
+                        // Agregar contenido al documento
+                        AgregarLogo(document, rutaLogo);
+                        AgregarCabecera(document, datos);
+                        AgregarDatosTransportista(document, datos);
+                        AgregarDatosGenerador(document, datos);
+                        AgregarDatosResiduo(document, datos);
+                        AgregarFechaYFirma(document, datos);
+                        AgregarTextoLegal(document);
+                        
+                        // Solo agregar sección de envío si se requiere
+                        if (datos.RequiereEnvio)
+                        {
+                            AgregarDatosEnvio(document, datos);
+                        }
+
+                        AgregarPie(document);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Agrega el logo de RedAceite en la parte superior del documento.
+        /// </summary>
+        private void AgregarLogo(Document document, string rutaLogo)
+        {
+            try
+            {
+                if (File.Exists(rutaLogo))
+                {
+                    ImageData imageData = ImageDataFactory.Create(rutaLogo);
+                    Image logo = new Image(imageData);
+                    
+                    // Escalar el logo manteniendo proporciones
+                    logo.ScaleToFit(150, 80);
+                    logo.SetHorizontalAlignment(HorizontalAlignment.LEFT);
+                    
+                    document.Add(logo);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Si falla el logo, continuar sin él
+                Console.WriteLine($"Error al agregar logo: {ex.Message}");
+            }
+        }
+
+        /// <summary>
+        /// Agrega la cabecera del remito con título y número.
+        /// </summary>
+        private void AgregarCabecera(Document document, DatosRemitoPdfDto datos)
+        {
+            // Título principal
+            Paragraph titulo1 = new Paragraph("REDACEITE")
+                .SetFontSize(20)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetFontColor(new DeviceRgb(0, 128, 0)); // Verde
+
+            Paragraph titulo2 = new Paragraph("SERVICIOS ECOLÓGICOS")
+                .SetFontSize(14)
+                .SetTextAlignment(TextAlignment.CENTER);
+
+            // Número de remito
+            Paragraph numeroRemito = new Paragraph($"N° {datos.NumeroRemito}")
+                .SetFontSize(12)
+                .SetTextAlignment(TextAlignment.RIGHT);
+
+            document.Add(titulo1);
+            document.Add(titulo2);
+            document.Add(numeroRemito);
+            document.Add(new Paragraph("\n"));
+
+            // Subtítulo legal
+            Paragraph subtitulo = new Paragraph("CONSTANCIA de TRANSPORTE de RESIDUOS INDUSTRIAL NO ESPECIAL")
+                .SetFontSize(10)
+                .SetTextAlignment(TextAlignment.CENTER)
+                .SetBackgroundColor(new DeviceRgb(200, 200, 200))
+                .SetPadding(5);
+
+            document.Add(subtitulo);
+
+            // Resoluciones
+            Paragraph resoluciones = new Paragraph("Resolución SPA n°063/96 - Resoluciones OPDS n°04/08 y 198/10")
+                .SetFontSize(8)
+                .SetTextAlignment(TextAlignment.CENTER);
+
+            document.Add(resoluciones);
+            document.Add(new Paragraph("\n"));
+        }
+
+        /// <summary>
+        /// Agrega los datos del transportista al documento.
+        /// </summary>
+        private void AgregarDatosTransportista(Document document, DatosRemitoPdfDto datos)
+        {
+            Table tabla = new Table(2).UseAllAvailableWidth();
+            tabla.SetBorder(new SolidBorder(1));
+
+            // Nombre del transportista
+            tabla.AddCell(CrearCeldaEtiqueta("Nombre del Transportista:"));
+            tabla.AddCell(CrearCeldaDato(datos.NombreTransportista));
+
+            // Teléfono
+            tabla.AddCell(CrearCeldaEtiqueta("Tel:"));
+            tabla.AddCell(CrearCeldaDato(datos.TelefonoTransportista));
+
+            // Domicilio
+            tabla.AddCell(CrearCeldaEtiqueta("Domicilio:"));
+            tabla.AddCell(CrearCeldaDato(datos.DomicilioTransportista));
+
+            document.Add(tabla);
+            document.Add(new Paragraph("\n"));
+        }
+
+        /// <summary>
+        /// Agrega los datos del generador (proveedor) al documento.
+        /// </summary>
+        private void AgregarDatosGenerador(Document document, DatosRemitoPdfDto datos)
+        {
+            Table tabla = new Table(2).UseAllAvailableWidth();
+            tabla.SetBorder(new SolidBorder(1));
+
+            // Nombre del generador
+            tabla.AddCell(CrearCeldaEtiqueta("Nombre del Generador:"));
+            tabla.AddCell(CrearCeldaDato(datos.NombreGenerador));
+
+            // Domicilio de la planta
+            tabla.AddCell(CrearCeldaEtiqueta("Domicilio de la Planta:"));
+            tabla.AddCell(CrearCeldaDato(datos.DomicilioPlanta));
+
+            document.Add(tabla);
+            document.Add(new Paragraph("\n"));
+        }
+
+        /// <summary>
+        /// Agrega los datos del residuo al documento.
+        /// </summary>
+        private void AgregarDatosResiduo(Document document, DatosRemitoPdfDto datos)
+        {
+            Table tabla = new Table(2).UseAllAvailableWidth();
+            tabla.SetBorder(new SolidBorder(1));
+
+            // Tipo de residuo
+            tabla.AddCell(CrearCeldaEtiqueta("Tipo de Residuos:"));
+            tabla.AddCell(CrearCeldaDato(datos.TipoResiduo.ToUpper()));
+
+            // Cantidad
+            string unidad = datos.Estado == "Líquido" ? "L" : "Kg";
+            tabla.AddCell(CrearCeldaEtiqueta("Cantidad:"));
+            tabla.AddCell(CrearCeldaDato($"{datos.Cantidad:N2} {unidad}"));
+
+            // Estado
+            tabla.AddCell(CrearCeldaEtiqueta("Estado:"));
+            tabla.AddCell(CrearCeldaDato(datos.Estado.ToUpper()));
+
+            document.Add(tabla);
+            document.Add(new Paragraph("\n"));
+        }
+
+        /// <summary>
+        /// Agrega la fecha de entrega y espacio para firma.
+        /// </summary>
+        private void AgregarFechaYFirma(Document document, DatosRemitoPdfDto datos)
+        {
+            Table tabla = new Table(2).UseAllAvailableWidth();
+            tabla.SetBorder(Border.NO_BORDER);
+
+            // Fecha de entrega
+            Paragraph fecha = new Paragraph($"Fecha de Entrega: {datos.FechaCreacion:dd/MM/yyyy}")
+                .SetFontSize(10);
+
+            Cell celdaFecha = new Cell()
+                .Add(fecha)
+                .SetBorder(Border.NO_BORDER)
+                .SetTextAlignment(TextAlignment.LEFT);
+
+            // Espacio para firma
+            Paragraph firma = new Paragraph("\n\n_______________________________\nFirma")
+                .SetFontSize(10)
+                .SetTextAlignment(TextAlignment.CENTER);
+
+            Cell celdaFirma = new Cell()
+                .Add(firma)
+                .SetBorder(Border.NO_BORDER)
+                .SetTextAlignment(TextAlignment.RIGHT);
+
+            tabla.AddCell(celdaFecha);
+            tabla.AddCell(celdaFirma);
+
+            document.Add(tabla);
+            document.Add(new Paragraph("\n"));
+        }
+
+        /// <summary>
+        /// Agrega el texto legal informativo.
+        /// </summary>
+        private void AgregarTextoLegal(Document document)
+        {
+            Paragraph textoLegal = new Paragraph(
+                "Sirve la Firma de este documento para la auto declaración de " +
+                "sustentabilidad ISCC para los países de la Unión Europea según la " +
+                "directiva 2009/28/CE. Este establecimiento no genera más de 10.000 lts mensuales. " +
+                "Para la admisión de residuos al Ministerio de Ambiente de la " +
+                "Provincia de Buenos Aires\nDe requerir envío:")
+                .SetFontSize(7)
+                .SetTextAlignment(TextAlignment.JUSTIFIED);
+
+            document.Add(textoLegal);
+            document.Add(new Paragraph("\n"));
+        }
+
+        /// <summary>
+        /// Agrega los datos de envío si se requiere.
+        /// </summary>
+        private void AgregarDatosEnvio(Document document, DatosRemitoPdfDto datos)
+        {
+            Paragraph titulo = new Paragraph("Se requiere envío:")
+                .SetFontSize(11)
+                .SetBold();
+
+            document.Add(titulo);
+
+            Table tabla = new Table(2).UseAllAvailableWidth();
+            tabla.SetBorder(new SolidBorder(1));
+
+            // CUIT
+            tabla.AddCell(CrearCeldaEtiqueta("*CUIT:"));
+            tabla.AddCell(CrearCeldaDato(datos.Cuit));
+
+            // Nombre de fantasía
+            tabla.AddCell(CrearCeldaEtiqueta("*Nombre de Fantasía:"));
+            tabla.AddCell(CrearCeldaDato(datos.NombreFantasia));
+
+            // Dirección
+            tabla.AddCell(CrearCeldaEtiqueta("*Dirección:"));
+            tabla.AddCell(CrearCeldaDato(datos.DireccionEnvio));
+
+            document.Add(tabla);
+            document.Add(new Paragraph("\n"));
+
+            // Email
+            Paragraph email = new Paragraph(
+                "*Dirección de mail a nuestra casilla: Info@redaceite.com.ar\n" +
+                "                                                          hugorocha7473@hotmail.com.ar")
+                .SetFontSize(8);
+
+            document.Add(email);
+        }
+
+        /// <summary>
+        /// Agrega el pie de página con información de contacto.
+        /// </summary>
+        private void AgregarPie(Document document)
+        {
+            document.Add(new Paragraph("\n"));
+
+            Paragraph whatsapp = new Paragraph("📱 (011)114-4917473")
+                .SetFontSize(12)
+                .SetBold()
+                .SetTextAlignment(TextAlignment.CENTER);
+
+            document.Add(whatsapp);
+        }
+
+        /// <summary>
+        /// Crea una celda formateada para etiquetas.
+        /// </summary>
+        private Cell CrearCeldaEtiqueta(string texto)
+        {
+            return new Cell()
+                .Add(new Paragraph(texto)
+                    .SetFontSize(9)
+                    .SetBold())
+                .SetBackgroundColor(new DeviceRgb(240, 240, 240))
+                .SetPadding(5);
+        }
+
+        /// <summary>
+        /// Crea una celda formateada para datos.
+        /// </summary>
+        private Cell CrearCeldaDato(string texto)
+        {
+            return new Cell()
+                .Add(new Paragraph(texto ?? "")
+                    .SetFontSize(9))
+                .SetPadding(5);
+        }
+    }
+}
