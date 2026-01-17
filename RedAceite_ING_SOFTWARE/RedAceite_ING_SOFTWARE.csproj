@@ -150,52 +150,56 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmAltaProveedor.cs">
+    <Compile Include="Forms\Patentes\FrmAltaProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmAltaProveedor.Designer.cs">
+    <Compile Include="Forms\Patentes\FrmAltaProveedor.Designer.cs">
       <DependentUpon>FrmAltaProveedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmAsignarFamilias.cs">
+    <Compile Include="Forms\Roles\FrmAsignarFamilias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmAsignarFamilias.Designer.cs">
+    <Compile Include="Forms\Roles\FrmAsignarFamilias.Designer.cs">
       <DependentUpon>FrmAsignarFamilias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmAsignarPatentes.cs">
+    <Compile Include="Forms\Roles\FrmAsignarPatentes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmAsignarPatentes.Designer.cs">
+    <Compile Include="Forms\Roles\FrmAsignarPatentes.Designer.cs">
       <DependentUpon>FrmAsignarPatentes.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmCrearRol.cs">
+    <Compile Include="Forms\Roles\FrmCrearRol.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmCrearRol.Designer.cs">
+    <Compile Include="Forms\Roles\FrmCrearRol.Designer.cs">
       <DependentUpon>FrmCrearRol.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmCrearUsuario.cs">
+    <Compile Include="Forms\Patentes\FrmCrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmCrearUsuario.Designer.cs">
+    <Compile Include="Forms\Patentes\FrmCrearUsuario.Designer.cs">
       <DependentUpon>FrmCrearUsuario.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmGenerarRemito.cs">
+    <Compile Include="Forms\Patentes\FrmGenerarRemito.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmGenerarRemito.Designer.cs">
+    <Compile Include="Forms\Patentes\FrmGenerarRemito.Designer.cs">
       <DependentUpon>FrmGenerarRemito.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmGestionProveedores.cs">
+    <Compile Include="Forms\Gestiones\FrmGestionProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmGestionProveedores.Designer.cs">
+    <Compile Include="Forms\Gestiones\FrmGestionProveedores.Designer.cs">
       <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmGestionUsuarios.cs">
+    <Compile Include="Forms\Gestiones\FrmGestionRemitos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmGestionUsuarios.Designer.cs">
+    <Compile Include="Forms\Gestiones\FrmGestionRemitos.Designer.cs" />
+    <Compile Include="Forms\Gestiones\FrmGestionUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Gestiones\FrmGestionUsuarios.Designer.cs">
       <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmLogin.cs">
@@ -204,16 +208,16 @@
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmModificarProveedor.cs">
+    <Compile Include="Forms\Patentes\FrmModificarProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmModificarProveedor.Designer.cs">
+    <Compile Include="Forms\Patentes\FrmModificarProveedor.Designer.cs">
       <DependentUpon>FrmModificarProveedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FrmModificarUsuario.cs">
+    <Compile Include="Forms\Patentes\FrmModificarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FrmModificarUsuario.Designer.cs">
+    <Compile Include="Forms\Patentes\FrmModificarUsuario.Designer.cs">
       <DependentUpon>FrmModificarUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmPrincipal.cs">
@@ -239,17 +243,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Trabajo_GODZ_LogDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Forms\FrmCrearRol.resx">
+    <EmbeddedResource Include="Forms\Roles\FrmCrearRol.resx">
       <DependentUpon>FrmCrearRol.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmCrearUsuario.resx">
+    <EmbeddedResource Include="Forms\Patentes\FrmCrearUsuario.resx">
       <DependentUpon>FrmCrearUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmGenerarRemito.resx">
+    <EmbeddedResource Include="Forms\Patentes\FrmGenerarRemito.resx">
       <DependentUpon>FrmGenerarRemito.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FrmGestionProveedores.resx">
+    <EmbeddedResource Include="Forms\Gestiones\FrmGestionProveedores.resx">
       <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">

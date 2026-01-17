@@ -141,6 +141,7 @@
   <ItemGroup>
     <Compile Include="Inventario\InventarioService.cs" />
     <Compile Include="Proveedor\ProveedorService.cs" />
+    <Compile Include="Remito\RemitoGestionService.cs" />
     <Compile Include="Remito\RemitoPdfService.cs" />
     <Compile Include="Remito\RemitoService.cs" />
     <Compile Include="ServiceFactory.cs" />

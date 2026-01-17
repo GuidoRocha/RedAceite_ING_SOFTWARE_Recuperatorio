@@ -1,222 +1,4 @@
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe.config
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.pdb
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.pdb
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll.config
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.AssemblyReference.cache
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.SuggestedBindingRedirects.cache
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe.config
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\SERVICES.Forms.LogIn.resources
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmPrincipal.resources
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Properties.Resources.resources
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.GenerateResource.cache
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.CoreCompileInputs.cache
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceit.EA85C1A6.Up2Date
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.pdb
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe.config
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.pdb
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.pdb
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll.config
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.AssemblyReference.cache
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.SuggestedBindingRedirects.cache
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe.config
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\SERVICES.Forms.LogIn.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmPrincipal.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Properties.Resources.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.GenerateResource.cache
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.CoreCompileInputs.cache
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceit.EA85C1A6.Up2Date
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.pdb
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearUsuario.resources
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearRol.resources
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearUsuario.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe.config
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.pdb
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.pdb
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll.config
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.AssemblyReference.cache
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.SuggestedBindingRedirects.cache
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe.config
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearRol.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearUsuario.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\SERVICES.Forms.LogIn.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmPrincipal.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Properties.Resources.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.GenerateResource.cache
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.CoreCompileInputs.cache
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceit.EA85C1A6.Up2Date
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.pdb
-C:\Users\guido\OneDrive\Documentos\GitHub\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmGenerarRemito.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmGenerarRemito.resources
-C:\Users\Botmaker\Desktop\Uai\ING SOFTWARE 2.0\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmGestionProveedores.resources
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe.config
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.pdb
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.pdb
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll.config
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.AssemblyReference.cache
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe.config
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearRol.resources
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearUsuario.resources
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmGenerarRemito.resources
@@ -226,81 +8,14 @@ C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_IN
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Properties.Resources.resources
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.GenerateResource.cache
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.CoreCompileInputs.cache
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceit.EA85C1A6.Up2Date
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.pdb
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.AssemblyReference.cache
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearRol.resources
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmCrearUsuario.resources
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmGenerarRemito.resources
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmGestionProveedores.resources
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\SERVICES.Forms.LogIn.resources
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Forms.FrmPrincipal.resources
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.Properties.Resources.resources
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.GenerateResource.cache
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.CoreCompileInputs.cache
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe.config
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.pdb
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BLL.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DOMAIN.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DAL.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BLL.pdb
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DOMAIN.pdb
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.pdb
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll.config
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DAL.pdb
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.csproj.SuggestedBindingRedirects.cache
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe.config
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceit.EA85C1A6.Up2Date
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe
-C:\RecuperatorioREDACEITE\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.pdb
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe.config
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.exe
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\RedAceite_ING_SOFTWARE.pdb
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BLL.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BouncyCastle.Cryptography.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DOMAIN.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DAL.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BLL.pdb
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DOMAIN.pdb
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DAL.pdb
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.barcodes.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.bouncy-castle-adapter.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.bouncy-castle-connector.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.commons.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.forms.dll
@@ -312,18 +27,45 @@ C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_IN
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.sign.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.styledxmlparser.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.svg.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.DependencyInjection.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Options.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Primitives.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Diagnostics.DiagnosticSource.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Security.AccessControl.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Security.Cryptography.Xml.dll
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Security.Principal.Windows.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DAL.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.dll
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BLL.pdb
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BLL.dll.config
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DOMAIN.pdb
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DOMAIN.dll.config
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.pdb
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\SERVICES.dll.config
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BouncyCastle.Cryptography.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.barcodes.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.bouncy-castle-adapter.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.bouncy-castle-connector.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.commons.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.forms.xml
@@ -335,17 +77,36 @@ C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_IN
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.sign.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.styledxmlparser.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.svg.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.AsyncInterfaces.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.DependencyInjection.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Logging.Abstractions.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Options.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Extensions.Primitives.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Newtonsoft.Json.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Buffers.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Memory.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Numerics.Vectors.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Security.AccessControl.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Security.Cryptography.Xml.xml
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Security.Principal.Windows.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Threading.Tasks.Extensions.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.ValueTuple.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DAL.pdb
 C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\DAL.dll.config
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BouncyCastle.Cryptography.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.bouncy-castle-adapter.dll
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\BouncyCastle.Cryptography.xml
-C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\itext.bouncy-castle-adapter.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Twilio.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.IdentityModel.Tokens.Jwt.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Tokens.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Json.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Logging.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\System.Text.Encodings.Web.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.IdentityModel.Abstractions.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.TimeProvider.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\bin\Debug\Microsoft.Bcl.Memory.xml
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceit.EA85C1A6.Up2Date
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.exe
+C:\TrabajoDiplomaRecuperatorio\RedAceite_ING_SOFTWARE_Recuperatorio\RedAceite_ING_SOFTWARE\obj\Debug\RedAceite_ING_SOFTWARE.pdb

@@ -177,6 +177,91 @@ namespace DAL.Implementaciones
                 new SqlParameter("@IdRemito", idRemito));
         }
 
+        /// <summary>
+        /// Obtiene todos los remitos con su información de PDF asociada (LEFT JOIN).
+        /// Usado específicamente para la pantalla de gestión de remitos.
+        /// </summary>
+        public List<RemitoGestionDto> GetRemitosConPdf()
+        {
+            List<RemitoGestionDto> remitos = new List<RemitoGestionDto>();
+
+            string query = @"SELECT 
+                                R.IdRemito, R.FechaCreacion, R.NombreGenerador, R.Cuit, 
+                                R.TipoResiduo, R.Cantidad, R.Estado, R.EstadoRemito,
+                                R.NombreFantasia, R.Direccion, R.DomicilioPlanta,
+                                R.NombreTransportista, R.DomicilioTransportista,
+                                P.IdRemitoPDF, P.NombreArchivo, P.FechaGeneracion, P.TamañoBytes, P.HashMD5
+                             FROM Remito R
+                             LEFT JOIN RemitoPDF P ON R.IdRemito = P.IdRemito
+                             ORDER BY R.FechaCreacion DESC";
+
+            using (SqlDataReader reader = SqlHelper.ExecuteReaderWithConnection(query, CommandType.Text, SqlHelper.conStringRemitos))
+            {
+                while (reader.Read())
+                {
+                    remitos.Add(MapearRemitoGestionDto(reader));
+                }
+            }
+
+            return remitos;
+        }
+
+        /// <summary>
+        /// Obtiene remitos filtrados con su información de PDF asociada.
+        /// </summary>
+        public List<RemitoGestionDto> GetRemitosFiltradosConPdf(DateTime? fechaInicio, DateTime? fechaFin, string cuit, string tipoResiduo)
+        {
+            List<RemitoGestionDto> remitos = new List<RemitoGestionDto>();
+            List<SqlParameter> parametros = new List<SqlParameter>();
+
+            string query = @"SELECT 
+                                R.IdRemito, R.FechaCreacion, R.NombreGenerador, R.Cuit, 
+                                R.TipoResiduo, R.Cantidad, R.Estado, R.EstadoRemito,
+                                R.NombreFantasia, R.Direccion, R.DomicilioPlanta,
+                                R.NombreTransportista, R.DomicilioTransportista,
+                                P.IdRemitoPDF, P.NombreArchivo, P.FechaGeneracion, P.TamañoBytes, P.HashMD5
+                             FROM Remito R
+                             LEFT JOIN RemitoPDF P ON R.IdRemito = P.IdRemito
+                             WHERE 1=1";
+
+            // Aplicar filtros dinámicamente
+            if (fechaInicio.HasValue)
+            {
+                query += " AND R.FechaCreacion >= @FechaInicio";
+                parametros.Add(new SqlParameter("@FechaInicio", fechaInicio.Value));
+            }
+
+            if (fechaFin.HasValue)
+            {
+                query += " AND R.FechaCreacion <= @FechaFin";
+                parametros.Add(new SqlParameter("@FechaFin", fechaFin.Value));
+            }
+
+            if (!string.IsNullOrWhiteSpace(cuit))
+            {
+                query += " AND R.Cuit LIKE @Cuit";
+                parametros.Add(new SqlParameter("@Cuit", $"%{cuit}%"));
+            }
+
+            if (!string.IsNullOrWhiteSpace(tipoResiduo))
+            {
+                query += " AND R.TipoResiduo = @TipoResiduo";
+                parametros.Add(new SqlParameter("@TipoResiduo", tipoResiduo));
+            }
+
+            query += " ORDER BY R.FechaCreacion DESC";
+
+            using (SqlDataReader reader = SqlHelper.ExecuteReaderWithConnection(query, CommandType.Text, SqlHelper.conStringRemitos, parametros.ToArray()))
+            {
+                while (reader.Read())
+                {
+                    remitos.Add(MapearRemitoGestionDto(reader));
+                }
+            }
+
+            return remitos;
+        }
+
         #endregion
 
         #region Métodos de IGenericRepository<Remito>
@@ -283,6 +368,40 @@ namespace DAL.Implementaciones
                 Direccion = reader.GetString(10),
                 FechaCreacion = reader.GetDateTime(11),
                 EstadoRemito = reader.GetString(12)
+            };
+        }
+
+        /// <summary>
+        /// Mapea un SqlDataReader a un objeto RemitoGestionDto.
+        /// Incluye datos del remito y su PDF asociado (LEFT JOIN).
+        /// </summary>
+        /// <param name="reader">El SqlDataReader con los datos combinados.</param>
+        /// <returns>Un objeto RemitoGestionDto mapeado.</returns>
+        private RemitoGestionDto MapearRemitoGestionDto(SqlDataReader reader)
+        {
+            return new RemitoGestionDto
+            {
+                // Campos del Remito
+                IdRemito = reader.GetGuid(0),
+                FechaCreacion = reader.GetDateTime(1),
+                NombreGenerador = reader.GetString(2),
+                Cuit = reader.GetString(3),
+                TipoResiduo = reader.GetString(4),
+                Cantidad = reader.GetDecimal(5),
+                Estado = reader.GetString(6),
+                EstadoRemito = reader.GetString(7),
+                NombreFantasia = reader.GetString(8),
+                Direccion = reader.GetString(9),
+                DomicilioPlanta = reader.GetString(10),
+                NombreTransportista = reader.GetString(11),
+                DomicilioTransportista = reader.GetString(12),
+
+                // Campos del RemitoPDF (pueden ser NULL por el LEFT JOIN)
+                IdRemitoPDF = reader.IsDBNull(13) ? (Guid?)null : reader.GetGuid(13),
+                NombreArchivo = reader.IsDBNull(14) ? null : reader.GetString(14),
+                FechaGeneracionPdf = reader.IsDBNull(15) ? (DateTime?)null : reader.GetDateTime(15),
+                TamañoBytes = reader.IsDBNull(16) ? (long?)null : reader.GetInt64(16),
+                HashMD5 = reader.IsDBNull(17) ? null : reader.GetString(17)
             };
         }
 

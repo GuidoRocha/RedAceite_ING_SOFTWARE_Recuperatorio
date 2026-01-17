@@ -1,0 +1,527 @@
+using BLL.Remito;
+using DOMAIN;
+using SERVICES.Facade;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Diagnostics;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RedAceite_ING_SOFTWARE.Forms
+{
+    /// <summary>
+    /// Formulario principal para la gestión de remitos.
+    /// Permite listar, filtrar, visualizar y descargar PDFs de remitos generados.
+    /// </summary>
+    public partial class FrmGestionRemitos : Form
+    {
+        private readonly RemitoGestionService _remitoGestionService;
+        private bool _columnsConfigured = false;
+
+        public FrmGestionRemitos()
+        {
+            InitializeComponent();
+
+            _remitoGestionService = new RemitoGestionService();
+
+            // Configurar DataGridView para tener control total sobre las columnas
+            dgvRemitos.AutoGenerateColumns = true;
+
+            // Suscribirse a los eventos del DataGridView
+            dgvRemitos.CellFormatting += dgvRemitos_CellFormatting;
+            dgvRemitos.DataBindingComplete += dgvRemitos_DataBindingComplete;
+            dgvRemitos.SelectionChanged += dgvRemitos_SelectionChanged;
+            dgvRemitos.CellContentClick += dgvRemitos_CellContentClick;
+
+            // Suscribirse a eventos de filtros
+            btnFiltrar.Click += btnFiltrar_Click;
+            btnLimpiarFiltros.Click += btnLimpiarFiltros_Click;
+
+            // Suscribirse a eventos de botones de acción
+            btnAgregarRemito.Click += btnAgregarRemito_Click;
+            btnModificarRemito.Click += btnModificarRemito_Click;
+            btnEliminarRemito.Click += btnEliminarRemito_Click;
+
+            // Suscribirse al evento KeyDown del ComboBox para manejar Delete/Backspace
+            cmbTipoResiduo.KeyDown += cmbTipoResiduo_KeyDown;
+
+            // Configurar estado inicial de los botones
+            ConfigurarEstadoBotones();
+
+            // Inicializar combo de tipo de residuo
+            InicializarComboTipoResiduo();
+
+            // Cargar remitos al final
+            CargarRemitos();
+        }
+
+        /// <summary>
+        /// Inicializa el ComboBox de tipo de residuo con las opciones disponibles.
+        /// </summary>
+        private void InicializarComboTipoResiduo()
+        {
+            cmbTipoResiduo.Items.Clear();
+            cmbTipoResiduo.Items.Add("Todos"); // Primera opción para mostrar todos
+            cmbTipoResiduo.Items.Add("Aceite");
+            cmbTipoResiduo.Items.Add("Grasa");
+            cmbTipoResiduo.SelectedIndex = 0; // Seleccionar "Todos" por defecto
+
+            // Agregar tooltip explicativo
+            var tooltip = new ToolTip();
+            tooltip.SetToolTip(cmbTipoResiduo, "Presione Delete o Backspace para volver a 'Todos'");
+        }
+
+        /// <summary>
+        /// Maneja el evento KeyDown del ComboBox de tipo de residuo.
+        /// Permite borrar la selección con Delete o Backspace.
+        /// </summary>
+        private void cmbTipoResiduo_KeyDown(object sender, KeyEventArgs e)
+        {
+            // Si se presiona Delete o Backspace, resetear a "Todos"
+            if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
+            {
+                cmbTipoResiduo.SelectedIndex = 0; // Volver a "Todos"
+                e.Handled = true; // Marcar el evento como manejado
+                e.SuppressKeyPress = true; // Suprimir el sonido de la tecla
+            }
+        }
+
+        /// <summary>
+        /// Carga todos los remitos con su información de PDF en el DataGridView.
+        /// </summary>
+        private void CargarRemitos()
+        {
+            try
+            {
+                var remitos = _remitoGestionService.ObtenerRemitosParaGestion();
+                dgvRemitos.DataSource = remitos;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al cargar remitos: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Evento que se dispara cuando el DataGridView ha terminado de enlazar los datos.
+        /// Configura las columnas después de que el grid haya cargado los datos.
+        /// </summary>
+        private void dgvRemitos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            ConfigurarColumnas();
+        }
+
+        /// <summary>
+        /// Evento que se dispara al formatear cada celda del DataGridView.
+        /// Pinta las filas de remitos anulados en gris oscuro.
+        /// </summary>
+        private void dgvRemitos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                if (e.RowIndex >= 0 && e.RowIndex < dgvRemitos.Rows.Count)
+                {
+                    var row = dgvRemitos.Rows[e.RowIndex];
+                    var remito = row.DataBoundItem as RemitoGestionDto;
+
+                    if (remito != null)
+                    {
+                        // Formatear el CUIT para mostrarlo con guiones (XX-XXXXXXXX-X)
+                        if (dgvRemitos.Columns[e.ColumnIndex].Name == "Cuit" && e.Value != null)
+                        {
+                            string cuit = e.Value.ToString();
+                            if (!cuit.Contains("-") && cuit.Length == 11)
+                            {
+                                e.Value = $"{cuit.Substring(0, 2)}-{cuit.Substring(2, 8)}-{cuit.Substring(10, 1)}";
+                                e.FormattingApplied = true;
+                            }
+                        }
+
+                        // Si el remito está anulado, pintar la fila en gris
+                        if (remito.EstaAnulado)
+                        {
+                            e.CellStyle.BackColor = Color.LightGray;
+                            e.CellStyle.ForeColor = Color.DarkGray;
+                            e.CellStyle.SelectionBackColor = Color.Gray;
+                            e.CellStyle.SelectionForeColor = Color.White;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Evento que se dispara cuando cambia la selección en el DataGridView.
+        /// </summary>
+        private void dgvRemitos_SelectionChanged(object sender, EventArgs e)
+        {
+            ConfigurarEstadoBotones();
+        }
+
+        /// <summary>
+        /// Evento que se dispara cuando se hace clic en el contenido de una celda.
+        /// Usado para detectar clics en el botón de descargar PDF.
+        /// </summary>
+        private void dgvRemitos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verificar que sea el botón de descarga
+            if (e.RowIndex >= 0 && dgvRemitos.Columns[e.ColumnIndex].Name == "DescargarPdf")
+            {
+                var remito = dgvRemitos.Rows[e.RowIndex].DataBoundItem as RemitoGestionDto;
+                
+                if (remito != null && remito.TienePdf)
+                {
+                    DescargarPdfRemito(remito.IdRemito);
+                }
+                else
+                {
+                    MessageBox.Show("Este remito no tiene un PDF generado.", "Información",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Configura el estado (habilitado/deshabilitado) de los botones según la selección.
+        /// </summary>
+        private void ConfigurarEstadoBotones()
+        {
+            // Por ahora los botones Modificar y Eliminar están deshabilitados
+            // según los requisitos (sin funcionalidad por ahora)
+            btnModificarRemito.Enabled = false;
+            btnEliminarRemito.Enabled = false;
+
+            // El botón Agregar siempre está habilitado
+            btnAgregarRemito.Enabled = true;
+        }
+
+        /// <summary>
+        /// Configura las columnas del DataGridView.
+        /// </summary>
+        private void ConfigurarColumnas()
+        {
+            if (dgvRemitos.Columns.Count == 0) return;
+
+            try
+            {
+                // Suspender el layout para evitar parpadeos
+                dgvRemitos.SuspendLayout();
+
+                // Marcar que las columnas ya fueron configuradas
+                _columnsConfigured = true;
+
+                // Ocultar columnas que no se deben mostrar
+                OcultarColumnasNoNecesarias();
+
+                // Configurar columnas visibles
+                ConfigurarColumnasVisibles();
+
+                // Agregar columna de botón para descargar PDF
+                AgregarColumnaBotonDescarga();
+
+                // Reanudar el layout
+                dgvRemitos.ResumeLayout();
+            }
+            catch (Exception ex)
+            {
+                dgvRemitos.ResumeLayout();
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Oculta las columnas que no deben ser visibles al usuario.
+        /// </summary>
+        private void OcultarColumnasNoNecesarias()
+        {
+            string[] columnasOcultas = new string[]
+            {
+                "IdRemito", "EstadoRemito", "DomicilioPlanta", "NombreFantasia",
+                "Direccion", "NombreTransportista", "DomicilioTransportista",
+                "IdRemitoPDF", "NombreArchivo", "FechaGeneracionPdf", "TamañoBytes",
+                "HashMD5", "TienePdf", "EstaAnulado", "TamañoFormateado"
+            };
+
+            foreach (string nombreColumna in columnasOcultas)
+            {
+                if (dgvRemitos.Columns.Contains(nombreColumna))
+                {
+                    dgvRemitos.Columns[nombreColumna].Visible = false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Configura las propiedades de las columnas visibles.
+        /// </summary>
+        private void ConfigurarColumnasVisibles()
+        {
+            int displayIndex = 0;
+
+            // Fecha Creación
+            if (dgvRemitos.Columns.Contains("FechaCreacion"))
+            {
+                var col = dgvRemitos.Columns["FechaCreacion"];
+                col.HeaderText = "Fecha Creación";
+                col.DisplayIndex = displayIndex++;
+                col.Width = 150;
+                col.MinimumWidth = 120;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                col.DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            }
+
+            // Nombre Generador
+            if (dgvRemitos.Columns.Contains("NombreGenerador"))
+            {
+                var col = dgvRemitos.Columns["NombreGenerador"];
+                col.HeaderText = "Nombre Generador";
+                col.DisplayIndex = displayIndex++;
+                col.Width = 200;
+                col.MinimumWidth = 150;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+
+            // CUIT
+            if (dgvRemitos.Columns.Contains("Cuit"))
+            {
+                var col = dgvRemitos.Columns["Cuit"];
+                col.HeaderText = "CUIT";
+                col.DisplayIndex = displayIndex++;
+                col.Width = 140;
+                col.MinimumWidth = 120;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
+
+            // Tipo Residuo
+            if (dgvRemitos.Columns.Contains("TipoResiduo"))
+            {
+                var col = dgvRemitos.Columns["TipoResiduo"];
+                col.HeaderText = "Tipo Residuo";
+                col.DisplayIndex = displayIndex++;
+                col.Width = 100;
+                col.MinimumWidth = 80;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
+
+            // Cantidad
+            if (dgvRemitos.Columns.Contains("Cantidad"))
+            {
+                var col = dgvRemitos.Columns["Cantidad"];
+                col.HeaderText = "Cantidad";
+                col.DisplayIndex = displayIndex++;
+                col.Width = 100;
+                col.MinimumWidth = 80;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                col.DefaultCellStyle.Format = "N2";
+                col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            // Estado Físico
+            if (dgvRemitos.Columns.Contains("Estado"))
+            {
+                var col = dgvRemitos.Columns["Estado"];
+                col.HeaderText = "Estado Físico";
+                col.DisplayIndex = displayIndex++;
+                col.Width = 100;
+                col.MinimumWidth = 80;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
+        }
+
+        /// <summary>
+        /// Agrega o actualiza la columna de botón para descargar PDF.
+        /// </summary>
+        private void AgregarColumnaBotonDescarga()
+        {
+            // Remover la columna si ya existe para evitar duplicados
+            if (dgvRemitos.Columns.Contains("DescargarPdf"))
+            {
+                dgvRemitos.Columns.Remove("DescargarPdf");
+            }
+
+            // Crear la columna de botón
+            var colDescargarPdf = new DataGridViewButtonColumn
+            {
+                Name = "DescargarPdf",
+                HeaderText = "PDF",
+                Text = "? Descargar",
+                UseColumnTextForButtonValue = true,
+                Width = 110,
+                MinimumWidth = 100,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                FlatStyle = FlatStyle.Flat
+            };
+
+            // Agregar la columna al final
+            dgvRemitos.Columns.Add(colDescargarPdf);
+            
+            // Asegurarse de que sea la última columna
+            dgvRemitos.Columns["DescargarPdf"].DisplayIndex = dgvRemitos.Columns.Count - 1;
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Filtrar.
+        /// </summary>
+        private void btnFiltrar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime? fechaInicio = null;
+                DateTime? fechaFin = null;
+                string cuit = txtFiltroCUIT.Text.Trim();
+                string tipoResiduo = cmbTipoResiduo.SelectedItem?.ToString();
+
+                // Si el tipo de residuo es "Todos" o está vacío, no filtrar por tipo
+                if (tipoResiduo == "Todos" || string.IsNullOrWhiteSpace(tipoResiduo))
+                {
+                    tipoResiduo = null;
+                }
+
+                // Solo aplicar filtro de fecha si hay algún valor significativo
+                if (dtpFechaInicio.Checked)
+                    fechaInicio = dtpFechaInicio.Value.Date;
+                
+                if (dtpFechaFin.Checked)
+                    fechaFin = dtpFechaFin.Value.Date.AddDays(1).AddSeconds(-1); // Hasta el final del día
+
+                // Si no hay ningún filtro aplicado, cargar todos
+                if (!fechaInicio.HasValue && !fechaFin.HasValue && 
+                    string.IsNullOrWhiteSpace(cuit) && string.IsNullOrWhiteSpace(tipoResiduo))
+                {
+                    CargarRemitos();
+                    return;
+                }
+
+                // Aplicar los filtros
+                var remitosFiltrados = _remitoGestionService.ObtenerRemitosFiltrados(
+                    fechaInicio, fechaFin, cuit, tipoResiduo);
+                
+                dgvRemitos.DataSource = remitosFiltrados;
+
+                MessageBox.Show($"Se encontraron {remitosFiltrados.Count} remitos con los filtros aplicados.", 
+                    "Filtros Aplicados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al filtrar remitos: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Limpiar Filtros.
+        /// </summary>
+        private void btnLimpiarFiltros_Click(object sender, EventArgs e)
+        {
+            // Limpiar todos los filtros
+            dtpFechaInicio.Checked = false;
+            dtpFechaInicio.Value = DateTime.Now;
+            dtpFechaFin.Checked = false;
+            dtpFechaFin.Value = DateTime.Now;
+            txtFiltroCUIT.Clear();
+            cmbTipoResiduo.SelectedIndex = 0;
+
+            // Recargar todos los remitos
+            CargarRemitos();
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Añadir Remito.
+        /// Abre el formulario FrmGenerarRemito existente.
+        /// </summary>
+        private void btnAgregarRemito_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var frmGenerarRemito = new FrmGenerarRemito();
+                
+                if (frmGenerarRemito.ShowDialog() == DialogResult.OK)
+                {
+                    // Recargar la lista después de generar un nuevo remito
+                    CargarRemitos();
+                    MessageBox.Show("Remito generado exitosamente.", "Éxito",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir el formulario de generar remito: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Modificar Remito.
+        /// Funcionalidad deshabilitada por ahora según requisitos.
+        /// </summary>
+        private void btnModificarRemito_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad de Modificar Remito próximamente.", "Información",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic del botón Eliminar Remito.
+        /// Funcionalidad deshabilitada por ahora según requisitos.
+        /// </summary>
+        private void btnEliminarRemito_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad de Eliminar Remito próximamente.", "Información",
+                MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        /// <summary>
+        /// Descarga el PDF de un remito a la carpeta de descargas del usuario.
+        /// </summary>
+        /// <param name="idRemito">ID del remito cuyo PDF se desea descargar.</param>
+        private void DescargarPdfRemito(Guid idRemito)
+        {
+            try
+            {
+                // Mostrar cursor de espera
+                this.Cursor = Cursors.WaitCursor;
+
+                // Descargar el PDF
+                string rutaDescarga = _remitoGestionService.DescargarPdfRemito(idRemito);
+
+                // Restaurar cursor normal
+                this.Cursor = Cursors.Default;
+
+                // Mostrar mensaje de éxito
+                var resultado = MessageBox.Show(
+                    $"PDF descargado exitosamente en:\n{rutaDescarga}\n\n¿Desea abrir el archivo?",
+                    "Descarga Exitosa",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Information);
+
+                // Si el usuario quiere abrir el archivo
+                if (resultado == DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start(rutaDescarga);
+                }
+            }
+            catch (Exception ex)
+            {
+                // Restaurar cursor normal
+                this.Cursor = Cursors.Default;
+
+                MessageBox.Show($"Error al descargar el PDF: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
+        }
+    }
+}

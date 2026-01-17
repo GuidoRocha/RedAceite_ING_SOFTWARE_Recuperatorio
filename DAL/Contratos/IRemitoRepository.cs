@@ -49,5 +49,22 @@ namespace DAL.Contratos
         /// </summary>
         /// <param name="idRemito">El ID del remito a anular.</param>
         void AnularRemito(Guid idRemito);
+
+        /// <summary>
+        /// Obtiene todos los remitos con su información de PDF asociada (LEFT JOIN).
+        /// Usado específicamente para la pantalla de gestión de remitos.
+        /// </summary>
+        /// <returns>Lista de DTOs con información completa de remitos y PDFs.</returns>
+        List<RemitoGestionDto> GetRemitosConPdf();
+
+        /// <summary>
+        /// Obtiene remitos filtrados con su información de PDF asociada.
+        /// </summary>
+        /// <param name="fechaInicio">Fecha de inicio del rango (opcional, null para omitir).</param>
+        /// <param name="fechaFin">Fecha de fin del rango (opcional, null para omitir).</param>
+        /// <param name="cuit">CUIT del generador para filtrar (opcional, null o vacío para omitir).</param>
+        /// <param name="tipoResiduo">Tipo de residuo para filtrar (opcional, null o vacío para omitir).</param>
+        /// <returns>Lista filtrada de DTOs con información completa.</returns>
+        List<RemitoGestionDto> GetRemitosFiltradosConPdf(DateTime? fechaInicio, DateTime? fechaFin, string cuit, string tipoResiduo);
     }
 }

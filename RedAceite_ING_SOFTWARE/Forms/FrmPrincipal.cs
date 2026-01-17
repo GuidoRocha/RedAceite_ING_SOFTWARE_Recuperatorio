@@ -168,20 +168,20 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
         /// <summary>
         /// Evento cuando se hace clic en el botón Remitos
-        /// Abre el formulario FrmGenerarRemito
+        /// Abre el formulario FrmGestionRemitos
         /// </summary>
         private void btnRemitos_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Remitos";
-            // Intentar abrir el formulario de generar remito
+            lblTitle.Text = "Gestión de Remitos";
+            // Abrir el formulario de gestión de remitos
             try
             {
-                OpenChildForm(new FrmGenerarRemito());
+                OpenChildForm(new FrmGestionRemitos());
             }
             catch (Exception ex)
             {
                 // Si hay algún error, mostrar mensaje con detalles
-                MessageBox.Show($"Error al abrir Remitos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error al abrir Gestión de Remitos: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
