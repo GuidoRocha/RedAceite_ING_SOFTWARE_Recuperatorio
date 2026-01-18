@@ -51,6 +51,10 @@ namespace BLL.Remito
             try
             {
                 var remitos = _remitoRepository.GetRemitosConPdf();
+                
+                // **VERIFICAR INTEGRIDAD DE CADA REMITO**
+                VerificarIntegridadRemitos(remitos);
+                
                 LoggerService.WriteLog($"Se obtuvieron {remitos.Count} remitos para gestión.", TraceLevel.Info);
                 return remitos;
             }
@@ -74,6 +78,9 @@ namespace BLL.Remito
             try
             {
                 var remitos = _remitoRepository.GetRemitosFiltradosConPdf(fechaInicio, fechaFin, cuit, tipoResiduo);
+                
+                // **VERIFICAR INTEGRIDAD DE CADA REMITO**
+                VerificarIntegridadRemitos(remitos);
                 
                 string filtrosAplicados = "";
                 if (fechaInicio.HasValue) filtrosAplicados += $" FechaInicio:{fechaInicio.Value:dd/MM/yyyy}";
@@ -164,8 +171,28 @@ namespace BLL.Remito
                     throw new Exception("El remito ya se encuentra anulado.");
                 }
 
-                // Anular el remito
-                _remitoRepository.AnularRemito(idRemito);
+                // Cambiar estado a Anulado
+                remito.EstadoRemito = "Anulado";
+
+                // **RECALCULAR DÍGITO VERIFICADOR**
+                try
+                {
+                    remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
+                    
+                    LoggerService.WriteLog(
+                        $"Dígito Verificador recalculado al anular remito {remito.IdRemito}: {remito.DigitoVerificador}",
+                        TraceLevel.Info);
+                }
+                catch (Exception ex)
+                {
+                    LoggerService.WriteLog(
+                        $"Error al recalcular Dígito Verificador al anular remito {remito.IdRemito}: {ex.Message}",
+                        TraceLevel.Warning);
+                    LoggerService.WriteException(ex);
+                }
+
+                // Actualizar el remito con el nuevo estado y DV
+                _remitoRepository.Update(remito);
 
                 LoggerService.WriteLog(
                     $"Remito anulado exitosamente. ID: {idRemito}, Generador: {remito.NombreGenerador}",
@@ -179,6 +206,98 @@ namespace BLL.Remito
         }
 
         #region Métodos auxiliares privados
+
+        /// <summary>
+        /// Verifica la integridad de una lista de remitos usando el Dígito Verificador.
+        /// Actualiza los campos IntegridadEstado e IntegridadValida de cada DTO.
+        /// </summary>
+        /// <param name="remitos">Lista de remitos a verificar.</param>
+        private void VerificarIntegridadRemitos(List<RemitoGestionDto> remitos)
+        {
+            int contadorAlterados = 0;
+            int contadorSinDV = 0;
+            int contadorOK = 0;
+
+            foreach (var dto in remitos)
+            {
+                try
+                {
+                    // Convertir DTO a entidad Remito para verificación
+                    var remito = new DOMAIN.Remito
+                    {
+                        IdRemito = dto.IdRemito,
+                        NombreTransportista = dto.NombreTransportista,
+                        DomicilioTransportista = dto.DomicilioTransportista,
+                        NombreGenerador = dto.NombreGenerador,
+                        DomicilioPlanta = dto.DomicilioPlanta,
+                        TipoResiduo = dto.TipoResiduo,
+                        Cantidad = dto.Cantidad,
+                        Estado = dto.Estado,
+                        Cuit = dto.Cuit,
+                        NombreFantasia = dto.NombreFantasia,
+                        Direccion = dto.Direccion,
+                        EstadoRemito = dto.EstadoRemito,
+                        DigitoVerificador = dto.DigitoVerificador,
+                        FechaCreacion = dto.FechaCreacion
+                    };
+
+                    // Verificar si tiene DV
+                    if (string.IsNullOrWhiteSpace(dto.DigitoVerificador))
+                    {
+                        dto.IntegridadEstado = "SIN_DV";
+                        dto.IntegridadValida = false;
+                        contadorSinDV++;
+                    }
+                    else
+                    {
+                        // Verificar integridad usando el servicio
+                        bool esValido = SERVICES.Facade.RemitoDigitoVerificadorService.Verificar(remito);
+
+                        if (esValido)
+                        {
+                            dto.IntegridadEstado = "OK";
+                            dto.IntegridadValida = true;
+                            contadorOK++;
+                        }
+                        else
+                        {
+                            dto.IntegridadEstado = "ALTERADO";
+                            dto.IntegridadValida = false;
+                            contadorAlterados++;
+
+                            // Log de advertencia para remitos alterados
+                            LoggerService.WriteLog(
+                                $"?? ALERTA: Remito ALTERADO detectado. ID: {dto.IdRemito}, Generador: {dto.NombreGenerador}, CUIT: {dto.Cuit}",
+                                TraceLevel.Warning);
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Error al verificar, marcar como desconocido
+                    dto.IntegridadEstado = "ERROR";
+                    dto.IntegridadValida = false;
+                    
+                    LoggerService.WriteLog(
+                        $"Error al verificar integridad del remito {dto.IdRemito}: {ex.Message}",
+                        TraceLevel.Warning);
+                }
+            }
+
+            // Log resumen de verificación
+            if (contadorAlterados > 0 || contadorSinDV > 0)
+            {
+                LoggerService.WriteLog(
+                    $"Verificación de integridad completada. Total: {remitos.Count} | OK: {contadorOK} | ALTERADOS: {contadorAlterados} | SIN_DV: {contadorSinDV}",
+                    TraceLevel.Warning);
+            }
+            else
+            {
+                LoggerService.WriteLog(
+                    $"Verificación de integridad completada. Total: {remitos.Count} | Todos OK",
+                    TraceLevel.Info);
+            }
+        }
 
         /// <summary>
         /// Obtiene la ruta de la carpeta de descargas del usuario actual.

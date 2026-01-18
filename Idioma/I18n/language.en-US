@@ -1,0 +1,25 @@
+# ===============================================
+# ENGLISH LANGUAGE FILE (en-US)
+# RedAceite - Management System
+# Format: key=value
+# ===============================================
+
+# ===== MAIN FORM (FrmPrincipal) =====
+btn_Inicio=?? Home
+btn_Manifiestos=?? Manifests
+btn_Remitos=?? Receipts
+btn_Proveedores=?? Suppliers
+btn_Usuarios=?? Users
+lbl_MenuPrincipal=Main Menu
+lbl_Usuario=User
+lbl_EstadisticasInventario=Inventory Statistics
+lbl_StockAceite=??? Oil Stock
+lbl_StockGrasa=?? Grease Stock
+lbl_StockTotal=?? Total Stock
+lbl_Remitos=Receipts
+lbl_Manifiestos=Manifests
+
+# ===== LANGUAGE MENU =====
+menu_Idioma=Language
+menu_Español=Spanish
+menu_Ingles=English

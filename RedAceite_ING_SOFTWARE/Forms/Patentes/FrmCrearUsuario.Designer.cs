@@ -43,6 +43,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblDNI = new System.Windows.Forms.Label();
             this.txtDNI = new System.Windows.Forms.TextBox();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTelefono
@@ -87,11 +88,11 @@
             this.CrearUsuario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CrearUsuario.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CrearUsuario.ForeColor = System.Drawing.Color.White;
-            this.CrearUsuario.Location = new System.Drawing.Point(250, 420);
+            this.CrearUsuario.Location = new System.Drawing.Point(400, 420);
             this.CrearUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.CrearUsuario.Name = "CrearUsuario";
             this.CrearUsuario.Size = new System.Drawing.Size(150, 40);
-            this.CrearUsuario.TabIndex = 7;
+            this.CrearUsuario.TabIndex = 8;
             this.CrearUsuario.Tag = "CrearUsuario";
             this.CrearUsuario.Text = "Crear Usuario";
             this.CrearUsuario.UseVisualStyleBackColor = false;
@@ -209,6 +210,22 @@
             this.txtDNI.Size = new System.Drawing.Size(300, 27);
             this.txtDNI.TabIndex = 7;
             // 
+            // btnCancelar
+            // 
+            this.btnCancelar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(53)))), ((int)(((byte)(69)))));
+            this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelar.Font = new System.Drawing.Font("Consolas", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelar.ForeColor = System.Drawing.Color.White;
+            this.btnCancelar.Location = new System.Drawing.Point(230, 420);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(150, 40);
+            this.btnCancelar.TabIndex = 9;
+            this.btnCancelar.Tag = "Cancelar";
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
+            // 
             // FrmCrearUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -230,7 +247,11 @@
             this.Controls.Add(this.txtTelefono);
             this.Controls.Add(this.txtpassword);
             this.Controls.Add(this.txtusername);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Controls.Add(this.btnCancelar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Name = "FrmCrearUsuario";
             this.Text = "Crear Usuario";
             this.ResumeLayout(false);
@@ -255,5 +276,6 @@
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label lblDNI;
         private System.Windows.Forms.TextBox txtDNI;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

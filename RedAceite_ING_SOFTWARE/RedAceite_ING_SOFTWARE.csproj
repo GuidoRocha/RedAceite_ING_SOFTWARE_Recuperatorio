@@ -195,7 +195,9 @@
     <Compile Include="Forms\Gestiones\FrmGestionRemitos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Gestiones\FrmGestionRemitos.Designer.cs" />
+    <Compile Include="Forms\Gestiones\FrmGestionRemitos.Designer.cs">
+      <DependentUpon>FrmGestionRemitos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Gestiones\FrmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -255,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Gestiones\FrmGestionProveedores.resx">
       <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Gestiones\FrmGestionRemitos.resx">
+      <DependentUpon>FrmGestionRemitos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

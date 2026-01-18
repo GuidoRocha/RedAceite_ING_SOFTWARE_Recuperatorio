@@ -56,8 +56,12 @@ namespace SERVICES.Forms
                     // Ocultar el formulario de login
                     this.Hide();
                     
-                    // Crear y mostrar el formulario principal
+                    // Crear y mostrar el formulario principal maximizado
                     var frmPrincipal = new FrmPrincipal();
+                    
+                    // Configurar ventana maximizada para ocupar toda la pantalla
+                    frmPrincipal.WindowState = FormWindowState.Maximized;
+                    
                     frmPrincipal.Show();
                     
                     // Cuando se cierre el formulario principal, cerrar también el login
@@ -81,14 +85,26 @@ namespace SERVICES.Forms
 
         private void cbLanguage_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedLanguage = cbLanguage.SelectedItem.ToString() == "Español" ? "es-ES" : "en-US";
+            try
+            {
+                string selectedLanguage = cbLanguage.SelectedItem.ToString() == "Español" ? "es-ES" : "en-US";
 
-            LanguageService.SaveUserLanguage(selectedLanguage);
+                // Usar SetCurrentLanguage que establece culture + persist + notify
+                LanguageService.SetCurrentLanguage(selectedLanguage);
 
-            Thread.CurrentThread.CurrentUICulture = new CultureInfo(selectedLanguage);
-
-            LanguageService.TranslateForm(this);
-            this.Refresh();
+                // Traducir el form
+                LanguageService.TranslateForm(this);
+                this.Refresh();
+                
+                LoggerService.WriteLog(
+                    $"Idioma cambiado a {selectedLanguage} desde Login.",
+                    System.Diagnostics.TraceLevel.Info
+                );
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
         }
 
         private void CheckPass_CheckedChanged(object sender, EventArgs e)
@@ -117,6 +133,19 @@ namespace SERVICES.Forms
             string currentLanguage = LanguageService.LoadUserLanguage();
             cbLanguage.SelectedItem = currentLanguage == "es-ES" ? "Español" : "Inglés";
             cbLanguage.SelectedIndexChanged += cbLanguage_SelectedIndexChanged;
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic en el link de recuperar contraseña.
+        /// </summary>
+        private void lnkRecuperarPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show(
+                "Por favor, contacte al administrador del sistema para recuperar su contraseña.",
+                "Recuperar Contraseña",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
         }
     }
 }

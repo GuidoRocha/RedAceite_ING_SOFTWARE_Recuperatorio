@@ -32,11 +32,11 @@ namespace DAL.Implementaciones
             string query = @"INSERT INTO Remito 
                             (IdRemito, NombreTransportista, DomicilioTransportista, NombreGenerador, 
                              DomicilioPlanta, TipoResiduo, Cantidad, Estado, Cuit, NombreFantasia, 
-                             Direccion, FechaCreacion, EstadoRemito)
+                             Direccion, FechaCreacion, EstadoRemito, DigitoVerificador)
                             VALUES 
                             (@IdRemito, @NombreTransportista, @DomicilioTransportista, @NombreGenerador, 
                              @DomicilioPlanta, @TipoResiduo, @Cantidad, @Estado, @Cuit, @NombreFantasia, 
-                             @Direccion, @FechaCreacion, @EstadoRemito)";
+                             @Direccion, @FechaCreacion, @EstadoRemito, @DigitoVerificador)";
 
             SqlHelper.ExecuteNonQueryWithConnection(query, CommandType.Text, SqlHelper.conStringRemitos,
                 new SqlParameter("@IdRemito", remito.IdRemito),
@@ -51,7 +51,8 @@ namespace DAL.Implementaciones
                 new SqlParameter("@NombreFantasia", remito.NombreFantasia),
                 new SqlParameter("@Direccion", remito.Direccion),
                 new SqlParameter("@FechaCreacion", remito.FechaCreacion),
-                new SqlParameter("@EstadoRemito", remito.EstadoRemito)
+                new SqlParameter("@EstadoRemito", remito.EstadoRemito),
+                new SqlParameter("@DigitoVerificador", (object)remito.DigitoVerificador ?? DBNull.Value)
             );
         }
 
@@ -66,7 +67,7 @@ namespace DAL.Implementaciones
 
             string query = @"SELECT IdRemito, NombreTransportista, DomicilioTransportista, NombreGenerador, 
                                     DomicilioPlanta, TipoResiduo, Cantidad, Estado, Cuit, NombreFantasia, 
-                                    Direccion, FechaCreacion, EstadoRemito
+                                    Direccion, FechaCreacion, EstadoRemito, DigitoVerificador
                              FROM Remito 
                              WHERE IdRemito = @IdRemito";
 
@@ -92,7 +93,7 @@ namespace DAL.Implementaciones
 
             string query = @"SELECT IdRemito, NombreTransportista, DomicilioTransportista, NombreGenerador, 
                                     DomicilioPlanta, TipoResiduo, Cantidad, Estado, Cuit, NombreFantasia, 
-                                    Direccion, FechaCreacion, EstadoRemito
+                                    Direccion, FechaCreacion, EstadoRemito, DigitoVerificador
                              FROM Remito
                              ORDER BY FechaCreacion DESC";
 
@@ -118,7 +119,7 @@ namespace DAL.Implementaciones
 
             string query = @"SELECT IdRemito, NombreTransportista, DomicilioTransportista, NombreGenerador, 
                                     DomicilioPlanta, TipoResiduo, Cantidad, Estado, Cuit, NombreFantasia, 
-                                    Direccion, FechaCreacion, EstadoRemito
+                                    Direccion, FechaCreacion, EstadoRemito, DigitoVerificador
                              FROM Remito 
                              WHERE Cuit = @Cuit
                              ORDER BY FechaCreacion DESC";
@@ -147,7 +148,7 @@ namespace DAL.Implementaciones
 
             string query = @"SELECT IdRemito, NombreTransportista, DomicilioTransportista, NombreGenerador, 
                                     DomicilioPlanta, TipoResiduo, Cantidad, Estado, Cuit, NombreFantasia, 
-                                    Direccion, FechaCreacion, EstadoRemito
+                                    Direccion, FechaCreacion, EstadoRemito, DigitoVerificador
                              FROM Remito 
                              WHERE FechaCreacion BETWEEN @FechaInicio AND @FechaFin
                              ORDER BY FechaCreacion DESC";
@@ -189,7 +190,7 @@ namespace DAL.Implementaciones
                                 R.IdRemito, R.FechaCreacion, R.NombreGenerador, R.Cuit, 
                                 R.TipoResiduo, R.Cantidad, R.Estado, R.EstadoRemito,
                                 R.NombreFantasia, R.Direccion, R.DomicilioPlanta,
-                                R.NombreTransportista, R.DomicilioTransportista,
+                                R.NombreTransportista, R.DomicilioTransportista, R.DigitoVerificador,
                                 P.IdRemitoPDF, P.NombreArchivo, P.FechaGeneracion, P.TamañoBytes, P.HashMD5
                              FROM Remito R
                              LEFT JOIN RemitoPDF P ON R.IdRemito = P.IdRemito
@@ -218,7 +219,7 @@ namespace DAL.Implementaciones
                                 R.IdRemito, R.FechaCreacion, R.NombreGenerador, R.Cuit, 
                                 R.TipoResiduo, R.Cantidad, R.Estado, R.EstadoRemito,
                                 R.NombreFantasia, R.Direccion, R.DomicilioPlanta,
-                                R.NombreTransportista, R.DomicilioTransportista,
+                                R.NombreTransportista, R.DomicilioTransportista, R.DigitoVerificador,
                                 P.IdRemitoPDF, P.NombreArchivo, P.FechaGeneracion, P.TamañoBytes, P.HashMD5
                              FROM Remito R
                              LEFT JOIN RemitoPDF P ON R.IdRemito = P.IdRemito
@@ -292,7 +293,8 @@ namespace DAL.Implementaciones
                                 Cuit = @Cuit,
                                 NombreFantasia = @NombreFantasia,
                                 Direccion = @Direccion,
-                                EstadoRemito = @EstadoRemito
+                                EstadoRemito = @EstadoRemito,
+                                DigitoVerificador = @DigitoVerificador
                             WHERE IdRemito = @IdRemito";
 
             SqlHelper.ExecuteNonQueryWithConnection(query, CommandType.Text, SqlHelper.conStringRemitos,
@@ -307,7 +309,8 @@ namespace DAL.Implementaciones
                 new SqlParameter("@Cuit", entity.Cuit),
                 new SqlParameter("@NombreFantasia", entity.NombreFantasia),
                 new SqlParameter("@Direccion", entity.Direccion),
-                new SqlParameter("@EstadoRemito", entity.EstadoRemito)
+                new SqlParameter("@EstadoRemito", entity.EstadoRemito),
+                new SqlParameter("@DigitoVerificador", (object)entity.DigitoVerificador ?? DBNull.Value)
             );
         }
 
@@ -367,7 +370,8 @@ namespace DAL.Implementaciones
                 NombreFantasia = reader.GetString(9),
                 Direccion = reader.GetString(10),
                 FechaCreacion = reader.GetDateTime(11),
-                EstadoRemito = reader.GetString(12)
+                EstadoRemito = reader.GetString(12),
+                DigitoVerificador = reader.IsDBNull(13) ? null : reader.GetString(13)
             };
         }
 
@@ -395,13 +399,14 @@ namespace DAL.Implementaciones
                 DomicilioPlanta = reader.GetString(10),
                 NombreTransportista = reader.GetString(11),
                 DomicilioTransportista = reader.GetString(12),
+                DigitoVerificador = reader.IsDBNull(13) ? null : reader.GetString(13),
 
                 // Campos del RemitoPDF (pueden ser NULL por el LEFT JOIN)
-                IdRemitoPDF = reader.IsDBNull(13) ? (Guid?)null : reader.GetGuid(13),
-                NombreArchivo = reader.IsDBNull(14) ? null : reader.GetString(14),
-                FechaGeneracionPdf = reader.IsDBNull(15) ? (DateTime?)null : reader.GetDateTime(15),
-                TamañoBytes = reader.IsDBNull(16) ? (long?)null : reader.GetInt64(16),
-                HashMD5 = reader.IsDBNull(17) ? null : reader.GetString(17)
+                IdRemitoPDF = reader.IsDBNull(14) ? (Guid?)null : reader.GetGuid(14),
+                NombreArchivo = reader.IsDBNull(15) ? null : reader.GetString(15),
+                FechaGeneracionPdf = reader.IsDBNull(16) ? (DateTime?)null : reader.GetDateTime(16),
+                TamañoBytes = reader.IsDBNull(17) ? (long?)null : reader.GetInt64(17),
+                HashMD5 = reader.IsDBNull(18) ? null : reader.GetString(18)
             };
         }
 

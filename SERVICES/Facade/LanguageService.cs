@@ -63,11 +63,59 @@ namespace SERVICES.Facade
         /// <summary>
         /// Guarda el idioma seleccionado por el usuario y notifica a los observadores.
         /// </summary>
-        /// <param name="languageCode">Código del idioma (por ejemplo: "es", "en").</param>
+        /// <param name="languageCode">Código del idioma (por ejemplo: "es-ES", "en-US").</param>
         public static void SaveUserLanguage(string languageCode)
         {
             LanguageLogic.SaveUserLanguage(languageCode);
             NotifyObservers();
+        }
+
+        /// <summary>
+        /// Establece el idioma actual del sistema, actualiza la cultura del hilo,
+        /// persiste la selección y notifica a todos los observadores.
+        /// Este método centraliza todo el proceso de cambio de idioma.
+        /// </summary>
+        /// <param name="languageCode">Código del idioma (por ejemplo: "es-ES", "en-US").</param>
+        public static void SetCurrentLanguage(string languageCode)
+        {
+            try
+            {
+                // 1. Establecer la cultura del hilo actual
+                System.Globalization.CultureInfo newCulture = new System.Globalization.CultureInfo(languageCode);
+                System.Threading.Thread.CurrentThread.CurrentUICulture = newCulture;
+                System.Threading.Thread.CurrentThread.CurrentCulture = newCulture;
+
+                // 2. Persistir la selección
+                LanguageLogic.SaveUserLanguage(languageCode);
+
+                // 3. Notificar a los observadores
+                NotifyObservers();
+
+                // 4. Log de auditoría
+                string userName = "Sistema";
+                try
+                {
+                    var usuario = SesionService.UsuarioLogueado;
+                    if (usuario != null)
+                    {
+                        userName = usuario.UserName;
+                    }
+                }
+                catch
+                {
+                    // Si no hay sesión activa, usar "Sistema"
+                }
+
+                LoggerService.WriteLog(
+                    $"Idioma cambiado a: {languageCode} por usuario: {userName}",
+                    System.Diagnostics.TraceLevel.Info
+                );
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+                throw new Exception($"Error al establecer el idioma {languageCode}: {ex.Message}", ex);
+            }
         }
 
         /// <summary>

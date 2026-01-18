@@ -207,6 +207,7 @@
     <Compile Include="Facade\LanguageService.cs" />
     <Compile Include="Facade\LoggerService.cs" />
     <Compile Include="Facade\PdfService.cs" />
+    <Compile Include="Facade\RemitoDigitoVerificadorService.cs" />
     <Compile Include="Facade\SesionService.cs" />
     <Compile Include="Facade\UserService.cs" />
     <Compile Include="Helpers\ConfigHelper.cs" />

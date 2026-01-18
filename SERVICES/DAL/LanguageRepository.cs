@@ -12,8 +12,44 @@ namespace SERVICES.DAL
     internal static class LanguageRepository
     {
         // Obtener las rutas desde el App.config
-        private static string LanguagePath = ConfigurationManager.AppSettings["LanguagePath"];
-        private static readonly string UserLanguageConfigPath = ConfigurationManager.AppSettings["UserLanguageConfigPath"];
+        private static string LanguagePath
+        {
+            get
+            {
+                string path = ConfigurationManager.AppSettings["LanguagePath"];
+                
+                // Si la ruta no es absoluta, combinarla con el directorio base de la aplicación
+                if (!Path.IsPathRooted(path))
+                {
+                    path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path);
+                }
+                
+                return path;
+            }
+        }
+        
+        private static string UserLanguageConfigPath
+        {
+            get
+            {
+                string path = ConfigurationManager.AppSettings["UserLanguageConfigPath"];
+                
+                // Si la ruta no es absoluta, combinarla con el directorio base de la aplicación
+                if (!Path.IsPathRooted(path))
+                {
+                    path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path);
+                }
+                
+                // Asegurar que el directorio existe
+                string directory = Path.GetDirectoryName(path);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+                
+                return path;
+            }
+        }
 
 
 
@@ -29,27 +65,43 @@ namespace SERVICES.DAL
             // Verificar que el archivo de idioma existe
             if (!File.Exists(fileName))
             {
-
-                throw new Exception($"No se encontró el archivo de idioma para {language}");
+                // Si no existe, retornar la key original sin lanzar excepción
+                return key;
             }
 
             // Leer el archivo y buscar la clave
-            using (StreamReader reader = new StreamReader(fileName))
+            try
             {
-
-                while (!reader.EndOfStream)
+                using (StreamReader reader = new StreamReader(fileName))
                 {
-                    string line = reader.ReadLine();
-                    string[] columns = line.Split('=');
-
-                    if (columns[0].ToLower() == key.ToLower())
+                    while (!reader.EndOfStream)
                     {
-                        return columns[1]; // Retorna la traducción
+                        string line = reader.ReadLine();
+                        
+                        // Ignorar líneas vacías y comentarios
+                        if (string.IsNullOrWhiteSpace(line) || line.TrimStart().StartsWith("#"))
+                        {
+                            continue;
+                        }
+
+                        string[] columns = line.Split('=');
+                        
+                        if (columns.Length >= 2 && columns[0].Trim().Equals(key, StringComparison.OrdinalIgnoreCase))
+                        {
+                            // Retornar todo después del primer '=' para soportar valores con '='
+                            return line.Substring(line.IndexOf('=') + 1);
+                        }
                     }
                 }
             }
+            catch (Exception)
+            {
+                // Si hay error al leer el archivo, retornar la key original
+                return key;
+            }
 
-            throw new Exception($"No se encontró la palabra {key} en el archivo de idioma {fileName}");
+            // Si no se encontró la traducción, retornar la key original
+            return key;
         }
 
         public static void WriteKey(string key)

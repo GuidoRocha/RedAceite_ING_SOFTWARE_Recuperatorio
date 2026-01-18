@@ -1,5 +1,6 @@
 ﻿using BLL;
 using SERVICES.Facade;
+using SERVICES.DAL.Contratos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace RedAceite_ING_SOFTWARE.Forms
 {
-    public partial class FrmPrincipal : Form
+    public partial class FrmPrincipal : Form, ILanguageObserver
     {
         // Variable para mantener referencia al formulario hijo activo actualmente
         private Form activeForm = null;
@@ -29,6 +30,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Inicializar y configurar el timer de actualización
             InicializarTimerActualizacion();
+
+            // Suscribirse al sistema de idioma Observer
+            LanguageService.Subscribe(this);
         }
 
         /// <summary>
@@ -43,6 +47,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 // Se hace aquí porque el botón ya tiene su tamaño final
                 btnProfile.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, btnProfile.Width, btnProfile.Height, 20, 20));
                 
+                // Traducir el formulario según el idioma actual
+                LanguageService.TranslateForm(this);
+                
                 // Cargar estadísticas de inventario
                 CargarEstadisticasInventario();
             }
@@ -51,6 +58,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 // Si hay algún error al crear el botón circular, continuar sin él
                 // No es crítico para el funcionamiento de la aplicación
                 System.Diagnostics.Debug.WriteLine("Error al crear botón circular: " + ex.Message);
+                LoggerService.WriteException(ex);
             }
         }
 
@@ -241,6 +249,61 @@ namespace RedAceite_ING_SOFTWARE.Forms
             MessageBox.Show("Configuración de perfil próximamente", "Perfil", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        // ===== EVENTOS DEL MENÚ DE IDIOMA =====
+
+        /// <summary>
+        /// Evento al seleccionar Español en el menú de idioma.
+        /// </summary>
+        private void menuEspañol_Click(object sender, EventArgs e)
+        {
+            CambiarIdioma("es-ES");
+        }
+
+        /// <summary>
+        /// Evento al seleccionar English en el menú de idioma.
+        /// </summary>
+        private void menuIngles_Click(object sender, EventArgs e)
+        {
+            CambiarIdioma("en-US");
+        }
+
+        /// <summary>
+        /// Cambia el idioma de la aplicación en tiempo de ejecución.
+        /// </summary>
+        /// <param name="languageCode">Código del idioma (es-ES o en-US).</param>
+        private void CambiarIdioma(string languageCode)
+        {
+            try
+            {
+                // 1. Establecer el nuevo idioma (culture + persist + notify)
+                LanguageService.SetCurrentLanguage(languageCode);
+
+                // 2. Traducir el formulario principal
+                LanguageService.TranslateForm(this);
+
+                // 3. Si hay un formulario hijo abierto, traducirlo también
+                if (activeForm != null)
+                {
+                    LanguageService.TranslateForm(activeForm);
+                }
+
+                LoggerService.WriteLog(
+                    $"Idioma cambiado a {languageCode} desde FrmPrincipal.",
+                    System.Diagnostics.TraceLevel.Info
+                );
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+                MessageBox.Show(
+                    $"Error al cambiar idioma: {ex.Message}",
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
+            }
+        }
+
         // ===== EVENTOS DE LOS PANELES DEL DASHBOARD =====
         // Estos permiten hacer clic en los paneles informativos para navegar
 
@@ -409,14 +472,47 @@ namespace RedAceite_ING_SOFTWARE.Forms
             }
         }
 
+        // ===== IMPLEMENTACIÓN DE ILanguageObserver =====
+
+        /// <summary>
+        /// Método llamado automáticamente cuando cambia el idioma.
+        /// Traduce todo el formulario y el child form activo.
+        /// </summary>
+        public void UpdateLanguage()
+        {
+            try
+            {
+                // Traducir este formulario
+                LanguageService.TranslateForm(this);
+
+                // Si hay un child form activo, traducirlo
+                if (activeForm != null)
+                {
+                    LanguageService.TranslateForm(activeForm);
+                }
+
+                LoggerService.WriteLog(
+                    "FrmPrincipal: Idioma actualizado vía Observer.",
+                    System.Diagnostics.TraceLevel.Info
+                );
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
         /// <summary>
         /// Evento que se ejecuta al cerrar el formulario.
-        /// Limpia los recursos del timer de actualización.
+        /// Limpia los recursos del timer de actualización y desuscribe del Observer.
         /// </summary>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             try
             {
+                // Desuscribirse del Observer
+                LanguageService.Unsubscribe(this);
+
                 // Detener y liberar el timer
                 if (timerActualizacion != null)
                 {
@@ -428,6 +524,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     LoggerService.WriteLog("Timer de actualización detenido y recursos liberados.", 
                         System.Diagnostics.TraceLevel.Info);
                 }
+
+                LoggerService.WriteLog("FrmPrincipal cerrado y desuscrito del Observer.", 
+                    System.Diagnostics.TraceLevel.Info);
             }
             catch (Exception ex)
             {

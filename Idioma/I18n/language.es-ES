@@ -1,0 +1,25 @@
+# ===============================================
+# ARCHIVO DE IDIOMA ESPAÑOL (es-ES)
+# RedAceite - Sistema de Gestión
+# Formato: clave=valor
+# ===============================================
+
+# ===== FORMULARIO PRINCIPAL (FrmPrincipal) =====
+btn_Inicio=?? Inicio
+btn_Manifiestos=?? Manifiestos
+btn_Remitos=?? Remitos
+btn_Proveedores=?? Proveedores
+btn_Usuarios=?? Usuarios
+lbl_MenuPrincipal=Menu Principal
+lbl_Usuario=Usuario
+lbl_EstadisticasInventario=Estadísticas de Inventario
+lbl_StockAceite=??? Stock Aceite
+lbl_StockGrasa=?? Stock Grasa
+lbl_StockTotal=?? Stock Total
+lbl_Remitos=Remitos
+lbl_Manifiestos=Manifiestos
+
+# ===== MENÚ DE IDIOMA =====
+menu_Idioma=Idioma
+menu_Español=Español
+menu_Ingles=English

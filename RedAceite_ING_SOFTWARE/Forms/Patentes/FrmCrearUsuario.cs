@@ -94,5 +94,37 @@ namespace RedAceite_ING_SOFTWARE.Forms
             txtEmail.Clear();
             txtDNI.Clear();
         }
+
+        /// <summary>
+        /// Maneja el evento del botón Cancelar.
+        /// Cierra el formulario sin guardar cambios.
+        /// </summary>
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            // Preguntar si realmente desea cancelar si hay datos ingresados
+            if (!string.IsNullOrWhiteSpace(txtusername.Text) || 
+                !string.IsNullOrWhiteSpace(txtpassword.Text) ||
+                !string.IsNullOrWhiteSpace(txtTelefono.Text) ||
+                !string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                !string.IsNullOrWhiteSpace(txtApellido.Text) ||
+                !string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                !string.IsNullOrWhiteSpace(txtDNI.Text))
+            {
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea cancelar? Se perderán los datos ingresados.",
+                    "Confirmar cancelación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            // Cerrar el formulario
+            this.Close();
+        }
     }
 }

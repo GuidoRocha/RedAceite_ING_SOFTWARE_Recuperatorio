@@ -74,6 +74,12 @@ namespace DOMAIN
         public string EstadoRemito { get; set; }
 
         /// <summary>
+        /// Dígito Verificador (hash MD5) calculado sobre los campos críticos del remito
+        /// para garantizar la integridad de los datos.
+        /// </summary>
+        public string DigitoVerificador { get; set; }
+
+        /// <summary>
         /// Constructor por defecto que inicializa el ID del remito con un nuevo Guid
         /// y establece la fecha de creación al momento actual.
         /// </summary>

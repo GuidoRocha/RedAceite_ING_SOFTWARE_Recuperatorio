@@ -36,6 +36,10 @@
             this.btnInicio = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
+            this.menuStripIdioma = new System.Windows.Forms.MenuStrip();
+            this.menuIdioma = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuEspañol = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuIngles = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTopBar = new System.Windows.Forms.Panel();
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnProfile = new System.Windows.Forms.Button();
@@ -65,6 +69,7 @@
             this.lblUltimaActualizacion = new System.Windows.Forms.Label();
             this.panelSidebar.SuspendLayout();
             this.panelLogo.SuspendLayout();
+            this.menuStripIdioma.SuspendLayout();
             this.panelTopBar.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelDashboard.SuspendLayout();
@@ -106,6 +111,7 @@
             this.btnUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnUsuarios.Size = new System.Drawing.Size(200, 45);
             this.btnUsuarios.TabIndex = 7;
+            this.btnUsuarios.Tag = "btn_Usuarios";
             this.btnUsuarios.Text = "👥 Usuarios";
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsuarios.UseVisualStyleBackColor = true;
@@ -126,6 +132,7 @@
             this.btnProveedores.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnProveedores.Size = new System.Drawing.Size(200, 45);
             this.btnProveedores.TabIndex = 6;
+            this.btnProveedores.Tag = "btn_Proveedores";
             this.btnProveedores.Text = "🏢 Proveedores";
             this.btnProveedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProveedores.UseVisualStyleBackColor = true;
@@ -146,6 +153,7 @@
             this.btnRemitos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnRemitos.Size = new System.Drawing.Size(200, 45);
             this.btnRemitos.TabIndex = 4;
+            this.btnRemitos.Tag = "btn_Remitos";
             this.btnRemitos.Text = "📄 Remitos";
             this.btnRemitos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRemitos.UseVisualStyleBackColor = true;
@@ -166,6 +174,7 @@
             this.btnManifiestos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnManifiestos.Size = new System.Drawing.Size(200, 45);
             this.btnManifiestos.TabIndex = 3;
+            this.btnManifiestos.Tag = "btn_Manifiestos";
             this.btnManifiestos.Text = "📋 Manifiestos";
             this.btnManifiestos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnManifiestos.UseVisualStyleBackColor = true;
@@ -186,6 +195,7 @@
             this.btnInicio.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.btnInicio.Size = new System.Drawing.Size(200, 45);
             this.btnInicio.TabIndex = 9;
+            this.btnInicio.Tag = "btn_Inicio";
             this.btnInicio.Text = "🏠 Inicio";
             this.btnInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInicio.UseVisualStyleBackColor = true;
@@ -217,6 +227,43 @@
             this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblLogo.Click += new System.EventHandler(this.lblLogo_Click);
             // 
+            // menuStripIdioma
+            // 
+            this.menuStripIdioma.BackColor = System.Drawing.Color.White;
+            this.menuStripIdioma.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuIdioma});
+            this.menuStripIdioma.Location = new System.Drawing.Point(200, 0);
+            this.menuStripIdioma.Name = "menuStripIdioma";
+            this.menuStripIdioma.Size = new System.Drawing.Size(1179, 24);
+            this.menuStripIdioma.TabIndex = 3;
+            this.menuStripIdioma.Text = "menuStripIdioma";
+            // 
+            // menuIdioma
+            // 
+            this.menuIdioma.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuEspañol,
+            this.menuIngles});
+            this.menuIdioma.Name = "menuIdioma";
+            this.menuIdioma.Size = new System.Drawing.Size(61, 20);
+            this.menuIdioma.Tag = "menu_Idioma";
+            this.menuIdioma.Text = "Idioma";
+            // 
+            // menuEspañol
+            // 
+            this.menuEspañol.Name = "menuEspañol";
+            this.menuEspañol.Size = new System.Drawing.Size(180, 22);
+            this.menuEspañol.Tag = "menu_Español";
+            this.menuEspañol.Text = "Español";
+            this.menuEspañol.Click += new System.EventHandler(this.menuEspañol_Click);
+            // 
+            // menuIngles
+            // 
+            this.menuIngles.Name = "menuIngles";
+            this.menuIngles.Size = new System.Drawing.Size(180, 22);
+            this.menuIngles.Tag = "menu_Ingles";
+            this.menuIngles.Text = "English";
+            this.menuIngles.Click += new System.EventHandler(this.menuIngles_Click);
+            // 
             // panelTopBar
             // 
             this.panelTopBar.BackColor = System.Drawing.Color.White;
@@ -225,7 +272,7 @@
             this.panelTopBar.Controls.Add(this.btnNotifications);
             this.panelTopBar.Controls.Add(this.lblTitle);
             this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTopBar.Location = new System.Drawing.Point(200, 0);
+            this.panelTopBar.Location = new System.Drawing.Point(200, 24);
             this.panelTopBar.Name = "panelTopBar";
             this.panelTopBar.Size = new System.Drawing.Size(1179, 60);
             this.panelTopBar.TabIndex = 1;
@@ -239,6 +286,7 @@
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(56, 19);
             this.lblUserName.TabIndex = 3;
+            this.lblUserName.Tag = "lbl_Usuario";
             this.lblUserName.Text = "Usuario";
             // 
             // btnProfile
@@ -280,6 +328,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(147, 25);
             this.lblTitle.TabIndex = 0;
+            this.lblTitle.Tag = "lbl_MenuPrincipal";
             this.lblTitle.Text = "Menu Principal";
             // 
             // panelMain
@@ -287,10 +336,10 @@
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panelMain.Controls.Add(this.panelDashboard);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(200, 60);
+            this.panelMain.Location = new System.Drawing.Point(200, 84);
             this.panelMain.Name = "panelMain";
             this.panelMain.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
-            this.panelMain.Size = new System.Drawing.Size(1179, 640);
+            this.panelMain.Size = new System.Drawing.Size(1179, 616);
             this.panelMain.TabIndex = 2;
             // 
             // panelDashboard
@@ -334,6 +383,7 @@
             this.lblManifiestos.Name = "lblManifiestos";
             this.lblManifiestos.Size = new System.Drawing.Size(200, 25);
             this.lblManifiestos.TabIndex = 0;
+            this.lblManifiestos.Tag = "lbl_Manifiestos";
             this.lblManifiestos.Text = "Manifiestos";
             this.lblManifiestos.Click += new System.EventHandler(this.panelManifiestos_Click);
             // 
@@ -369,6 +419,7 @@
             this.lblRemitos.Name = "lblRemitos";
             this.lblRemitos.Size = new System.Drawing.Size(200, 25);
             this.lblRemitos.TabIndex = 0;
+            this.lblRemitos.Tag = "lbl_Remitos";
             this.lblRemitos.Text = "Remitos";
             this.lblRemitos.Click += new System.EventHandler(this.panelRemitos_Click);
             // 
@@ -394,6 +445,7 @@
             this.lblStatsTitle.Name = "lblStatsTitle";
             this.lblStatsTitle.Size = new System.Drawing.Size(300, 30);
             this.lblStatsTitle.TabIndex = 0;
+            this.lblStatsTitle.Tag = "lbl_EstadisticasInventario";
             this.lblStatsTitle.Text = "Estadísticas de Inventario";
             // 
             // panelInventarioAceite
@@ -425,6 +477,7 @@
             this.lblTituloAceite.Name = "lblTituloAceite";
             this.lblTituloAceite.Size = new System.Drawing.Size(180, 25);
             this.lblTituloAceite.TabIndex = 0;
+            this.lblTituloAceite.Tag = "lbl_StockAceite";
             this.lblTituloAceite.Text = "🛢️ Stock Aceite";
             // 
             // panelInventarioGrasa
@@ -456,6 +509,7 @@
             this.lblTituloGrasa.Name = "lblTituloGrasa";
             this.lblTituloGrasa.Size = new System.Drawing.Size(180, 25);
             this.lblTituloGrasa.TabIndex = 0;
+            this.lblTituloGrasa.Tag = "lbl_StockGrasa";
             this.lblTituloGrasa.Text = "🧈 Stock Grasa";
             // 
             // panelInventarioTotal
@@ -487,6 +541,7 @@
             this.lblTituloTotal.Name = "lblTituloTotal";
             this.lblTituloTotal.Size = new System.Drawing.Size(180, 25);
             this.lblTituloTotal.TabIndex = 0;
+            this.lblTituloTotal.Tag = "lbl_StockTotal";
             this.lblTituloTotal.Text = "📦 Stock Total";
             // 
             // lblEntradasMes
@@ -527,14 +582,18 @@
             this.ClientSize = new System.Drawing.Size(1379, 700);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelTopBar);
+            this.Controls.Add(this.menuStripIdioma);
             this.Controls.Add(this.panelSidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStripIdioma;
             this.MinimumSize = new System.Drawing.Size(1065, 638);
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RedAceite - Sistema de Gestión";
             this.panelSidebar.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
+            this.menuStripIdioma.ResumeLayout(false);
+            this.menuStripIdioma.PerformLayout();
             this.panelTopBar.ResumeLayout(false);
             this.panelTopBar.PerformLayout();
             this.panelMain.ResumeLayout(false);
@@ -560,6 +619,10 @@
         private System.Windows.Forms.Button btnRemitos;
         private System.Windows.Forms.Button btnProveedores;
         private System.Windows.Forms.Button btnUsuarios;
+        private System.Windows.Forms.MenuStrip menuStripIdioma;
+        private System.Windows.Forms.ToolStripMenuItem menuIdioma;
+        private System.Windows.Forms.ToolStripMenuItem menuEspañol;
+        private System.Windows.Forms.ToolStripMenuItem menuIngles;
         private System.Windows.Forms.Panel panelTopBar;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnNotifications;

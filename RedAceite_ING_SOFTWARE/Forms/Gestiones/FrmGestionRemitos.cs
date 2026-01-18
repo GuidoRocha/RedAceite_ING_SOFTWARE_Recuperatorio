@@ -100,6 +100,25 @@ namespace RedAceite_ING_SOFTWARE.Forms
             {
                 var remitos = _remitoGestionService.ObtenerRemitosParaGestion();
                 dgvRemitos.DataSource = remitos;
+
+                // **VERIFICAR SI HAY REMITOS ALTERADOS Y AVISAR AL USUARIO**
+                int countAlterados = remitos.Count(r => r.IntegridadEstado == "ALTERADO");
+                if (countAlterados > 0)
+                {
+                    MessageBox.Show(
+                        $"?? ALERTA DE SEGURIDAD ??\n\n" +
+                        $"Se detectaron {countAlterados} remito(s) con datos ALTERADOS.\n\n" +
+                        $"Los registros alterados aparecen marcados en ROJO en la grilla.\n" +
+                        $"Esto indica que los datos fueron modificados fuera del sistema.\n\n" +
+                        $"Por favor, revise inmediatamente los remitos marcados.",
+                        "Alerta de Integridad",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    LoggerService.WriteLog(
+                        $"Se mostró alerta al usuario: {countAlterados} remito(s) alterado(s) detectados en gestión de remitos.",
+                        System.Diagnostics.TraceLevel.Warning);
+                }
             }
             catch (Exception ex)
             {
@@ -144,12 +163,29 @@ namespace RedAceite_ING_SOFTWARE.Forms
                             }
                         }
 
-                        // Si el remito está anulado, pintar la fila en gris
-                        if (remito.EstaAnulado)
+                        // **PRIORIDAD 1: REMITOS ALTERADOS (Fondo rojo claro)**
+                        if (remito.IntegridadEstado == "ALTERADO")
+                        {
+                            e.CellStyle.BackColor = Color.LightCoral;
+                            e.CellStyle.ForeColor = Color.DarkRed;
+                            e.CellStyle.SelectionBackColor = Color.IndianRed;
+                            e.CellStyle.SelectionForeColor = Color.White;
+                            e.CellStyle.Font = new Font(e.CellStyle.Font, FontStyle.Bold);
+                        }
+                        // **PRIORIDAD 2: REMITOS ANULADOS (Fondo gris)**
+                        else if (remito.EstaAnulado)
                         {
                             e.CellStyle.BackColor = Color.LightGray;
                             e.CellStyle.ForeColor = Color.DarkGray;
                             e.CellStyle.SelectionBackColor = Color.Gray;
+                            e.CellStyle.SelectionForeColor = Color.White;
+                        }
+                        // **PRIORIDAD 3: REMITOS SIN DÍGITO VERIFICADOR (Fondo amarillo claro)**
+                        else if (remito.IntegridadEstado == "SIN_DV")
+                        {
+                            e.CellStyle.BackColor = Color.LightYellow;
+                            e.CellStyle.ForeColor = Color.DarkGoldenrod;
+                            e.CellStyle.SelectionBackColor = Color.Goldenrod;
                             e.CellStyle.SelectionForeColor = Color.White;
                         }
                     }
@@ -250,7 +286,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 "IdRemito", "EstadoRemito", "DomicilioPlanta", "NombreFantasia",
                 "Direccion", "NombreTransportista", "DomicilioTransportista",
                 "IdRemitoPDF", "NombreArchivo", "FechaGeneracionPdf", "TamañoBytes",
-                "HashMD5", "TienePdf", "EstaAnulado", "TamañoFormateado"
+                "HashMD5", "TienePdf", "EstaAnulado", "TamañoFormateado",
+                "DigitoVerificador", "IntegridadValida" // Ocultar DV y bandera booleana
             };
 
             foreach (string nombreColumna in columnasOcultas)
@@ -337,6 +374,17 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 col.MinimumWidth = 80;
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             }
+
+            // **NUEVA COLUMNA: Integridad**
+            if (dgvRemitos.Columns.Contains("IntegridadEstado"))
+            {
+                var col = dgvRemitos.Columns["IntegridadEstado"];
+                col.HeaderText = "Integridad";
+                col.DisplayIndex = displayIndex++;
+                col.Width = 100;
+                col.MinimumWidth = 90;
+                col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+            }
         }
 
         /// <summary>
@@ -355,7 +403,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             {
                 Name = "DescargarPdf",
                 HeaderText = "PDF",
-                Text = "? Descargar",
+                Text = "Descargar",
                 UseColumnTextForButtonValue = true,
                 Width = 110,
                 MinimumWidth = 100,
@@ -388,26 +436,29 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     tipoResiduo = null;
                 }
 
-                // Solo aplicar filtro de fecha si hay algún valor significativo
-                if (dtpFechaInicio.Checked)
-                    fechaInicio = dtpFechaInicio.Value.Date;
-                
-                if (dtpFechaFin.Checked)
-                    fechaFin = dtpFechaFin.Value.Date.AddDays(1).AddSeconds(-1); // Hasta el final del día
-
-                // Si no hay ningún filtro aplicado, cargar todos
-                if (!fechaInicio.HasValue && !fechaFin.HasValue && 
-                    string.IsNullOrWhiteSpace(cuit) && string.IsNullOrWhiteSpace(tipoResiduo))
-                {
-                    CargarRemitos();
-                    return;
-                }
+                // Aplicar filtro de fecha - ahora siempre toma los valores de los DateTimePicker
+                fechaInicio = dtpFechaInicio.Value.Date;
+                fechaFin = dtpFechaFin.Value.Date.AddDays(1).AddSeconds(-1); // Hasta el final del día
 
                 // Aplicar los filtros
                 var remitosFiltrados = _remitoGestionService.ObtenerRemitosFiltrados(
                     fechaInicio, fechaFin, cuit, tipoResiduo);
                 
                 dgvRemitos.DataSource = remitosFiltrados;
+
+                // **VERIFICAR SI HAY REMITOS ALTERADOS Y AVISAR AL USUARIO**
+                int countAlterados = remitosFiltrados.Count(r => r.IntegridadEstado == "ALTERADO");
+                if (countAlterados > 0)
+                {
+                    MessageBox.Show(
+                        $"?? ALERTA DE SEGURIDAD ??\n\n" +
+                        $"Se detectaron {countAlterados} remito(s) con datos ALTERADOS en los resultados filtrados.\n\n" +
+                        $"Los registros alterados aparecen marcados en ROJO en la grilla.\n" +
+                        $"Por favor, revise inmediatamente los remitos marcados.",
+                        "Alerta de Integridad",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
 
                 MessageBox.Show($"Se encontraron {remitosFiltrados.Count} remitos con los filtros aplicados.", 
                     "Filtros Aplicados", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -426,9 +477,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         private void btnLimpiarFiltros_Click(object sender, EventArgs e)
         {
             // Limpiar todos los filtros
-            dtpFechaInicio.Checked = false;
             dtpFechaInicio.Value = DateTime.Now;
-            dtpFechaFin.Checked = false;
             dtpFechaFin.Value = DateTime.Now;
             txtFiltroCUIT.Clear();
             cmbTipoResiduo.SelectedIndex = 0;

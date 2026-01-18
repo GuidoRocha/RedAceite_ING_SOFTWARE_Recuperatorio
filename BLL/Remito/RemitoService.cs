@@ -162,6 +162,25 @@ namespace BLL
                 remito.EstadoRemito = "Activo";
             }
 
+            // **CALCULAR DÍGITO VERIFICADOR**
+            try
+            {
+                remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
+                
+                LoggerService.WriteLog(
+                    $"Dígito Verificador calculado para remito {remito.IdRemito}: {remito.DigitoVerificador}",
+                    System.Diagnostics.TraceLevel.Verbose);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteLog(
+                    $"Error al calcular Dígito Verificador para remito {remito.IdRemito}: {ex.Message}",
+                    System.Diagnostics.TraceLevel.Warning);
+                LoggerService.WriteException(ex);
+                // Continuar sin DV en caso de error
+                remito.DigitoVerificador = null;
+            }
+
             // Crear el remito en la base de datos
             _remitoRepository.CreateRemito(remito);
         }
@@ -235,7 +254,28 @@ namespace BLL
                 throw new Exception("El remito ya se encuentra anulado.");
             }
 
-            _remitoRepository.AnularRemito(idRemito);
+            // Cambiar estado a Anulado
+            remito.EstadoRemito = "Anulado";
+
+            // **RECALCULAR DÍGITO VERIFICADOR**
+            try
+            {
+                remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
+                
+                LoggerService.WriteLog(
+                    $"Dígito Verificador recalculado al anular remito {remito.IdRemito}: {remito.DigitoVerificador}",
+                    System.Diagnostics.TraceLevel.Info);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteLog(
+                    $"Error al recalcular Dígito Verificador al anular remito {remito.IdRemito}: {ex.Message}",
+                    System.Diagnostics.TraceLevel.Warning);
+                LoggerService.WriteException(ex);
+            }
+
+            // Actualizar el remito con el nuevo estado y DV
+            _remitoRepository.Update(remito);
         }
 
         /// <summary>
@@ -252,6 +292,23 @@ namespace BLL
             if (remitoExistente == null)
             {
                 throw new Exception("El remito no existe.");
+            }
+
+            // **RECALCULAR DÍGITO VERIFICADOR**
+            try
+            {
+                remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
+                
+                LoggerService.WriteLog(
+                    $"Dígito Verificador recalculado al actualizar remito {remito.IdRemito}: {remito.DigitoVerificador}",
+                    System.Diagnostics.TraceLevel.Info);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteLog(
+                    $"Error al recalcular Dígito Verificador al actualizar remito {remito.IdRemito}: {ex.Message}",
+                    System.Diagnostics.TraceLevel.Warning);
+                LoggerService.WriteException(ex);
             }
 
             _remitoRepository.Update(remito);
@@ -306,6 +363,69 @@ namespace BLL
             if (string.IsNullOrWhiteSpace(remito.Direccion))
             {
                 throw new ArgumentException("La dirección es obligatoria.", nameof(remito.Direccion));
+            }
+        }
+
+        /// <summary>
+        /// Recalcula el Dígito Verificador para todos los remitos que no lo tienen.
+        /// Método de backfill para actualizar remitos creados antes de la implementación del DV.
+        /// </summary>
+        /// <returns>Número de remitos actualizados.</returns>
+        public int RecalcularDVRemitosSinDV()
+        {
+            int contadorActualizados = 0;
+
+            try
+            {
+                LoggerService.WriteLog(
+                    "Iniciando proceso de backfill de Dígitos Verificadores...",
+                    System.Diagnostics.TraceLevel.Info);
+
+                // Obtener todos los remitos
+                var remitos = _remitoRepository.GetAllRemitos();
+
+                foreach (var remito in remitos)
+                {
+                    // Solo procesar remitos sin DV
+                    if (string.IsNullOrWhiteSpace(remito.DigitoVerificador))
+                    {
+                        try
+                        {
+                            // Calcular DV
+                            remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
+
+                            // Actualizar en DB
+                            _remitoRepository.Update(remito);
+
+                            contadorActualizados++;
+
+                            LoggerService.WriteLog(
+                                $"DV calculado para remito {remito.IdRemito}: {remito.DigitoVerificador}",
+                                System.Diagnostics.TraceLevel.Verbose);
+                        }
+                        catch (Exception ex)
+                        {
+                            LoggerService.WriteLog(
+                                $"Error al calcular DV para remito {remito.IdRemito}: {ex.Message}",
+                                System.Diagnostics.TraceLevel.Warning);
+                            LoggerService.WriteException(ex);
+                        }
+                    }
+                }
+
+                LoggerService.WriteLog(
+                    $"Proceso de backfill completado. {contadorActualizados} remitos actualizados de {remitos.Count} totales.",
+                    System.Diagnostics.TraceLevel.Info);
+
+                return contadorActualizados;
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteLog(
+                    $"Error en proceso de backfill de DV: {ex.Message}",
+                    System.Diagnostics.TraceLevel.Error);
+                LoggerService.WriteException(ex);
+                throw;
             }
         }
     }

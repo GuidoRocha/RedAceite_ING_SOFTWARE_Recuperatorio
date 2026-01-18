@@ -32,6 +32,23 @@ namespace DOMAIN
         public long? TamañoBytes { get; set; }
         public string HashMD5 { get; set; }
 
+        // ===== CAMPOS PARA DÍGITO VERIFICADOR =====
+        
+        /// <summary>
+        /// Dígito Verificador (hash MD5) del remito para verificar integridad de datos.
+        /// </summary>
+        public string DigitoVerificador { get; set; }
+
+        /// <summary>
+        /// Estado de la integridad del remito: "OK", "ALTERADO", "SIN_DV".
+        /// </summary>
+        public string IntegridadEstado { get; set; }
+
+        /// <summary>
+        /// Indica si la integridad del remito es válida (true) o no (false).
+        /// </summary>
+        public bool IntegridadValida { get; set; }
+
         /// <summary>
         /// Indica si el remito tiene un PDF generado asociado.
         /// </summary>

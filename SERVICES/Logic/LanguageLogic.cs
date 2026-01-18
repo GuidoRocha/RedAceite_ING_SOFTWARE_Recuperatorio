@@ -15,22 +15,26 @@ namespace SERVICES.Logic
         /// Traduce una clave de texto a su valor en el idioma actual.
         /// </summary>
         /// <param name="key">Clave de texto a traducir.</param>
-        /// <returns>Texto traducido si la clave existe, o la clave original en caso de error.</returns>
+        /// <returns>Texto traducido si la clave existe, o la clave original si no se encuentra.</returns>
         public static string Translate(string key)
         {
             try
             {
-                // Simplemente llamar a la DAO para traducir la clave
+                // Intentar traducir la clave
                 return LanguageRepository.Translate(key);
             }
             catch (Exception ex)
             {
-                // Registrar cualquier excepción, si es necesario
-                Console.WriteLine(ex.Message);
-                LoggerService.WriteException(ex);
+                // Si no se encuentra la clave, registrar warning y retornar la key original
+                Console.WriteLine($"Key no encontrada: {key}");
+                LoggerService.WriteLog(
+                    $"Traducción no encontrada para key: {key}",
+                    System.Diagnostics.TraceLevel.Warning
+                );
             }
 
-            return key; // Si ocurre un error, se retorna la clave original
+            // Si ocurre un error o no se encuentra, retornar la clave original
+            return key;
         }
         /// <summary>
         /// Traduce todos los controles de un formulario utilizando las claves de traducción en las etiquetas (tags) de los controles.
