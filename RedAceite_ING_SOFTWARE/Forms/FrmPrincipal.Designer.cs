@@ -252,7 +252,6 @@
             // 
             this.menuEspañol.Name = "menuEspañol";
             this.menuEspañol.Size = new System.Drawing.Size(180, 22);
-            this.menuEspañol.Tag = "menu_Español";
             this.menuEspañol.Text = "Español";
             this.menuEspañol.Click += new System.EventHandler(this.menuEspañol_Click);
             // 
@@ -260,7 +259,6 @@
             // 
             this.menuIngles.Name = "menuIngles";
             this.menuIngles.Size = new System.Drawing.Size(180, 22);
-            this.menuIngles.Tag = "menu_Ingles";
             this.menuIngles.Text = "English";
             this.menuIngles.Click += new System.EventHandler(this.menuIngles_Click);
             // 
