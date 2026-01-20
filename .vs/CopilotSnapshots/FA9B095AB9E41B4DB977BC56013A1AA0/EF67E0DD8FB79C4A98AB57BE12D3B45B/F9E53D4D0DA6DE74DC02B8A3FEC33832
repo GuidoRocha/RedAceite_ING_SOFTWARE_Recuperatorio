@@ -1,0 +1,174 @@
+﻿using SERVICES.Dominio;
+using SERVICES.DAL.Contratos;
+using SERVICES.Facade;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace RedAceite_ING_SOFTWARE.Forms
+{
+    public partial class FrmCrearUsuario : Form, ILanguageObserver
+    {
+        public FrmCrearUsuario()
+        {
+            InitializeComponent();
+
+            // Suscribirse al evento Load
+            this.Load += FrmCrearUsuario_Load;
+
+            // Suscribirse al Observer de idioma
+            LanguageService.Subscribe(this);
+        }
+
+        /// <summary>
+        /// Evento que se ejecuta cuando el formulario se carga.
+        /// Traduce el formulario según el idioma actual.
+        /// </summary>
+        private void FrmCrearUsuario_Load(object sender, EventArgs e)
+        {
+            LanguageService.TranslateForm(this);
+        }
+
+        private void CrearUsuario_Click(object sender, EventArgs e)
+        {
+            // Obtener datos de los campos
+            string username = txtusername.Text.Trim();
+            string password = txtpassword.Text;
+            string telefono = txtTelefono.Text.Trim();
+            string nombre = txtNombre.Text.Trim();
+            string apellido = txtApellido.Text.Trim();
+            string email = txtEmail.Text.Trim();
+            string dni = txtDNI.Text.Trim();
+
+            // Validar campos obligatorios
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || 
+                string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(nombre) ||
+                string.IsNullOrEmpty(apellido) || string.IsNullOrEmpty(email))
+            {
+                string message = LanguageService.Translate("Todos_Los_Campos_Obligatorios"); 
+                string title = LanguageService.Translate("Error");
+
+                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try
+            {
+                // Crear objeto usuario
+                var usuario = new Usuario
+                {
+                    UserName = username,
+                    Telefono = telefono,
+                    Nombre = nombre,
+                    Apellido = apellido,
+                    Email = email,
+                    DNI = string.IsNullOrWhiteSpace(dni) ? null : dni
+                };
+
+                // Registrar usuario
+                UserService.RegisterUsuario(usuario, password);
+                
+                // Registrar en log
+                LoggerService.WriteLog(
+                    $"Se creó al usuario {username} - {nombre} {apellido} (DNI: {dni ?? "N/A"}).", 
+                    System.Diagnostics.TraceLevel.Info
+                );
+
+                string message = LanguageService.Translate("Usuario_Creado");
+                string title = LanguageService.Translate("Información");
+                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // Limpiar campos
+                LimpiarCampos();
+            }
+            catch (Exception ex)
+            {
+                // Mostrar el mensaje de error
+                MessageBox.Show($"Error al crear el usuario: {ex.Message}", "Error", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Limpia todos los campos del formulario.
+        /// </summary>
+        private void LimpiarCampos()
+        {
+            txtusername.Clear();
+            txtpassword.Clear();
+            txtTelefono.Clear();
+            txtNombre.Clear();
+            txtApellido.Clear();
+            txtEmail.Clear();
+            txtDNI.Clear();
+        }
+
+        /// <summary>
+        /// Maneja el evento del botón Cancelar.
+        /// Cierra el formulario sin guardar cambios.
+        /// </summary>
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            // Preguntar si realmente desea cancelar si hay datos ingresados
+            if (!string.IsNullOrWhiteSpace(txtusername.Text) || 
+                !string.IsNullOrWhiteSpace(txtpassword.Text) ||
+                !string.IsNullOrWhiteSpace(txtTelefono.Text) ||
+                !string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                !string.IsNullOrWhiteSpace(txtApellido.Text) ||
+                !string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                !string.IsNullOrWhiteSpace(txtDNI.Text))
+            {
+                DialogResult result = MessageBox.Show(
+                    "¿Está seguro que desea cancelar? Se perderán los datos ingresados.",
+                    "Confirmar cancelación",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question
+                );
+
+                if (result == DialogResult.No)
+                {
+                    return;
+                }
+            }
+
+            // Cerrar el formulario
+            this.Close();
+        }
+
+        // Implementación de ILanguageObserver
+
+        /// <summary>
+        /// Método llamado automáticamente cuando cambia el idioma.
+        /// Traduce el formulario.
+        /// </summary>
+        public void UpdateLanguage()
+        {
+            try
+            {
+                LanguageService.TranslateForm(this);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Evento que se ejecuta al cerrar el formulario.
+        /// Desuscribe del Observer para evitar memory leaks.
+        /// </summary>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            LanguageService.Unsubscribe(this);
+            base.OnFormClosing(e);
+        }
+    }
+}

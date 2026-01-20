@@ -1,0 +1,189 @@
+﻿using SERVICES.DAL;
+using SERVICES.Facade;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace SERVICES.Logic
+{
+    internal static class LanguageLogic
+    {
+        /// <summary>
+        /// Traduce una clave de texto a su valor en el idioma actual.
+        /// </summary>
+        /// <param name="key">Clave de texto a traducir.</param>
+        /// <returns>Texto traducido si la clave existe, o la clave original si no se encuentra.</returns>
+        public static string Translate(string key)
+        {
+            try
+            {
+                // Intentar traducir la clave
+                return LanguageRepository.Translate(key);
+            }
+            catch (Exception ex)
+            {
+                // Si no se encuentra la clave, registrar warning y retornar la key original
+                Console.WriteLine($"Key no encontrada: {key}");
+                LoggerService.WriteLog(
+                    $"Traducción no encontrada para key: {key}",
+                    System.Diagnostics.TraceLevel.Warning
+                );
+            }
+
+            // Si ocurre un error o no se encuentra, retornar la clave original
+            return key;
+        }
+
+        /// <summary>
+        /// Traduce una clave de texto con fallback explícito.
+        /// </summary>
+        /// <param name="key">Clave de texto a traducir.</param>
+        /// <param name="fallbackText">Texto a devolver si no se encuentra la traducción.</param>
+        /// <returns>Texto traducido, fallbackText si no se encuentra, o key si fallbackText es null.</returns>
+        public static string Translate(string key, string fallbackText)
+        {
+            try
+            {
+                var result = LanguageRepository.Translate(key);
+                
+                // Si no encontró traducción (devuelve key) y hay fallback explícito
+                if (result == key && !string.IsNullOrEmpty(fallbackText))
+                    return fallbackText;
+                    
+                return result;
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteLog(
+                    $"Traducción no encontrada para key: {key}",
+                    System.Diagnostics.TraceLevel.Warning
+                );
+                
+                return fallbackText ?? key;
+            }
+        }
+        /// <summary>
+        /// Traduce todos los controles de un formulario utilizando las claves de traducción en las etiquetas (tags) de los controles.
+        /// </summary>
+        /// <param name="control">Control principal del formulario a traducir.</param>
+        public static void TranslateForm(Control control)
+        {
+            // NUEVO: Traducir título del formulario si es un Form y tiene Tag
+            if (control is Form form)
+            {
+                if (form.Tag != null && !string.IsNullOrEmpty(form.Tag.ToString()))
+                {
+                    form.Text = Translate(form.Tag.ToString(), form.Text);
+                }
+            }
+
+            foreach (Control ctrl in control.Controls)
+            {
+                if (ctrl.Tag != null && !string.IsNullOrEmpty(ctrl.Tag.ToString()))
+                {
+                    ctrl.Text = Translate(ctrl.Tag.ToString(), ctrl.Text);
+                }
+
+                // NUEVO: Detectar y traducir DataGridView automáticamente
+                if (ctrl is DataGridView dgv)
+                {
+                    TranslateDataGridView(dgv);
+                }
+
+                // Traducir recursivamente subcontroles
+                if (ctrl.HasChildren)
+                {
+                    TranslateForm(ctrl);
+                }
+
+                // Verificar si es un MenuStrip
+                if (ctrl is MenuStrip menuStrip)
+                {
+                    foreach (ToolStripMenuItem item in menuStrip.Items)
+                    {
+                        TranslateMenuItem(item);
+                    }
+                }
+            }
+
+            // Si el control en sí es un MenuStrip
+            if (control is MenuStrip menuStripDirect)
+            {
+                foreach (ToolStripMenuItem item in menuStripDirect.Items)
+                {
+                    TranslateMenuItem(item);
+                }
+            }
+        }
+        /// <summary>
+        /// Traduce un elemento de menú y todos sus subelementos.
+        /// </summary>
+        /// <param name="menuItem">Elemento de menú a traducir.</param>
+        private static void TranslateMenuItem(ToolStripMenuItem menuItem)
+        {
+            if (menuItem.Tag != null && !string.IsNullOrEmpty(menuItem.Tag.ToString()))
+            {
+                menuItem.Text = Translate(menuItem.Tag.ToString(), menuItem.Text);
+            }
+
+            // Traducir recursivamente subitems
+            foreach (ToolStripItem subItem in menuItem.DropDownItems)
+            {
+                if (subItem is ToolStripMenuItem subMenuItem)
+                {
+                    TranslateMenuItem(subMenuItem);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Traduce los encabezados de columnas de un DataGridView.
+        /// </summary>
+        /// <param name="dgv">DataGridView a traducir.</param>
+        public static void TranslateDataGridView(DataGridView dgv)
+        {
+            if (dgv == null) return;
+
+            foreach (DataGridViewColumn column in dgv.Columns)
+            {
+                // Estrategia 1: usar Tag si existe
+                if (column.Tag != null && !string.IsNullOrEmpty(column.Tag.ToString()))
+                {
+                    column.HeaderText = Translate(column.Tag.ToString(), column.HeaderText);
+                }
+                // Estrategia 2: usar Name como key fallback (solo si hay traducción)
+                else if (!string.IsNullOrEmpty(column.Name))
+                {
+                    string translated = Translate(column.Name);
+                    // Solo aplicar si encontró traducción diferente al Name
+                    if (translated != column.Name)
+                        column.HeaderText = translated;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Guarda el idioma seleccionado para el usuario actual.
+        /// </summary>
+        /// <param name="languageCode">Código del idioma a guardar.</param>
+        public static void SaveUserLanguage(string languageCode)
+        {
+            LanguageRepository.SaveUserLanguage(languageCode);
+        }
+
+        /// <summary>
+        /// Carga el idioma seleccionado previamente para el usuario actual.
+        /// </summary>
+        /// <returns>El código del idioma seleccionado.</returns>
+        public static string LoadUserLanguage()
+        {
+            return LanguageRepository.LoadUserLanguage();
+        }
+
+
+
+    }
+}

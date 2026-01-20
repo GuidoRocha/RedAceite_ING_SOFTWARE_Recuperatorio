@@ -54,19 +54,19 @@
             this.lblRemitosCount = new System.Windows.Forms.Label();
             this.lblRemitos = new System.Windows.Forms.Label();
             this.panelStats = new System.Windows.Forms.Panel();
-            this.lblStatsTitle = new System.Windows.Forms.Label();
-            this.panelInventarioAceite = new System.Windows.Forms.Panel();
-            this.lblStockAceite = new System.Windows.Forms.Label();
-            this.lblTituloAceite = new System.Windows.Forms.Label();
-            this.panelInventarioGrasa = new System.Windows.Forms.Panel();
-            this.lblStockGrasa = new System.Windows.Forms.Label();
-            this.lblTituloGrasa = new System.Windows.Forms.Label();
+            this.lblUltimaActualizacion = new System.Windows.Forms.Label();
+            this.lblSalidasMes = new System.Windows.Forms.Label();
+            this.lblEntradasMes = new System.Windows.Forms.Label();
             this.panelInventarioTotal = new System.Windows.Forms.Panel();
             this.lblStockTotal = new System.Windows.Forms.Label();
             this.lblTituloTotal = new System.Windows.Forms.Label();
-            this.lblEntradasMes = new System.Windows.Forms.Label();
-            this.lblSalidasMes = new System.Windows.Forms.Label();
-            this.lblUltimaActualizacion = new System.Windows.Forms.Label();
+            this.panelInventarioGrasa = new System.Windows.Forms.Panel();
+            this.lblStockGrasa = new System.Windows.Forms.Label();
+            this.lblTituloGrasa = new System.Windows.Forms.Label();
+            this.panelInventarioAceite = new System.Windows.Forms.Panel();
+            this.lblStockAceite = new System.Windows.Forms.Label();
+            this.lblTituloAceite = new System.Windows.Forms.Label();
+            this.lblStatsTitle = new System.Windows.Forms.Label();
             this.panelSidebar.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.menuStripIdioma.SuspendLayout();
@@ -76,9 +76,9 @@
             this.panelManifiestos.SuspendLayout();
             this.panelRemitos.SuspendLayout();
             this.panelStats.SuspendLayout();
-            this.panelInventarioAceite.SuspendLayout();
-            this.panelInventarioGrasa.SuspendLayout();
             this.panelInventarioTotal.SuspendLayout();
+            this.panelInventarioGrasa.SuspendLayout();
+            this.panelInventarioAceite.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelSidebar
@@ -92,8 +92,9 @@
             this.panelSidebar.Controls.Add(this.panelLogo);
             this.panelSidebar.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelSidebar.Location = new System.Drawing.Point(0, 0);
+            this.panelSidebar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelSidebar.Name = "panelSidebar";
-            this.panelSidebar.Size = new System.Drawing.Size(200, 700);
+            this.panelSidebar.Size = new System.Drawing.Size(267, 862);
             this.panelSidebar.TabIndex = 0;
             // 
             // btnUsuarios
@@ -106,10 +107,11 @@
             this.btnUsuarios.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnUsuarios.ForeColor = System.Drawing.Color.White;
             this.btnUsuarios.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUsuarios.Location = new System.Drawing.Point(0, 305);
+            this.btnUsuarios.Location = new System.Drawing.Point(0, 374);
+            this.btnUsuarios.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnUsuarios.Name = "btnUsuarios";
-            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnUsuarios.Size = new System.Drawing.Size(200, 45);
+            this.btnUsuarios.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnUsuarios.Size = new System.Drawing.Size(267, 55);
             this.btnUsuarios.TabIndex = 7;
             this.btnUsuarios.Tag = "btn_Usuarios";
             this.btnUsuarios.Text = "👥 Usuarios";
@@ -127,10 +129,11 @@
             this.btnProveedores.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnProveedores.ForeColor = System.Drawing.Color.White;
             this.btnProveedores.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProveedores.Location = new System.Drawing.Point(0, 260);
+            this.btnProveedores.Location = new System.Drawing.Point(0, 319);
+            this.btnProveedores.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnProveedores.Name = "btnProveedores";
-            this.btnProveedores.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnProveedores.Size = new System.Drawing.Size(200, 45);
+            this.btnProveedores.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnProveedores.Size = new System.Drawing.Size(267, 55);
             this.btnProveedores.TabIndex = 6;
             this.btnProveedores.Tag = "btn_Proveedores";
             this.btnProveedores.Text = "🏢 Proveedores";
@@ -148,10 +151,11 @@
             this.btnRemitos.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnRemitos.ForeColor = System.Drawing.Color.White;
             this.btnRemitos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRemitos.Location = new System.Drawing.Point(0, 215);
+            this.btnRemitos.Location = new System.Drawing.Point(0, 264);
+            this.btnRemitos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRemitos.Name = "btnRemitos";
-            this.btnRemitos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnRemitos.Size = new System.Drawing.Size(200, 45);
+            this.btnRemitos.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnRemitos.Size = new System.Drawing.Size(267, 55);
             this.btnRemitos.TabIndex = 4;
             this.btnRemitos.Tag = "btn_Remitos";
             this.btnRemitos.Text = "📄 Remitos";
@@ -169,10 +173,11 @@
             this.btnManifiestos.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.btnManifiestos.ForeColor = System.Drawing.Color.White;
             this.btnManifiestos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnManifiestos.Location = new System.Drawing.Point(0, 170);
+            this.btnManifiestos.Location = new System.Drawing.Point(0, 209);
+            this.btnManifiestos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnManifiestos.Name = "btnManifiestos";
-            this.btnManifiestos.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnManifiestos.Size = new System.Drawing.Size(200, 45);
+            this.btnManifiestos.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnManifiestos.Size = new System.Drawing.Size(267, 55);
             this.btnManifiestos.TabIndex = 3;
             this.btnManifiestos.Tag = "btn_Manifiestos";
             this.btnManifiestos.Text = "📋 Manifiestos";
@@ -190,10 +195,11 @@
             this.btnInicio.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnInicio.ForeColor = System.Drawing.Color.White;
             this.btnInicio.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInicio.Location = new System.Drawing.Point(0, 125);
+            this.btnInicio.Location = new System.Drawing.Point(0, 154);
+            this.btnInicio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnInicio.Name = "btnInicio";
-            this.btnInicio.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.btnInicio.Size = new System.Drawing.Size(200, 45);
+            this.btnInicio.Padding = new System.Windows.Forms.Padding(13, 0, 0, 0);
+            this.btnInicio.Size = new System.Drawing.Size(267, 55);
             this.btnInicio.TabIndex = 9;
             this.btnInicio.Tag = "btn_Inicio";
             this.btnInicio.Text = "🏠 Inicio";
@@ -208,8 +214,9 @@
             this.panelLogo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(200, 125);
+            this.panelLogo.Size = new System.Drawing.Size(267, 154);
             this.panelLogo.TabIndex = 1;
             this.panelLogo.Click += new System.EventHandler(this.panelLogo_Click);
             // 
@@ -220,8 +227,9 @@
             this.lblLogo.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblLogo.ForeColor = System.Drawing.Color.White;
             this.lblLogo.Location = new System.Drawing.Point(0, 0);
+            this.lblLogo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblLogo.Name = "lblLogo";
-            this.lblLogo.Size = new System.Drawing.Size(200, 125);
+            this.lblLogo.Size = new System.Drawing.Size(267, 154);
             this.lblLogo.TabIndex = 0;
             this.lblLogo.Text = "RedAceite";
             this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -230,11 +238,12 @@
             // menuStripIdioma
             // 
             this.menuStripIdioma.BackColor = System.Drawing.Color.White;
+            this.menuStripIdioma.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStripIdioma.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuIdioma});
-            this.menuStripIdioma.Location = new System.Drawing.Point(200, 0);
+            this.menuStripIdioma.Location = new System.Drawing.Point(267, 0);
             this.menuStripIdioma.Name = "menuStripIdioma";
-            this.menuStripIdioma.Size = new System.Drawing.Size(1179, 24);
+            this.menuStripIdioma.Size = new System.Drawing.Size(1572, 30);
             this.menuStripIdioma.TabIndex = 3;
             this.menuStripIdioma.Text = "menuStripIdioma";
             // 
@@ -244,21 +253,23 @@
             this.menuEspañol,
             this.menuIngles});
             this.menuIdioma.Name = "menuIdioma";
-            this.menuIdioma.Size = new System.Drawing.Size(61, 20);
+            this.menuIdioma.Size = new System.Drawing.Size(70, 26);
             this.menuIdioma.Tag = "menu_Idioma";
             this.menuIdioma.Text = "Idioma";
             // 
             // menuEspañol
             // 
             this.menuEspañol.Name = "menuEspañol";
-            this.menuEspañol.Size = new System.Drawing.Size(180, 22);
+            this.menuEspañol.Size = new System.Drawing.Size(144, 26);
+            this.menuEspañol.Tag = "menu_Espanol";
             this.menuEspañol.Text = "Español";
             this.menuEspañol.Click += new System.EventHandler(this.menuEspañol_Click);
             // 
             // menuIngles
             // 
             this.menuIngles.Name = "menuIngles";
-            this.menuIngles.Size = new System.Drawing.Size(180, 22);
+            this.menuIngles.Size = new System.Drawing.Size(144, 26);
+            this.menuIngles.Tag = "menu_Ingles";
             this.menuIngles.Text = "English";
             this.menuIngles.Click += new System.EventHandler(this.menuIngles_Click);
             // 
@@ -270,9 +281,10 @@
             this.panelTopBar.Controls.Add(this.btnNotifications);
             this.panelTopBar.Controls.Add(this.lblTitle);
             this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTopBar.Location = new System.Drawing.Point(200, 24);
+            this.panelTopBar.Location = new System.Drawing.Point(267, 30);
+            this.panelTopBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTopBar.Name = "panelTopBar";
-            this.panelTopBar.Size = new System.Drawing.Size(1179, 60);
+            this.panelTopBar.Size = new System.Drawing.Size(1572, 74);
             this.panelTopBar.TabIndex = 1;
             // 
             // lblUserName
@@ -280,9 +292,10 @@
             this.lblUserName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblUserName.Location = new System.Drawing.Point(1034, 22);
+            this.lblUserName.Location = new System.Drawing.Point(1379, 27);
+            this.lblUserName.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblUserName.Name = "lblUserName";
-            this.lblUserName.Size = new System.Drawing.Size(56, 19);
+            this.lblUserName.Size = new System.Drawing.Size(68, 23);
             this.lblUserName.TabIndex = 3;
             this.lblUserName.Tag = "lbl_Usuario";
             this.lblUserName.Text = "Usuario";
@@ -295,9 +308,10 @@
             this.btnProfile.FlatAppearance.BorderSize = 0;
             this.btnProfile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProfile.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.btnProfile.Location = new System.Drawing.Point(1103, 15);
+            this.btnProfile.Location = new System.Drawing.Point(1471, 18);
+            this.btnProfile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnProfile.Name = "btnProfile";
-            this.btnProfile.Size = new System.Drawing.Size(40, 40);
+            this.btnProfile.Size = new System.Drawing.Size(53, 49);
             this.btnProfile.TabIndex = 2;
             this.btnProfile.Text = "U";
             this.btnProfile.UseVisualStyleBackColor = false;
@@ -310,9 +324,10 @@
             this.btnNotifications.FlatAppearance.BorderSize = 0;
             this.btnNotifications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNotifications.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.btnNotifications.Location = new System.Drawing.Point(979, 15);
+            this.btnNotifications.Location = new System.Drawing.Point(1305, 18);
+            this.btnNotifications.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnNotifications.Name = "btnNotifications";
-            this.btnNotifications.Size = new System.Drawing.Size(40, 40);
+            this.btnNotifications.Size = new System.Drawing.Size(53, 49);
             this.btnNotifications.TabIndex = 1;
             this.btnNotifications.Text = "🔔";
             this.btnNotifications.UseVisualStyleBackColor = true;
@@ -322,22 +337,25 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblTitle.Location = new System.Drawing.Point(20, 18);
+            this.lblTitle.Location = new System.Drawing.Point(27, 22);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(147, 25);
+            this.lblTitle.Size = new System.Drawing.Size(188, 32);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Tag = "lbl_MenuPrincipal";
             this.lblTitle.Text = "Menu Principal";
+            this.lblTitle.Click += new System.EventHandler(this.lblTitle_Click);
             // 
             // panelMain
             // 
             this.panelMain.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.panelMain.Controls.Add(this.panelDashboard);
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelMain.Location = new System.Drawing.Point(200, 84);
+            this.panelMain.Location = new System.Drawing.Point(267, 104);
+            this.panelMain.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Padding = new System.Windows.Forms.Padding(20, 20, 20, 20);
-            this.panelMain.Size = new System.Drawing.Size(1179, 616);
+            this.panelMain.Padding = new System.Windows.Forms.Padding(27, 25, 27, 25);
+            this.panelMain.Size = new System.Drawing.Size(1572, 758);
             this.panelMain.TabIndex = 2;
             // 
             // panelDashboard
@@ -346,9 +364,10 @@
             this.panelDashboard.Controls.Add(this.panelRemitos);
             this.panelDashboard.Controls.Add(this.panelStats);
             this.panelDashboard.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDashboard.Location = new System.Drawing.Point(20, 20);
+            this.panelDashboard.Location = new System.Drawing.Point(27, 25);
+            this.panelDashboard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelDashboard.Name = "panelDashboard";
-            this.panelDashboard.Size = new System.Drawing.Size(1139, 600);
+            this.panelDashboard.Size = new System.Drawing.Size(1518, 708);
             this.panelDashboard.TabIndex = 0;
             // 
             // panelManifiestos
@@ -357,18 +376,20 @@
             this.panelManifiestos.Controls.Add(this.lblManifiestosCount);
             this.panelManifiestos.Controls.Add(this.lblManifiestos);
             this.panelManifiestos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelManifiestos.Location = new System.Drawing.Point(290, 10);
+            this.panelManifiestos.Location = new System.Drawing.Point(387, 12);
+            this.panelManifiestos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelManifiestos.Name = "panelManifiestos";
-            this.panelManifiestos.Size = new System.Drawing.Size(220, 120);
+            this.panelManifiestos.Size = new System.Drawing.Size(293, 148);
             this.panelManifiestos.TabIndex = 3;
             this.panelManifiestos.Click += new System.EventHandler(this.panelManifiestos_Click);
             // 
             // lblManifiestosCount
             // 
             this.lblManifiestosCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
-            this.lblManifiestosCount.Location = new System.Drawing.Point(10, 50);
+            this.lblManifiestosCount.Location = new System.Drawing.Point(13, 62);
+            this.lblManifiestosCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblManifiestosCount.Name = "lblManifiestosCount";
-            this.lblManifiestosCount.Size = new System.Drawing.Size(200, 50);
+            this.lblManifiestosCount.Size = new System.Drawing.Size(267, 62);
             this.lblManifiestosCount.TabIndex = 1;
             this.lblManifiestosCount.Text = "963";
             this.lblManifiestosCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -377,9 +398,10 @@
             // lblManifiestos
             // 
             this.lblManifiestos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblManifiestos.Location = new System.Drawing.Point(10, 15);
+            this.lblManifiestos.Location = new System.Drawing.Point(13, 18);
+            this.lblManifiestos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblManifiestos.Name = "lblManifiestos";
-            this.lblManifiestos.Size = new System.Drawing.Size(200, 25);
+            this.lblManifiestos.Size = new System.Drawing.Size(267, 31);
             this.lblManifiestos.TabIndex = 0;
             this.lblManifiestos.Tag = "lbl_Manifiestos";
             this.lblManifiestos.Text = "Manifiestos";
@@ -391,9 +413,10 @@
             this.panelRemitos.Controls.Add(this.lblRemitosCount);
             this.panelRemitos.Controls.Add(this.lblRemitos);
             this.panelRemitos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelRemitos.Location = new System.Drawing.Point(10, 10);
+            this.panelRemitos.Location = new System.Drawing.Point(13, 12);
+            this.panelRemitos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelRemitos.Name = "panelRemitos";
-            this.panelRemitos.Size = new System.Drawing.Size(220, 120);
+            this.panelRemitos.Size = new System.Drawing.Size(293, 148);
             this.panelRemitos.TabIndex = 1;
             this.panelRemitos.Click += new System.EventHandler(this.panelRemitos_Click);
             // 
@@ -401,9 +424,10 @@
             // 
             this.lblRemitosCount.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold);
             this.lblRemitosCount.ForeColor = System.Drawing.Color.White;
-            this.lblRemitosCount.Location = new System.Drawing.Point(10, 50);
+            this.lblRemitosCount.Location = new System.Drawing.Point(13, 62);
+            this.lblRemitosCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRemitosCount.Name = "lblRemitosCount";
-            this.lblRemitosCount.Size = new System.Drawing.Size(200, 50);
+            this.lblRemitosCount.Size = new System.Drawing.Size(267, 62);
             this.lblRemitosCount.TabIndex = 1;
             this.lblRemitosCount.Text = "9,328";
             this.lblRemitosCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -413,9 +437,10 @@
             // 
             this.lblRemitos.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblRemitos.ForeColor = System.Drawing.Color.White;
-            this.lblRemitos.Location = new System.Drawing.Point(10, 15);
+            this.lblRemitos.Location = new System.Drawing.Point(13, 18);
+            this.lblRemitos.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRemitos.Name = "lblRemitos";
-            this.lblRemitos.Size = new System.Drawing.Size(200, 25);
+            this.lblRemitos.Size = new System.Drawing.Size(267, 31);
             this.lblRemitos.TabIndex = 0;
             this.lblRemitos.Tag = "lbl_Remitos";
             this.lblRemitos.Text = "Remitos";
@@ -431,102 +456,65 @@
             this.panelStats.Controls.Add(this.panelInventarioGrasa);
             this.panelStats.Controls.Add(this.panelInventarioAceite);
             this.panelStats.Controls.Add(this.lblStatsTitle);
-            this.panelStats.Location = new System.Drawing.Point(10, 150);
+            this.panelStats.Location = new System.Drawing.Point(13, 185);
+            this.panelStats.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelStats.Name = "panelStats";
-            this.panelStats.Size = new System.Drawing.Size(780, 330);
+            this.panelStats.Size = new System.Drawing.Size(1040, 406);
             this.panelStats.TabIndex = 0;
             // 
-            // lblStatsTitle
+            // lblUltimaActualizacion
             // 
-            this.lblStatsTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.lblStatsTitle.Location = new System.Drawing.Point(15, 15);
-            this.lblStatsTitle.Name = "lblStatsTitle";
-            this.lblStatsTitle.Size = new System.Drawing.Size(300, 30);
-            this.lblStatsTitle.TabIndex = 0;
-            this.lblStatsTitle.Tag = "lbl_EstadisticasInventario";
-            this.lblStatsTitle.Text = "Estadísticas de Inventario";
+            this.lblUltimaActualizacion.AutoSize = true;
+            this.lblUltimaActualizacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
+            this.lblUltimaActualizacion.ForeColor = System.Drawing.Color.Gray;
+            this.lblUltimaActualizacion.Location = new System.Drawing.Point(27, 369);
+            this.lblUltimaActualizacion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblUltimaActualizacion.Name = "lblUltimaActualizacion";
+            this.lblUltimaActualizacion.Size = new System.Drawing.Size(210, 20);
+            this.lblUltimaActualizacion.TabIndex = 6;
+            this.lblUltimaActualizacion.Text = "Última actualización: --/--/----";
             // 
-            // panelInventarioAceite
+            // lblSalidasMes
             // 
-            this.panelInventarioAceite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
-            this.panelInventarioAceite.Controls.Add(this.lblStockAceite);
-            this.panelInventarioAceite.Controls.Add(this.lblTituloAceite);
-            this.panelInventarioAceite.Location = new System.Drawing.Point(20, 60);
-            this.panelInventarioAceite.Name = "panelInventarioAceite";
-            this.panelInventarioAceite.Size = new System.Drawing.Size(200, 100);
-            this.panelInventarioAceite.TabIndex = 1;
+            this.lblSalidasMes.AutoSize = true;
+            this.lblSalidasMes.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblSalidasMes.Location = new System.Drawing.Point(27, 258);
+            this.lblSalidasMes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSalidasMes.Name = "lblSalidasMes";
+            this.lblSalidasMes.Size = new System.Drawing.Size(208, 23);
+            this.lblSalidasMes.TabIndex = 5;
+            this.lblSalidasMes.Text = "📤 Salidas (último mes): 0";
             // 
-            // lblStockAceite
+            // lblEntradasMes
             // 
-            this.lblStockAceite.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblStockAceite.ForeColor = System.Drawing.Color.White;
-            this.lblStockAceite.Location = new System.Drawing.Point(10, 45);
-            this.lblStockAceite.Name = "lblStockAceite";
-            this.lblStockAceite.Size = new System.Drawing.Size(180, 40);
-            this.lblStockAceite.TabIndex = 1;
-            this.lblStockAceite.Text = "0 L";
-            this.lblStockAceite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblTituloAceite
-            // 
-            this.lblTituloAceite.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblTituloAceite.ForeColor = System.Drawing.Color.White;
-            this.lblTituloAceite.Location = new System.Drawing.Point(10, 10);
-            this.lblTituloAceite.Name = "lblTituloAceite";
-            this.lblTituloAceite.Size = new System.Drawing.Size(180, 25);
-            this.lblTituloAceite.TabIndex = 0;
-            this.lblTituloAceite.Tag = "lbl_StockAceite";
-            this.lblTituloAceite.Text = "🛢️ Stock Aceite";
-            // 
-            // panelInventarioGrasa
-            // 
-            this.panelInventarioGrasa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(152)))), ((int)(((byte)(0)))));
-            this.panelInventarioGrasa.Controls.Add(this.lblStockGrasa);
-            this.panelInventarioGrasa.Controls.Add(this.lblTituloGrasa);
-            this.panelInventarioGrasa.Location = new System.Drawing.Point(240, 60);
-            this.panelInventarioGrasa.Name = "panelInventarioGrasa";
-            this.panelInventarioGrasa.Size = new System.Drawing.Size(200, 100);
-            this.panelInventarioGrasa.TabIndex = 2;
-            // 
-            // lblStockGrasa
-            // 
-            this.lblStockGrasa.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
-            this.lblStockGrasa.ForeColor = System.Drawing.Color.White;
-            this.lblStockGrasa.Location = new System.Drawing.Point(10, 45);
-            this.lblStockGrasa.Name = "lblStockGrasa";
-            this.lblStockGrasa.Size = new System.Drawing.Size(180, 40);
-            this.lblStockGrasa.TabIndex = 1;
-            this.lblStockGrasa.Text = "0 Kg";
-            this.lblStockGrasa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // lblTituloGrasa
-            // 
-            this.lblTituloGrasa.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.lblTituloGrasa.ForeColor = System.Drawing.Color.White;
-            this.lblTituloGrasa.Location = new System.Drawing.Point(10, 10);
-            this.lblTituloGrasa.Name = "lblTituloGrasa";
-            this.lblTituloGrasa.Size = new System.Drawing.Size(180, 25);
-            this.lblTituloGrasa.TabIndex = 0;
-            this.lblTituloGrasa.Tag = "lbl_StockGrasa";
-            this.lblTituloGrasa.Text = "🧈 Stock Grasa";
+            this.lblEntradasMes.AutoSize = true;
+            this.lblEntradasMes.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.lblEntradasMes.Location = new System.Drawing.Point(27, 222);
+            this.lblEntradasMes.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEntradasMes.Name = "lblEntradasMes";
+            this.lblEntradasMes.Size = new System.Drawing.Size(222, 23);
+            this.lblEntradasMes.TabIndex = 4;
+            this.lblEntradasMes.Text = "📥 Entradas (último mes): 0";
             // 
             // panelInventarioTotal
             // 
             this.panelInventarioTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(150)))), ((int)(((byte)(243)))));
             this.panelInventarioTotal.Controls.Add(this.lblStockTotal);
             this.panelInventarioTotal.Controls.Add(this.lblTituloTotal);
-            this.panelInventarioTotal.Location = new System.Drawing.Point(460, 60);
+            this.panelInventarioTotal.Location = new System.Drawing.Point(613, 74);
+            this.panelInventarioTotal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelInventarioTotal.Name = "panelInventarioTotal";
-            this.panelInventarioTotal.Size = new System.Drawing.Size(200, 100);
+            this.panelInventarioTotal.Size = new System.Drawing.Size(267, 123);
             this.panelInventarioTotal.TabIndex = 3;
             // 
             // lblStockTotal
             // 
             this.lblStockTotal.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
             this.lblStockTotal.ForeColor = System.Drawing.Color.White;
-            this.lblStockTotal.Location = new System.Drawing.Point(10, 45);
+            this.lblStockTotal.Location = new System.Drawing.Point(13, 55);
+            this.lblStockTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblStockTotal.Name = "lblStockTotal";
-            this.lblStockTotal.Size = new System.Drawing.Size(180, 40);
+            this.lblStockTotal.Size = new System.Drawing.Size(240, 49);
             this.lblStockTotal.TabIndex = 1;
             this.lblStockTotal.Text = "0 L/Kg";
             this.lblStockTotal.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -535,59 +523,112 @@
             // 
             this.lblTituloTotal.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.lblTituloTotal.ForeColor = System.Drawing.Color.White;
-            this.lblTituloTotal.Location = new System.Drawing.Point(10, 10);
+            this.lblTituloTotal.Location = new System.Drawing.Point(13, 12);
+            this.lblTituloTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTituloTotal.Name = "lblTituloTotal";
-            this.lblTituloTotal.Size = new System.Drawing.Size(180, 25);
+            this.lblTituloTotal.Size = new System.Drawing.Size(240, 31);
             this.lblTituloTotal.TabIndex = 0;
             this.lblTituloTotal.Tag = "lbl_StockTotal";
             this.lblTituloTotal.Text = "📦 Stock Total";
             // 
-            // lblEntradasMes
+            // panelInventarioGrasa
             // 
-            this.lblEntradasMes.AutoSize = true;
-            this.lblEntradasMes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblEntradasMes.Location = new System.Drawing.Point(20, 180);
-            this.lblEntradasMes.Name = "lblEntradasMes";
-            this.lblEntradasMes.Size = new System.Drawing.Size(180, 19);
-            this.lblEntradasMes.TabIndex = 4;
-            this.lblEntradasMes.Text = "📥 Entradas (último mes): 0";
+            this.panelInventarioGrasa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(152)))), ((int)(((byte)(0)))));
+            this.panelInventarioGrasa.Controls.Add(this.lblStockGrasa);
+            this.panelInventarioGrasa.Controls.Add(this.lblTituloGrasa);
+            this.panelInventarioGrasa.Location = new System.Drawing.Point(320, 74);
+            this.panelInventarioGrasa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelInventarioGrasa.Name = "panelInventarioGrasa";
+            this.panelInventarioGrasa.Size = new System.Drawing.Size(267, 123);
+            this.panelInventarioGrasa.TabIndex = 2;
             // 
-            // lblSalidasMes
+            // lblStockGrasa
             // 
-            this.lblSalidasMes.AutoSize = true;
-            this.lblSalidasMes.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lblSalidasMes.Location = new System.Drawing.Point(20, 210);
-            this.lblSalidasMes.Name = "lblSalidasMes";
-            this.lblSalidasMes.Size = new System.Drawing.Size(169, 19);
-            this.lblSalidasMes.TabIndex = 5;
-            this.lblSalidasMes.Text = "📤 Salidas (último mes): 0";
+            this.lblStockGrasa.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblStockGrasa.ForeColor = System.Drawing.Color.White;
+            this.lblStockGrasa.Location = new System.Drawing.Point(13, 55);
+            this.lblStockGrasa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStockGrasa.Name = "lblStockGrasa";
+            this.lblStockGrasa.Size = new System.Drawing.Size(240, 49);
+            this.lblStockGrasa.TabIndex = 1;
+            this.lblStockGrasa.Text = "0 Kg";
+            this.lblStockGrasa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblUltimaActualizacion
+            // lblTituloGrasa
             // 
-            this.lblUltimaActualizacion.AutoSize = true;
-            this.lblUltimaActualizacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);
-            this.lblUltimaActualizacion.ForeColor = System.Drawing.Color.Gray;
-            this.lblUltimaActualizacion.Location = new System.Drawing.Point(20, 300);
-            this.lblUltimaActualizacion.Name = "lblUltimaActualizacion";
-            this.lblUltimaActualizacion.Size = new System.Drawing.Size(180, 15);
-            this.lblUltimaActualizacion.TabIndex = 6;
-            this.lblUltimaActualizacion.Text = "Última actualización: --/--/----";
+            this.lblTituloGrasa.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblTituloGrasa.ForeColor = System.Drawing.Color.White;
+            this.lblTituloGrasa.Location = new System.Drawing.Point(13, 12);
+            this.lblTituloGrasa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloGrasa.Name = "lblTituloGrasa";
+            this.lblTituloGrasa.Size = new System.Drawing.Size(240, 31);
+            this.lblTituloGrasa.TabIndex = 0;
+            this.lblTituloGrasa.Tag = "lbl_StockGrasa";
+            this.lblTituloGrasa.Text = "🧈 Stock Grasa";
+            // 
+            // panelInventarioAceite
+            // 
+            this.panelInventarioAceite.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(76)))), ((int)(((byte)(175)))), ((int)(((byte)(80)))));
+            this.panelInventarioAceite.Controls.Add(this.lblStockAceite);
+            this.panelInventarioAceite.Controls.Add(this.lblTituloAceite);
+            this.panelInventarioAceite.Location = new System.Drawing.Point(27, 74);
+            this.panelInventarioAceite.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelInventarioAceite.Name = "panelInventarioAceite";
+            this.panelInventarioAceite.Size = new System.Drawing.Size(267, 123);
+            this.panelInventarioAceite.TabIndex = 1;
+            // 
+            // lblStockAceite
+            // 
+            this.lblStockAceite.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold);
+            this.lblStockAceite.ForeColor = System.Drawing.Color.White;
+            this.lblStockAceite.Location = new System.Drawing.Point(13, 55);
+            this.lblStockAceite.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStockAceite.Name = "lblStockAceite";
+            this.lblStockAceite.Size = new System.Drawing.Size(240, 49);
+            this.lblStockAceite.TabIndex = 1;
+            this.lblStockAceite.Text = "0 L";
+            this.lblStockAceite.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // lblTituloAceite
+            // 
+            this.lblTituloAceite.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
+            this.lblTituloAceite.ForeColor = System.Drawing.Color.White;
+            this.lblTituloAceite.Location = new System.Drawing.Point(13, 12);
+            this.lblTituloAceite.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTituloAceite.Name = "lblTituloAceite";
+            this.lblTituloAceite.Size = new System.Drawing.Size(240, 31);
+            this.lblTituloAceite.TabIndex = 0;
+            this.lblTituloAceite.Tag = "lbl_StockAceite";
+            this.lblTituloAceite.Text = "🛢️ Stock Aceite";
+            // 
+            // lblStatsTitle
+            // 
+            this.lblStatsTitle.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
+            this.lblStatsTitle.Location = new System.Drawing.Point(20, 18);
+            this.lblStatsTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblStatsTitle.Name = "lblStatsTitle";
+            this.lblStatsTitle.Size = new System.Drawing.Size(400, 37);
+            this.lblStatsTitle.TabIndex = 0;
+            this.lblStatsTitle.Tag = "lbl_EstadisticasInventario";
+            this.lblStatsTitle.Text = "Estadísticas de Inventario";
             // 
             // FrmPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1379, 700);
+            this.ClientSize = new System.Drawing.Size(1839, 862);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelTopBar);
             this.Controls.Add(this.menuStripIdioma);
             this.Controls.Add(this.panelSidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuStripIdioma;
-            this.MinimumSize = new System.Drawing.Size(1065, 638);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1414, 774);
             this.Name = "FrmPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RedAceite - Sistema de Gestión";
+            this.Load += new System.EventHandler(this.FrmPrincipal_Load_1);
             this.panelSidebar.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             this.menuStripIdioma.ResumeLayout(false);
@@ -600,10 +641,11 @@
             this.panelRemitos.ResumeLayout(false);
             this.panelStats.ResumeLayout(false);
             this.panelStats.PerformLayout();
-            this.panelInventarioAceite.ResumeLayout(false);
-            this.panelInventarioGrasa.ResumeLayout(false);
             this.panelInventarioTotal.ResumeLayout(false);
+            this.panelInventarioGrasa.ResumeLayout(false);
+            this.panelInventarioAceite.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

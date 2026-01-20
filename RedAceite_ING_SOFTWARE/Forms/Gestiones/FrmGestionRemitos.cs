@@ -1,5 +1,6 @@
 using BLL.Remito;
 using DOMAIN;
+using SERVICES.DAL.Contratos;
 using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// Formulario principal para la gestión de remitos.
     /// Permite listar, filtrar, visualizar y descargar PDFs de remitos generados.
     /// </summary>
-    public partial class FrmGestionRemitos : Form
+    public partial class FrmGestionRemitos : Form, ILanguageObserver
     {
         private readonly RemitoGestionService _remitoGestionService;
         private bool _columnsConfigured = false;
@@ -26,6 +27,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         public FrmGestionRemitos()
         {
             InitializeComponent();
+            this.Tag = "Titulo_FrmGestionRemitos";
 
             _remitoGestionService = new RemitoGestionService();
 
@@ -58,6 +60,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Cargar remitos al final
             CargarRemitos();
+
+            // Suscribirse al Observer de idioma
+            LanguageService.Subscribe(this);
+
+            // Traducir formulario inicialmente
+            LanguageService.TranslateForm(this);
         }
 
         /// <summary>
@@ -310,6 +318,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             if (dgvRemitos.Columns.Contains("FechaCreacion"))
             {
                 var col = dgvRemitos.Columns["FechaCreacion"];
+                col.Tag = "Fecha Creacion";
                 col.HeaderText = "Fecha Creación";
                 col.DisplayIndex = displayIndex++;
                 col.Width = 150;
@@ -322,6 +331,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             if (dgvRemitos.Columns.Contains("NombreGenerador"))
             {
                 var col = dgvRemitos.Columns["NombreGenerador"];
+                col.Tag = "Nombre Generador";
                 col.HeaderText = "Nombre Generador";
                 col.DisplayIndex = displayIndex++;
                 col.Width = 200;
@@ -333,6 +343,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             if (dgvRemitos.Columns.Contains("Cuit"))
             {
                 var col = dgvRemitos.Columns["Cuit"];
+                col.Tag = "CUIT";
                 col.HeaderText = "CUIT";
                 col.DisplayIndex = displayIndex++;
                 col.Width = 140;
@@ -344,6 +355,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             if (dgvRemitos.Columns.Contains("TipoResiduo"))
             {
                 var col = dgvRemitos.Columns["TipoResiduo"];
+                col.Tag = "Tipo Residuo";
                 col.HeaderText = "Tipo Residuo";
                 col.DisplayIndex = displayIndex++;
                 col.Width = 100;
@@ -355,6 +367,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             if (dgvRemitos.Columns.Contains("Cantidad"))
             {
                 var col = dgvRemitos.Columns["Cantidad"];
+                col.Tag = "Cantidad";
                 col.HeaderText = "Cantidad";
                 col.DisplayIndex = displayIndex++;
                 col.Width = 100;
@@ -368,6 +381,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             if (dgvRemitos.Columns.Contains("Estado"))
             {
                 var col = dgvRemitos.Columns["Estado"];
+                col.Tag = "Estado Fisico";
                 col.HeaderText = "Estado Físico";
                 col.DisplayIndex = displayIndex++;
                 col.Width = 100;
@@ -379,12 +393,16 @@ namespace RedAceite_ING_SOFTWARE.Forms
             if (dgvRemitos.Columns.Contains("IntegridadEstado"))
             {
                 var col = dgvRemitos.Columns["IntegridadEstado"];
+                col.Tag = "Integridad";
                 col.HeaderText = "Integridad";
                 col.DisplayIndex = displayIndex++;
                 col.Width = 100;
                 col.MinimumWidth = 90;
                 col.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             }
+
+            // Traducir headers al idioma actual
+            LanguageService.TranslateDataGridView(dgvRemitos);
         }
 
         /// <summary>
@@ -403,6 +421,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             {
                 Name = "DescargarPdf",
                 HeaderText = "PDF",
+                Tag = "PDF",
                 Text = "Descargar",
                 UseColumnTextForButtonValue = true,
                 Width = 110,
@@ -571,6 +590,76 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
+        }
+
+        // Implementación de ILanguageObserver
+
+        /// <summary>
+        /// Método llamado automáticamente cuando cambia el idioma.
+        /// Traduce el formulario y el DataGridView.
+        /// </summary>
+        public void UpdateLanguage()
+        {
+            try
+            {
+                // Traducir controles del formulario
+                LanguageService.TranslateForm(this);
+
+                // Traducir DataGridView si ya tiene columnas configuradas
+                if (_columnsConfigured && dgvRemitos.Columns.Count > 0)
+                {
+                    // Asignar Tags a columnas para traducción
+                    TraducirHeadersDataGridView();
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Traduce los encabezados del DataGridView asignando Tags y llamando al servicio.
+        /// </summary>
+        private void TraducirHeadersDataGridView()
+        {
+            // Asignar Tags a columnas visibles para traducción
+            if (dgvRemitos.Columns.Contains("FechaCreacion"))
+                dgvRemitos.Columns["FechaCreacion"].Tag = "Fecha Creacion";
+
+            if (dgvRemitos.Columns.Contains("NombreGenerador"))
+                dgvRemitos.Columns["NombreGenerador"].Tag = "Nombre Generador";
+
+            if (dgvRemitos.Columns.Contains("Cuit"))
+                dgvRemitos.Columns["Cuit"].Tag = "CUIT";
+
+            if (dgvRemitos.Columns.Contains("TipoResiduo"))
+                dgvRemitos.Columns["TipoResiduo"].Tag = "Tipo Residuo";
+
+            if (dgvRemitos.Columns.Contains("Cantidad"))
+                dgvRemitos.Columns["Cantidad"].Tag = "Cantidad";
+
+            if (dgvRemitos.Columns.Contains("Estado"))
+                dgvRemitos.Columns["Estado"].Tag = "Estado Fisico";
+
+            if (dgvRemitos.Columns.Contains("IntegridadEstado"))
+                dgvRemitos.Columns["IntegridadEstado"].Tag = "Integridad";
+
+            if (dgvRemitos.Columns.Contains("DescargarPdf"))
+                dgvRemitos.Columns["DescargarPdf"].Tag = "PDF";
+
+            // Llamar al servicio para traducir
+            LanguageService.TranslateDataGridView(dgvRemitos);
+        }
+
+        /// <summary>
+        /// Evento que se ejecuta al cerrar el formulario.
+        /// Desuscribe del Observer para evitar memory leaks.
+        /// </summary>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            LanguageService.Unsubscribe(this);
+            base.OnFormClosing(e);
         }
     }
 }

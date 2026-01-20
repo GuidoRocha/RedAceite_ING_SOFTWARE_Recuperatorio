@@ -1,6 +1,7 @@
 ﻿using BLL;
-using SERVICES.Facade;
+using RedAceite_ING_SOFTWARE.Domain.Observer;
 using SERVICES.DAL.Contratos;
+using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,10 +11,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SERVICES.DTO;
+
 
 namespace RedAceite_ING_SOFTWARE.Forms
 {
-    public partial class FrmPrincipal : Form, ILanguageObserver
+    public partial class FrmPrincipal : Form, ILanguageObserver, IFormObserver
     {
         // Variable para mantener referencia al formulario hijo activo actualmente
         private Form activeForm = null;
@@ -24,6 +27,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         public FrmPrincipal()
         {
             InitializeComponent();
+            this.Tag = "Titulo_FrmPrincipal";
             
             // Suscribirse al evento Load para configurar el diseño después de que el formulario se haya cargado
             this.Load += FrmPrincipal_Load;
@@ -275,17 +279,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             try
             {
-                // 1. Establecer el nuevo idioma (culture + persist + notify)
+                // SetCurrentLanguage establece cultura + persiste + notifica observers
+                // No es necesario traducir manualmente porque UpdateLanguage() lo hace automáticamente
                 LanguageService.SetCurrentLanguage(languageCode);
-
-                // 2. Traducir el formulario principal
-                LanguageService.TranslateForm(this);
-
-                // 3. Si hay un formulario hijo abierto, traducirlo también
-                if (activeForm != null)
-                {
-                    LanguageService.TranslateForm(activeForm);
-                }
 
                 LoggerService.WriteLog(
                     $"Idioma cambiado a {languageCode} desde FrmPrincipal.",
@@ -534,6 +530,20 @@ namespace RedAceite_ING_SOFTWARE.Forms
             }
 
             base.OnFormClosing(e);
+        }
+
+        private void FrmPrincipal_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        public void Update(Form form)
+        {
+        }
+
+        private void lblTitle_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

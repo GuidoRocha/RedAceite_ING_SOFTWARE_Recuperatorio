@@ -1,0 +1,65 @@
+﻿# LANGUAGE FILE ENGLISH (en-US)
+# NO EMOJIS OR DECORATIVE PREFIXES
+
+# FORM TITLES
+Titulo_FrmLogin=Login
+Titulo_FrmPrincipal=RedAceite Management System
+Titulo_FrmGestionRemitos=Receipts Management
+Titulo_FrmGestionProveedores=Suppliers Management
+Titulo_FrmGestionUsuarios=Users Management
+Titulo_FrmCrearUsuario=Create User
+Titulo_FrmModificarUsuario=Modify User
+Titulo_FrmGenerarRemito=Generate Receipt
+Titulo_FrmAltaProveedor=New Supplier
+Titulo_FrmModificarProveedor=Modify Supplier
+Titulo_FrmAsignarPatentes=Assign Permissions
+Titulo_FrmAsignarFamilias=Assign Roles
+Titulo_FrmCrearRol=Create Role
+
+# MAIN MENU
+menu_Idioma=Language
+menu_Espanol=Spanish
+menu_Ingles=English
+
+# GENERAL BUTTONS
+btn_Inicio=Home
+btn_Manifiestos=Manifests
+btn_Remitos=Receipts
+btn_Proveedores=Suppliers
+btn_Usuarios=Users
+
+# GENERAL LABELS
+lbl_MenuPrincipal=Main Menu
+lbl_Usuario=User
+lbl_EstadisticasInventario=Inventory Statistics
+lbl_StockAceite=Oil Stock
+lbl_StockGrasa=Grease Stock
+lbl_StockTotal=Total Stock
+lbl_Remitos=Receipts
+lbl_Manifiestos=Manifests
+
+# DATAGRIDVIEW COLUMNS
+Usuario=User
+Nombre=Name
+Apellido=Last Name
+DNI=ID Number
+Email=Email
+Telefono=Phone
+CUIT=Tax ID
+RazonSocial=Company Name
+Direccion=Address
+Region=Region
+Fecha Creacion=Creation Date
+Nombre Generador=Generator Name
+Tipo Residuo=Waste Type
+Cantidad=Quantity
+Estado Fisico=Physical State
+Integridad=Integrity
+PDF=PDF
+
+# MESSAGES
+Todos_Los_Campos_Obligatorios=All required fields must be completed
+Usuario_Creado=User created successfully
+Error=Error
+Inicio_Sesion_Fallido_UsuarioContrasena=Incorrect username or password
+OcurrioErrorDuranteInicioSesion=An error occurred during login

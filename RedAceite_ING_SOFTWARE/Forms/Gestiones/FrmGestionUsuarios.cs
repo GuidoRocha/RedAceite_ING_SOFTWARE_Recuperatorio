@@ -1,4 +1,5 @@
 using SERVICES.Dominio;
+using SERVICES.DAL.Contratos;
 using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
@@ -16,11 +17,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// Formulario principal para la gestión de usuarios.
     /// Permite listar, filtrar y gestionar usuarios (alta, baja, modificación y asignación de permisos).
     /// </summary>
-    public partial class FrmGestionUsuarios : Form
+    public partial class FrmGestionUsuarios : Form, ILanguageObserver
     {
         public FrmGestionUsuarios()
         {
             InitializeComponent();
+            this.Tag = "Titulo_FrmGestionUsuarios";
 
             // Suscribirse a los eventos del DataGridView
             dgvUsuarios.CellFormatting += dgvUsuarios_CellFormatting;
@@ -32,6 +34,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Cargar usuarios al final, después de suscribirse a los eventos
             CargarUsuarios();
+
+            // Suscribirse al Observer de idioma
+            LanguageService.Subscribe(this);
+
+            // Traducir formulario inicialmente
+            LanguageService.TranslateForm(this);
         }
 
         /// <summary>
@@ -188,6 +196,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvUsuarios.Columns.Contains("UserName"))
                 {
+                    dgvUsuarios.Columns["UserName"].Tag = "Usuario";
                     dgvUsuarios.Columns["UserName"].HeaderText = "Usuario";
                     dgvUsuarios.Columns["UserName"].DisplayIndex = displayIndex++;
                     dgvUsuarios.Columns["UserName"].Width = 120;
@@ -195,6 +204,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvUsuarios.Columns.Contains("Nombre"))
                 {
+                    dgvUsuarios.Columns["Nombre"].Tag = "Nombre";
                     dgvUsuarios.Columns["Nombre"].HeaderText = "Nombre";
                     dgvUsuarios.Columns["Nombre"].DisplayIndex = displayIndex++;
                     dgvUsuarios.Columns["Nombre"].Width = 120;
@@ -202,6 +212,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvUsuarios.Columns.Contains("Apellido"))
                 {
+                    dgvUsuarios.Columns["Apellido"].Tag = "Apellido";
                     dgvUsuarios.Columns["Apellido"].HeaderText = "Apellido";
                     dgvUsuarios.Columns["Apellido"].DisplayIndex = displayIndex++;
                     dgvUsuarios.Columns["Apellido"].Width = 120;
@@ -209,6 +220,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvUsuarios.Columns.Contains("DNI"))
                 {
+                    dgvUsuarios.Columns["DNI"].Tag = "DNI";
                     dgvUsuarios.Columns["DNI"].HeaderText = "DNI";
                     dgvUsuarios.Columns["DNI"].DisplayIndex = displayIndex++;
                     dgvUsuarios.Columns["DNI"].Width = 100;
@@ -216,6 +228,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvUsuarios.Columns.Contains("Email"))
                 {
+                    dgvUsuarios.Columns["Email"].Tag = "Email";
                     dgvUsuarios.Columns["Email"].HeaderText = "Email";
                     dgvUsuarios.Columns["Email"].DisplayIndex = displayIndex++;
                     dgvUsuarios.Columns["Email"].Width = 180;
@@ -223,10 +236,14 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvUsuarios.Columns.Contains("Telefono"))
                 {
+                    dgvUsuarios.Columns["Telefono"].Tag = "Telefono";
                     dgvUsuarios.Columns["Telefono"].HeaderText = "Teléfono";
                     dgvUsuarios.Columns["Telefono"].DisplayIndex = displayIndex++;
                     dgvUsuarios.Columns["Telefono"].Width = 120;
                 }
+
+                // Traducir headers al idioma actual
+                LanguageService.TranslateDataGridView(dgvUsuarios);
             }
             catch (Exception ex)
             {
@@ -499,6 +516,70 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Recargar todos los usuarios
             CargarUsuarios();
+        }
+
+        // Implementación de ILanguageObserver
+
+        /// <summary>
+        /// Método llamado automáticamente cuando cambia el idioma.
+        /// Traduce el formulario y el DataGridView.
+        /// </summary>
+        public void UpdateLanguage()
+        {
+            try
+            {
+                // Traducir controles del formulario
+                LanguageService.TranslateForm(this);
+
+                // Traducir DataGridView si ya tiene columnas configuradas
+                if (dgvUsuarios.Columns.Count > 0)
+                {
+                    // Asignar Tags a columnas para traducción
+                    TraducirHeadersDataGridView();
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Traduce los encabezados del DataGridView asignando Tags y llamando al servicio.
+        /// </summary>
+        private void TraducirHeadersDataGridView()
+        {
+            // Asignar Tags a columnas visibles para traducción
+            if (dgvUsuarios.Columns.Contains("UserName"))
+                dgvUsuarios.Columns["UserName"].Tag = "Usuario";
+
+            if (dgvUsuarios.Columns.Contains("Nombre"))
+                dgvUsuarios.Columns["Nombre"].Tag = "Nombre";
+
+            if (dgvUsuarios.Columns.Contains("Apellido"))
+                dgvUsuarios.Columns["Apellido"].Tag = "Apellido";
+
+            if (dgvUsuarios.Columns.Contains("DNI"))
+                dgvUsuarios.Columns["DNI"].Tag = "DNI";
+
+            if (dgvUsuarios.Columns.Contains("Email"))
+                dgvUsuarios.Columns["Email"].Tag = "Email";
+
+            if (dgvUsuarios.Columns.Contains("Telefono"))
+                dgvUsuarios.Columns["Telefono"].Tag = "Telefono";
+
+            // Llamar al servicio para traducir
+            LanguageService.TranslateDataGridView(dgvUsuarios);
+        }
+
+        /// <summary>
+        /// Evento que se ejecuta al cerrar el formulario.
+        /// Desuscribe del Observer para evitar memory leaks.
+        /// </summary>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            LanguageService.Unsubscribe(this);
+            base.OnFormClosing(e);
         }
     }
 }

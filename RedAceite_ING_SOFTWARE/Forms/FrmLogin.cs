@@ -1,4 +1,5 @@
-﻿using RedAceite_ING_SOFTWARE.Forms;
+﻿using RedAceite_ING_SOFTWARE.Domain.Observer;
+using RedAceite_ING_SOFTWARE.Forms;
 using SERVICES.DAL.Contratos;
 using SERVICES.Dominio;
 using SERVICES.Facade;
@@ -19,20 +20,69 @@ using System.Windows.Forms;
 
 namespace SERVICES.Forms
 {
-    public partial class LogIn : Form, ILanguageObserver
+    public partial class LogIn : Form, ILanguageObserver, IFormObserver
     {
+
+
+        private static List<IFormObserver> formularios = new List<IFormObserver>();
+
+
+        public static void Detach(IFormObserver formulario)
+        {
+            formularios.Remove(formulario);
+        }
+
+
+        public void Notify()
+        {
+            foreach (IFormObserver formulario in formularios)
+            {
+                formulario.Update(this);
+            }
+        }
+
+
+        public void SetLenguaje(string leng)
+        {
+            if (leng == "es-ES")
+            {
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+                Notify();
+            }
+            else
+            {
+
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+
+                Notify();
+            }
+        }
+
+        private void AddFormularios()
+        {
+            formularios.Add(new FrmPrincipal());
+
+        }
+
+
         public LogIn()
+
         {
             InitializeComponent();
+            this.Tag = "Titulo_FrmLogin";
 
-
-            // setea cultura actual y traduce el form (mismo patrón del original)
+            // Cargar idioma guardado y establecerlo usando el flujo centralizado
             var code = LanguageService.LoadUserLanguage();
-            System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo(code);
+            
+            // Usar SetCurrentLanguage para mantener consistencia (punto único de entrada)
+            // Aunque notifique, aún no hay observers suscritos, no hay impacto
+            LanguageService.SetCurrentLanguage(code);
 
             InitializeLanguageComboBox();
             LanguageService.TranslateForm(this);
 
+            // Suscribirse al Observer para recibir notificaciones de cambio de idioma
+            LanguageService.Subscribe(this);
         }
 
         public void UpdateLanguage()
@@ -89,12 +139,9 @@ namespace SERVICES.Forms
             {
                 string selectedLanguage = cbLanguage.SelectedItem.ToString() == "Español" ? "es-ES" : "en-US";
 
-                // Usar SetCurrentLanguage que establece culture + persist + notify
+                // SetCurrentLanguage establece culture + persist + notify observers
+                // No es necesario llamar TranslateForm manualmente porque el Observer lo hace
                 LanguageService.SetCurrentLanguage(selectedLanguage);
-
-                // Traducir el form
-                LanguageService.TranslateForm(this);
-                this.Refresh();
                 
                 LoggerService.WriteLog(
                     $"Idioma cambiado a {selectedLanguage} desde Login.",
@@ -146,6 +193,21 @@ namespace SERVICES.Forms
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information
             );
+        }
+
+        /// <summary>
+        /// Evento que se ejecuta al cerrar el formulario.
+        /// Desuscribe del Observer para evitar memory leaks.
+        /// </summary>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            LanguageService.Unsubscribe(this);
+            base.OnFormClosing(e);
+        }
+
+        public void Update(Form form)
+        {
+            throw new NotImplementedException();
         }
     }
 }

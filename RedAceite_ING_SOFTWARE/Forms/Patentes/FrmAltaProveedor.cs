@@ -1,5 +1,6 @@
 using BLL;
 using DOMAIN;
+using SERVICES.DAL.Contratos;
 using SERVICES.Facade;
 using System;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// <summary>
     /// Formulario para dar de alta un nuevo proveedor en el sistema.
     /// </summary>
-    public partial class FrmAltaProveedor : Form
+    public partial class FrmAltaProveedor : Form, ILanguageObserver
     {
         private readonly ProveedorService _proveedorService;
 
@@ -22,8 +23,24 @@ namespace RedAceite_ING_SOFTWARE.Forms
         public FrmAltaProveedor()
         {
             InitializeComponent();
+            this.Tag = "Titulo_FrmAltaProveedor";
             _proveedorService = new ProveedorService();
             IdProveedorCreado = Guid.Empty;
+
+            // Suscribirse al evento Load
+            this.Load += FrmAltaProveedor_Load;
+
+            // Suscribirse al Observer de idioma
+            LanguageService.Subscribe(this);
+        }
+
+        /// <summary>
+        /// Evento que se ejecuta cuando el formulario se carga.
+        /// Traduce el formulario según el idioma actual.
+        /// </summary>
+        private void FrmAltaProveedor_Load(object sender, EventArgs e)
+        {
+            LanguageService.TranslateForm(this);
         }
 
         /// <summary>
@@ -214,6 +231,34 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 // Posicionar el cursor al final (después del último carácter ingresado)
                 txtCUIT.SelectionStart = Math.Min(newCursorPosition, txtCUIT.Text.Length);
             }
+        }
+
+        // Implementación de ILanguageObserver
+
+        /// <summary>
+        /// Método llamado automáticamente cuando cambia el idioma.
+        /// Traduce el formulario.
+        /// </summary>
+        public void UpdateLanguage()
+        {
+            try
+            {
+                LanguageService.TranslateForm(this);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Evento que se ejecuta al cerrar el formulario.
+        /// Desuscribe del Observer para evitar memory leaks.
+        /// </summary>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            LanguageService.Unsubscribe(this);
+            base.OnFormClosing(e);
         }
     }
 }

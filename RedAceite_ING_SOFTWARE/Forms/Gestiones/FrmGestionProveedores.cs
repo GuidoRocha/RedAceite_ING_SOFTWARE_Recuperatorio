@@ -1,5 +1,6 @@
 using DOMAIN;
 using BLL;
+using SERVICES.DAL.Contratos;
 using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
@@ -17,13 +18,14 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// Formulario principal para la gestión de proveedores.
     /// Permite listar, filtrar y gestionar proveedores (alta, baja y modificación).
     /// </summary>
-    public partial class FrmGestionProveedores : Form
+    public partial class FrmGestionProveedores : Form, ILanguageObserver
     {
         private readonly ProveedorService _proveedorService;
 
         public FrmGestionProveedores()
         {
             InitializeComponent();
+            this.Tag = "Titulo_FrmGestionProveedores";
 
             _proveedorService = new ProveedorService();
 
@@ -36,6 +38,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Cargar proveedores al final, después de suscribirse a los eventos
             CargarProveedores();
+
+            // Suscribirse al Observer de idioma
+            LanguageService.Subscribe(this);
         }
 
         /// <summary>
@@ -203,6 +208,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvProveedores.Columns.Contains("CUIT"))
                 {
+                    dgvProveedores.Columns["CUIT"].Tag = "CUIT";
                     dgvProveedores.Columns["CUIT"].HeaderText = "CUIT";
                     dgvProveedores.Columns["CUIT"].DisplayIndex = 1;
                     dgvProveedores.Columns["CUIT"].Width = 120;
@@ -211,6 +217,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvProveedores.Columns.Contains("Nombre"))
                 {
+                    dgvProveedores.Columns["Nombre"].Tag = "Nombre";
                     dgvProveedores.Columns["Nombre"].HeaderText = "Nombre";
                     dgvProveedores.Columns["Nombre"].DisplayIndex = 2;
                     dgvProveedores.Columns["Nombre"].Width = 150;
@@ -218,27 +225,31 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvProveedores.Columns.Contains("RazonSocial"))
                 {
-                    dgvProveedores.Columns["RazonSocial"].HeaderText = "Razón Social";
+                    dgvProveedores.Columns["RazonSocial"].Tag = "RazonSocial";
+                    dgvProveedores.Columns["RazonSocial"].HeaderText = "Razon Social";
                     dgvProveedores.Columns["RazonSocial"].DisplayIndex = 3;
                     dgvProveedores.Columns["RazonSocial"].Width = 150;
                 }
 
                 if (dgvProveedores.Columns.Contains("Direccion"))
                 {
-                    dgvProveedores.Columns["Direccion"].HeaderText = "Dirección";
+                    dgvProveedores.Columns["Direccion"].Tag = "Direccion";
+                    dgvProveedores.Columns["Direccion"].HeaderText = "Direccion";
                     dgvProveedores.Columns["Direccion"].DisplayIndex = 4;
                     dgvProveedores.Columns["Direccion"].Width = 200;
                 }
 
                 if (dgvProveedores.Columns.Contains("Telefono"))
                 {
-                    dgvProveedores.Columns["Telefono"].HeaderText = "Teléfono";
+                    dgvProveedores.Columns["Telefono"].Tag = "Telefono";
+                    dgvProveedores.Columns["Telefono"].HeaderText = "Telefono";
                     dgvProveedores.Columns["Telefono"].DisplayIndex = 5;
                     dgvProveedores.Columns["Telefono"].Width = 100;
                 }
 
                 if (dgvProveedores.Columns.Contains("Email"))
                 {
+                    dgvProveedores.Columns["Email"].Tag = "Email";
                     dgvProveedores.Columns["Email"].HeaderText = "Email";
                     dgvProveedores.Columns["Email"].DisplayIndex = 6;
                     dgvProveedores.Columns["Email"].Width = 150;
@@ -246,17 +257,22 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 if (dgvProveedores.Columns.Contains("Region"))
                 {
-                    dgvProveedores.Columns["Region"].HeaderText = "Región";
+                    dgvProveedores.Columns["Region"].Tag = "Region";
+                    dgvProveedores.Columns["Region"].HeaderText = "Region";
                     dgvProveedores.Columns["Region"].DisplayIndex = 7;
                     dgvProveedores.Columns["Region"].Width = 100;
                 }
 
                 if (dgvProveedores.Columns.Contains("DNI"))
                 {
+                    dgvProveedores.Columns["DNI"].Tag = "DNI";
                     dgvProveedores.Columns["DNI"].HeaderText = "DNI";
                     dgvProveedores.Columns["DNI"].DisplayIndex = 8;
                     dgvProveedores.Columns["DNI"].Width = 100;
                 }
+
+                // Traducir headers al idioma actual
+                LanguageService.TranslateDataGridView(dgvProveedores);
             }
             catch (Exception ex)
             {
@@ -471,6 +487,73 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Recargar todos los proveedores
             CargarProveedores();
+        }
+
+        // Implementación de ILanguageObserver
+
+        /// <summary>
+        /// Método llamado automáticamente cuando cambia el idioma.
+        /// Traduce el formulario y el DataGridView.
+        /// </summary>
+        public void UpdateLanguage()
+        {
+            try
+            {
+                // Traducir controles del formulario
+                LanguageService.TranslateForm(this);
+
+                // Traducir DataGridView
+                if (dgvProveedores.Columns.Count > 0)
+                {
+                    // Reasignar Tags a columnas para asegurar traducción correcta
+                    AsignarTagsColumnas();
+                    LanguageService.TranslateDataGridView(dgvProveedores);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        /// <summary>
+        /// Asigna Tags a las columnas del DataGridView para permitir traducción.
+        /// </summary>
+        private void AsignarTagsColumnas()
+        {
+            if (dgvProveedores.Columns.Contains("CUIT"))
+                dgvProveedores.Columns["CUIT"].Tag = "CUIT";
+
+            if (dgvProveedores.Columns.Contains("Nombre"))
+                dgvProveedores.Columns["Nombre"].Tag = "Nombre";
+
+            if (dgvProveedores.Columns.Contains("RazonSocial"))
+                dgvProveedores.Columns["RazonSocial"].Tag = "RazonSocial";
+
+            if (dgvProveedores.Columns.Contains("Direccion"))
+                dgvProveedores.Columns["Direccion"].Tag = "Direccion";
+
+            if (dgvProveedores.Columns.Contains("Telefono"))
+                dgvProveedores.Columns["Telefono"].Tag = "Telefono";
+
+            if (dgvProveedores.Columns.Contains("Email"))
+                dgvProveedores.Columns["Email"].Tag = "Email";
+
+            if (dgvProveedores.Columns.Contains("Region"))
+                dgvProveedores.Columns["Region"].Tag = "Region";
+
+            if (dgvProveedores.Columns.Contains("DNI"))
+                dgvProveedores.Columns["DNI"].Tag = "DNI";
+        }
+
+        /// <summary>
+        /// Evento que se ejecuta al cerrar el formulario.
+        /// Desuscribe del Observer para evitar memory leaks.
+        /// </summary>
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            LanguageService.Unsubscribe(this);
+            base.OnFormClosing(e);
         }
     }
 }

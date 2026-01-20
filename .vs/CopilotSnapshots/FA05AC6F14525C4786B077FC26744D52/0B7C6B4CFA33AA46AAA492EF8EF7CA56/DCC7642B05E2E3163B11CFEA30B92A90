@@ -1,0 +1,205 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace SERVICES.DAL
+{
+    internal static class LanguageRepository
+    {
+        // Cache de diccionarios de traducción por cultura
+        private static Dictionary<string, Dictionary<string, string>> _cache 
+            = new Dictionary<string, Dictionary<string, string>>();
+        private static object _lockObj = new object();
+
+        // Obtener las rutas desde el App.config
+        private static string LanguagePath
+        {
+            get
+            {
+                string path = ConfigurationManager.AppSettings["LanguagePath"];
+                
+                // Validación defensiva: si config no existe o está vacía, usar default
+                if (string.IsNullOrWhiteSpace(path))
+                {
+                    path = "Idioma\\I18n"; // Default relativo
+                    Console.WriteLine("[WARNING] LanguagePath no configurado en App.config. Usando default: Idioma\\I18n");
+                }
+                
+                // Si la ruta no es absoluta, combinarla con el directorio base de la aplicación
+                if (!Path.IsPathRooted(path))
+                {
+                    path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path);
+                }
+                
+                return path;
+            }
+        }
+        
+        
+        private static string UserLanguageConfigPath
+        {
+            get
+            {
+                string path = ConfigurationManager.AppSettings["UserLanguageConfigPath"];
+                
+                // Validación defensiva: si config no existe o está vacía, usar default
+                if (string.IsNullOrWhiteSpace(path))
+                {
+                    path = "Config\\user_language.txt"; // Default relativo
+                    Console.WriteLine("[WARNING] UserLanguageConfigPath no configurado en App.config. Usando default: Config\\user_language.txt");
+                }
+                
+                // Si la ruta no es absoluta, combinarla con el directorio base de la aplicación
+                if (!Path.IsPathRooted(path))
+                {
+                    path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, path);
+                }
+                
+                // Asegurar que el directorio existe
+                string directory = Path.GetDirectoryName(path);
+                if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+                
+                return path;
+            }
+        }
+
+        /// <summary>
+        /// Carga el archivo de idioma en el cache (lazy load, thread-safe).
+        /// </summary>
+        /// <param name="language">Código de cultura (ej: "es-ES", "en-US").</param>
+        private static void LoadLanguageFile(string language)
+        {
+            lock (_lockObj)
+            {
+                // Si ya está en cache, no recargar
+                if (_cache.ContainsKey(language))
+                    return;
+
+                var dict = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+                string fileName = Path.Combine(LanguagePath, $"language.{language}");
+
+                if (!File.Exists(fileName))
+                {
+                    // Archivo no existe, guardar diccionario vacío para no reintentar
+                    _cache[language] = dict;
+                    return;
+                }
+
+                try
+                {
+                    using (StreamReader reader = new StreamReader(fileName, Encoding.UTF8))
+                    {
+                        while (!reader.EndOfStream)
+                        {
+                            string line = reader.ReadLine();
+                            
+                            // Ignorar líneas vacías y comentarios
+                            if (string.IsNullOrWhiteSpace(line) || line.TrimStart().StartsWith("#"))
+                                continue;
+
+                            int idx = line.IndexOf('=');
+                            if (idx > 0)
+                            {
+                                string key = line.Substring(0, idx).Trim();
+                                string value = line.Substring(idx + 1); // Soporta '=' en valores
+                                dict[key] = value;
+                            }
+                        }
+                    }
+                }
+                catch (Exception)
+                {
+                    // Si hay error al leer, dejar diccionario vacío
+                }
+
+                _cache[language] = dict;
+            }
+        }
+
+        /// <summary>
+        /// Limpia el cache de traducciones (útil si se reemplazan archivos en runtime).
+        /// </summary>
+        public static void ClearCache()
+        {
+            lock (_lockObj)
+            {
+                _cache.Clear();
+            }
+        }
+
+
+
+        // Método para traducir una clave basada en el idioma actual
+        public static string Translate(string key)
+        {
+            // Obtener el código de idioma actual (es-ES, en-US, etc.)
+            string language = Thread.CurrentThread.CurrentUICulture.Name;
+
+            // Cargar archivo en cache si no está cargado (lazy load)
+            LoadLanguageFile(language);
+
+            // Buscar en cache (thread-safe)
+            lock (_lockObj)
+            {
+                if (_cache.ContainsKey(language) && _cache[language].ContainsKey(key))
+                    return _cache[language][key];
+            }
+
+            // Si no se encontró la traducción, retornar la key original (fallback)
+            return key;
+        }
+
+        public static void WriteKey(string key)
+        {
+            string language = Thread.CurrentThread.CurrentUICulture.Name;
+
+        }
+
+        public static List<string> GetLanguages()
+        {
+            return new List<string>();
+        }
+
+
+
+        // Método para guardar el idioma seleccionado en un archivo de configuración
+        public static void SaveUserLanguage(string languageCode)
+        {
+            using (StreamWriter writer = new StreamWriter(UserLanguageConfigPath, false))  // Sobrescribe el archivo
+            {
+                writer.WriteLine(languageCode);  // Guarda el código del idioma
+            }
+        }
+
+        // Método para cargar el idioma desde el archivo de configuración
+        public static string LoadUserLanguage()
+        {
+            if (File.Exists(UserLanguageConfigPath))
+            {
+                using (StreamReader reader = new StreamReader(UserLanguageConfigPath))
+                {
+                    string languageCode = reader.ReadLine();
+                    if (!string.IsNullOrEmpty(languageCode))
+                    {
+                        return languageCode;  // Retorna el idioma guardado
+                    }
+                }
+            }
+
+            // Si no existe el archivo o no tiene un valor retorna "es-ES" como idioma predeterminado
+            return "es-ES";
+        }
+
+
+
+
+    }
+}
