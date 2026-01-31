@@ -1,0 +1,49 @@
+using System;
+using System.IO;
+
+namespace SERVICES.Services
+{
+    public static class LanguagePreferenceService
+    {
+        private static readonly string FolderPath =
+            Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "I18n");
+
+        private static readonly string FilePath =
+            Path.Combine(FolderPath, "user_language.txt");
+
+        public static string LoadOrDefault()
+        {
+            try
+            {
+                if (!File.Exists(FilePath))
+                    return "es-ES";
+
+                var code = (File.ReadAllText(FilePath) ?? string.Empty).Trim();
+
+                return (code == "en-US" || code == "es-ES") ? code : "es-ES";
+            }
+            catch
+            {
+                return "es-ES";
+            }
+        }
+
+        public static void Save(string languageCode)
+        {
+            try
+            {
+                Directory.CreateDirectory(FolderPath);
+
+                var code = (languageCode == "en-US" || languageCode == "es-ES")
+                    ? languageCode
+                    : "es-ES";
+
+                File.WriteAllText(FilePath, code);
+            }
+            catch
+            {
+                // No romper la app
+            }
+        }
+    }
+}

@@ -16,7 +16,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// <summary>
     /// Formulario para asignar y desasignar familias a un usuario.
     /// </summary>
-    public partial class FrmAsignarFamilias : Form, ILanguageObserver
+    public partial class FrmAsignarFamilias : Form
     {
         private Guid _idUsuario;
         private Usuario _usuarioActual;
@@ -32,19 +32,15 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // Suscribirse al evento Load
             this.Load += FrmAsignarFamilias_Load;
 
-            // Suscribirse al Observer de idioma
-            LanguageService.Subscribe(this);
-
             CargarDatos();
         }
 
         /// <summary>
         /// Evento que se ejecuta cuando el formulario se carga.
-        /// Traduce el formulario según el idioma actual.
         /// </summary>
         private void FrmAsignarFamilias_Load(object sender, EventArgs e)
         {
-            LanguageService.TranslateForm(this);
+            // (FASE 1) Sin traducción automática
         }
 
         /// <summary>
@@ -221,31 +217,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
             }
         }
 
-        // Implementación de ILanguageObserver
-
-        /// <summary>
-        /// Método llamado automáticamente cuando cambia el idioma.
-        /// Traduce el formulario.
-        /// </summary>
-        public void UpdateLanguage()
-        {
-            try
-            {
-                LanguageService.TranslateForm(this);
-            }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-            }
-        }
-
         /// <summary>
         /// Evento que se ejecuta al cerrar el formulario.
-        /// Desuscribe del Observer para evitar memory leaks.
         /// </summary>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            LanguageService.Unsubscribe(this);
             base.OnFormClosing(e);
         }
     }

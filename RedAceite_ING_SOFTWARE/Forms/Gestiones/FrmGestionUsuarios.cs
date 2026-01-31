@@ -1,14 +1,10 @@
 using SERVICES.Dominio;
-using SERVICES.DAL.Contratos;
 using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RedAceite_ING_SOFTWARE.Forms
@@ -17,7 +13,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// Formulario principal para la gestión de usuarios.
     /// Permite listar, filtrar y gestionar usuarios (alta, baja, modificación y asignación de permisos).
     /// </summary>
-    public partial class FrmGestionUsuarios : Form, ILanguageObserver
+    public partial class FrmGestionUsuarios : Form
     {
         public FrmGestionUsuarios()
         {
@@ -34,12 +30,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Cargar usuarios al final, después de suscribirse a los eventos
             CargarUsuarios();
-
-            // Suscribirse al Observer de idioma
-            LanguageService.Subscribe(this);
-
-            // Traducir formulario inicialmente
-            LanguageService.TranslateForm(this);
         }
 
         /// <summary>
@@ -241,9 +231,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     dgvUsuarios.Columns["Telefono"].DisplayIndex = displayIndex++;
                     dgvUsuarios.Columns["Telefono"].Width = 120;
                 }
-
-                // Traducir headers al idioma actual
-                LanguageService.TranslateDataGridView(dgvUsuarios);
             }
             catch (Exception ex)
             {
@@ -516,70 +503,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Recargar todos los usuarios
             CargarUsuarios();
-        }
-
-        // Implementación de ILanguageObserver
-
-        /// <summary>
-        /// Método llamado automáticamente cuando cambia el idioma.
-        /// Traduce el formulario y el DataGridView.
-        /// </summary>
-        public void UpdateLanguage()
-        {
-            try
-            {
-                // Traducir controles del formulario
-                LanguageService.TranslateForm(this);
-
-                // Traducir DataGridView si ya tiene columnas configuradas
-                if (dgvUsuarios.Columns.Count > 0)
-                {
-                    // Asignar Tags a columnas para traducción
-                    TraducirHeadersDataGridView();
-                }
-            }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Traduce los encabezados del DataGridView asignando Tags y llamando al servicio.
-        /// </summary>
-        private void TraducirHeadersDataGridView()
-        {
-            // Asignar Tags a columnas visibles para traducción
-            if (dgvUsuarios.Columns.Contains("UserName"))
-                dgvUsuarios.Columns["UserName"].Tag = "Usuario";
-
-            if (dgvUsuarios.Columns.Contains("Nombre"))
-                dgvUsuarios.Columns["Nombre"].Tag = "Nombre";
-
-            if (dgvUsuarios.Columns.Contains("Apellido"))
-                dgvUsuarios.Columns["Apellido"].Tag = "Apellido";
-
-            if (dgvUsuarios.Columns.Contains("DNI"))
-                dgvUsuarios.Columns["DNI"].Tag = "DNI";
-
-            if (dgvUsuarios.Columns.Contains("Email"))
-                dgvUsuarios.Columns["Email"].Tag = "Email";
-
-            if (dgvUsuarios.Columns.Contains("Telefono"))
-                dgvUsuarios.Columns["Telefono"].Tag = "Telefono";
-
-            // Llamar al servicio para traducir
-            LanguageService.TranslateDataGridView(dgvUsuarios);
-        }
-
-        /// <summary>
-        /// Evento que se ejecuta al cerrar el formulario.
-        /// Desuscribe del Observer para evitar memory leaks.
-        /// </summary>
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            LanguageService.Unsubscribe(this);
-            base.OnFormClosing(e);
         }
     }
 }

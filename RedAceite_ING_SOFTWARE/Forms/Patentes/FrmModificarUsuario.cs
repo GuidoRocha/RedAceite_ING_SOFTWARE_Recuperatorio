@@ -1,14 +1,7 @@
 using SERVICES.Dominio;
-using SERVICES.DAL.Contratos;
 using SERVICES.Facade;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RedAceite_ING_SOFTWARE.Forms
@@ -17,7 +10,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// Formulario para modificar los datos de un usuario existente.
     /// No permite modificar Username ni DNI.
     /// </summary>
-    public partial class FrmModificarUsuario : Form, ILanguageObserver
+    public partial class FrmModificarUsuario : Form
     {
         private Guid _idUsuario;
         private Usuario _usuarioActual;
@@ -31,19 +24,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // Suscribirse al evento Load
             this.Load += FrmModificarUsuario_Load;
 
-            // Suscribirse al Observer de idioma
-            LanguageService.Subscribe(this);
-
             CargarDatosUsuario();
         }
 
-        /// <summary>
-        /// Evento que se ejecuta cuando el formulario se carga.
-        /// Traduce el formulario según el idioma actual.
-        /// </summary>
         private void FrmModificarUsuario_Load(object sender, EventArgs e)
         {
-            LanguageService.TranslateForm(this);
+            // (FASE 1) Sin traducción automática
         }
 
         /// <summary>
@@ -189,31 +175,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
             }
         }
 
-        // Implementación de ILanguageObserver
-
-        /// <summary>
-        /// Método llamado automáticamente cuando cambia el idioma.
-        /// Traduce el formulario.
-        /// </summary>
-        public void UpdateLanguage()
-        {
-            try
-            {
-                LanguageService.TranslateForm(this);
-            }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-            }
-        }
-
         /// <summary>
         /// Evento que se ejecuta al cerrar el formulario.
-        /// Desuscribe del Observer para evitar memory leaks.
         /// </summary>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            LanguageService.Unsubscribe(this);
             base.OnFormClosing(e);
         }
     }

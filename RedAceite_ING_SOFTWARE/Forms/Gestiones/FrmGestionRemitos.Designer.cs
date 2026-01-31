@@ -81,14 +81,15 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.dgvRemitos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvRemitos.EnableHeadersVisualStyles = false;
             this.dgvRemitos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(220)))), ((int)(((byte)(220)))));
-            this.dgvRemitos.Location = new System.Drawing.Point(0, 100);
+            this.dgvRemitos.Location = new System.Drawing.Point(0, 81);
+            this.dgvRemitos.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dgvRemitos.MultiSelect = false;
             this.dgvRemitos.Name = "dgvRemitos";
             this.dgvRemitos.ReadOnly = true;
             this.dgvRemitos.RowHeadersWidth = 51;
             this.dgvRemitos.RowTemplate.Height = 35;
             this.dgvRemitos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRemitos.Size = new System.Drawing.Size(1000, 400);
+            this.dgvRemitos.Size = new System.Drawing.Size(750, 325);
             this.dgvRemitos.TabIndex = 0;
             // 
             // panelFiltros
@@ -106,9 +107,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.panelFiltros.Controls.Add(this.lblFechaInicio);
             this.panelFiltros.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelFiltros.Location = new System.Drawing.Point(0, 0);
+            this.panelFiltros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelFiltros.Name = "panelFiltros";
-            this.panelFiltros.Padding = new System.Windows.Forms.Padding(20, 15, 20, 15);
-            this.panelFiltros.Size = new System.Drawing.Size(1000, 100);
+            this.panelFiltros.Padding = new System.Windows.Forms.Padding(15, 12, 15, 12);
+            this.panelFiltros.Size = new System.Drawing.Size(750, 81);
             this.panelFiltros.TabIndex = 1;
             // 
             // btnLimpiarFiltros
@@ -119,9 +121,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.btnLimpiarFiltros.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpiarFiltros.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnLimpiarFiltros.ForeColor = System.Drawing.Color.White;
-            this.btnLimpiarFiltros.Location = new System.Drawing.Point(880, 45);
+            this.btnLimpiarFiltros.Location = new System.Drawing.Point(660, 37);
+            this.btnLimpiarFiltros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnLimpiarFiltros.Name = "btnLimpiarFiltros";
-            this.btnLimpiarFiltros.Size = new System.Drawing.Size(100, 35);
+            this.btnLimpiarFiltros.Size = new System.Drawing.Size(75, 28);
             this.btnLimpiarFiltros.TabIndex = 9;
             this.btnLimpiarFiltros.Text = "Limpiar";
             this.btnLimpiarFiltros.UseVisualStyleBackColor = false;
@@ -134,9 +137,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.btnFiltrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFiltrar.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnFiltrar.ForeColor = System.Drawing.Color.White;
-            this.btnFiltrar.Location = new System.Drawing.Point(760, 45);
+            this.btnFiltrar.Location = new System.Drawing.Point(570, 37);
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFiltrar.Name = "btnFiltrar";
-            this.btnFiltrar.Size = new System.Drawing.Size(100, 35);
+            this.btnFiltrar.Size = new System.Drawing.Size(75, 28);
             this.btnFiltrar.TabIndex = 8;
             this.btnFiltrar.Text = "Filtrar";
             this.btnFiltrar.UseVisualStyleBackColor = false;
@@ -146,9 +150,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.cmbTipoResiduo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbTipoResiduo.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.cmbTipoResiduo.FormattingEnabled = true;
-            this.cmbTipoResiduo.Location = new System.Drawing.Point(401, 54);
+            this.cmbTipoResiduo.Location = new System.Drawing.Point(301, 44);
+            this.cmbTipoResiduo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cmbTipoResiduo.Name = "cmbTipoResiduo";
-            this.cmbTipoResiduo.Size = new System.Drawing.Size(150, 28);
+            this.cmbTipoResiduo.Size = new System.Drawing.Size(114, 23);
             this.cmbTipoResiduo.TabIndex = 7;
             // 
             // lblFiltroTipoResiduo
@@ -156,9 +161,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.lblFiltroTipoResiduo.AutoSize = true;
             this.lblFiltroTipoResiduo.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblFiltroTipoResiduo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.lblFiltroTipoResiduo.Location = new System.Drawing.Point(270, 57);
+            this.lblFiltroTipoResiduo.Location = new System.Drawing.Point(202, 46);
+            this.lblFiltroTipoResiduo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFiltroTipoResiduo.Name = "lblFiltroTipoResiduo";
-            this.lblFiltroTipoResiduo.Size = new System.Drawing.Size(125, 20);
+            this.lblFiltroTipoResiduo.Size = new System.Drawing.Size(98, 15);
             this.lblFiltroTipoResiduo.TabIndex = 6;
             this.lblFiltroTipoResiduo.Text = "Tipo de Residuo:";
             // 
@@ -166,9 +172,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // 
             this.txtFiltroCUIT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFiltroCUIT.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtFiltroCUIT.Location = new System.Drawing.Point(124, 55);
+            this.txtFiltroCUIT.Location = new System.Drawing.Point(93, 45);
+            this.txtFiltroCUIT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtFiltroCUIT.Name = "txtFiltroCUIT";
-            this.txtFiltroCUIT.Size = new System.Drawing.Size(130, 27);
+            this.txtFiltroCUIT.Size = new System.Drawing.Size(98, 23);
             this.txtFiltroCUIT.TabIndex = 5;
             // 
             // lblFiltroCUIT
@@ -176,9 +183,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.lblFiltroCUIT.AutoSize = true;
             this.lblFiltroCUIT.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblFiltroCUIT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.lblFiltroCUIT.Location = new System.Drawing.Point(71, 59);
+            this.lblFiltroCUIT.Location = new System.Drawing.Point(53, 48);
+            this.lblFiltroCUIT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFiltroCUIT.Name = "lblFiltroCUIT";
-            this.lblFiltroCUIT.Size = new System.Drawing.Size(47, 20);
+            this.lblFiltroCUIT.Size = new System.Drawing.Size(37, 15);
             this.lblFiltroCUIT.TabIndex = 4;
             this.lblFiltroCUIT.Text = "CUIT:";
             // 
@@ -186,9 +194,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // 
             this.dtpFechaFin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(401, 12);
+            this.dtpFechaFin.Location = new System.Drawing.Point(301, 10);
+            this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(120, 27);
+            this.dtpFechaFin.Size = new System.Drawing.Size(91, 23);
             this.dtpFechaFin.TabIndex = 3;
             // 
             // lblFechaFin
@@ -196,9 +205,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.lblFechaFin.AutoSize = true;
             this.lblFechaFin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblFechaFin.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.lblFechaFin.Location = new System.Drawing.Point(317, 17);
+            this.lblFechaFin.Location = new System.Drawing.Point(238, 14);
+            this.lblFechaFin.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaFin.Name = "lblFechaFin";
-            this.lblFechaFin.Size = new System.Drawing.Size(78, 20);
+            this.lblFechaFin.Size = new System.Drawing.Size(61, 15);
             this.lblFechaFin.TabIndex = 2;
             this.lblFechaFin.Text = "Fecha Fin:";
             // 
@@ -206,9 +216,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // 
             this.dtpFechaInicio.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaInicio.Location = new System.Drawing.Point(124, 12);
+            this.dtpFechaInicio.Location = new System.Drawing.Point(93, 10);
+            this.dtpFechaInicio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dtpFechaInicio.Name = "dtpFechaInicio";
-            this.dtpFechaInicio.Size = new System.Drawing.Size(120, 27);
+            this.dtpFechaInicio.Size = new System.Drawing.Size(91, 23);
             this.dtpFechaInicio.TabIndex = 1;
             // 
             // lblFechaInicio
@@ -216,9 +227,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.lblFechaInicio.AutoSize = true;
             this.lblFechaInicio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblFechaInicio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.lblFechaInicio.Location = new System.Drawing.Point(23, 15);
+            this.lblFechaInicio.Location = new System.Drawing.Point(17, 12);
+            this.lblFechaInicio.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFechaInicio.Name = "lblFechaInicio";
-            this.lblFechaInicio.Size = new System.Drawing.Size(95, 20);
+            this.lblFechaInicio.Size = new System.Drawing.Size(75, 15);
             this.lblFechaInicio.TabIndex = 0;
             this.lblFechaInicio.Text = "Fecha Inicio:";
             // 
@@ -229,10 +241,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.panelBotones.Controls.Add(this.btnModificarRemito);
             this.panelBotones.Controls.Add(this.btnAgregarRemito);
             this.panelBotones.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelBotones.Location = new System.Drawing.Point(0, 500);
+            this.panelBotones.Location = new System.Drawing.Point(0, 406);
+            this.panelBotones.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelBotones.Name = "panelBotones";
-            this.panelBotones.Padding = new System.Windows.Forms.Padding(10, 15, 10, 15);
-            this.panelBotones.Size = new System.Drawing.Size(1000, 70);
+            this.panelBotones.Padding = new System.Windows.Forms.Padding(8, 12, 8, 12);
+            this.panelBotones.Size = new System.Drawing.Size(750, 57);
             this.panelBotones.TabIndex = 2;
             // 
             // btnEliminarRemito
@@ -244,9 +257,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.btnEliminarRemito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminarRemito.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnEliminarRemito.ForeColor = System.Drawing.Color.White;
-            this.btnEliminarRemito.Location = new System.Drawing.Point(340, 17);
+            this.btnEliminarRemito.Location = new System.Drawing.Point(255, 14);
+            this.btnEliminarRemito.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnEliminarRemito.Name = "btnEliminarRemito";
-            this.btnEliminarRemito.Size = new System.Drawing.Size(150, 38);
+            this.btnEliminarRemito.Size = new System.Drawing.Size(112, 31);
             this.btnEliminarRemito.TabIndex = 2;
             this.btnEliminarRemito.Text = "Eliminar Remito";
             this.btnEliminarRemito.UseVisualStyleBackColor = false;
@@ -260,9 +274,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.btnModificarRemito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificarRemito.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnModificarRemito.ForeColor = System.Drawing.Color.White;
-            this.btnModificarRemito.Location = new System.Drawing.Point(180, 17);
+            this.btnModificarRemito.Location = new System.Drawing.Point(135, 14);
+            this.btnModificarRemito.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnModificarRemito.Name = "btnModificarRemito";
-            this.btnModificarRemito.Size = new System.Drawing.Size(150, 38);
+            this.btnModificarRemito.Size = new System.Drawing.Size(112, 31);
             this.btnModificarRemito.TabIndex = 1;
             this.btnModificarRemito.Text = "Modificar Remito";
             this.btnModificarRemito.UseVisualStyleBackColor = false;
@@ -275,23 +290,26 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.btnAgregarRemito.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregarRemito.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.btnAgregarRemito.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarRemito.Location = new System.Drawing.Point(20, 17);
+            this.btnAgregarRemito.Location = new System.Drawing.Point(15, 14);
+            this.btnAgregarRemito.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAgregarRemito.Name = "btnAgregarRemito";
-            this.btnAgregarRemito.Size = new System.Drawing.Size(150, 38);
+            this.btnAgregarRemito.Size = new System.Drawing.Size(112, 31);
             this.btnAgregarRemito.TabIndex = 0;
             this.btnAgregarRemito.Text = "Añadir Remito";
             this.btnAgregarRemito.UseVisualStyleBackColor = false;
+            this.btnAgregarRemito.Click += new System.EventHandler(this.btnAgregarRemito_Click_1);
             // 
             // FrmGestionRemitos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
-            this.ClientSize = new System.Drawing.Size(1000, 570);
+            this.ClientSize = new System.Drawing.Size(750, 463);
             this.Controls.Add(this.dgvRemitos);
             this.Controls.Add(this.panelBotones);
             this.Controls.Add(this.panelFiltros);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FrmGestionRemitos";
             this.Text = "Gestión de Remitos";
             ((System.ComponentModel.ISupportInitialize)(this.dgvRemitos)).EndInit();

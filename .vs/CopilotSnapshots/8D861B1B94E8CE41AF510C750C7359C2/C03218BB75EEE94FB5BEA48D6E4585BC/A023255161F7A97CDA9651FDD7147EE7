@@ -1,0 +1,117 @@
+﻿using RedAceite_ING_SOFTWARE.Forms;
+using SERVICES.Dominio;
+using SERVICES.Facade;
+using System;
+using System.Diagnostics;
+using System.Windows.Forms;
+
+namespace SERVICES.Forms
+{
+    public partial class LogIn : Form
+    {
+        public LogIn()
+        {
+            InitializeComponent();
+            this.Tag = "Titulo_FrmLogin";
+
+            InitializeLanguageComboBox();
+        }
+
+        private void ButtonIngresar_Click(object sender, EventArgs e)
+        {
+            string username = txtusuario.Text;
+            string password = txtcontraseña.Text;
+
+            try
+            {
+                if (UserService.Login(username, password))
+                {
+                    Usuario user = UserService.GetUsuarioByUsername(username);
+                    SesionService.UsuarioLogueado = user;
+
+                    // Ocultar el formulario de login
+                    this.Hide();
+
+                    // Crear y mostrar el formulario principal maximizado
+                    var frmPrincipal = new FrmPrincipal();
+
+                    // Configurar ventana maximizada para ocupar toda la pantalla
+                    frmPrincipal.WindowState = FormWindowState.Maximized;
+
+                    frmPrincipal.Show();
+
+                    // Cuando se cierre el formulario principal, cerrar también el login
+                    frmPrincipal.FormClosed += (s, args) => this.Close();
+
+                    LoggerService.WriteLog($"El usuario {username} inició sesión correctamente.", TraceLevel.Info);
+                }
+                else
+                {
+                    LoggerService.WriteLog($"Intento fallido de inicio de sesión por el usuario {username}.", TraceLevel.Warning);
+                    MessageBox.Show("Usuario o contraseña incorrectos.");
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+                MessageBox.Show($"Ocurrió un error durante el inicio de sesión: {ex.Message}");
+            }
+        }
+
+        private void cbLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // En FASE 1 se elimina el motor viejo. El cambio runtime se implementa en FASE 3.
+            // Se deja el combo para no romper UI.
+            try
+            {
+                string selectedLanguage = cbLanguage.SelectedItem?.ToString();
+
+                LoggerService.WriteLog(
+                    $"Idioma seleccionado (sin aplicar en FASE 1): {selectedLanguage}",
+                    System.Diagnostics.TraceLevel.Info
+                );
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        private void CheckPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckPass.Checked)
+            {
+                txtcontraseña.PasswordChar = '\0';
+            }
+            else
+            {
+                txtcontraseña.PasswordChar = '*';
+            }
+        }
+
+        // Método para inicializar el ComboBox con las opciones de idioma
+        private void InitializeLanguageComboBox()
+        {
+            cbLanguage.Items.Add("Español");
+            cbLanguage.Items.Add("Inglés");
+            cbLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Seleccionar por defecto Español (se setea cultura en FASE 2 desde Program.cs)
+            cbLanguage.SelectedItem = "Español";
+            cbLanguage.SelectedIndexChanged += cbLanguage_SelectedIndexChanged;
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic en el link de recuperar contraseña.
+        /// </summary>
+        private void lnkRecuperarPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show(
+                "Por favor, contacte al administrador del sistema para recuperar su contraseña.",
+                "Recuperar Contraseña",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+    }
+}

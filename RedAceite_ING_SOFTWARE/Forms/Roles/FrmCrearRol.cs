@@ -1,19 +1,12 @@
 ﻿using SERVICES.Dominio;
-using SERVICES.DAL.Contratos;
 using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RedAceite_ING_SOFTWARE.Forms
 {
-    public partial class FrmCrearRol : Form, ILanguageObserver
+    public partial class FrmCrearRol : Form
     {
         public FrmCrearRol()
         {
@@ -22,18 +15,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Suscribirse al evento Load
             this.Load += FrmCrearRol_Load;
-
-            // Suscribirse al Observer de idioma
-            LanguageService.Subscribe(this);
         }
 
-        /// <summary>
-        /// Evento que se ejecuta cuando el formulario se carga.
-        /// Traduce el formulario según el idioma actual.
-        /// </summary>
         private void FrmCrearRol_Load(object sender, EventArgs e)
         {
-            LanguageService.TranslateForm(this);
+            // (FASE 1) Sin traducción automática
         }
 
         private void CrearRol_Click(object sender, EventArgs e)
@@ -72,34 +58,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
             {
                 MessageBox.Show($"Ocurrió un error al crear la familia: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        // Implementación de ILanguageObserver
-
-        /// <summary>
-        /// Método llamado automáticamente cuando cambia el idioma.
-        /// Traduce el formulario.
-        /// </summary>
-        public void UpdateLanguage()
-        {
-            try
-            {
-                LanguageService.TranslateForm(this);
-            }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Evento que se ejecuta al cerrar el formulario.
-        /// Desuscribe del Observer para evitar memory leaks.
-        /// </summary>
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            LanguageService.Unsubscribe(this);
-            base.OnFormClosing(e);
         }
     }
 }

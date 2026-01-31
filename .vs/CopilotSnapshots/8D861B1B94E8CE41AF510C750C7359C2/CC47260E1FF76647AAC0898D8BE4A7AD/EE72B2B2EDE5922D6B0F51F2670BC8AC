@@ -1,0 +1,132 @@
+﻿using RedAceite_ING_SOFTWARE.Forms;
+using SERVICES.Dominio;
+using SERVICES.Facade;
+using SERVICES.Facade.Extentions;
+using System;
+using System.Diagnostics;
+using System.Globalization;
+using System.Threading;
+using System.Windows.Forms;
+
+namespace SERVICES.Forms
+{
+    public partial class LogIn : Form
+    {
+        public LogIn()
+        {
+            InitializeComponent();
+            this.Tag = "Titulo_FrmLogin";
+
+            InitializeLanguageComboBox();
+            ApplyTranslationsLogin();
+        }
+
+        private void ApplyTranslationsLogin()
+        {
+            // Título de ventana
+            this.Text = $"RedAceite - {"Titulo_FrmLogin".Translate()}";
+
+            // Controles reales del Designer
+            if (lblTitulo != null) lblTitulo.Text = "Titulo_FrmLogin".Translate();
+            if (Usuario != null) Usuario.Text = "Email".Translate();
+            if (Contraseña != null) Contraseña.Text = "Contrasena".Translate();
+            if (ButtonIngresar != null) ButtonIngresar.Text = "Entrar".Translate();
+            if (lblMostrarPassword != null) lblMostrarPassword.Text = "Login_MostrarContrasena".Translate();
+            if (lnkRecuperarPassword != null) lnkRecuperarPassword.Text = "Login_OlvidasteContrasena".Translate();
+        }
+
+        private void ButtonIngresar_Click(object sender, EventArgs e)
+        {
+            string username = txtusuario.Text;
+            string password = txtcontraseña.Text;
+
+            try
+            {
+                if (UserService.Login(username, password))
+                {
+                    Usuario user = UserService.GetUsuarioByUsername(username);
+                    SesionService.UsuarioLogueado = user;
+
+                    // Ocultar el formulario de login
+                    this.Hide();
+
+                    // Crear y mostrar el formulario principal maximizado
+                    var frmPrincipal = new FrmPrincipal();
+
+                    // Configurar ventana maximizada para ocupar toda la pantalla
+                    frmPrincipal.WindowState = FormWindowState.Maximized;
+
+                    frmPrincipal.Show();
+
+                    // Cuando se cierre el formulario principal, cerrar también el login
+                    frmPrincipal.FormClosed += (s, args) => this.Close();
+
+                    LoggerService.WriteLog($"El usuario {username} inició sesión correctamente.", TraceLevel.Info);
+                }
+                else
+                {
+                    LoggerService.WriteLog($"Intento fallido de inicio de sesión por el usuario {username}.", TraceLevel.Warning);
+                    MessageBox.Show("Inicio_Sesion_Fallido_UsuarioContrasena".Translate());
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+                MessageBox.Show($"{"OcurrioErrorDuranteInicioSesion".Translate()} {ex.Message}");
+            }
+        }
+
+        private void cbLanguage_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbLanguage.SelectedItem == null) return;
+
+            string selected = cbLanguage.SelectedItem.ToString();
+
+            if (selected == "English")
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
+            else
+                Thread.CurrentThread.CurrentUICulture = new CultureInfo("es-ES");
+
+            ApplyTranslationsLogin();
+        }
+
+        private void CheckPass_CheckedChanged(object sender, EventArgs e)
+        {
+            if (CheckPass.Checked)
+            {
+                txtcontraseña.PasswordChar = '\0';
+            }
+            else
+            {
+                txtcontraseña.PasswordChar = '*';
+            }
+        }
+
+        // Método para inicializar el ComboBox con las opciones de idioma
+        private void InitializeLanguageComboBox()
+        {
+            cbLanguage.Items.Clear();
+            cbLanguage.Items.Add("Español");
+            cbLanguage.Items.Add("English");
+            cbLanguage.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Default: Español
+            cbLanguage.SelectedIndexChanged -= cbLanguage_SelectedIndexChanged;
+            cbLanguage.SelectedIndex = 0;
+            cbLanguage.SelectedIndexChanged += cbLanguage_SelectedIndexChanged;
+        }
+
+        /// <summary>
+        /// Maneja el evento de clic en el link de recuperar contraseña.
+        /// </summary>
+        private void lnkRecuperarPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show(
+                "Por favor, contacte al administrador del sistema para recuperar su contraseña.",
+                "Recuperar Contraseña",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+    }
+}

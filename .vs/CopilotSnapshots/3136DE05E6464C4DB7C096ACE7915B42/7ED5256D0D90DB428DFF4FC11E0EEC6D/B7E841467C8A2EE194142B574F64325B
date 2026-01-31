@@ -1,0 +1,186 @@
+﻿using System;
+using System.Windows.Forms;
+using BLL;
+using SERVICES.Facade;
+using SERVICES.Facade.Extentions;
+using SERVICES.Services;
+using System.Globalization;
+using System.Threading;
+
+namespace RedAceite_ING_SOFTWARE.Forms
+{
+    public partial class FrmPrincipal : Form
+    {
+        private Form activeForm = null;
+        private System.Windows.Forms.Timer timerActualizacion;
+
+        private string currentTitleKey = "lbl_MenuPrincipal";
+
+        public FrmPrincipal()
+        {
+            InitializeComponent();
+            this.Tag = "Titulo_FrmPrincipal";
+
+            // Mantener suscripción explícita (además del handler del Designer)
+            this.Load += FrmPrincipal_Load;
+
+            InicializarTimerActualizacion();
+        }
+
+        private void ApplyTranslationsPrincipal()
+        {
+            // Título ventana
+            this.Text = $"RedAceite - {"Titulo_FrmPrincipal".Translate()}";
+
+            // Sidebar (mantener emojis, traducir solo el texto)
+            if (btnInicio != null) btnInicio.Text = "🏠 " + "btn_Inicio".Translate();
+            if (btnManifiestos != null) btnManifiestos.Text = "📋 " + "btn_Manifiestos".Translate();
+            if (btnRemitos != null) btnRemitos.Text = "📄 " + "btn_Remitos".Translate();
+            if (btnProveedores != null) btnProveedores.Text = "🏢 " + "btn_Proveedores".Translate();
+            if (btnUsuarios != null) btnUsuarios.Text = "👥 " + "btn_Usuarios".Translate();
+
+            // Logo (fijo)
+            if (lblLogo != null) lblLogo.Text = "RedAceite";
+
+            // Menú idioma
+            if (menuIdioma != null) menuIdioma.Text = "menu_Idioma".Translate();
+            if (menuEspañol != null) menuEspañol.Text = "menu_Espanol".Translate();
+            if (menuIngles != null) menuIngles.Text = "menu_Ingles".Translate();
+
+            // Topbar title
+            if (lblTitle != null) lblTitle.Text = currentTitleKey.Translate();
+
+            // Username label
+            if (lblUserName != null) lblUserName.Text = "lbl_Usuario".Translate();
+
+            // Dashboard títulos
+            if (lblStatsTitle != null) lblStatsTitle.Text = "lbl_EstadisticasInventario".Translate();
+
+            if (lblTituloAceite != null) lblTituloAceite.Text = "🛢️ " + "lbl_StockAceite".Translate();
+            if (lblTituloGrasa != null) lblTituloGrasa.Text = "🧈 " + "lbl_StockGrasa".Translate();
+            if (lblTituloTotal != null) lblTituloTotal.Text = "📦 " + "lbl_StockTotal".Translate();
+
+            // Cards títulos
+            if (lblRemitos != null) lblRemitos.Text = "lbl_Remitos".Translate();
+            if (lblManifiestos != null) lblManifiestos.Text = "lbl_Manifiestos".Translate();
+        }
+
+        private void FrmPrincipal_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                if (btnProfile != null)
+                {
+                    btnProfile.Region = System.Drawing.Region.FromHrgn(
+                        CreateRoundRectRgn(0, 0, btnProfile.Width, btnProfile.Height, 20, 20));
+                }
+
+                ApplyTranslationsPrincipal();
+                CargarEstadisticasInventario();
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        // Handler requerido por el Designer
+        private void FrmPrincipal_Load_1(object sender, EventArgs e)
+        {
+            FrmPrincipal_Load(sender, e);
+        }
+
+        [System.Runtime.InteropServices.DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect,
+            int nWidthEllipse, int nHeightEllipse);
+
+        private void OpenChildForm(Form childForm)
+        {
+            if (childForm == null) return;
+
+            if (activeForm != null)
+            {
+                try
+                {
+                    activeForm.Close();
+                }
+                catch
+                {
+                    // ignore
+                }
+
+                activeForm.Dispose();
+                activeForm = null;
+            }
+
+            activeForm = childForm;
+
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(childForm);
+            panelMain.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+        private void VolverAInicio()
+        {
+            if (activeForm != null)
+            {
+                try
+                {
+                    activeForm.Close();
+                }
+                catch
+                {
+                    // ignore
+                }
+
+                activeForm.Dispose();
+                activeForm = null;
+            }
+
+            panelMain.Controls.Clear();
+            panelMain.Controls.Add(panelDashboard);
+            panelDashboard.Dock = DockStyle.Fill;
+            panelDashboard.BringToFront();
+
+            currentTitleKey = "lbl_MenuPrincipal";
+            ApplyTranslationsPrincipal();
+            CargarEstadisticasInventario();
+        }
+
+        // Sidebar
+        private void btnInicio_Click(object sender, EventArgs e) => VolverAInicio();
+
+        private void lblLogo_Click(object sender, EventArgs e) => VolverAInicio();
+
+        private void panelLogo_Click(object sender, EventArgs e) => VolverAInicio();
+
+        private void btnRemitos_Click(object sender, EventArgs e)
+        {
+            currentTitleKey = "Titulo_FrmGestionRemitos";
+            ApplyTranslationsPrincipal();
+            OpenChildForm(new FrmGestionRemitos());
+        }
+
+        private void btnProveedores_Click(object sender, EventArgs e)
+        {
+            currentTitleKey = "Titulo_FrmGestionProveedores";
+            ApplyTranslationsPrincipal();
+            OpenChildForm(new FrmGestionProveedores());
+        }
+
+        private void btnUsuarios_Click(object sender, EventArgs e)
+        {
+            currentTitleKey = "Titulo_FrmGestionUsuarios";
+            ApplyTranslationsPrincipal();
+            OpenChildForm(new FrmGestionUsuarios());
+        }
+
+        private void btnManifiestos_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Funcionalidad

@@ -1,19 +1,11 @@
 ﻿using SERVICES.Dominio;
-using SERVICES.DAL.Contratos;
 using SERVICES.Facade;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RedAceite_ING_SOFTWARE.Forms
 {
-    public partial class FrmCrearUsuario : Form, ILanguageObserver
+    public partial class FrmCrearUsuario : Form
     {
         public FrmCrearUsuario()
         {
@@ -22,18 +14,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Suscribirse al evento Load
             this.Load += FrmCrearUsuario_Load;
-
-            // Suscribirse al Observer de idioma
-            LanguageService.Subscribe(this);
         }
 
-        /// <summary>
-        /// Evento que se ejecuta cuando el formulario se carga.
-        /// Traduce el formulario según el idioma actual.
-        /// </summary>
         private void FrmCrearUsuario_Load(object sender, EventArgs e)
         {
-            LanguageService.TranslateForm(this);
+            // (FASE 1) Sin traducción automática
         }
 
         private void CrearUsuario_Click(object sender, EventArgs e)
@@ -52,10 +37,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 string.IsNullOrEmpty(telefono) || string.IsNullOrEmpty(nombre) ||
                 string.IsNullOrEmpty(apellido) || string.IsNullOrEmpty(email))
             {
-                string message = LanguageService.Translate("Todos_Los_Campos_Obligatorios"); 
-                string title = LanguageService.Translate("Error");
-
-                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Todos los campos son obligatorios.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -81,9 +63,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     System.Diagnostics.TraceLevel.Info
                 );
 
-                string message = LanguageService.Translate("Usuario_Creado");
-                string title = LanguageService.Translate("Información");
-                MessageBox.Show(message, title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Usuario creado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 // Limpiar campos
                 LimpiarCampos();
@@ -144,31 +124,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.Close();
         }
 
-        // Implementación de ILanguageObserver
-
-        /// <summary>
-        /// Método llamado automáticamente cuando cambia el idioma.
-        /// Traduce el formulario.
-        /// </summary>
-        public void UpdateLanguage()
-        {
-            try
-            {
-                LanguageService.TranslateForm(this);
-            }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-            }
-        }
-
         /// <summary>
         /// Evento que se ejecuta al cerrar el formulario.
-        /// Desuscribe del Observer para evitar memory leaks.
         /// </summary>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            LanguageService.Unsubscribe(this);
             base.OnFormClosing(e);
         }
     }

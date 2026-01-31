@@ -182,7 +182,6 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Contexto\LoggerContext.cs" />
     <Compile Include="DAL\Contratos\IGenericServiceDAL.cs" />
-    <Compile Include="DAL\Contratos\ILanguageObserver.cs" />
     <Compile Include="DAL\Contratos\ILoggerStrategy.cs" />
     <Compile Include="DAL\Contratos\IUsuarioDAL.cs" />
     <Compile Include="DAL\FactoryServices\DALFactory.cs" />
@@ -193,16 +192,17 @@
     <Compile Include="DAL\Implementaciones\SQL\UsuarioRepository.cs" />
     <Compile Include="DAL\Implementaciones\Strategy\DatabaseLoggerStrategy.cs" />
     <Compile Include="DAL\Implementaciones\Strategy\FileLoggerStrateg.cs" />
-    <Compile Include="DAL\LanguageRepository.cs" />
+    <Compile Include="DAL\Implementations\LanguageRepository.cs" />
+    <Compile Include="Domain\Exceptions\WordNotFoundException.cs" />
     <Compile Include="Dominio\Acceso.cs" />
     <Compile Include="Dominio\Familia.cs" />
     <Compile Include="Dominio\Log.cs" />
     <Compile Include="Dominio\Patente.cs" />
     <Compile Include="Dominio\Usuario.cs" />
     <Compile Include="DTO\DatosRemitoPdfDto.cs" />
-    <Compile Include="DTO\LanguageOption.cs" />
     <Compile Include="DTO\UsuarioFamiliaDto.cs" />
     <Compile Include="Facade\CryptographyService.cs" />
+    <Compile Include="Facade\Extentions\StringExtention.cs" />
     <Compile Include="Facade\FamiliaService.cs" />
     <Compile Include="Facade\LanguageService.cs" />
     <Compile Include="Facade\LoggerService.cs" />
@@ -213,7 +213,6 @@
     <Compile Include="Helpers\ConfigHelper.cs" />
     <Compile Include="Helpers\PdfGeneratorHelper.cs" />
     <Compile Include="Logic\FamiliaLogic.cs" />
-    <Compile Include="Logic\LanguageLogic.cs" />
     <Compile Include="Logic\LoggerLogic.cs" />
     <Compile Include="Logic\SesionLogic.cs" />
     <Compile Include="Logic\UserLogic.cs" />
@@ -223,6 +222,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\LanguageManager.cs" />
+    <Compile Include="Services\LanguagePreferenceService.cs" />
     <Compile Include="Trabajo_GODZ_LogDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

@@ -1,15 +1,9 @@
 using SERVICES.Facade;
-using SERVICES.DAL.Contratos;
 using DOMAIN;
 using BLL;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace RedAceite_ING_SOFTWARE.Forms
@@ -18,7 +12,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// Formulario para la generación de remitos de recolección de residuos.
     /// Permite ingresar los datos del generador y los detalles del residuo a recolectar.
     /// </summary>
-    public partial class FrmGenerarRemito : Form, ILanguageObserver
+    public partial class FrmGenerarRemito : Form
     {
         private readonly RemitoService _remitoService;
         private readonly ProveedorService _proveedorService;
@@ -33,22 +27,15 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // Suscribirse al evento Load
             this.Load += FrmGenerarRemito_Load;
 
-            // Suscribirse al Observer de idioma
-            LanguageService.Subscribe(this);
-
             ConfigurarComboBoxes();
             CargarProveedoresHabilitados();
             MostrarFechaActual();
             ConfigurarEstadoInicial();
         }
 
-        /// <summary>
-        /// Evento que se ejecuta cuando el formulario se carga.
-        /// Traduce el formulario según el idioma actual.
-        /// </summary>
         private void FrmGenerarRemito_Load(object sender, EventArgs e)
         {
-            LanguageService.TranslateForm(this);
+            // (FASE 1) Sin traducción automática
         }
 
         /// <summary>
@@ -588,34 +575,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 LoggerService.WriteException(ex);
                 throw;
             }
-        }
-
-        // Implementación de ILanguageObserver
-
-        /// <summary>
-        /// Método llamado automáticamente cuando cambia el idioma.
-        /// Traduce el formulario.
-        /// </summary>
-        public void UpdateLanguage()
-        {
-            try
-            {
-                LanguageService.TranslateForm(this);
-            }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Evento que se ejecuta al cerrar el formulario.
-        /// Desuscribe del Observer para evitar memory leaks.
-        /// </summary>
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            LanguageService.Unsubscribe(this);
-            base.OnFormClosing(e);
         }
     }
 }

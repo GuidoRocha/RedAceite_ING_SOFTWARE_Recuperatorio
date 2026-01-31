@@ -1,6 +1,5 @@
 using DOMAIN;
 using BLL;
-using SERVICES.DAL.Contratos;
 using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
@@ -18,7 +17,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
     /// Formulario para modificar un proveedor existente en el sistema.
     /// Permite actualizar todos los datos excepto CUIT y DNI.
     /// </summary>
-    public partial class FrmModificarProveedor : Form, ILanguageObserver
+    public partial class FrmModificarProveedor : Form
     {
         // ID del proveedor que se está modificando
         private Guid _idProveedor;
@@ -42,19 +41,15 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // Suscribirse al evento Load
             this.Load += FrmModificarProveedor_Load;
 
-            // Suscribirse al Observer de idioma
-            LanguageService.Subscribe(this);
-
             CargarDatosProveedor();
         }
 
         /// <summary>
         /// Evento que se ejecuta cuando el formulario se carga.
-        /// Traduce el formulario según el idioma actual.
         /// </summary>
         private void FrmModificarProveedor_Load(object sender, EventArgs e)
         {
-            LanguageService.TranslateForm(this);
+            // (FASE 1) Sin traducción automática
         }
 
         /// <summary>
@@ -208,34 +203,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
-        }
-
-        // Implementación de ILanguageObserver
-
-        /// <summary>
-        /// Método llamado automáticamente cuando cambia el idioma.
-        /// Traduce el formulario.
-        /// </summary>
-        public void UpdateLanguage()
-        {
-            try
-            {
-                LanguageService.TranslateForm(this);
-            }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Evento que se ejecuta al cerrar el formulario.
-        /// Desuscribe del Observer para evitar memory leaks.
-        /// </summary>
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            LanguageService.Unsubscribe(this);
-            base.OnFormClosing(e);
         }
     }
 }
