@@ -1,7 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
 using BLL;
+using RedAceite_ING_SOFTWARE.Controls;
 using SERVICES.Facade;
+using SERVICES.Facade.Extentions;
+using SERVICES.Services;
+using System.Globalization;
+using System.Threading;
 
 namespace RedAceite_ING_SOFTWARE.Forms
 {
@@ -10,15 +15,50 @@ namespace RedAceite_ING_SOFTWARE.Forms
         private Form activeForm = null;
         private System.Windows.Forms.Timer timerActualizacion;
 
+        private string currentTitleKey = "lbl_MenuPrincipal";
+
+        private ToolStripDropDown _userDropDown;
+        private UserMenuControl _userMenuControl;
+
         public FrmPrincipal()
         {
             InitializeComponent();
             this.Tag = "Titulo_FrmPrincipal";
 
-            // Mantener suscripción explícita (además del handler del Designer)
-            this.Load += FrmPrincipal_Load;
-
             InicializarTimerActualizacion();
+        }
+
+        private void ReloadActiveChild()
+        {
+            if (activeForm == null) return;
+
+            var type = activeForm.GetType();
+
+            try { activeForm.Close(); } catch { }
+            try { activeForm.Dispose(); } catch { }
+            activeForm = null;
+
+            if (type == typeof(FrmGestionUsuarios))
+                btnUsuarios_Click(this, EventArgs.Empty);
+            else if (type == typeof(FrmGestionProveedores))
+                btnProveedores_Click(this, EventArgs.Empty);
+            else if (type == typeof(FrmGestionRemitos))
+                btnRemitos_Click(this, EventArgs.Empty);
+            else
+                VolverAInicio();
+        }
+
+        private void SetLanguage(string code)
+        {
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(code);
+            LanguagePreferenceService.Save(code);
+
+            ApplyTranslationsPrincipal();
+
+            if (activeForm != null)
+                ReloadActiveChild();
+            else if (panelDashboard != null && panelDashboard.Visible)
+                CargarEstadisticasInventario();
         }
 
         private void FrmPrincipal_Load(object sender, EventArgs e)
@@ -31,12 +71,40 @@ namespace RedAceite_ING_SOFTWARE.Forms
                         CreateRoundRectRgn(0, 0, btnProfile.Width, btnProfile.Height, 20, 20));
                 }
 
+                ApplyTranslationsPrincipal();
+
                 CargarEstadisticasInventario();
             }
             catch (Exception ex)
             {
                 LoggerService.WriteException(ex);
             }
+        }
+
+        private void ApplyTranslationsPrincipal()
+        {
+            this.Text = $"RedAceite - {"Titulo_FrmPrincipal".Translate()}";
+
+            if (btnInicio != null) btnInicio.Text = "🏠 " + "btn_Inicio".Translate();
+            if (btnManifiestos != null) btnManifiestos.Text = "📋 " + "btn_Manifiestos".Translate();
+            if (btnRemitos != null) btnRemitos.Text = "📄 " + "btn_Remitos".Translate();
+            if (btnProveedores != null) btnProveedores.Text = "🏢 " + "btn_Proveedores".Translate();
+            if (btnUsuarios != null) btnUsuarios.Text = "👥 " + "btn_Usuarios".Translate();
+
+            if (lblLogo != null) lblLogo.Text = "RedAceite";
+
+            if (lblTitle != null) lblTitle.Text = currentTitleKey.Translate();
+
+            if (lblUserName != null) lblUserName.Text = "lbl_Usuario".Translate();
+
+            if (lblStatsTitle != null) lblStatsTitle.Text = "lbl_EstadisticasInventario".Translate();
+
+            if (lblTituloAceite != null) lblTituloAceite.Text = "🛢️ " + "lbl_StockAceite".Translate();
+            if (lblTituloGrasa != null) lblTituloGrasa.Text = "🧈 " + "lbl_StockGrasa".Translate();
+            if (lblTituloTotal != null) lblTituloTotal.Text = "📦 " + "lbl_StockTotal".Translate();
+
+            if (lblRemitos != null) lblRemitos.Text = "lbl_Remitos".Translate();
+            if (lblManifiestos != null) lblManifiestos.Text = "lbl_Manifiestos".Translate();
         }
 
         // Handler requerido por el Designer
@@ -103,7 +171,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
             panelDashboard.Dock = DockStyle.Fill;
             panelDashboard.BringToFront();
 
-            lblTitle.Text = "Menu Principal";
+            currentTitleKey = "lbl_MenuPrincipal";
+            ApplyTranslationsPrincipal();
             CargarEstadisticasInventario();
         }
 
@@ -116,19 +185,22 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
         private void btnRemitos_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Gestión de Remitos";
+            currentTitleKey = "Titulo_FrmGestionRemitos";
+            ApplyTranslationsPrincipal();
             OpenChildForm(new FrmGestionRemitos());
         }
 
         private void btnProveedores_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Proveedores";
+            currentTitleKey = "Titulo_FrmGestionProveedores";
+            ApplyTranslationsPrincipal();
             OpenChildForm(new FrmGestionProveedores());
         }
 
         private void btnUsuarios_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Gestión de Usuarios";
+            currentTitleKey = "Titulo_FrmGestionUsuarios";
+            ApplyTranslationsPrincipal();
             OpenChildForm(new FrmGestionUsuarios());
         }
 
@@ -147,8 +219,90 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
         private void btnProfile_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Configuración de perfil…", "Perfil", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            try
+            {
+                ToggleUserMenu();
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        private void ToggleUserMenu()
+        {
+            if (_userDropDown != null && _userDropDown.Visible)
+            {
+                _userDropDown.Close(ToolStripDropDownCloseReason.CloseCalled);
+                return;
+            }
+
+            EnsureUserMenuCreated();
+
+            var p = new System.Drawing.Point(0, btnProfile.Height);
+            _userDropDown.Show(btnProfile, p);
+        }
+
+        private void EnsureUserMenuCreated()
+        {
+            if (_userDropDown != null)
+                return;
+
+            _userMenuControl = new UserMenuControl();
+            _userMenuControl.IdiomaClick += UserMenuControl_IdiomaClick;
+
+            var host = new ToolStripControlHost(_userMenuControl)
+            {
+                Margin = Padding.Empty,
+                Padding = Padding.Empty,
+                AutoSize = true
+            };
+
+            _userDropDown = new ToolStripDropDown
+            {
+                AutoClose = true,
+                Padding = Padding.Empty
+            };
+            _userDropDown.Items.Add(host);
+
+            _userDropDown.Closed += (s, e) =>
+            {
+                // no-op
+            };
+
+            _userDropDown.Closing += (s, e) =>
+            {
+                if (e.CloseReason == ToolStripDropDownCloseReason.ItemClicked)
+                {
+                    e.Cancel = true;
+                }
+            };
+        }
+
+        private void UserMenuControl_IdiomaClick(object sender, EventArgs e)
+        {
+            try
+            {
+                CloseUserAndLanguageMenus();
+
+                using (var dlg = new FrmCambioIdioma())
+                {
+                    dlg.EspanolSelected += (s, args) => SetLanguage("es-ES");
+                    dlg.EnglishSelected += (s, args) => SetLanguage("en-US");
+
+                    dlg.ShowDialog(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        private void CloseUserAndLanguageMenus()
+        {
+            if (_userDropDown != null && _userDropDown.Visible)
+                _userDropDown.Close(ToolStripDropDownCloseReason.CloseCalled);
         }
 
         private void lblTitle_Click(object sender, EventArgs e)
@@ -165,8 +319,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             try
             {
-                LoggerService.WriteLog("Idioma seleccionado (sin aplicar en FASE 1): Español",
-                    System.Diagnostics.TraceLevel.Info);
+                SetLanguage("es-ES");
             }
             catch (Exception ex)
             {
@@ -178,8 +331,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             try
             {
-                LoggerService.WriteLog("Idioma seleccionado (sin aplicar en FASE 1): Inglés",
-                    System.Diagnostics.TraceLevel.Info);
+                SetLanguage("en-US");
             }
             catch (Exception ex)
             {
@@ -236,14 +388,14 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     lblStockTotal.Text = $"{estadisticas.StockTotal:N2} L/Kg";
 
                 if (lblEntradasMes != null)
-                    lblEntradasMes.Text = $"📥 Entradas (último mes): {estadisticas.EntradasUltimoMes}";
+                    lblEntradasMes.Text = string.Format("lbl_EntradasUltimoMes".Translate(), estadisticas.EntradasUltimoMes);
 
                 if (lblSalidasMes != null)
-                    lblSalidasMes.Text = $"📤 Salidas (último mes): {estadisticas.SalidasUltimoMes}";
+                    lblSalidasMes.Text = string.Format("lbl_SalidasUltimoMes".Translate(), estadisticas.SalidasUltimoMes);
 
                 if (lblUltimaActualizacion != null)
-                    lblUltimaActualizacion.Text =
-                        $"Última actualización: {estadisticas.FechaActualizacion:dd/MM/yyyy HH:mm}";
+                    lblUltimaActualizacion.Text = string.Format("lbl_UltimaActualizacion".Translate(),
+                        estadisticas.FechaActualizacion.ToString("dd/MM/yyyy HH:mm"));
             }
             catch (Exception ex)
             {
@@ -277,6 +429,19 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             try
             {
+                if (_userMenuControl != null)
+                {
+                    _userMenuControl.IdiomaClick -= UserMenuControl_IdiomaClick;
+                    _userMenuControl.Dispose();
+                    _userMenuControl = null;
+                }
+
+                if (_userDropDown != null)
+                {
+                    _userDropDown.Dispose();
+                    _userDropDown = null;
+                }
+
                 if (timerActualizacion != null)
                 {
                     timerActualizacion.Stop();

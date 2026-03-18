@@ -1,6 +1,7 @@
 using DOMAIN;
 using BLL;
 using SERVICES.Facade;
+using SERVICES.Facade.Extentions;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -21,6 +22,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
             InitializeComponent();
             this.Tag = "Titulo_FrmGestionProveedores";
 
+            ApplyTranslationsGestionProveedores();
+
             _proveedorService = new ProveedorService();
 
             // Suscribirse a los eventos del DataGridView
@@ -32,6 +35,37 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Cargar proveedores al final, después de suscribirse a los eventos
             CargarProveedores();
+        }
+
+        private void ApplyTranslationsGestionProveedores()
+        {
+            this.Text = $"RedAceite - {"Titulo_FrmGestionProveedores".Translate()}";
+
+            if (lblFiltroCUIT != null) lblFiltroCUIT.Text = "Proveedores_LblFiltroCUIT".Translate();
+            if (lblFiltroRazonSocial != null) lblFiltroRazonSocial.Text = "Proveedores_LblFiltroRazonSocial".Translate();
+            if (lblFiltroRegion != null) lblFiltroRegion.Text = "Proveedores_LblFiltroRegion".Translate();
+
+            if (btnFiltrar != null) btnFiltrar.Text = "Proveedores_BtnFiltrar".Translate();
+            if (btnLimpiarFiltros != null) btnLimpiarFiltros.Text = "Proveedores_BtnLimpiarFiltros".Translate();
+
+            if (btnAgregarProveedor != null) btnAgregarProveedor.Text = "Proveedores_BtnAgregar".Translate();
+            if (btnModificarProveedor != null) btnModificarProveedor.Text = "Proveedores_BtnModificar".Translate();
+            if (btnDeshabilitarProveedor != null) btnDeshabilitarProveedor.Text = "Proveedores_BtnDeshabilitar".Translate();
+            if (btnHabilitarProveedor != null) btnHabilitarProveedor.Text = "Proveedores_BtnHabilitar".Translate();
+        }
+
+        private void ApplyProveedoresGridHeaders()
+        {
+            if (dgvProveedores == null || dgvProveedores.Columns == null) return;
+
+            foreach (DataGridViewColumn col in dgvProveedores.Columns)
+            {
+                if (col == null) continue;
+                if (string.IsNullOrWhiteSpace(col.Name)) continue;
+
+                string key = "Proveedores_Col_" + col.Name;
+                col.HeaderText = key.Translate();
+            }
         }
 
         /// <summary>
@@ -63,6 +97,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             // Configurar columnas DESPUÉS de que el grid haya terminado de cargar los datos
             ConfigurarColumnas();
+            ApplyProveedoresGridHeaders();
         }
 
         /// <summary>

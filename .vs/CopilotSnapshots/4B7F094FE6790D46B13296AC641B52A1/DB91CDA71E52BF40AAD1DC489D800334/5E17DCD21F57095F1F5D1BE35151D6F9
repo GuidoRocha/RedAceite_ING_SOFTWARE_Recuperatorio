@@ -1,0 +1,179 @@
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+using SERVICES.Facade;
+using SERVICES.Services;
+
+namespace RedAceite_ING_SOFTWARE.Forms
+{
+    public class FrmCambioIdioma : Form
+    {
+        private readonly Panel _optionEspanol;
+        private readonly Panel _optionEnglish;
+        private readonly RadioButton _rbEspanol;
+        private readonly RadioButton _rbEnglish;
+
+        public event EventHandler EspanolSelected;
+        public event EventHandler EnglishSelected;
+
+        private string _current;
+
+        public FrmCambioIdioma()
+        {
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            StartPosition = FormStartPosition.CenterParent;
+            MaximizeBox = false;
+            MinimizeBox = false;
+            ShowInTaskbar = false;
+
+            BackColor = Color.White;
+            Text = "Cambio de idioma";
+            Font = new Font("Segoe UI", 10F);
+
+            var title = new Label
+            {
+                Text = "Cambio de idioma",
+                Dock = DockStyle.Top,
+                Font = new Font("Segoe UI", 12F, FontStyle.Bold),
+                TextAlign = ContentAlignment.MiddleLeft,
+                Height = 50,
+                Padding = new Padding(16, 0, 0, 0),
+                BackColor = Color.White,
+                ForeColor = Color.Black
+            };
+
+            var content = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Padding = new Padding(16),
+                BackColor = Color.White
+            };
+
+            var layout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                ColumnCount = 1,
+                RowCount = 2
+            };
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+
+            _optionEspanol = CreateOptionRow("Español", out _rbEspanol);
+            _optionEnglish = CreateOptionRow("English", out _rbEnglish);
+
+            WireOptionClick(_optionEspanol, () => SelectLanguage("es-ES"));
+            WireOptionClick(_optionEnglish, () => SelectLanguage("en-US"));
+
+            layout.Controls.Add(_optionEspanol, 0, 0);
+            layout.Controls.Add(_optionEnglish, 0, 1);
+
+            content.Controls.Add(layout);
+
+            Controls.Add(content);
+            Controls.Add(title);
+
+            ClientSize = new Size(320, 190);
+        }
+
+        private void SelectLanguage(string code)
+        {
+            if (string.Equals(code, _current, StringComparison.OrdinalIgnoreCase))
+                return;
+
+            if (code == "en-US")
+            {
+                _rbEnglish.Checked = true;
+
+                // TODO: aplicar cambio de idioma/acá enganchar la funcionalidad real
+                EnglishSelected?.Invoke(this, EventArgs.Empty);
+            }
+            else
+            {
+                _rbEspanol.Checked = true;
+
+                // TODO: aplicar cambio de idioma/acá enganchar la funcionalidad real
+                EspanolSelected?.Invoke(this, EventArgs.Empty);
+            }
+
+            DialogResult = DialogResult.OK;
+            Close();
+        }
+
+        private static Panel CreateOptionRow(string text, out RadioButton radio)
+        {
+            var panel = new Panel
+            {
+                Dock = DockStyle.Top,
+                BackColor = Color.White,
+                Height = 40,
+                Margin = new Padding(0, 0, 0, 10)
+            };
+
+            var lbl = new Label
+            {
+                Text = text,
+                AutoSize = false,
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleLeft,
+                Padding = new Padding(10, 0, 10, 0),
+                ForeColor = Color.Black,
+                BackColor = Color.White
+            };
+
+            radio = new RadioButton
+            {
+                AutoSize = true,
+                Dock = DockStyle.Right,
+                Margin = new Padding(0, 0, 10, 0)
+            };
+
+            panel.Controls.Add(lbl);
+            panel.Controls.Add(radio);
+
+            panel.Paint += (s, e) =>
+            {
+                using (var pen = new Pen(Color.FromArgb(220, 220, 220), 1f))
+                {
+                    var r = panel.ClientRectangle;
+                    r.Width -= 1;
+                    r.Height -= 1;
+                    e.Graphics.DrawRectangle(pen, r);
+                }
+            };
+
+            return panel;
+        }
+
+        private static void WireOptionClick(Control root, Action onClick)
+        {
+            root.Click += (s, e) => onClick();
+            foreach (Control c in root.Controls)
+                c.Click += (s, e) => onClick();
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            try
+            {
+                _current = LanguagePreferenceService.LoadOrDefault();
+                _rbEnglish.Checked = _current == "en-US";
+                _rbEspanol.Checked = !_rbEnglish.Checked;
+
+                if (_rbEnglish.Checked)
+                    _optionEnglish.Focus();
+                else
+                    _optionEspanol.Focus();
+
+                AcceptButton = null;
+                CancelButton = null;
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+    }
+}

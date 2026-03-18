@@ -1,28 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-<Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-        Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
-
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <!-- ===================== -->
   <!--   PROYECTO / BUILD     -->
   <!-- ===================== -->
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-
     <ProjectGuid>{803F7FD7-8920-48A5-8D14-9E72BAA86244}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>RedAceite_ING_SOFTWARE</RootNamespace>
     <AssemblyName>RedAceite_ING_SOFTWARE</AssemblyName>
-
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
@@ -33,7 +26,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
@@ -43,7 +35,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
   <!-- ===================== -->
   <!--      REFERENCIAS      -->
   <!-- ===================== -->
@@ -51,7 +42,6 @@
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.6.2\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
     </Reference>
-
     <Reference Include="itext.barcodes, Version=9.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext.9.5.0\lib\net461\itext.barcodes.dll</HintPath>
     </Reference>
@@ -91,7 +81,6 @@
     <Reference Include="itext.svg, Version=9.5.0.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
       <HintPath>..\packages\itext.9.5.0\lib\net461\itext.svg.dll</HintPath>
     </Reference>
-
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -113,11 +102,9 @@
     <Reference Include="Microsoft.Extensions.Primitives, Version=5.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.5.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
     </Reference>
-
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -137,7 +124,6 @@
     <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
-
     <Reference Include="System.Security" />
     <Reference Include="System.Security.AccessControl, Version=6.0.0.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.AccessControl.6.0.1\lib\net461\System.Security.AccessControl.dll</HintPath>
@@ -148,14 +134,12 @@
     <Reference Include="System.Security.Principal.Windows, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Principal.Windows.5.0.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
-
     <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
     </Reference>
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
-
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -167,112 +151,102 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
-
   <!-- ===================== -->
   <!--      CÓDIGO / UI      -->
   <!-- ===================== -->
   <ItemGroup>
+    <Compile Include="Controls\UserMenuControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-
+    <Compile Include="Forms\FrmCambioIdioma.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Patentes\FrmAltaProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Patentes\FrmAltaProveedor.Designer.cs">
       <DependentUpon>FrmAltaProveedor.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Roles\FrmAsignarFamilias.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Roles\FrmAsignarFamilias.Designer.cs">
       <DependentUpon>FrmAsignarFamilias.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Roles\FrmAsignarPatentes.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Roles\FrmAsignarPatentes.Designer.cs">
       <DependentUpon>FrmAsignarPatentes.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Roles\FrmCrearRol.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Roles\FrmCrearRol.Designer.cs">
       <DependentUpon>FrmCrearRol.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Patentes\FrmCrearUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Patentes\FrmCrearUsuario.Designer.cs">
       <DependentUpon>FrmCrearUsuario.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Patentes\FrmGenerarRemito.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Patentes\FrmGenerarRemito.Designer.cs">
       <DependentUpon>FrmGenerarRemito.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Gestiones\FrmGestionProveedores.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Gestiones\FrmGestionProveedores.Designer.cs">
       <DependentUpon>FrmGestionProveedores.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Gestiones\FrmGestionRemitos.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Gestiones\FrmGestionRemitos.Designer.cs">
       <DependentUpon>FrmGestionRemitos.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Gestiones\FrmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Gestiones\FrmGestionUsuarios.Designer.cs">
       <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Patentes\FrmModificarProveedor.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Patentes\FrmModificarProveedor.Designer.cs">
       <DependentUpon>FrmModificarProveedor.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\Patentes\FrmModificarUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Patentes\FrmModificarUsuario.Designer.cs">
       <DependentUpon>FrmModificarUsuario.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Forms\FrmPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FrmPrincipal.Designer.cs">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-
     <Compile Include="RedAceiteLogDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -288,7 +262,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Trabajo_GODZ_LogDataSet.xsd</DependentUpon>
     </Compile>
-
     <EmbeddedResource Include="Forms\Roles\FrmCrearRol.resx">
       <DependentUpon>FrmCrearRol.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,7 +284,6 @@
     <EmbeddedResource Include="Forms\FrmPrincipal.resx">
       <DependentUpon>FrmPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -321,10 +293,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-
     <None Include="App.config" />
     <None Include="packages.config" />
-
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -334,7 +304,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-
     <None Include="RedAceiteLogDataSet.xsc">
       <DependentUpon>RedAceiteLogDataSet.xsd</DependentUpon>
     </None>
@@ -346,7 +315,6 @@
     <None Include="RedAceiteLogDataSet.xss">
       <DependentUpon>RedAceiteLogDataSet.xsd</DependentUpon>
     </None>
-
     <None Include="RedAceiteUserDataSet.xsc">
       <DependentUpon>RedAceiteUserDataSet.xsd</DependentUpon>
     </None>
@@ -358,7 +326,6 @@
     <None Include="RedAceiteUserDataSet.xss">
       <DependentUpon>RedAceiteUserDataSet.xsd</DependentUpon>
     </None>
-
     <None Include="Trabajo_GODZ_LogDataSet.xsc">
       <DependentUpon>Trabajo_GODZ_LogDataSet.xsd</DependentUpon>
     </None>
@@ -371,7 +338,6 @@
       <DependentUpon>Trabajo_GODZ_LogDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
-
   <!-- ===================== -->
   <!--     I18N (COPIA BIN)  -->
   <!-- ===================== -->
@@ -383,7 +349,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
   <!-- ===================== -->
   <!--   REFERENCIAS PROYECTO -->
   <!-- ===================== -->
@@ -401,7 +366,5 @@
       <Name>SERVICES</Name>
     </ProjectReference>
   </ItemGroup>
-
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-
 </Project>

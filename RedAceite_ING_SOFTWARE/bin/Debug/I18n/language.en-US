@@ -15,11 +15,15 @@ Titulo_FrmModificarProveedor=Modify Supplier
 Titulo_FrmAsignarPatentes=Assign Permissions
 Titulo_FrmAsignarFamilias=Assign Roles
 Titulo_FrmCrearRol=Create Role
+Titulo_FrmCambioIdioma=Language change
 
 # MAIN MENU
 menu_Idioma=Language
 menu_Espanol=Spanish
 menu_Ingles=English
+
+Idioma_Espanol=Spanish
+Idioma_Ingles=English
 
 # GENERAL BUTTONS
 btn_Inicio=Home
@@ -37,6 +41,14 @@ lbl_StockGrasa=Grease Stock
 lbl_StockTotal=Total Stock
 lbl_Remitos=Receipts
 lbl_Manifiestos=Manifests
+lbl_EntradasUltimoMes=?? Entries (last month): {0}
+lbl_SalidasUltimoMes=?? Exits (last month): {0}
+lbl_UltimaActualizacion=Last update: {0}
+
+Msg_ManifiestosProximamente=Coming soon 
+Titulo_Manifiestos=Manifests
+Msg_NotificacionesNoHay=No notifications 
+Titulo_Notificaciones=Notifications
 
 # DATAGRIDVIEW COLUMNS
 Usuario=User
@@ -68,4 +80,41 @@ Login_OlvidasteContrasena=Forgot your password?
 Entrar=Sign in
 Email=Email
 Contrasena=Password
+Usuarios_LblFiltroUsuario=User:
+Usuarios_LblFiltroDNI=ID number:
+Usuarios_BtnFiltrar=Filter
+Usuarios_BtnLimpiarFiltros=Clear
+Usuarios_BtnAgregarUsuario=Add user
+Usuarios_BtnModificar=Edit
+Usuarios_BtnDeshabilitar=Disable
+Usuarios_BtnHabilitar=Enable
+Usuarios_BtnAsignarFamilias=Assign families
+Usuarios_BtnAsignarPatentes=Assign permissions
+Usuarios_Col_UserName=Username
+Usuarios_Col_Nombre=First name
+Usuarios_Col_Apellido=Last name
+Usuarios_Col_DNI=ID number
+Usuarios_Col_Email=Email
+Usuarios_Col_Telefono=Phone
+Titulo_FrmGestionProveedores=Suppliers management
+Proveedores_LblFiltroCUIT=Tax ID:
+Proveedores_LblFiltroRazonSocial=Business name:
+Proveedores_LblFiltroRegion=Region:
+Proveedores_BtnFiltrar=Filter
+Proveedores_BtnLimpiarFiltros=Clear
+Proveedores_BtnAgregar=Add
+Proveedores_BtnModificar=Edit
+Proveedores_BtnDeshabilitar=Disable
+Proveedores_BtnHabilitar=Enable
+Proveedores_Col_IdSimple=ID
+Proveedores_Col_CUIT=Tax ID
+Proveedores_Col_Nombre=First name
+Proveedores_Col_RazonSocial=Business name
+Proveedores_Col_Direccion=Address
+Proveedores_Col_Telefono=Phone
+Proveedores_Col_Email=Email
+Proveedores_Col_Region=Region
+Proveedores_Col_DNI=ID number
+
+
 

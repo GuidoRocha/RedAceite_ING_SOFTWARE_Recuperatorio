@@ -36,10 +36,6 @@
             this.btnInicio = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.lblLogo = new System.Windows.Forms.Label();
-            this.menuStripIdioma = new System.Windows.Forms.MenuStrip();
-            this.menuIdioma = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuEspañol = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuIngles = new System.Windows.Forms.ToolStripMenuItem();
             this.panelTopBar = new System.Windows.Forms.Panel();
             this.lblUserName = new System.Windows.Forms.Label();
             this.btnProfile = new System.Windows.Forms.Button();
@@ -69,7 +65,6 @@
             this.lblStatsTitle = new System.Windows.Forms.Label();
             this.panelSidebar.SuspendLayout();
             this.panelLogo.SuspendLayout();
-            this.menuStripIdioma.SuspendLayout();
             this.panelTopBar.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelDashboard.SuspendLayout();
@@ -114,7 +109,7 @@
             this.btnUsuarios.Size = new System.Drawing.Size(267, 55);
             this.btnUsuarios.TabIndex = 7;
             this.btnUsuarios.Tag = "btn_Usuarios";
-            this.btnUsuarios.Text = "👥 Usuarios";
+            this.btnUsuarios.Text = "Usuarios";
             this.btnUsuarios.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUsuarios.UseVisualStyleBackColor = true;
             this.btnUsuarios.Click += new System.EventHandler(this.btnUsuarios_Click);
@@ -136,7 +131,7 @@
             this.btnProveedores.Size = new System.Drawing.Size(267, 55);
             this.btnProveedores.TabIndex = 6;
             this.btnProveedores.Tag = "btn_Proveedores";
-            this.btnProveedores.Text = "🏢 Proveedores";
+            this.btnProveedores.Text = "Proveedores";
             this.btnProveedores.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProveedores.UseVisualStyleBackColor = true;
             this.btnProveedores.Click += new System.EventHandler(this.btnProveedores_Click);
@@ -158,7 +153,7 @@
             this.btnRemitos.Size = new System.Drawing.Size(267, 55);
             this.btnRemitos.TabIndex = 4;
             this.btnRemitos.Tag = "btn_Remitos";
-            this.btnRemitos.Text = "📄 Remitos";
+            this.btnRemitos.Text = "Remitos";
             this.btnRemitos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnRemitos.UseVisualStyleBackColor = true;
             this.btnRemitos.Click += new System.EventHandler(this.btnRemitos_Click);
@@ -180,7 +175,7 @@
             this.btnManifiestos.Size = new System.Drawing.Size(267, 55);
             this.btnManifiestos.TabIndex = 3;
             this.btnManifiestos.Tag = "btn_Manifiestos";
-            this.btnManifiestos.Text = "📋 Manifiestos";
+            this.btnManifiestos.Text = "Manifiestos";
             this.btnManifiestos.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnManifiestos.UseVisualStyleBackColor = true;
             this.btnManifiestos.Click += new System.EventHandler(this.btnManifiestos_Click);
@@ -202,7 +197,7 @@
             this.btnInicio.Size = new System.Drawing.Size(267, 55);
             this.btnInicio.TabIndex = 9;
             this.btnInicio.Tag = "btn_Inicio";
-            this.btnInicio.Text = "🏠 Inicio";
+            this.btnInicio.Text = "Inicio";
             this.btnInicio.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnInicio.UseVisualStyleBackColor = true;
             this.btnInicio.Click += new System.EventHandler(this.btnInicio_Click);
@@ -235,44 +230,6 @@
             this.lblLogo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblLogo.Click += new System.EventHandler(this.lblLogo_Click);
             // 
-            // menuStripIdioma
-            // 
-            this.menuStripIdioma.BackColor = System.Drawing.Color.White;
-            this.menuStripIdioma.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStripIdioma.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuIdioma});
-            this.menuStripIdioma.Location = new System.Drawing.Point(267, 0);
-            this.menuStripIdioma.Name = "menuStripIdioma";
-            this.menuStripIdioma.Size = new System.Drawing.Size(1572, 30);
-            this.menuStripIdioma.TabIndex = 3;
-            this.menuStripIdioma.Text = "menuStripIdioma";
-            // 
-            // menuIdioma
-            // 
-            this.menuIdioma.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuEspañol,
-            this.menuIngles});
-            this.menuIdioma.Name = "menuIdioma";
-            this.menuIdioma.Size = new System.Drawing.Size(70, 26);
-            this.menuIdioma.Tag = "menu_Idioma";
-            this.menuIdioma.Text = "Idioma";
-            // 
-            // menuEspañol
-            // 
-            this.menuEspañol.Name = "menuEspañol";
-            this.menuEspañol.Size = new System.Drawing.Size(144, 26);
-            this.menuEspañol.Tag = "menu_Espanol";
-            this.menuEspañol.Text = "Español";
-            this.menuEspañol.Click += new System.EventHandler(this.menuEspañol_Click);
-            // 
-            // menuIngles
-            // 
-            this.menuIngles.Name = "menuIngles";
-            this.menuIngles.Size = new System.Drawing.Size(144, 26);
-            this.menuIngles.Tag = "menu_Ingles";
-            this.menuIngles.Text = "English";
-            this.menuIngles.Click += new System.EventHandler(this.menuIngles_Click);
-            // 
             // panelTopBar
             // 
             this.panelTopBar.BackColor = System.Drawing.Color.White;
@@ -281,7 +238,7 @@
             this.panelTopBar.Controls.Add(this.btnNotifications);
             this.panelTopBar.Controls.Add(this.lblTitle);
             this.panelTopBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTopBar.Location = new System.Drawing.Point(267, 30);
+            this.panelTopBar.Location = new System.Drawing.Point(267, 0);
             this.panelTopBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panelTopBar.Name = "panelTopBar";
             this.panelTopBar.Size = new System.Drawing.Size(1572, 74);
@@ -329,7 +286,7 @@
             this.btnNotifications.Name = "btnNotifications";
             this.btnNotifications.Size = new System.Drawing.Size(53, 49);
             this.btnNotifications.TabIndex = 1;
-            this.btnNotifications.Text = "🔔";
+            this.btnNotifications.Text = "";
             this.btnNotifications.UseVisualStyleBackColor = true;
             this.btnNotifications.Click += new System.EventHandler(this.btnNotifications_Click);
             // 
@@ -483,7 +440,7 @@
             this.lblSalidasMes.Name = "lblSalidasMes";
             this.lblSalidasMes.Size = new System.Drawing.Size(208, 23);
             this.lblSalidasMes.TabIndex = 5;
-            this.lblSalidasMes.Text = "📤 Salidas (último mes): 0";
+            this.lblSalidasMes.Text = "Salidas (último mes): 0";
             // 
             // lblEntradasMes
             // 
@@ -494,7 +451,7 @@
             this.lblEntradasMes.Name = "lblEntradasMes";
             this.lblEntradasMes.Size = new System.Drawing.Size(222, 23);
             this.lblEntradasMes.TabIndex = 4;
-            this.lblEntradasMes.Text = "📥 Entradas (último mes): 0";
+            this.lblEntradasMes.Text = "Entradas (último mes): 0";
             // 
             // panelInventarioTotal
             // 
@@ -529,7 +486,7 @@
             this.lblTituloTotal.Size = new System.Drawing.Size(240, 31);
             this.lblTituloTotal.TabIndex = 0;
             this.lblTituloTotal.Tag = "lbl_StockTotal";
-            this.lblTituloTotal.Text = "📦 Stock Total";
+            this.lblTituloTotal.Text = "Stock Total";
             // 
             // panelInventarioGrasa
             // 
@@ -564,7 +521,7 @@
             this.lblTituloGrasa.Size = new System.Drawing.Size(240, 31);
             this.lblTituloGrasa.TabIndex = 0;
             this.lblTituloGrasa.Tag = "lbl_StockGrasa";
-            this.lblTituloGrasa.Text = "🧈 Stock Grasa";
+            this.lblTituloGrasa.Text = "Stock Grasa";
             // 
             // panelInventarioAceite
             // 
@@ -599,7 +556,7 @@
             this.lblTituloAceite.Size = new System.Drawing.Size(240, 31);
             this.lblTituloAceite.TabIndex = 0;
             this.lblTituloAceite.Tag = "lbl_StockAceite";
-            this.lblTituloAceite.Text = "🛢️ Stock Aceite";
+            this.lblTituloAceite.Text = "Stock Aceite";
             // 
             // lblStatsTitle
             // 
@@ -619,10 +576,8 @@
             this.ClientSize = new System.Drawing.Size(1839, 862);
             this.Controls.Add(this.panelMain);
             this.Controls.Add(this.panelTopBar);
-            this.Controls.Add(this.menuStripIdioma);
             this.Controls.Add(this.panelSidebar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.MainMenuStrip = this.menuStripIdioma;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MinimumSize = new System.Drawing.Size(1414, 774);
             this.Name = "FrmPrincipal";
@@ -631,8 +586,6 @@
             this.Load += new System.EventHandler(this.FrmPrincipal_Load_1);
             this.panelSidebar.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
-            this.menuStripIdioma.ResumeLayout(false);
-            this.menuStripIdioma.PerformLayout();
             this.panelTopBar.ResumeLayout(false);
             this.panelTopBar.PerformLayout();
             this.panelMain.ResumeLayout(false);
@@ -659,10 +612,6 @@
         private System.Windows.Forms.Button btnRemitos;
         private System.Windows.Forms.Button btnProveedores;
         private System.Windows.Forms.Button btnUsuarios;
-        private System.Windows.Forms.MenuStrip menuStripIdioma;
-        private System.Windows.Forms.ToolStripMenuItem menuIdioma;
-        private System.Windows.Forms.ToolStripMenuItem menuEspañol;
-        private System.Windows.Forms.ToolStripMenuItem menuIngles;
         private System.Windows.Forms.Panel panelTopBar;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnNotifications;

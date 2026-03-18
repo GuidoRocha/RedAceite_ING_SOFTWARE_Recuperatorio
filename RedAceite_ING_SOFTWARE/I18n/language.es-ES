@@ -15,11 +15,15 @@ Titulo_FrmModificarProveedor=Modificar Proveedor
 Titulo_FrmAsignarPatentes=Asignar Permisos
 Titulo_FrmAsignarFamilias=Asignar Roles
 Titulo_FrmCrearRol=Crear Rol
+Titulo_FrmCambioIdioma=Cambio de idioma
 
 # MENU PRINCIPAL
 menu_Idioma=Idioma
 menu_Espanol=Espanol
 menu_Ingles=Ingles
+
+Idioma_Espanol=Español
+Idioma_Ingles=English
 
 # BOTONES GENERALES
 btn_Inicio=Inicio
@@ -37,6 +41,14 @@ lbl_StockGrasa=Stock Grasa
 lbl_StockTotal=Stock Total
 lbl_Remitos=Remitos
 lbl_Manifiestos=Manifiestos
+lbl_EntradasUltimoMes=Entradas (último mes): {0}
+lbl_SalidasUltimoMes=Salidas (último mes): {0}
+lbl_UltimaActualizacion=Última actualización: {0}
+
+Msg_ManifiestosProximamente=Funcionalidad… próximamente
+Titulo_Manifiestos=Manifiestos
+Msg_NotificacionesNoHay=No hay notificaciones…
+Titulo_Notificaciones=Notificaciones
 
 # COLUMNAS DE DATAGRIDVIEW
 Usuario=Usuario
@@ -68,4 +80,40 @@ Login_OlvidasteContrasena=¿Olvidaste tu contraseña?
 Entrar=Entrar
 Email=Email
 Contrasena=Contraseña
+Usuarios_LblFiltroUsuario=Usuario:
+Usuarios_LblFiltroDNI=DNI:
+Usuarios_BtnFiltrar=Filtrar
+Usuarios_BtnLimpiarFiltros=Limpiar
+Usuarios_BtnAgregarUsuario=Agregar usuario
+Usuarios_BtnModificar=Modificar
+Usuarios_BtnDeshabilitar=Deshabilitar
+Usuarios_BtnHabilitar=Habilitar
+Usuarios_BtnAsignarFamilias=Asignar familias
+Usuarios_BtnAsignarPatentes=Asignar patentes
+Usuarios_Col_UserName=Usuario
+Usuarios_Col_Nombre=Nombre
+Usuarios_Col_Apellido=Apellido
+Usuarios_Col_DNI=DNI
+Usuarios_Col_Email=Email
+Usuarios_Col_Telefono=Teléfono
+Titulo_FrmGestionProveedores=Gestión de proveedores
+Proveedores_LblFiltroCUIT=CUIT:
+Proveedores_LblFiltroRazonSocial=Razón social:
+Proveedores_LblFiltroRegion=Región:
+Proveedores_BtnFiltrar=Filtrar
+Proveedores_BtnLimpiarFiltros=Limpiar
+Proveedores_BtnAgregar=Agregar
+Proveedores_BtnModificar=Modificar
+Proveedores_BtnDeshabilitar=Deshabilitar
+Proveedores_BtnHabilitar=Habilitar
+Proveedores_Col_IdSimple=ID
+Proveedores_Col_CUIT=CUIT
+Proveedores_Col_Nombre=Nombre
+Proveedores_Col_RazonSocial=Razón social
+Proveedores_Col_Direccion=Dirección
+Proveedores_Col_Telefono=Teléfono
+Proveedores_Col_Email=Email
+Proveedores_Col_Region=Región
+Proveedores_Col_DNI=DNI
+
 

@@ -1,5 +1,6 @@
 using SERVICES.Dominio;
 using SERVICES.Facade;
+using SERVICES.Facade.Extentions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
             InitializeComponent();
             this.Tag = "Titulo_FrmGestionUsuarios";
 
+            ApplyTranslationsGestionUsuarios();
+
             // Suscribirse a los eventos del DataGridView
             dgvUsuarios.CellFormatting += dgvUsuarios_CellFormatting;
             dgvUsuarios.DataBindingComplete += dgvUsuarios_DataBindingComplete;
@@ -30,6 +33,37 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Cargar usuarios al final, después de suscribirse a los eventos
             CargarUsuarios();
+        }
+
+        private void ApplyTranslationsGestionUsuarios()
+        {
+            this.Text = $"RedAceite - {"Titulo_FrmGestionUsuarios".Translate()}";
+
+            if (lblFiltroUsername != null) lblFiltroUsername.Text = "Usuarios_LblFiltroUsuario".Translate();
+            if (lblFiltroDNI != null) lblFiltroDNI.Text = "Usuarios_LblFiltroDNI".Translate();
+
+            if (btnFiltrar != null) btnFiltrar.Text = "Usuarios_BtnFiltrar".Translate();
+            if (btnLimpiarFiltros != null) btnLimpiarFiltros.Text = "Usuarios_BtnLimpiarFiltros".Translate();
+
+            if (btnAgregarUsuario != null) btnAgregarUsuario.Text = "Usuarios_BtnAgregarUsuario".Translate();
+            if (btnModificarUsuario != null) btnModificarUsuario.Text = "Usuarios_BtnModificar".Translate();
+            if (btnDeshabilitarUsuario != null) btnDeshabilitarUsuario.Text = "Usuarios_BtnDeshabilitar".Translate();
+            if (btnHabilitarUsuario != null) btnHabilitarUsuario.Text = "Usuarios_BtnHabilitar".Translate();
+            if (btnAsignarFamilias != null) btnAsignarFamilias.Text = "Usuarios_BtnAsignarFamilias".Translate();
+            if (btnAsignarPatentes != null) btnAsignarPatentes.Text = "Usuarios_BtnAsignarPatentes".Translate();
+        }
+
+        private void ApplyUsuariosGridHeaders()
+        {
+            if (dgvUsuarios == null || dgvUsuarios.Columns == null) return;
+
+            foreach (DataGridViewColumn col in dgvUsuarios.Columns)
+            {
+                if (col == null) continue;
+                if (string.IsNullOrWhiteSpace(col.Name)) continue;
+                string key = "Usuarios_Col_" + col.Name;
+                col.HeaderText = key.Translate();
+            }
         }
 
         /// <summary>
@@ -44,6 +78,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 // Asignar el DataSource - esto disparará automáticamente el evento DataBindingComplete
                 dgvUsuarios.DataSource = usuarios;
+
+                ConfigurarColumnas();
+                ApplyUsuariosGridHeaders();
             }
             catch (Exception ex)
             {
@@ -61,6 +98,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             // Configurar columnas DESPUÉS de que el grid haya terminado de cargar los datos
             ConfigurarColumnas();
+            ApplyUsuariosGridHeaders();
         }
 
         /// <summary>
@@ -482,6 +520,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 }
 
                 dgvUsuarios.DataSource = usuariosFiltrados.ToList();
+
+                ConfigurarColumnas();
+                ApplyUsuariosGridHeaders();
             }
             catch (Exception ex)
             {
