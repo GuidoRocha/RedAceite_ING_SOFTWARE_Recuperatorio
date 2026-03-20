@@ -1,6 +1,7 @@
 using BLL.Remito;
 using DOMAIN;
 using SERVICES.Facade;
+using SERVICES.Facade.Extentions;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -23,6 +24,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             InitializeComponent();
             this.Tag = "Titulo_FrmGestionRemitos";
+
+            ApplyTranslationsGestionRemitos();
 
             _remitoGestionService = new RemitoGestionService();
 
@@ -55,6 +58,36 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             // Cargar remitos al final
             CargarRemitos();
+        }
+
+        private void ApplyTranslationsGestionRemitos()
+        {
+            this.Text = $"RedAceite - {"Titulo_FrmGestionRemitos".Translate()}";
+
+            if (lblFechaInicio != null) lblFechaInicio.Text = "Remitos_LblFechaInicio".Translate();
+            if (lblFechaFin != null) lblFechaFin.Text = "Remitos_LblFechaFin".Translate();
+            if (lblFiltroCUIT != null) lblFiltroCUIT.Text = "Remitos_LblFiltroCUIT".Translate();
+            if (lblFiltroTipoResiduo != null) lblFiltroTipoResiduo.Text = "Remitos_LblFiltroTipoResiduo".Translate();
+
+            if (btnFiltrar != null) btnFiltrar.Text = "Remitos_BtnFiltrar".Translate();
+            if (btnLimpiarFiltros != null) btnLimpiarFiltros.Text = "Remitos_BtnLimpiarFiltros".Translate();
+
+            if (btnAgregarRemito != null) btnAgregarRemito.Text = "Remitos_BtnAgregar".Translate();
+            if (btnModificarRemito != null) btnModificarRemito.Text = "Remitos_BtnModificar".Translate();
+            if (btnEliminarRemito != null) btnEliminarRemito.Text = "Remitos_BtnEliminar".Translate();
+        }
+
+        private void ApplyRemitosGridHeaders()
+        {
+            if (dgvRemitos == null || dgvRemitos.Columns == null) return;
+
+            foreach (DataGridViewColumn col in dgvRemitos.Columns)
+            {
+                if (col == null || string.IsNullOrWhiteSpace(col.Name)) continue;
+
+                string key = "Remitos_Col_" + col.Name;
+                col.HeaderText = key.Translate();
+            }
         }
 
         /// <summary>
@@ -138,6 +171,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         private void dgvRemitos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             ConfigurarColumnas();
+            ApplyRemitosGridHeaders();
         }
 
         /// <summary>

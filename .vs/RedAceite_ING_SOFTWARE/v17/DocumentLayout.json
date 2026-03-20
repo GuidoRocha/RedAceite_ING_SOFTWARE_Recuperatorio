@@ -3,11 +3,15 @@
   "WorkspaceRootPath": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\redaceite_ing_software\\forms\\patentes\\frmmodificarremito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\redaceite_ing_software\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\redaceite_ing_software\\forms\\patentes\\frmmodificarremito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\patentes\\frmmodificarremito.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|c:\\recuperatorioredaceite\\redaceite_ing_software_recuperatorio\\redaceite_ing_software\\forms\\gestiones\\frmgestionremitos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\redaceite_ing_software\\forms\\gestiones\\frmgestionremitos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\forms\\gestiones\\frmgestionremitos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
@@ -33,10 +37,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{63A64B83-9F51-43F8-838A-709A932B54D7}|DAL\\DAL.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\dal\\implementaciones\\remitorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{63A64B83-9F51-43F8-838A-709A932B54D7}|DAL\\DAL.csproj|solutionrelative:dal\\implementaciones\\remitorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\redaceite_ing_software\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{803F7FD7-8920-48A5-8D14-9E72BAA86244}|RedAceite_ING_SOFTWARE\\RedAceite_ING_SOFTWARE.csproj|solutionrelative:redaceite_ing_software\\app.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{40236129-2AD3-4665-B8BE-79613B76FFF2}|SERVICES\\SERVICES.csproj|C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\services\\facade\\pdfservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -142,7 +142,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -150,32 +150,18 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FrmModificarRemito.cs",
-              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmModificarRemito.cs",
-              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmModificarRemito.cs",
-              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmModificarRemito.cs",
-              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmModificarRemito.cs",
-              "ViewState": "AgIAABYAAAAAAAAAAAArwCkAAABWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-19T01:58:04.283Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FrmGestionRemitos.cs [Dise\u00F1o]",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\Gestiones\\FrmGestionRemitos.cs",
               "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\Gestiones\\FrmGestionRemitos.cs",
               "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\Gestiones\\FrmGestionRemitos.cs [Dise\u00F1o]",
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\Gestiones\\FrmGestionRemitos.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T17:19:27.049Z",
-              "EditorCaption": " [Dise\u00F1o]"
+              "WhenOpened": "2026-03-18T17:19:27.049Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "RemitoGestionService.cs",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\BLL\\Remito\\RemitoGestionService.cs",
               "RelativeDocumentMoniker": "BLL\\Remito\\RemitoGestionService.cs",
@@ -187,7 +173,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "ProveedorService.cs",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\BLL\\Proveedor\\ProveedorService.cs",
               "RelativeDocumentMoniker": "BLL\\Proveedor\\ProveedorService.cs",
@@ -199,7 +185,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "RemitoRepository.cs",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\DAL\\Implementaciones\\RemitoRepository.cs",
               "RelativeDocumentMoniker": "DAL\\Implementaciones\\RemitoRepository.cs",
@@ -211,7 +197,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "InventarioService.cs",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\BLL\\Inventario\\InventarioService.cs",
               "RelativeDocumentMoniker": "BLL\\Inventario\\InventarioService.cs",
@@ -223,16 +209,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 0,
               "Title": "App.config",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\App.config",
               "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\App.config",
               "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\App.config",
               "RelativeToolTip": "RedAceite_ING_SOFTWARE\\App.config",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAACJAAAAAAAAAA==",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAQwHYAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
               "WhenOpened": "2026-01-30T17:36:52.161Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmModificarRemito.cs",
+              "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmModificarRemito.cs",
+              "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmModificarRemito.cs",
+              "ToolTip": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmModificarRemito.cs",
+              "RelativeToolTip": "RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmModificarRemito.cs",
+              "ViewState": "AgIAABYAAAAAAAAAAAArwCkAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-19T01:58:04.283Z"
             },
             {
               "$type": "Document",
@@ -248,7 +246,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "FrmGenerarRemito.cs",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmGenerarRemito.cs",
               "RelativeDocumentMoniker": "RedAceite_ING_SOFTWARE\\Forms\\Patentes\\FrmGenerarRemito.cs",
@@ -260,7 +258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "RemitoPdfService.cs",
               "DocumentMoniker": "C:\\RecuperatorioREDACEITE\\RedAceite_ING_SOFTWARE_Recuperatorio\\BLL\\Remito\\RemitoPdfService.cs",
               "RelativeDocumentMoniker": "BLL\\Remito\\RemitoPdfService.cs",

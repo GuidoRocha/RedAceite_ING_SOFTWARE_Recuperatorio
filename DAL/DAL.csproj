@@ -142,12 +142,14 @@
   <ItemGroup>
     <Compile Include="Contratos\IGenericRepository.cs" />
     <Compile Include="Contratos\IInventarioRepository.cs" />
+    <Compile Include="Contratos\IManifiestoRepository.cs" />
     <Compile Include="Contratos\IProveedorRepository.cs" />
     <Compile Include="Contratos\IRemitoPdfRepository.cs" />
     <Compile Include="Contratos\IRemitoRepository.cs" />
     <Compile Include="Contratos\IUnitOfWork.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Implementaciones\InventarioRepository.cs" />
+    <Compile Include="Implementaciones\ManifiestoRepository.cs" />
     <Compile Include="Implementaciones\ProveedorRepository.cs" />
     <Compile Include="Implementaciones\RemitoPdfRepository.cs" />
     <Compile Include="Implementaciones\RemitoRepository.cs" />

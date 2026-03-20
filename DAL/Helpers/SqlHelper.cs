@@ -20,6 +20,12 @@ namespace DAL.Helpers
         // Cadena de conexión para la base de datos de inventario
         public readonly static string conStringInventario;
 
+        // Cadena de conexion para la base de datos de manifiestos
+        public readonly static string conStringManifiestos;
+
+        // Cadena de conexion para la base de datos de precios
+        public readonly static string conStringPrecios;
+
         /// <summary>
         /// Constructor estático que inicializa las cadenas de conexión desde el archivo de configuración.
         /// </summary>
@@ -28,6 +34,8 @@ namespace DAL.Helpers
             conStringRemitos = ConfigurationManager.ConnectionStrings["Remitos_conexiones"].ConnectionString;
             conStringProveedores = ConfigurationManager.ConnectionStrings["Proveedores_conexiones"].ConnectionString;
             conStringInventario = ConfigurationManager.ConnectionStrings["Inventario_conexiones"].ConnectionString;
+            conStringManifiestos = ConfigurationManager.ConnectionStrings["Manifiestos_conexiones"].ConnectionString;
+            conStringPrecios = ConfigurationManager.ConnectionStrings["PrecioBD"].ConnectionString;
         }
 
         /// <summary>

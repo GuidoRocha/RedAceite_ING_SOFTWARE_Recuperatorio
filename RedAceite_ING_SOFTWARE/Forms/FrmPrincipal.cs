@@ -44,6 +44,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 btnProveedores_Click(this, EventArgs.Empty);
             else if (type == typeof(FrmGestionRemitos))
                 btnRemitos_Click(this, EventArgs.Empty);
+            else if (type == typeof(FrmGestionManifiestos))
+                btnManifiestos_Click(this, EventArgs.Empty);
             else
                 VolverAInicio();
         }
@@ -206,8 +208,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
         private void btnManifiestos_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcionalidad… próximamente", "Manifiestos", MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            currentTitleKey = "Titulo_FrmGestionManifiestos";
+            ApplyTranslationsPrincipal();
+            OpenChildForm(new FrmGestionManifiestos());
         }
 
         // Barra superior
@@ -239,8 +242,22 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             EnsureUserMenuCreated();
 
-            var p = new System.Drawing.Point(0, btnProfile.Height);
-            _userDropDown.Show(btnProfile, p);
+            // Convertir a coordenadas de pantalla desde el propio boton
+            // para evitar que en multi-monitor se despliegue en otro monitor
+            var screenPoint = btnProfile.PointToScreen(new System.Drawing.Point(0, btnProfile.Height));
+
+            // Ajustar para que el dropdown no se salga por la derecha
+            int dropWidth = _userDropDown.PreferredSize.Width;
+            if (dropWidth > 0)
+            {
+                var screen = System.Windows.Forms.Screen.FromControl(btnProfile);
+                if (screenPoint.X + dropWidth > screen.WorkingArea.Right)
+                {
+                    screenPoint.X = screen.WorkingArea.Right - dropWidth;
+                }
+            }
+
+            _userDropDown.Show(screenPoint);
         }
 
         private void EnsureUserMenuCreated()

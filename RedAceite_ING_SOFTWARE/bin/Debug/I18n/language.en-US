@@ -116,5 +116,61 @@ Proveedores_Col_Email=Email
 Proveedores_Col_Region=Region
 Proveedores_Col_DNI=ID number
 
+# RECEIPTS MANAGEMENT
+Remitos_LblFechaInicio=Start Date:
+Remitos_LblFechaFin=End Date:
+Remitos_LblFiltroCUIT=Tax ID:
+Remitos_LblFiltroTipoResiduo=Waste Type:
+Remitos_BtnFiltrar=Filter
+Remitos_BtnLimpiarFiltros=Clear
+Remitos_BtnAgregar=Add Receipt
+Remitos_BtnModificar=Edit Receipt
+Remitos_BtnEliminar=Delete Receipt
+Remitos_Col_FechaCreacion=Creation Date
+Remitos_Col_NombreGenerador=Generator Name
+Remitos_Col_Cuit=Tax ID
+Remitos_Col_TipoResiduo=Waste Type
+Remitos_Col_Cantidad=Quantity
+Remitos_Col_Estado=Physical State
+Remitos_Col_IntegridadEstado=Integrity
+Remitos_Col_DescargarPdf=PDF
 
+# MANIFESTS MANAGEMENT
+Titulo_FrmGestionManifiestos=Manifests Management
+Manifiestos_LblFechaGenerar=Generate manifest for date:
+Manifiestos_BtnGenerar=Generate Manifest
+Manifiestos_BtnConfigurarPrecios=Configure Prices
+Manifiestos_ChkFiltroFecha=By dates:
+Manifiestos_LblFiltroInicio=From:
+Manifiestos_LblFiltroFin=To:
+Manifiestos_LblFiltroEstado=Status:
+Manifiestos_BtnFiltrar=Filter
+Manifiestos_BtnLimpiarFiltros=Clear
+Manifiestos_BtnAnular=Void
+Manifiestos_BtnVerDetalle=View Details
+Manifiestos_BtnDescargarPdf=Download PDF
+Manifiestos_Col_NumeroManifiesto=Number
+Manifiestos_Col_FechaManifiesto=Date
+Manifiestos_Col_NombreTransportista=Carrier
+Manifiestos_Col_CantidadTotalRemitos=Receipts
+Manifiestos_Col_MontoTotal=Total Amount
+Manifiestos_Col_Estado=Status
+Manifiestos_Col_FechaCreacion=Generated on
+Manifiestos_Col_IntegridadEstado=Integrity
+
+# CONFIGURE PRICES
+Titulo_FrmConfigurarPrecios=Configure Prices
+Precios_LblTitulo=Configure Prices per Waste Type
+Precios_GrpAceite=Oil (per liter)
+Precios_GrpGrasa=Grease (per kilogram)
+Precios_LblPrecio=Price:
+Precios_BtnGuardar=Save
+Precios_LblHistorial=Price History
+Precios_BtnCerrar=Close
+Precios_SinPrecio=No price configured
+Precios_VigenteDesde=Active since: {0}
+Precios_Col_TipoResiduo=Waste Type
+Precios_Col_PrecioUnitario=Unit Price
+Precios_Col_FechaVigencia=Effective Date
+Precios_Col_Activo=Active
 

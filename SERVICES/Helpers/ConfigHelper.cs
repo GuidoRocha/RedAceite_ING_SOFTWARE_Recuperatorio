@@ -3,16 +3,16 @@ using System.Configuration;
 namespace SERVICES.Helpers
 {
     /// <summary>
-    /// Helper para acceder a la configuración de la aplicación.
-    /// Proporciona métodos estáticos para obtener valores de App.config.
+    /// Helper para acceder a la configuraciï¿½n de la aplicaciï¿½n.
+    /// Proporciona mï¿½todos estï¿½ticos para obtener valores de App.config.
     /// </summary>
     public static class ConfigHelper
     {
         /// <summary>
-        /// Obtiene un valor de configuración desde AppSettings.
+        /// Obtiene un valor de configuraciï¿½n desde AppSettings.
         /// </summary>
-        /// <param name="key">Clave de configuración.</param>
-        /// <returns>El valor de configuración, o null si no existe.</returns>
+        /// <param name="key">Clave de configuraciï¿½n.</param>
+        /// <returns>El valor de configuraciï¿½n, o null si no existe.</returns>
         public static string ObtenerConfiguracion(string key)
         {
             return ConfigurationManager.AppSettings[key];
@@ -32,6 +32,22 @@ namespace SERVICES.Helpers
         public static string ObtenerRutaLogoRemito()
         {
             return ConfigurationManager.AppSettings["RutaLogoRemito"];
+        }
+
+        /// <summary>
+        /// Obtiene la ruta configurada para los PDFs de manifiestos.
+        /// </summary>
+        public static string ObtenerRutaPdfManifiestos()
+        {
+            return ConfigurationManager.AppSettings["RutaPDFManifiestos"];
+        }
+
+        /// <summary>
+        /// Obtiene la ruta configurada para el logo de manifiestos.
+        /// </summary>
+        public static string ObtenerRutaLogoManifiesto()
+        {
+            return ConfigurationManager.AppSettings["RutaLogoManifiesto"];
         }
     }
 }

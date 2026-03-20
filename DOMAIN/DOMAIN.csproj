@@ -140,7 +140,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Inventario.cs" />
+    <Compile Include="Manifiesto.cs" />
+    <Compile Include="ManifiestoDetalle.cs" />
+    <Compile Include="ManifiestoGestionDto.cs" />
     <Compile Include="MovimientoInventario.cs" />
+    <Compile Include="PrecioResiduo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proveedor.cs" />
     <Compile Include="Remito.cs" />

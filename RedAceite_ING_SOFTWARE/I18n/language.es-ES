@@ -116,4 +116,61 @@ Proveedores_Col_Email=Email
 Proveedores_Col_Region=Región
 Proveedores_Col_DNI=DNI
 
+# GESTION DE REMITOS
+Remitos_LblFechaInicio=Fecha Inicio:
+Remitos_LblFechaFin=Fecha Fin:
+Remitos_LblFiltroCUIT=CUIT:
+Remitos_LblFiltroTipoResiduo=Tipo de Residuo:
+Remitos_BtnFiltrar=Filtrar
+Remitos_BtnLimpiarFiltros=Limpiar
+Remitos_BtnAgregar=Anadir Remito
+Remitos_BtnModificar=Modificar Remito
+Remitos_BtnEliminar=Eliminar Remito
+Remitos_Col_FechaCreacion=Fecha Creacion
+Remitos_Col_NombreGenerador=Nombre Generador
+Remitos_Col_Cuit=CUIT
+Remitos_Col_TipoResiduo=Tipo Residuo
+Remitos_Col_Cantidad=Cantidad
+Remitos_Col_Estado=Estado Fisico
+Remitos_Col_IntegridadEstado=Integridad
+Remitos_Col_DescargarPdf=PDF
+
+# GESTION DE MANIFIESTOS
+Titulo_FrmGestionManifiestos=Gestion de Manifiestos
+Manifiestos_LblFechaGenerar=Generar manifiesto del dia:
+Manifiestos_BtnGenerar=Generar Manifiesto
+Manifiestos_BtnConfigurarPrecios=Configurar Precios
+Manifiestos_ChkFiltroFecha=Por fechas:
+Manifiestos_LblFiltroInicio=Desde:
+Manifiestos_LblFiltroFin=Hasta:
+Manifiestos_LblFiltroEstado=Estado:
+Manifiestos_BtnFiltrar=Filtrar
+Manifiestos_BtnLimpiarFiltros=Limpiar
+Manifiestos_BtnAnular=Anular
+Manifiestos_BtnVerDetalle=Ver Detalle
+Manifiestos_BtnDescargarPdf=Descargar PDF
+Manifiestos_Col_NumeroManifiesto=Numero
+Manifiestos_Col_FechaManifiesto=Fecha
+Manifiestos_Col_NombreTransportista=Transportista
+Manifiestos_Col_CantidadTotalRemitos=Remitos
+Manifiestos_Col_MontoTotal=Monto Total
+Manifiestos_Col_Estado=Estado
+Manifiestos_Col_FechaCreacion=Generado el
+Manifiestos_Col_IntegridadEstado=Integridad
+
+# CONFIGURAR PRECIOS
+Titulo_FrmConfigurarPrecios=Configurar Precios
+Precios_LblTitulo=Configurar Precios por Residuo
+Precios_GrpAceite=Aceite (por litro)
+Precios_GrpGrasa=Grasa (por kilogramo)
+Precios_LblPrecio=Precio:
+Precios_BtnGuardar=Guardar
+Precios_LblHistorial=Historial de Precios
+Precios_BtnCerrar=Cerrar
+Precios_SinPrecio=Sin precio configurado
+Precios_VigenteDesde=Vigente desde: {0}
+Precios_Col_TipoResiduo=Tipo Residuo
+Precios_Col_PrecioUnitario=Precio Unitario
+Precios_Col_FechaVigencia=Fecha Vigencia
+Precios_Col_Activo=Activo
 

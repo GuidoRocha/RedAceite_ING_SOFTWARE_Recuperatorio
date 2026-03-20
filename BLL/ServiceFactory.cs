@@ -18,6 +18,7 @@ namespace BLL
         private static IInventarioRepository _inventarioRepository;
         private static IProveedorRepository _proveedorRepository;
         private static IRemitoPdfRepository _remitoPdfRepository;
+        private static IManifiestoRepository _manifiestoRepository;
 
         private static readonly object _lock = new object();
 
@@ -102,6 +103,27 @@ namespace BLL
                     }
                 }
                 return _remitoPdfRepository;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la instancia singleton del repositorio de manifiestos.
+        /// </summary>
+        public static IManifiestoRepository ManifiestoRepository
+        {
+            get
+            {
+                if (_manifiestoRepository == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_manifiestoRepository == null)
+                        {
+                            _manifiestoRepository = new ManifiestoRepository();
+                        }
+                    }
+                }
+                return _manifiestoRepository;
             }
         }
     }

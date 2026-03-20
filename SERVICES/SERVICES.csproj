@@ -199,6 +199,7 @@
     <Compile Include="Dominio\Log.cs" />
     <Compile Include="Dominio\Patente.cs" />
     <Compile Include="Dominio\Usuario.cs" />
+    <Compile Include="DTO\DatosManifiestoPdfDto.cs" />
     <Compile Include="DTO\DatosRemitoPdfDto.cs" />
     <Compile Include="DTO\UsuarioFamiliaDto.cs" />
     <Compile Include="Facade\CryptographyService.cs" />
@@ -207,10 +208,12 @@
     <Compile Include="Facade\LanguageService.cs" />
     <Compile Include="Facade\LoggerService.cs" />
     <Compile Include="Facade\PdfService.cs" />
+    <Compile Include="Facade\ManifiestoDigitoVerificadorService.cs" />
     <Compile Include="Facade\RemitoDigitoVerificadorService.cs" />
     <Compile Include="Facade\SesionService.cs" />
     <Compile Include="Facade\UserService.cs" />
     <Compile Include="Helpers\ConfigHelper.cs" />
+    <Compile Include="Helpers\ManifiestoPdfGeneratorHelper.cs" />
     <Compile Include="Helpers\PdfGeneratorHelper.cs" />
     <Compile Include="Logic\FamiliaLogic.cs" />
     <Compile Include="Logic\LoggerLogic.cs" />

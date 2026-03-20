@@ -215,11 +215,23 @@
     <Compile Include="Forms\Gestiones\FrmGestionRemitos.Designer.cs">
       <DependentUpon>FrmGestionRemitos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Gestiones\FrmGestionManifiestos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Gestiones\FrmGestionManifiestos.Designer.cs">
+      <DependentUpon>FrmGestionManifiestos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Gestiones\FrmGestionUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Gestiones\FrmGestionUsuarios.Designer.cs">
       <DependentUpon>FrmGestionUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Patentes\FrmConfigurarPrecios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Patentes\FrmConfigurarPrecios.Designer.cs">
+      <DependentUpon>FrmConfigurarPrecios.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -286,6 +298,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Gestiones\FrmGestionRemitos.resx">
       <DependentUpon>FrmGestionRemitos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Gestiones\FrmGestionManifiestos.resx">
+      <DependentUpon>FrmGestionManifiestos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Patentes\FrmConfigurarPrecios.resx">
+      <DependentUpon>FrmConfigurarPrecios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
