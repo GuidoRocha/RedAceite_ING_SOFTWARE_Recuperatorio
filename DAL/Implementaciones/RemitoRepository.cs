@@ -9,7 +9,7 @@ using System.Data.SqlClient;
 namespace DAL.Implementaciones
 {
     /// <summary>
-    /// Implementación del repositorio de acceso a datos para la entidad Remito.
+    /// Implementacion del repositorio de acceso a datos para la entidad Remito.
     /// Utiliza SQL Server como backend de almacenamiento.
     /// </summary>
     public class RemitoRepository : IRemitoRepository
@@ -21,7 +21,7 @@ namespace DAL.Implementaciones
         {
         }
 
-        #region Métodos específicos de IRemitoRepository
+        #region Metodos especoficos de IRemitoRepository
 
         /// <summary>
         /// Crea un nuevo remito en la base de datos.
@@ -57,7 +57,7 @@ namespace DAL.Implementaciones
         }
 
         /// <summary>
-        /// Obtiene un remito por su identificador único.
+        /// Obtiene un remito por su identificador unico.
         /// </summary>
         /// <param name="idRemito">El ID del remito.</param>
         /// <returns>El remito correspondiente, si existe.</returns>
@@ -179,8 +179,8 @@ namespace DAL.Implementaciones
         }
 
         /// <summary>
-        /// Obtiene todos los remitos con su información de PDF asociada (LEFT JOIN).
-        /// Usado específicamente para la pantalla de gestión de remitos.
+        /// Obtiene todos los remitos con su informacion de PDF asociada (LEFT JOIN).
+        /// Usado especaficamente para la pantalla de gestion de remitos.
         /// </summary>
         public List<RemitoGestionDto> GetRemitosConPdf()
         {
@@ -191,7 +191,7 @@ namespace DAL.Implementaciones
                                 R.TipoResiduo, R.Cantidad, R.Estado, R.EstadoRemito,
                                 R.NombreFantasia, R.Direccion, R.DomicilioPlanta,
                                 R.NombreTransportista, R.DomicilioTransportista, R.DigitoVerificador,
-                                P.IdRemitoPDF, P.NombreArchivo, P.FechaGeneracion, P.TamañoBytes, P.HashMD5
+                                P.IdRemitoPDF, P.NombreArchivo, P.FechaGeneracion, P.TamaÃ±oBytes, P.HashMD5
                              FROM Remito R
                              LEFT JOIN RemitoPDF P ON R.IdRemito = P.IdRemito
                              ORDER BY R.FechaCreacion DESC";
@@ -208,7 +208,7 @@ namespace DAL.Implementaciones
         }
 
         /// <summary>
-        /// Obtiene remitos filtrados con su información de PDF asociada.
+        /// Obtiene remitos filtrados con su informacion de PDF asociada.
         /// </summary>
         public List<RemitoGestionDto> GetRemitosFiltradosConPdf(DateTime? fechaInicio, DateTime? fechaFin, string cuit, string tipoResiduo)
         {
@@ -220,12 +220,12 @@ namespace DAL.Implementaciones
                                 R.TipoResiduo, R.Cantidad, R.Estado, R.EstadoRemito,
                                 R.NombreFantasia, R.Direccion, R.DomicilioPlanta,
                                 R.NombreTransportista, R.DomicilioTransportista, R.DigitoVerificador,
-                                P.IdRemitoPDF, P.NombreArchivo, P.FechaGeneracion, P.TamañoBytes, P.HashMD5
+                                P.IdRemitoPDF, P.NombreArchivo, P.FechaGeneracion, P.TamaÃ±oBytes, P.HashMD5
                              FROM Remito R
                              LEFT JOIN RemitoPDF P ON R.IdRemito = P.IdRemito
                              WHERE 1=1";
 
-            // Aplicar filtros dinámicamente
+            // Aplicar filtros dinamicamente
             if (fechaInicio.HasValue)
             {
                 query += " AND R.FechaCreacion >= @FechaInicio";
@@ -265,10 +265,10 @@ namespace DAL.Implementaciones
 
         #endregion
 
-        #region Métodos de IGenericRepository<Remito>
+        #region Metodos de IGenericRepository<Remito>
 
         /// <summary>
-        /// Agrega un nuevo remito (implementación de IGenericRepository).
+        /// Agrega un nuevo remito (implementacion de IGenericRepository).
         /// </summary>
         /// <param name="entity">El remito a agregar.</param>
         public void Add(Remito entity)
@@ -327,7 +327,7 @@ namespace DAL.Implementaciones
         }
 
         /// <summary>
-        /// Obtiene un remito por su ID (implementación de IGenericRepository).
+        /// Obtiene un remito por su ID (implementacion de IGenericRepository).
         /// </summary>
         /// <param name="id">El ID del remito.</param>
         /// <returns>El remito correspondiente.</returns>
@@ -337,7 +337,7 @@ namespace DAL.Implementaciones
         }
 
         /// <summary>
-        /// Obtiene todos los remitos (implementación de IGenericRepository).
+        /// Obtiene todos los remitos (implementacion de IGenericRepository).
         /// </summary>
         /// <returns>Una lista de todos los remitos.</returns>
         public List<Remito> GetAll()
@@ -347,7 +347,7 @@ namespace DAL.Implementaciones
 
         #endregion
 
-        #region Métodos auxiliares
+        #region Metodos auxiliares
 
         /// <summary>
         /// Mapea un SqlDataReader a un objeto Remito.
@@ -371,7 +371,7 @@ namespace DAL.Implementaciones
                 Direccion = reader.GetString(10),
                 FechaCreacion = reader.GetDateTime(11),
                 EstadoRemito = reader.GetString(12),
-                DigitoVerificador = reader.IsDBNull(13) ? null : reader.GetString(13)
+                DigitoVerificador = reader.IsDBNull(13) ? null : reader.GetString(13).Trim()
             };
         }
 
@@ -399,13 +399,13 @@ namespace DAL.Implementaciones
                 DomicilioPlanta = reader.GetString(10),
                 NombreTransportista = reader.GetString(11),
                 DomicilioTransportista = reader.GetString(12),
-                DigitoVerificador = reader.IsDBNull(13) ? null : reader.GetString(13),
+                DigitoVerificador = reader.IsDBNull(13) ? null : reader.GetString(13).Trim(),
 
                 // Campos del RemitoPDF (pueden ser NULL por el LEFT JOIN)
                 IdRemitoPDF = reader.IsDBNull(14) ? (Guid?)null : reader.GetGuid(14),
                 NombreArchivo = reader.IsDBNull(15) ? null : reader.GetString(15),
                 FechaGeneracionPdf = reader.IsDBNull(16) ? (DateTime?)null : reader.GetDateTime(16),
-                TamañoBytes = reader.IsDBNull(17) ? (long?)null : reader.GetInt64(17),
+                TamaÃ±oBytes = reader.IsDBNull(17) ? (long?)null : reader.GetInt64(17),
                 HashMD5 = reader.IsDBNull(18) ? null : reader.GetString(18)
             };
         }

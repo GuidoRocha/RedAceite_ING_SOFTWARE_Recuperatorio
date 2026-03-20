@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace RedAceite_ING_SOFTWARE.Forms
 {
     /// <summary>
-    /// Formulario principal para la gestión de remitos.
+    /// Formulario principal para la gestiï¿½n de remitos.
     /// Permite listar, filtrar, visualizar y descargar PDFs de remitos generados.
     /// </summary>
     public partial class FrmGestionRemitos : Form
@@ -39,7 +39,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
             btnFiltrar.Click += btnFiltrar_Click;
             btnLimpiarFiltros.Click += btnLimpiarFiltros_Click;
 
-            // Suscribirse a eventos de botones de acción
+            // Suscribirse a eventos de botones de acciï¿½n
             btnAgregarRemito.Click += btnAgregarRemito_Click;
             btnModificarRemito.Click += btnModificarRemito_Click;
             btnEliminarRemito.Click += btnEliminarRemito_Click;
@@ -63,7 +63,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         private void InicializarComboTipoResiduo()
         {
             cmbTipoResiduo.Items.Clear();
-            cmbTipoResiduo.Items.Add("Todos"); // Primera opción para mostrar todos
+            cmbTipoResiduo.Items.Add("Todos"); // Primera opciï¿½n para mostrar todos
             cmbTipoResiduo.Items.Add("Aceite");
             cmbTipoResiduo.Items.Add("Grasa");
             cmbTipoResiduo.SelectedIndex = 0; // Seleccionar "Todos" por defecto
@@ -75,7 +75,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
         /// <summary>
         /// Maneja el evento KeyDown del ComboBox de tipo de residuo.
-        /// Permite borrar la selección con Delete o Backspace.
+        /// Permite borrar la selecciï¿½n con Delete o Backspace.
         /// </summary>
         private void cmbTipoResiduo_KeyDown(object sender, KeyEventArgs e)
         {
@@ -89,7 +89,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Carga todos los remitos con su información de PDF en el DataGridView.
+        /// Carga todos los remitos con su informaciï¿½n de PDF en el DataGridView.
         /// </summary>
         private void CargarRemitos()
         {
@@ -113,7 +113,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                         MessageBoxIcon.Warning);
 
                     LoggerService.WriteLog(
-                        $"Se mostró alerta al usuario: {countAlterados} remito(s) alterado(s) detectados en gestión de remitos.",
+                        $"Se mostrï¿½ alerta al usuario: {countAlterados} remito(s) alterado(s) detectados en gestiï¿½n de remitos.",
                         System.Diagnostics.TraceLevel.Warning);
                 }
             }
@@ -133,7 +133,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
         /// <summary>
         /// Evento que se dispara cuando el DataGridView ha terminado de enlazar los datos.
-        /// Configura las columnas después de que el grid haya cargado los datos.
+        /// Configura las columnas despuï¿½s de que el grid haya cargado los datos.
         /// </summary>
         private void dgvRemitos_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -183,7 +183,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                             e.CellStyle.SelectionBackColor = Color.Gray;
                             e.CellStyle.SelectionForeColor = Color.White;
                         }
-                        // **PRIORIDAD 3: REMITOS SIN DÍGITO VERIFICADOR (Fondo amarillo claro)**
+                        // **PRIORIDAD 3: REMITOS SIN Dï¿½GITO VERIFICADOR (Fondo amarillo claro)**
                         else if (remito.IntegridadEstado == "SIN_DV")
                         {
                             e.CellStyle.BackColor = Color.LightYellow;
@@ -201,7 +201,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Evento que se dispara cuando cambia la selección en el DataGridView.
+        /// Evento que se dispara cuando cambia la selecciï¿½n en el DataGridView.
         /// </summary>
         private void dgvRemitos_SelectionChanged(object sender, EventArgs e)
         {
@@ -210,11 +210,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
         /// <summary>
         /// Evento que se dispara cuando se hace clic en el contenido de una celda.
-        /// Usado para detectar clics en el botón de descargar PDF.
+        /// Usado para detectar clics en el botï¿½n de descargar PDF.
         /// </summary>
         private void dgvRemitos_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Verificar que sea el botón de descarga
+            // Verificar que sea el botï¿½n de descarga
             if (e.RowIndex >= 0 && dgvRemitos.Columns[e.ColumnIndex].Name == "DescargarPdf")
             {
                 var remito = dgvRemitos.Rows[e.RowIndex].DataBoundItem as RemitoGestionDto;
@@ -225,23 +225,32 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 }
                 else
                 {
-                    MessageBox.Show("Este remito no tiene un PDF generado.", "Información",
+                    MessageBox.Show("Este remito no tiene un PDF generado.", "Informaciï¿½n",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
 
         /// <summary>
-        /// Configura el estado (habilitado/deshabilitado) de los botones según la selección.
+        /// Configura el estado (habilitado/deshabilitado) de los botones segï¿½n la selecciï¿½n.
         /// </summary>
         private void ConfigurarEstadoBotones()
         {
-            // Por ahora los botones Modificar y Eliminar están deshabilitados
-            // según los requisitos (sin funcionalidad por ahora)
-            btnModificarRemito.Enabled = false;
-            btnEliminarRemito.Enabled = false;
+            bool haySeleccion = dgvRemitos.SelectedRows.Count > 0 || dgvRemitos.CurrentRow != null;
+            bool remitoActivo = false;
 
-            // El botón Agregar siempre está habilitado
+            if (haySeleccion)
+            {
+                var row = dgvRemitos.SelectedRows.Count > 0
+                    ? dgvRemitos.SelectedRows[0]
+                    : dgvRemitos.CurrentRow;
+
+                var remito = row?.DataBoundItem as RemitoGestionDto;
+                remitoActivo = remito != null && !remito.EstaAnulado;
+            }
+
+            btnModificarRemito.Enabled = remitoActivo;
+            btnEliminarRemito.Enabled = remitoActivo;
             btnAgregarRemito.Enabled = true;
         }
 
@@ -266,7 +275,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 // Configurar columnas visibles
                 ConfigurarColumnasVisibles();
 
-                // Agregar columna de botón para descargar PDF
+                // Agregar columna de botï¿½n para descargar PDF
                 AgregarColumnaBotonDescarga();
 
                 // Reanudar el layout
@@ -288,8 +297,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
             {
                 "IdRemito", "EstadoRemito", "DomicilioPlanta", "NombreFantasia",
                 "Direccion", "NombreTransportista", "DomicilioTransportista",
-                "IdRemitoPDF", "NombreArchivo", "FechaGeneracionPdf", "TamañoBytes",
-                "HashMD5", "TienePdf", "EstaAnulado", "TamañoFormateado",
+                "IdRemitoPDF", "NombreArchivo", "FechaGeneracionPdf", "Tamaï¿½oBytes",
+                "HashMD5", "TienePdf", "EstaAnulado", "Tamaï¿½oFormateado",
                 "DigitoVerificador", "IntegridadValida" // Ocultar DV y bandera booleana
             };
 
@@ -309,12 +318,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
         {
             int displayIndex = 0;
 
-            // Fecha Creación
+            // Fecha Creaciï¿½n
             if (dgvRemitos.Columns.Contains("FechaCreacion"))
             {
                 var col = dgvRemitos.Columns["FechaCreacion"];
                 col.Tag = "Fecha Creacion";
-                col.HeaderText = "Fecha Creación";
+                col.HeaderText = "Fecha Creaciï¿½n";
                 col.DisplayIndex = displayIndex++;
                 col.Width = 150;
                 col.MinimumWidth = 120;
@@ -372,12 +381,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
             }
 
-            // Estado Físico
+            // Estado Fï¿½sico
             if (dgvRemitos.Columns.Contains("Estado"))
             {
                 var col = dgvRemitos.Columns["Estado"];
                 col.Tag = "Estado Fisico";
-                col.HeaderText = "Estado Físico";
+                col.HeaderText = "Estado Fï¿½sico";
                 col.DisplayIndex = displayIndex++;
                 col.Width = 100;
                 col.MinimumWidth = 80;
@@ -398,7 +407,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Agrega o actualiza la columna de botón para descargar PDF.
+        /// Agrega o actualiza la columna de botï¿½n para descargar PDF.
         /// </summary>
         private void AgregarColumnaBotonDescarga()
         {
@@ -408,7 +417,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 dgvRemitos.Columns.Remove("DescargarPdf");
             }
 
-            // Crear la columna de botón
+            // Crear la columna de botï¿½n
             var colDescargarPdf = new DataGridViewButtonColumn
             {
                 Name = "DescargarPdf",
@@ -425,12 +434,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // Agregar la columna al final
             dgvRemitos.Columns.Add(colDescargarPdf);
             
-            // Asegurarse de que sea la última columna
+            // Asegurarse de que sea la ï¿½ltima columna
             dgvRemitos.Columns["DescargarPdf"].DisplayIndex = dgvRemitos.Columns.Count - 1;
         }
 
         /// <summary>
-        /// Maneja el evento de clic del botón Filtrar.
+        /// Maneja el evento de clic del botï¿½n Filtrar.
         /// </summary>
         private void btnFiltrar_Click(object sender, EventArgs e)
         {
@@ -441,7 +450,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 string cuit = txtFiltroCUIT.Text.Trim();
                 string tipoResiduo = cmbTipoResiduo.SelectedItem?.ToString();
 
-                // Si el tipo de residuo es "Todos" o está vacío, no filtrar por tipo
+                // Si el tipo de residuo es "Todos" o estï¿½ vacï¿½o, no filtrar por tipo
                 if (tipoResiduo == "Todos" || string.IsNullOrWhiteSpace(tipoResiduo))
                 {
                     tipoResiduo = null;
@@ -449,7 +458,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 // Aplicar filtro de fecha - ahora siempre toma los valores de los DateTimePicker
                 fechaInicio = dtpFechaInicio.Value.Date;
-                fechaFin = dtpFechaFin.Value.Date.AddDays(1).AddSeconds(-1); // Hasta el final del día
+                fechaFin = dtpFechaFin.Value.Date.AddDays(1).AddSeconds(-1); // Hasta el final del dï¿½a
 
                 // Aplicar los filtros
                 var remitosFiltrados = _remitoGestionService.ObtenerRemitosFiltrados(
@@ -483,7 +492,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Maneja el evento de clic del botón Limpiar Filtros.
+        /// Maneja el evento de clic del botï¿½n Limpiar Filtros.
         /// </summary>
         private void btnLimpiarFiltros_Click(object sender, EventArgs e)
         {
@@ -498,7 +507,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Maneja el evento de clic del botón Añadir Remito.
+        /// Maneja el evento de clic del botï¿½n Aï¿½adir Remito.
         /// Abre el formulario FrmGenerarRemito existente.
         /// </summary>
         private void btnAgregarRemito_Click(object sender, EventArgs e)
@@ -509,9 +518,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 
                 if (frmGenerarRemito.ShowDialog() == DialogResult.OK)
                 {
-                    // Recargar la lista después de generar un nuevo remito
+                    // Recargar la lista despuï¿½s de generar un nuevo remito
                     CargarRemitos();
-                    MessageBox.Show("Remito generado exitosamente.", "Éxito",
+                    MessageBox.Show("Remito generado exitosamente.", "ï¿½xito",
                         MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
@@ -524,23 +533,107 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Maneja el evento de clic del botón Modificar Remito.
-        /// Funcionalidad deshabilitada por ahora según requisitos.
+        /// Maneja el evento de clic del boton Modificar Remito.
+        /// Abre el formulario de modificacion con los datos del remito seleccionado.
         /// </summary>
         private void btnModificarRemito_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcionalidad de Modificar Remito próximamente.", "Información",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                var row = dgvRemitos.SelectedRows.Count > 0
+                    ? dgvRemitos.SelectedRows[0]
+                    : dgvRemitos.CurrentRow;
+
+                var remito = row?.DataBoundItem as RemitoGestionDto;
+                if (remito == null)
+                {
+                    MessageBox.Show("Seleccione un remito para modificar.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (remito.EstaAnulado)
+                {
+                    MessageBox.Show("No se puede modificar un remito anulado.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                using (var frmModificar = new FrmModificarRemito(remito.IdRemito))
+                {
+                    if (frmModificar.ShowDialog() == DialogResult.OK)
+                    {
+                        CargarRemitos();
+                        MessageBox.Show("Remito modificado exitosamente.", "Exito",
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error al abrir el formulario de modificar remito: {ex.Message}",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
         }
 
         /// <summary>
-        /// Maneja el evento de clic del botón Eliminar Remito.
-        /// Funcionalidad deshabilitada por ahora según requisitos.
+        /// Maneja el evento de clic del boton Eliminar Remito.
+        /// Anula el remito seleccionado y descuenta del inventario.
         /// </summary>
         private void btnEliminarRemito_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Funcionalidad de Eliminar Remito próximamente.", "Información",
-                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            try
+            {
+                // Obtener el remito seleccionado
+                var row = dgvRemitos.SelectedRows.Count > 0
+                    ? dgvRemitos.SelectedRows[0]
+                    : dgvRemitos.CurrentRow;
+
+                var remito = row?.DataBoundItem as RemitoGestionDto;
+                if (remito == null)
+                {
+                    MessageBox.Show("Seleccione un remito para anular.", "Aviso",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Dialogo de confirmacion con datos del remito
+                var resultado = MessageBox.Show(
+                    $"Esta seguro que desea anular el siguiente remito?\n\n" +
+                    $"Generador: {remito.NombreGenerador}\n" +
+                    $"Tipo: {remito.TipoResiduo} - {remito.Estado}\n" +
+                    $"Cantidad: {remito.Cantidad}\n" +
+                    $"CUIT: {remito.Cuit}\n" +
+                    $"Fecha: {remito.FechaCreacion:dd/MM/yyyy HH:mm}\n\n" +
+                    $"Esta accion anulara el remito y descontara {remito.Cantidad} del inventario.",
+                    "Confirmar anulacion de remito",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning);
+
+                if (resultado != DialogResult.Yes)
+                    return;
+
+                // Ejecutar anulacion
+                this.Cursor = Cursors.WaitCursor;
+                _remitoGestionService.AnularRemito(remito.IdRemito);
+                this.Cursor = Cursors.Default;
+
+                // Recargar grid
+                CargarRemitos();
+
+                MessageBox.Show(
+                    "Remito anulado correctamente. El inventario fue actualizado.",
+                    "Remito anulado",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                this.Cursor = Cursors.Default;
+                MessageBox.Show($"Error al anular el remito: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LoggerService.WriteException(ex);
+            }
         }
 
         /// <summary>
@@ -560,9 +653,9 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 // Restaurar cursor normal
                 this.Cursor = Cursors.Default;
 
-                // Mostrar mensaje de éxito
+                // Mostrar mensaje de ï¿½xito
                 var resultado = MessageBox.Show(
-                    $"PDF descargado exitosamente en:\n{rutaDescarga}\n\n¿Desea abrir el archivo?",
+                    $"PDF descargado exitosamente en:\n{rutaDescarga}\n\nï¿½Desea abrir el archivo?",
                     "Descarga Exitosa",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Information);

@@ -1,16 +1,16 @@
 using DAL.Contratos;
-using DAL.Implementaciones;
 using SERVICES.Facade;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using DomainRemito = DOMAIN.Remito;
 using BLL.Remito;
 
 namespace BLL
 {
     /// <summary>
-    /// Servicio de lógica de negocio para la gestión de remitos.
-    /// Coordina las operaciones entre la capa de presentación y la capa de acceso a datos.
+    /// Servicio de logica de negocio para la gestion de remitos.
+    /// Coordina las operaciones entre la capa de presentacion y la capa de acceso a datos.
     /// </summary>
     public class RemitoService
     {
@@ -22,12 +22,12 @@ namespace BLL
         /// </summary>
         public RemitoService()
         {
-            _remitoRepository = new RemitoRepository();
+            _remitoRepository = ServiceFactory.RemitoRepository;
             _remitoPdfService = new RemitoPdfService();
         }
 
         /// <summary>
-        /// Constructor que permite inyectar una implementación específica del repositorio (para testing).
+        /// Constructor que permite inyectar una implementacion especifica del repositorio (para testing).
         /// </summary>
         /// <param name="remitoRepository">El repositorio de remitos.</param>
         public RemitoService(IRemitoRepository remitoRepository)
@@ -43,10 +43,10 @@ namespace BLL
         /// <param name="domicilioPlanta">Domicilio de la planta donde se genera el residuo.</param>
         /// <param name="tipoResiduo">Tipo de residuo (Aceite o Grasa).</param>
         /// <param name="cantidad">Cantidad del residuo recolectado.</param>
-        /// <param name="estado">Estado físico del residuo (Líquido o Sólido).</param>
+        /// <param name="estado">Estado fisico del residuo.</param>
         /// <param name="cuit">CUIT del generador del residuo.</param>
-        /// <param name="nombreFantasia">Nombre de fantasía de la empresa generadora.</param>
-        /// <param name="direccion">Dirección del establecimiento generador.</param>
+        /// <param name="nombreFantasia">Nombre de fantasia de la empresa generadora.</param>
+        /// <param name="direccion">Direccion del establecimiento generador.</param>
         /// <returns>El ID del remito generado.</returns>
         public Guid GenerarRemito(
             string nombreGenerador,
@@ -74,52 +74,43 @@ namespace BLL
                 DomicilioTransportista = "Mendoza 3149 San Andres Prov. de Bs.As."
             };
 
-            // Validar y crear el remito
-            CrearRemito(remito);
-
-            // **INTEGRACIÓN CON INVENTARIO: Registrar entrada automática en inventario**
-            try
+            // Coordinar los pasos criticos con Unit of Work:
+            // Si el inventario falla, el remito se compensa automaticamente.
+            using (var uow = new UnitOfWork("GenerarRemito"))
             {
+                // PASO 1: Validar y crear el remito en la base de datos
+                CrearRemito(remito);
+                uow.RegistrarCompensacion("EliminarRemito",
+                    () => _remitoRepository.Remove(remito.IdRemito));
+
+                // PASO 2: Registrar entrada automatica en inventario
                 var inventarioService = new InventarioService();
                 inventarioService.RegistrarEntradaDesdeRemito(
-                    tipoResiduo, 
-                    estado, 
-                    cantidad, 
-                    remito.IdRemito, 
-                    $"Generador: {nombreGenerador}"
-                );
+                    tipoResiduo,
+                    estado,
+                    cantidad,
+                    remito.IdRemito,
+                    $"Generador: {nombreGenerador}");
+                uow.RegistrarCompensacion("RevertirInventario",
+                    () => inventarioService.RevertirEntradaDesdeRemito(
+                        tipoResiduo, estado, cantidad, remito.IdRemito));
 
-                LoggerService.WriteLog(
-                    $"Inventario actualizado automáticamente para remito {remito.IdRemito}",
-                    System.Diagnostics.TraceLevel.Info);
-            }
-            catch (Exception ex)
-            {
-                // Si falla la actualización del inventario, registramos advertencia
-                // pero no cancelamos el remito ya creado
-                LoggerService.WriteLog(
-                    $"Advertencia: Remito {remito.IdRemito} creado pero error al actualizar inventario. {ex.Message}",
-                    System.Diagnostics.TraceLevel.Warning);
-                LoggerService.WriteException(ex);
+                // Si llegamos aca, los pasos criticos fueron exitosos
+                uow.Complete();
             }
 
-            // **INTEGRACIÓN CON PDF: Generar PDF del remito automáticamente**
+            // PASO 3: Generar PDF del remito (fuera del UnitOfWork, no es critico)
+            // Si falla, el remito y el inventario ya estan confirmados.
             try
             {
-                LoggerService.WriteLog(
-                    $"Iniciando generación de PDF para remito {remito.IdRemito}",
-                    System.Diagnostics.TraceLevel.Info);
-
-                var remitoPdf = _remitoPdfService.GenerarPdfRemito(remito.IdRemito);
+                _remitoPdfService.GenerarPdfRemito(remito.IdRemito);
 
                 LoggerService.WriteLog(
-                    $"PDF generado exitosamente para remito {remito.IdRemito}. Archivo: {remitoPdf.NombreArchivo}",
+                    $"PDF generado exitosamente para remito {remito.IdRemito}",
                     System.Diagnostics.TraceLevel.Info);
             }
             catch (Exception ex)
             {
-                // Si falla la generación del PDF, registramos advertencia
-                // pero NO cancelamos el remito (según decisión acordada)
                 LoggerService.WriteLog(
                     $"ADVERTENCIA: Remito {remito.IdRemito} creado pero error al generar PDF. {ex.Message}",
                     System.Diagnostics.TraceLevel.Warning);
@@ -139,7 +130,7 @@ namespace BLL
             // Validaciones de negocio
             ValidarRemito(remito);
 
-            // Establecer valores por defecto si no están definidos
+            // Establecer valores por defecto si no estan definidos
             if (string.IsNullOrWhiteSpace(remito.NombreTransportista))
             {
                 remito.NombreTransportista = "Hugo Rocha";
@@ -150,31 +141,31 @@ namespace BLL
                 remito.DomicilioTransportista = "Mendoza 3149 San Andres Prov. de Bs.As.";
             }
 
-            // Asegurar que la fecha de creación esté establecida
+            // Asegurar que la fecha de creacion este establecida
             if (remito.FechaCreacion == DateTime.MinValue)
             {
                 remito.FechaCreacion = DateTime.Now;
             }
 
-            // Asegurar que el estado del remito esté establecido
+            // Asegurar que el estado del remito este establecido
             if (string.IsNullOrWhiteSpace(remito.EstadoRemito))
             {
                 remito.EstadoRemito = "Activo";
             }
 
-            // **CALCULAR DÍGITO VERIFICADOR**
+            // **CALCULAR DIGITO VERIFICADOR**
             try
             {
                 remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
-                
+
                 LoggerService.WriteLog(
-                    $"Dígito Verificador calculado para remito {remito.IdRemito}: {remito.DigitoVerificador}",
+                    $"Digito Verificador calculado para remito {remito.IdRemito}: {remito.DigitoVerificador}",
                     System.Diagnostics.TraceLevel.Verbose);
             }
             catch (Exception ex)
             {
                 LoggerService.WriteLog(
-                    $"Error al calcular Dígito Verificador para remito {remito.IdRemito}: {ex.Message}",
+                    $"Error al calcular Digito Verificador para remito {remito.IdRemito}: {ex.Message}",
                     System.Diagnostics.TraceLevel.Warning);
                 LoggerService.WriteException(ex);
                 // Continuar sin DV en caso de error
@@ -186,7 +177,7 @@ namespace BLL
         }
 
         /// <summary>
-        /// Obtiene un remito por su identificador único.
+        /// Obtiene un remito por su identificador unico.
         /// </summary>
         /// <param name="idRemito">El ID del remito.</param>
         /// <returns>El remito correspondiente, si existe.</returns>
@@ -213,7 +204,7 @@ namespace BLL
         {
             if (string.IsNullOrWhiteSpace(cuit))
             {
-                throw new ArgumentException("El CUIT no puede estar vacío.", nameof(cuit));
+                throw new ArgumentException("El CUIT no puede estar vacio.", nameof(cuit));
             }
 
             return _remitoRepository.GetRemitosByCuit(cuit);
@@ -248,7 +239,7 @@ namespace BLL
                 throw new Exception("El remito no existe.");
             }
 
-            // Verificar que el remito no esté ya anulado
+            // Verificar que el remito no este ya anulado
             if (remito.EstadoRemito == "Anulado")
             {
                 throw new Exception("El remito ya se encuentra anulado.");
@@ -257,19 +248,19 @@ namespace BLL
             // Cambiar estado a Anulado
             remito.EstadoRemito = "Anulado";
 
-            // **RECALCULAR DÍGITO VERIFICADOR**
+            // **RECALCULAR DIGITO VERIFICADOR**
             try
             {
                 remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
-                
+
                 LoggerService.WriteLog(
-                    $"Dígito Verificador recalculado al anular remito {remito.IdRemito}: {remito.DigitoVerificador}",
+                    $"Digito Verificador recalculado al anular remito {remito.IdRemito}: {remito.DigitoVerificador}",
                     System.Diagnostics.TraceLevel.Info);
             }
             catch (Exception ex)
             {
                 LoggerService.WriteLog(
-                    $"Error al recalcular Dígito Verificador al anular remito {remito.IdRemito}: {ex.Message}",
+                    $"Error al recalcular Digito Verificador al anular remito {remito.IdRemito}: {ex.Message}",
                     System.Diagnostics.TraceLevel.Warning);
                 LoggerService.WriteException(ex);
             }
@@ -294,19 +285,19 @@ namespace BLL
                 throw new Exception("El remito no existe.");
             }
 
-            // **RECALCULAR DÍGITO VERIFICADOR**
+            // **RECALCULAR DIGITO VERIFICADOR**
             try
             {
                 remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
-                
+
                 LoggerService.WriteLog(
-                    $"Dígito Verificador recalculado al actualizar remito {remito.IdRemito}: {remito.DigitoVerificador}",
+                    $"Digito Verificador recalculado al actualizar remito {remito.IdRemito}: {remito.DigitoVerificador}",
                     System.Diagnostics.TraceLevel.Info);
             }
             catch (Exception ex)
             {
                 LoggerService.WriteLog(
-                    $"Error al recalcular Dígito Verificador al actualizar remito {remito.IdRemito}: {ex.Message}",
+                    $"Error al recalcular Digito Verificador al actualizar remito {remito.IdRemito}: {ex.Message}",
                     System.Diagnostics.TraceLevel.Warning);
                 LoggerService.WriteException(ex);
             }
@@ -357,20 +348,20 @@ namespace BLL
 
             if (string.IsNullOrWhiteSpace(remito.NombreFantasia))
             {
-                throw new ArgumentException("El nombre de fantasía es obligatorio.", nameof(remito.NombreFantasia));
+                throw new ArgumentException("El nombre de fantasia es obligatorio.", nameof(remito.NombreFantasia));
             }
 
             if (string.IsNullOrWhiteSpace(remito.Direccion))
             {
-                throw new ArgumentException("La dirección es obligatoria.", nameof(remito.Direccion));
+                throw new ArgumentException("La direccion es obligatoria.", nameof(remito.Direccion));
             }
         }
 
         /// <summary>
-        /// Recalcula el Dígito Verificador para todos los remitos que no lo tienen.
-        /// Método de backfill para actualizar remitos creados antes de la implementación del DV.
+        /// Recalcula el Digito Verificador para todos los remitos que no lo tienen.
+        /// Metodo de backfill para actualizar remitos creados antes de la implementacion del DV.
         /// </summary>
-        /// <returns>Número de remitos actualizados.</returns>
+        /// <returns>Numero de remitos actualizados.</returns>
         public int RecalcularDVRemitosSinDV()
         {
             int contadorActualizados = 0;
@@ -378,7 +369,7 @@ namespace BLL
             try
             {
                 LoggerService.WriteLog(
-                    "Iniciando proceso de backfill de Dígitos Verificadores...",
+                    "Iniciando proceso de backfill de Digitos Verificadores...",
                     System.Diagnostics.TraceLevel.Info);
 
                 // Obtener todos los remitos

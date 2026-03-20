@@ -1,5 +1,4 @@
 using DAL.Contratos;
-using DAL.Implementaciones;
 using DOMAIN;
 using SERVICES.Facade;
 using System;
@@ -9,9 +8,9 @@ using System.Linq;
 namespace BLL
 {
     /// <summary>
-    /// Servicio de l骻ica de negocio para la gesti髇 de inventario de residuos.
-    /// Coordina las operaciones entre la capa de presentaci髇 y la capa de acceso a datos.
-    /// Incluye validaciones de negocio y c醠culo de m閠ricas.
+    /// Servicio de logica de negocio para la gestion de inventario de residuos.
+    /// Coordina las operaciones entre la capa de presentacion y la capa de acceso a datos.
+    /// Incluye validaciones de negocio y calculo de metricas.
     /// </summary>
     public class InventarioService
     {
@@ -22,11 +21,11 @@ namespace BLL
         /// </summary>
         public InventarioService()
         {
-            _inventarioRepository = new InventarioRepository();
+            _inventarioRepository = ServiceFactory.InventarioRepository;
         }
 
         /// <summary>
-        /// Constructor que permite inyectar una implementaci髇 espec韋ica del repositorio (para testing).
+        /// Constructor que permite inyectar una implementacion especifica del repositorio (para testing).
         /// </summary>
         /// <param name="inventarioRepository">Repositorio de inventario.</param>
         public InventarioService(IInventarioRepository inventarioRepository)
@@ -36,10 +35,10 @@ namespace BLL
 
         /// <summary>
         /// Registra una entrada de residuos al inventario desde un remito.
-        /// Crea el inventario autom醫icamente si no existe.
+        /// Crea el inventario automoticamente si no existe.
         /// </summary>
         /// <param name="tipoResiduo">Tipo de residuo (Aceite o Grasa).</param>
-        /// <param name="estado">Estado f韘ico (L韖uido o S髄ido).</param>
+        /// <param name="estado">Estado fisico (L铆quido o S贸lido).</param>
         /// <param name="cantidad">Cantidad a ingresar.</param>
         /// <param name="idRemito">ID del remito asociado.</param>
         /// <param name="observaciones">Observaciones adicionales.</param>
@@ -61,7 +60,7 @@ namespace BLL
                     _inventarioRepository.Add(inventario);
                     
                     LoggerService.WriteLog(
-                        $"Inventario creado autom醫icamente: {tipoResiduo} - {estado}",
+                        $"Inventario creado automoticamente: {tipoResiduo} - {estado}",
                         System.Diagnostics.TraceLevel.Info);
                 }
 
@@ -85,11 +84,42 @@ namespace BLL
         }
 
         /// <summary>
+        /// Revierte una entrada de inventario previamente registrada desde un remito.
+        /// Accion compensatoria del UnitOfWork: registra una salida por la misma cantidad.
+        /// </summary>
+        /// <param name="tipoResiduo">Tipo de residuo (Aceite o Grasa).</param>
+        /// <param name="estado">Estado fisico (L铆quido o S贸lido).</param>
+        /// <param name="cantidad">Cantidad a revertir.</param>
+        /// <param name="idRemito">ID del remito cuya entrada se revierte.</param>
+        public void RevertirEntradaDesdeRemito(string tipoResiduo, string estado,
+            decimal cantidad, Guid idRemito)
+        {
+            try
+            {
+                RegistrarSalida(
+                    tipoResiduo,
+                    estado,
+                    cantidad,
+                    $"COMPENSACION: Reversion de entrada por remito {idRemito}");
+
+                LoggerService.WriteLog(
+                    $"Entrada de inventario revertida: {cantidad} de {tipoResiduo} ({estado}) para remito {idRemito}",
+                    System.Diagnostics.TraceLevel.Warning);
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+                throw new Exception(
+                    $"Error al revertir entrada de inventario para remito {idRemito}: {ex.Message}", ex);
+            }
+        }
+
+        /// <summary>
         /// Registra una salida de residuos del inventario (consumo simulado).
         /// Valida que exista stock suficiente.
         /// </summary>
         /// <param name="tipoResiduo">Tipo de residuo (Aceite o Grasa).</param>
-        /// <param name="estado">Estado f韘ico (L韖uido o S髄ido).</param>
+        /// <param name="estado">Estado fisico (L铆quido o S贸lido).</param>
         /// <param name="cantidad">Cantidad a retirar.</param>
         /// <param name="observaciones">Observaciones adicionales.</param>
         public void RegistrarSalida(string tipoResiduo, string estado, decimal cantidad, 
@@ -149,10 +179,10 @@ namespace BLL
         }
 
         /// <summary>
-        /// Obtiene el inventario espec韋ico por tipo y estado.
+        /// Obtiene el inventario especifico por tipo y estado.
         /// </summary>
         /// <param name="tipoResiduo">Tipo de residuo (Aceite o Grasa).</param>
-        /// <param name="estado">Estado f韘ico (L韖uido o S髄ido).</param>
+        /// <param name="estado">Estado fisico (L铆quido o S贸lido).</param>
         /// <returns>El inventario correspondiente o null si no existe.</returns>
         public Inventario ObtenerInventarioPorTipoYEstado(string tipoResiduo, string estado)
         {
@@ -186,11 +216,11 @@ namespace BLL
         }
 
         /// <summary>
-        /// Obtiene movimientos en un rango de fechas para an醠isis y m閠ricas.
+        /// Obtiene movimientos en un rango de fechas para analisis y metricas.
         /// </summary>
         /// <param name="fechaInicio">Fecha inicial del rango.</param>
         /// <param name="fechaFin">Fecha final del rango.</param>
-        /// <returns>Lista de movimientos en el per韔do especificado.</returns>
+        /// <returns>Lista de movimientos en el periodo especificado.</returns>
         public List<MovimientoInventario> ObtenerMovimientosPorFecha(
             DateTime fechaInicio, DateTime fechaFin)
         {
@@ -211,12 +241,12 @@ namespace BLL
         }
 
         /// <summary>
-        /// Calcula m閠ricas de inventario para el per韔do especificado.
-        /// 趖il para dashboards y an醠isis estad韘tico.
+        /// Calcula metricas de inventario para el periodo especificado.
+        /// Util para dashboards y analisis estadistico.
         /// </summary>
-        /// <param name="fechaInicio">Fecha inicial del an醠isis.</param>
-        /// <param name="fechaFin">Fecha final del an醠isis.</param>
-        /// <returns>Objeto con las m閠ricas calculadas.</returns>
+        /// <param name="fechaInicio">Fecha inicial del anlisis.</param>
+        /// <param name="fechaFin">Fecha final del analisis.</param>
+        /// <returns>Objeto con las metricas calculadas.</returns>
         public MetricasInventario CalcularMetricas(DateTime fechaInicio, DateTime fechaFin)
         {
             try
@@ -243,7 +273,7 @@ namespace BLL
                 }
 
                 int diasPeriodo = (fechaFin - fechaInicio).Days;
-                if (diasPeriodo == 0) diasPeriodo = 1; // Evitar divisi髇 por cero
+                if (diasPeriodo == 0) diasPeriodo = 1; // Evitar division por cero
 
                 return new MetricasInventario
                 {
@@ -260,14 +290,14 @@ namespace BLL
             catch (Exception ex)
             {
                 LoggerService.WriteException(ex);
-                throw new Exception($"Error al calcular m閠ricas: {ex.Message}", ex);
+                throw new Exception($"Error al calcular metricas: {ex.Message}", ex);
             }
         }
 
         /// <summary>
-        /// Obtiene estad韘ticas resumidas del inventario actual.
+        /// Obtiene estadisticas resumidas del inventario actual.
         /// </summary>
-        /// <returns>Objeto con estad韘ticas del sistema.</returns>
+        /// <returns>Objeto con estadisticas del sistema.</returns>
         public EstadisticasInventario ObtenerEstadisticas()
         {
             try
@@ -284,7 +314,7 @@ namespace BLL
 
                 decimal stockTotal = stockAceite + stockGrasa;
 
-                // Obtener movimientos del 鷏timo mes
+                // Obtener movimientos del ultimo mes
                 DateTime fechaInicio = DateTime.Now.AddMonths(-1);
                 DateTime fechaFin = DateTime.Now;
                 var movimientosRecientes = ObtenerMovimientosPorFecha(fechaInicio, fechaFin);
@@ -305,15 +335,15 @@ namespace BLL
             catch (Exception ex)
             {
                 LoggerService.WriteException(ex);
-                throw new Exception($"Error al obtener estad韘ticas: {ex.Message}", ex);
+                throw new Exception($"Error al obtener estadisticas: {ex.Message}", ex);
             }
         }
 
         /// <summary>
-        /// Valida los datos b醩icos de inventario seg鷑 reglas de negocio.
+        /// Valida los datos basicos de inventario segun reglas de negocio.
         /// </summary>
         /// <param name="tipoResiduo">Tipo de residuo a validar.</param>
-        /// <param name="estado">Estado f韘ico a validar.</param>
+        /// <param name="estado">Estado fisico a validar.</param>
         /// <param name="cantidad">Cantidad a validar.</param>
         private void ValidarDatosInventario(string tipoResiduo, string estado, decimal cantidad)
         {
@@ -326,8 +356,8 @@ namespace BLL
             if (string.IsNullOrWhiteSpace(estado))
                 throw new ArgumentException("El estado es obligatorio.");
 
-            if (estado != "L韖uido" && estado != "S髄ido")
-                throw new ArgumentException("El estado debe ser 'L韖uido' o 'S髄ido'.");
+            if (estado != "L\u00edquido" && estado != "S\u00f3lido")
+                throw new ArgumentException("El estado debe ser 'L\u00edquido' o 'S\u00f3lido'.");
 
             if (cantidad <= 0)
                 throw new ArgumentException("La cantidad debe ser mayor a cero.");
@@ -335,7 +365,7 @@ namespace BLL
     }
 
     /// <summary>
-    /// Clase para encapsular m閠ricas calculadas del inventario en un per韔do.
+    /// Clase para encapsular matricas calculadas del inventario en un periodo.
     /// </summary>
     public class MetricasInventario
     {
@@ -350,7 +380,7 @@ namespace BLL
     }
 
     /// <summary>
-    /// Clase para encapsular estad韘ticas resumidas del inventario.
+    /// Clase para encapsular estadisticas resumidas del inventario.
     /// </summary>
     public class EstadisticasInventario
     {

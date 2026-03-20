@@ -1,21 +1,108 @@
-﻿using DAL.Contratos;
+using DAL.Contratos;
+using DAL.Implementaciones;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BLL
 {
+    /// <summary>
+    /// Fábrica centralizada de repositorios de negocio. Implementa el patrón Factory + Singleton.
+    /// Proporciona instancias únicas de los repositorios utilizados por los servicios de la capa BLL.
+    ///
+    /// Nota: Los repositorios cross-cutting (Usuario, Familia) se gestionan en DALFactory (SERVICES).
+    /// Esta factory cubre exclusivamente los repositorios del dominio de negocio.
+    /// </summary>
     public static class ServiceFactory
     {
-        // Comentado temporalmente hasta que se implemente UnitOfWork y AppDbContext
-        // private static readonly IUnitOfWork _unitOfWork = new UnitOfWork(new AppDbContext());
+        // Instancias singleton de los repositorios
+        private static IRemitoRepository _remitoRepository;
+        private static IInventarioRepository _inventarioRepository;
+        private static IProveedorRepository _proveedorRepository;
+        private static IRemitoPdfRepository _remitoPdfRepository;
 
-        //public static ProductoService ProductoService => new ProductoService(_unitOfWork);
-        //public static ClienteService ClienteService => new ClienteService(_unitOfWork);
-        //public static VentaService VentaService => new VentaService(_unitOfWork);
-        //public static CompraService CompraService => new CompraService(_unitOfWork);
-        //public static MovimientoStockService MovimientoStockService => new MovimientoStockService(_unitOfWork);
+        private static readonly object _lock = new object();
+
+        /// <summary>
+        /// Obtiene la instancia singleton del repositorio de remitos.
+        /// </summary>
+        public static IRemitoRepository RemitoRepository
+        {
+            get
+            {
+                if (_remitoRepository == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_remitoRepository == null)
+                        {
+                            _remitoRepository = new RemitoRepository();
+                        }
+                    }
+                }
+                return _remitoRepository;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la instancia singleton del repositorio de inventario.
+        /// </summary>
+        public static IInventarioRepository InventarioRepository
+        {
+            get
+            {
+                if (_inventarioRepository == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_inventarioRepository == null)
+                        {
+                            _inventarioRepository = new InventarioRepository();
+                        }
+                    }
+                }
+                return _inventarioRepository;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la instancia singleton del repositorio de proveedores.
+        /// </summary>
+        public static IProveedorRepository ProveedorRepository
+        {
+            get
+            {
+                if (_proveedorRepository == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_proveedorRepository == null)
+                        {
+                            _proveedorRepository = new ProveedorRepository();
+                        }
+                    }
+                }
+                return _proveedorRepository;
+            }
+        }
+
+        /// <summary>
+        /// Obtiene la instancia singleton del repositorio de PDFs de remitos.
+        /// </summary>
+        public static IRemitoPdfRepository RemitoPdfRepository
+        {
+            get
+            {
+                if (_remitoPdfRepository == null)
+                {
+                    lock (_lock)
+                    {
+                        if (_remitoPdfRepository == null)
+                        {
+                            _remitoPdfRepository = new RemitoPdfRepository();
+                        }
+                    }
+                }
+                return _remitoPdfRepository;
+            }
+        }
     }
 }

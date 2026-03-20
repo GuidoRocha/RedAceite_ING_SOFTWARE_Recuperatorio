@@ -145,6 +145,7 @@
     <Compile Include="Remito\RemitoPdfService.cs" />
     <Compile Include="Remito\RemitoService.cs" />
     <Compile Include="ServiceFactory.cs" />
+    <Compile Include="UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

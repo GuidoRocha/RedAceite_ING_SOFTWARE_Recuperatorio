@@ -1,5 +1,4 @@
 using DAL.Contratos;
-using DAL.Implementaciones;
 using DOMAIN;
 using System;
 using System.Collections.Generic;
@@ -8,8 +7,8 @@ using System.Linq;
 namespace BLL
 {
     /// <summary>
-    /// Servicio de lógica de negocio para la gestión de proveedores.
-    /// Coordina las operaciones entre la capa de presentación y la capa de acceso a datos.
+    /// Servicio de logica de negocio para la gestion de proveedores.
+    /// Coordina las operaciones entre la capa de presentacion y la capa de acceso a datos.
     /// </summary>
     public class ProveedorService
     {
@@ -20,11 +19,11 @@ namespace BLL
         /// </summary>
         public ProveedorService()
         {
-            _proveedorRepository = new ProveedorRepository();
+            _proveedorRepository = ServiceFactory.ProveedorRepository;
         }
 
         /// <summary>
-        /// Constructor que permite inyectar una implementación específica del repositorio (para testing).
+        /// Constructor que permite inyectar una implementacion especifica del repositorio (para testing).
         /// </summary>
         /// <param name="proveedorRepository">El repositorio de proveedores.</param>
         public ProveedorService(IProveedorRepository proveedorRepository)
@@ -142,11 +141,11 @@ namespace BLL
         }
 
         /// <summary>
-        /// Filtra proveedores por criterios específicos.
+        /// Filtra proveedores por criterios especificos.
         /// </summary>
         /// <param name="cuit">CUIT para filtrar (opcional).</param>
-        /// <param name="razonSocial">Razón social para filtrar (opcional).</param>
-        /// <param name="region">Región para filtrar (opcional).</param>
+        /// <param name="razonSocial">Razon social para filtrar (opcional).</param>
+        /// <param name="region">Region para filtrar (opcional).</param>
         /// <returns>Una lista de proveedores que coinciden con los criterios.</returns>
         public List<Proveedor> FiltrarProveedores(string cuit, string razonSocial, string region)
         {
@@ -172,12 +171,12 @@ namespace BLL
             // Validar formato de CUIT (XX-XXXXXXXX-X)
             if (!ValidarFormatoCUIT(proveedor.CUIT))
             {
-                throw new ArgumentException("El formato del CUIT no es válido. Debe tener 11 dígitos.");
+                throw new ArgumentException("El formato del CUIT no es valido. Debe tener 11 digitos.");
             }
 
             if (!string.IsNullOrWhiteSpace(proveedor.Email) && !ValidarFormatoEmail(proveedor.Email))
             {
-                throw new ArgumentException("El formato del correo electrónico no es válido.");
+                throw new ArgumentException("El formato del correo electronico no es valido.");
             }
         }
 
@@ -185,17 +184,17 @@ namespace BLL
         /// Valida el formato de un CUIT.
         /// </summary>
         /// <param name="cuit">El CUIT a validar.</param>
-        /// <returns>True si el formato es válido, false en caso contrario.</returns>
+        /// <returns>True si el formato es valido, false en caso contrario.</returns>
         private bool ValidarFormatoCUIT(string cuit)
         {
             // El CUIT ya viene limpio (sin guiones) desde el formulario
-            // Debe tener 11 dígitos
+            // Debe tener 11 digitos
             if (string.IsNullOrWhiteSpace(cuit) || cuit.Length != 11)
             {
                 return false;
             }
 
-            // Todos los caracteres deben ser dígitos
+            // Todos los caracteres deben ser digitos
             return cuit.All(char.IsDigit);
         }
 
@@ -203,7 +202,7 @@ namespace BLL
         /// Valida el formato de un email.
         /// </summary>
         /// <param name="email">El email a validar.</param>
-        /// <returns>True si el formato es válido, false en caso contrario.</returns>
+        /// <returns>True si el formato es valido, false en caso contrario.</returns>
         private bool ValidarFormatoEmail(string email)
         {
             try

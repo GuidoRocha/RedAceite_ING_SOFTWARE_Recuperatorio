@@ -1,5 +1,4 @@
 using DAL.Contratos;
-using DAL.Implementaciones;
 using DOMAIN;
 using SERVICES.Facade;
 using SERVICES.Helpers;
@@ -13,7 +12,7 @@ using System.Linq;
 namespace BLL.Remito
 {
     /// <summary>
-    /// Servicio de lógica de negocio para la gestión de remitos.
+    /// Servicio de logica de negocio para la gestion de remitos.
     /// Coordina las operaciones de consulta, filtrado y descarga de PDFs de remitos.
     /// </summary>
     public class RemitoGestionService
@@ -23,17 +22,17 @@ namespace BLL.Remito
         private readonly string _rutaPdfRemitos;
 
         /// <summary>
-        /// Constructor que inicializa los repositorios y configuración.
+        /// Constructor que inicializa los repositorios y configuracion.
         /// </summary>
         public RemitoGestionService()
         {
-            _remitoRepository = new RemitoRepository();
-            _remitoPdfRepository = new RemitoPdfRepository();
+            _remitoRepository = ServiceFactory.RemitoRepository;
+            _remitoPdfRepository = ServiceFactory.RemitoPdfRepository;
             _rutaPdfRemitos = ConfigHelper.ObtenerRutaPdfRemitos();
         }
 
         /// <summary>
-        /// Constructor con inyección de dependencias (para testing).
+        /// Constructor con inyeccion de dependencias (para testing).
         /// </summary>
         public RemitoGestionService(IRemitoRepository remitoRepository, IRemitoPdfRepository remitoPdfRepository)
         {
@@ -43,30 +42,30 @@ namespace BLL.Remito
         }
 
         /// <summary>
-        /// Obtiene todos los remitos con su información de PDF asociada.
+        /// Obtiene todos los remitos con su informacion de PDF asociada.
         /// </summary>
-        /// <returns>Lista de DTOs con información completa de remitos y PDFs.</returns>
+        /// <returns>Lista de DTOs con informacion completa de remitos y PDFs.</returns>
         public List<RemitoGestionDto> ObtenerRemitosParaGestion()
         {
             try
             {
                 var remitos = _remitoRepository.GetRemitosConPdf();
-                
+
                 // **VERIFICAR INTEGRIDAD DE CADA REMITO**
                 VerificarIntegridadRemitos(remitos);
-                
-                LoggerService.WriteLog($"Se obtuvieron {remitos.Count} remitos para gestión.", TraceLevel.Info);
+
+                LoggerService.WriteLog($"Se obtuvieron {remitos.Count} remitos para gestion.", TraceLevel.Info);
                 return remitos;
             }
             catch (Exception ex)
             {
                 LoggerService.WriteException(ex);
-                throw new Exception("Error al obtener los remitos para gestión.", ex);
+                throw new Exception("Error al obtener los remitos para gestion.", ex);
             }
         }
 
         /// <summary>
-        /// Obtiene remitos filtrados con su información de PDF asociada.
+        /// Obtiene remitos filtrados con su informacion de PDF asociada.
         /// </summary>
         /// <param name="fechaInicio">Fecha de inicio del rango (opcional).</param>
         /// <param name="fechaFin">Fecha de fin del rango (opcional).</param>
@@ -78,10 +77,10 @@ namespace BLL.Remito
             try
             {
                 var remitos = _remitoRepository.GetRemitosFiltradosConPdf(fechaInicio, fechaFin, cuit, tipoResiduo);
-                
+
                 // **VERIFICAR INTEGRIDAD DE CADA REMITO**
                 VerificarIntegridadRemitos(remitos);
-                
+
                 string filtrosAplicados = "";
                 if (fechaInicio.HasValue) filtrosAplicados += $" FechaInicio:{fechaInicio.Value:dd/MM/yyyy}";
                 if (fechaFin.HasValue) filtrosAplicados += $" FechaFin:{fechaFin.Value:dd/MM/yyyy}";
@@ -89,7 +88,7 @@ namespace BLL.Remito
                 if (!string.IsNullOrWhiteSpace(tipoResiduo)) filtrosAplicados += $" TipoResiduo:{tipoResiduo}";
 
                 LoggerService.WriteLog($"Se obtuvieron {remitos.Count} remitos con filtros:{filtrosAplicados}", TraceLevel.Info);
-                
+
                 return remitos;
             }
             catch (Exception ex)
@@ -100,21 +99,31 @@ namespace BLL.Remito
         }
 
         /// <summary>
+        /// Obtiene un remito por su ID desde la base de datos.
+        /// </summary>
+        /// <param name="idRemito">ID del remito.</param>
+        /// <returns>El remito correspondiente, o null si no existe.</returns>
+        public DOMAIN.Remito ObtenerRemitoPorId(Guid idRemito)
+        {
+            return _remitoRepository.GetRemitoById(idRemito);
+        }
+
+        /// <summary>
         /// Descarga el PDF de un remito al directorio de descargas del usuario.
         /// Similar al comportamiento de Chrome al descargar archivos.
         /// </summary>
         /// <param name="idRemito">ID del remito cuyo PDF se desea descargar.</param>
-        /// <returns>Ruta completa donde se guardó el archivo descargado.</returns>
+        /// <returns>Ruta completa donde se guardo el archivo descargado.</returns>
         public string DescargarPdfRemito(Guid idRemito)
         {
             try
             {
-                // Obtener información del PDF desde la base de datos
+                // Obtener informacion del PDF desde la base de datos
                 var remitoPdf = _remitoPdfRepository.ObtenerPorIdRemito(idRemito);
-                
+
                 if (remitoPdf == null)
                 {
-                    throw new Exception($"No se encontró un PDF asociado al remito {idRemito}.");
+                    throw new Exception($"No se encontro un PDF asociado al remito {idRemito}.");
                 }
 
                 // Construir ruta completa del archivo origen
@@ -131,7 +140,7 @@ namespace BLL.Remito
                 // Construir ruta de destino en Descargas
                 string rutaDestinoPdf = Path.Combine(carpetaDescargas, remitoPdf.NombreArchivo);
 
-                // Si ya existe un archivo con el mismo nombre, agregar un número secuencial
+                // Si ya existe un archivo con el mismo nombre, agregar un numero secuencial
                 rutaDestinoPdf = ObtenerRutaUnicaDescarga(rutaDestinoPdf);
 
                 // Copiar el archivo a la carpeta de descargas
@@ -151,64 +160,204 @@ namespace BLL.Remito
         }
 
         /// <summary>
-        /// Anula un remito (soft delete).
+        /// Anula un remito (soft delete) y descuenta la cantidad del inventario.
+        /// Usa UnitOfWork para coordinar ambos pasos: si falla el descuento
+        /// de inventario, el remito vuelve a su estado original automaticamente.
         /// </summary>
         /// <param name="idRemito">ID del remito a anular.</param>
         public void AnularRemito(Guid idRemito)
         {
-            try
+            // Verificar que el remito existe
+            var remito = _remitoRepository.GetRemitoById(idRemito);
+            if (remito == null)
             {
-                // Verificar que el remito existe
-                var remito = _remitoRepository.GetRemitoById(idRemito);
-                if (remito == null)
-                {
-                    throw new Exception($"No se encontró el remito con ID {idRemito}.");
-                }
+                throw new Exception($"No se encontro el remito con ID {idRemito}.");
+            }
 
-                // Verificar que no esté ya anulado
-                if (remito.EstadoRemito == "Anulado")
-                {
-                    throw new Exception("El remito ya se encuentra anulado.");
-                }
+            // Verificar que no este ya anulado
+            if (remito.EstadoRemito == "Anulado")
+            {
+                throw new Exception("El remito ya se encuentra anulado.");
+            }
 
-                // Cambiar estado a Anulado
+            // Guardar estado original para compensacion
+            string estadoOriginal = remito.EstadoRemito;
+            string dvOriginal = remito.DigitoVerificador;
+
+            using (var uow = new UnitOfWork("AnularRemito"))
+            {
+                // PASO 1: Anular remito en BD + recalcular DV
                 remito.EstadoRemito = "Anulado";
-
-                // **RECALCULAR DÍGITO VERIFICADOR**
-                try
-                {
-                    remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
-                    
-                    LoggerService.WriteLog(
-                        $"Dígito Verificador recalculado al anular remito {remito.IdRemito}: {remito.DigitoVerificador}",
-                        TraceLevel.Info);
-                }
-                catch (Exception ex)
-                {
-                    LoggerService.WriteLog(
-                        $"Error al recalcular Dígito Verificador al anular remito {remito.IdRemito}: {ex.Message}",
-                        TraceLevel.Warning);
-                    LoggerService.WriteException(ex);
-                }
-
-                // Actualizar el remito con el nuevo estado y DV
+                remito.DigitoVerificador = SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remito);
                 _remitoRepository.Update(remito);
 
+                uow.RegistrarCompensacion("RevertirAnulacion", () =>
+                {
+                    remito.EstadoRemito = estadoOriginal;
+                    remito.DigitoVerificador = dvOriginal;
+                    _remitoRepository.Update(remito);
+                });
+
                 LoggerService.WriteLog(
-                    $"Remito anulado exitosamente. ID: {idRemito}, Generador: {remito.NombreGenerador}",
+                    $"Remito {idRemito} marcado como Anulado. DV recalculado.",
                     TraceLevel.Info);
+
+                // PASO 2: Descontar del inventario
+                var inventarioService = new InventarioService();
+                inventarioService.RevertirEntradaDesdeRemito(
+                    remito.TipoResiduo, remito.Estado, remito.Cantidad, remito.IdRemito);
+
+                LoggerService.WriteLog(
+                    $"Inventario descontado: {remito.Cantidad} de {remito.TipoResiduo} ({remito.Estado}).",
+                    TraceLevel.Info);
+
+                // Todo OK
+                uow.Complete();
             }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-                throw new Exception($"Error al anular el remito {idRemito}.", ex);
-            }
+
+            LoggerService.WriteLog(
+                $"Remito anulado exitosamente. ID: {idRemito}, Generador: {remito.NombreGenerador}",
+                TraceLevel.Info);
         }
 
-        #region Métodos auxiliares privados
+        /// <summary>
+        /// Modifica un remito existente y ajusta el inventario si cambio la cantidad o el estado fisico.
+        /// Usa UnitOfWork para coordinar: si falla el ajuste de inventario, el remito vuelve a sus valores originales.
+        /// </summary>
+        /// <param name="remitoModificado">Remito con los nuevos valores.</param>
+        /// <param name="cantidadAnterior">Cantidad original antes de la modificacion.</param>
+        /// <param name="estadoAnterior">Estado fisico original antes de la modificacion.</param>
+        public void ModificarRemito(DOMAIN.Remito remitoModificado, decimal cantidadAnterior, string estadoAnterior)
+        {
+            // Verificar que el remito existe en BD
+            var remitoEnBD = _remitoRepository.GetRemitoById(remitoModificado.IdRemito);
+            if (remitoEnBD == null)
+            {
+                throw new Exception($"No se encontro el remito con ID {remitoModificado.IdRemito}.");
+            }
+
+            if (remitoEnBD.EstadoRemito == "Anulado")
+            {
+                throw new Exception("No se puede modificar un remito anulado.");
+            }
+
+            // Guardar valores originales completos para compensacion
+            string dvOriginal = remitoEnBD.DigitoVerificador;
+            decimal cantOriginal = cantidadAnterior;
+            string estOriginal = estadoAnterior;
+            string domPlantaOriginal = remitoEnBD.DomicilioPlanta;
+            string cuitOriginal = remitoEnBD.Cuit;
+            string nfOriginal = remitoEnBD.NombreFantasia;
+            string dirOriginal = remitoEnBD.Direccion;
+
+            using (var uow = new UnitOfWork("ModificarRemito"))
+            {
+                // PASO 1: Recalcular DV y actualizar remito en BD
+                remitoModificado.DigitoVerificador =
+                    SERVICES.Facade.RemitoDigitoVerificadorService.Calcular(remitoModificado);
+                _remitoRepository.Update(remitoModificado);
+
+                uow.RegistrarCompensacion("RevertirModificacion", () =>
+                {
+                    remitoModificado.Cantidad = cantOriginal;
+                    remitoModificado.Estado = estOriginal;
+                    remitoModificado.DomicilioPlanta = domPlantaOriginal;
+                    remitoModificado.Cuit = cuitOriginal;
+                    remitoModificado.NombreFantasia = nfOriginal;
+                    remitoModificado.Direccion = dirOriginal;
+                    remitoModificado.DigitoVerificador = dvOriginal;
+                    _remitoRepository.Update(remitoModificado);
+                });
+
+                LoggerService.WriteLog(
+                    $"Remito {remitoModificado.IdRemito} actualizado en BD. DV recalculado.",
+                    TraceLevel.Info);
+
+                // PASO 2: Ajustar inventario si cambio cantidad o estado fisico
+                var inventarioService = new InventarioService();
+                bool estadoCambio = remitoModificado.Estado != estadoAnterior;
+                decimal diferencia = remitoModificado.Cantidad - cantidadAnterior;
+
+                if (estadoCambio)
+                {
+                    // Estado fisico cambio: revertir entrada vieja y registrar entrada nueva
+                    inventarioService.RevertirEntradaDesdeRemito(
+                        remitoModificado.TipoResiduo, estadoAnterior,
+                        cantidadAnterior, remitoModificado.IdRemito);
+
+                    inventarioService.RegistrarEntradaDesdeRemito(
+                        remitoModificado.TipoResiduo, remitoModificado.Estado,
+                        remitoModificado.Cantidad, remitoModificado.IdRemito,
+                        "Reingreso por modificacion de remito");
+
+                    uow.RegistrarCompensacion("RevertirAjusteInventarioEstado", () =>
+                    {
+                        inventarioService.RevertirEntradaDesdeRemito(
+                            remitoModificado.TipoResiduo, remitoModificado.Estado,
+                            remitoModificado.Cantidad, remitoModificado.IdRemito);
+                        inventarioService.RegistrarEntradaDesdeRemito(
+                            remitoModificado.TipoResiduo, estadoAnterior,
+                            cantidadAnterior, remitoModificado.IdRemito,
+                            "COMPENSACION: Reversion de modificacion de remito");
+                    });
+
+                    LoggerService.WriteLog(
+                        $"Inventario ajustado por cambio de estado: {estadoAnterior} -> {remitoModificado.Estado}",
+                        TraceLevel.Info);
+                }
+                else if (diferencia != 0)
+                {
+                    // Solo cambio la cantidad
+                    if (diferencia > 0)
+                    {
+                        // Aumento: registrar entrada por la diferencia
+                        inventarioService.RegistrarEntradaDesdeRemito(
+                            remitoModificado.TipoResiduo, remitoModificado.Estado,
+                            diferencia, remitoModificado.IdRemito,
+                            "Ajuste por modificacion de remito (aumento)");
+
+                        uow.RegistrarCompensacion("RevertirAumentoInventario", () =>
+                        {
+                            inventarioService.RevertirEntradaDesdeRemito(
+                                remitoModificado.TipoResiduo, remitoModificado.Estado,
+                                diferencia, remitoModificado.IdRemito);
+                        });
+                    }
+                    else
+                    {
+                        // Disminucion: registrar salida por la diferencia absoluta
+                        decimal cantidadReducida = Math.Abs(diferencia);
+                        inventarioService.RegistrarSalida(
+                            remitoModificado.TipoResiduo, remitoModificado.Estado,
+                            cantidadReducida,
+                            $"Ajuste por modificacion de remito {remitoModificado.IdRemito} (disminucion)");
+
+                        uow.RegistrarCompensacion("RevertirDisminucionInventario", () =>
+                        {
+                            inventarioService.RegistrarEntradaDesdeRemito(
+                                remitoModificado.TipoResiduo, remitoModificado.Estado,
+                                cantidadReducida, remitoModificado.IdRemito,
+                                "COMPENSACION: Reversion de disminucion");
+                        });
+                    }
+
+                    LoggerService.WriteLog(
+                        $"Inventario ajustado por cambio de cantidad: {cantidadAnterior} -> {remitoModificado.Cantidad} (diferencia: {diferencia})",
+                        TraceLevel.Info);
+                }
+
+                uow.Complete();
+            }
+
+            LoggerService.WriteLog(
+                $"Remito modificado exitosamente. ID: {remitoModificado.IdRemito}, Generador: {remitoModificado.NombreGenerador}",
+                TraceLevel.Info);
+        }
+
+        #region Metodos auxiliares privados
 
         /// <summary>
-        /// Verifica la integridad de una lista de remitos usando el Dígito Verificador.
+        /// Verifica la integridad de una lista de remitos usando el Digito Verificador.
         /// Actualiza los campos IntegridadEstado e IntegridadValida de cada DTO.
         /// </summary>
         /// <param name="remitos">Lista de remitos a verificar.</param>
@@ -222,7 +371,7 @@ namespace BLL.Remito
             {
                 try
                 {
-                    // Convertir DTO a entidad Remito para verificación
+                    // Convertir DTO a entidad Remito para verificacion
                     var remito = new DOMAIN.Remito
                     {
                         IdRemito = dto.IdRemito,
@@ -267,7 +416,7 @@ namespace BLL.Remito
 
                             // Log de advertencia para remitos alterados
                             LoggerService.WriteLog(
-                                $"?? ALERTA: Remito ALTERADO detectado. ID: {dto.IdRemito}, Generador: {dto.NombreGenerador}, CUIT: {dto.Cuit}",
+                                $"ALERTA: Remito ALTERADO detectado. ID: {dto.IdRemito}, Generador: {dto.NombreGenerador}, CUIT: {dto.Cuit}",
                                 TraceLevel.Warning);
                         }
                     }
@@ -277,24 +426,24 @@ namespace BLL.Remito
                     // Error al verificar, marcar como desconocido
                     dto.IntegridadEstado = "ERROR";
                     dto.IntegridadValida = false;
-                    
+
                     LoggerService.WriteLog(
                         $"Error al verificar integridad del remito {dto.IdRemito}: {ex.Message}",
                         TraceLevel.Warning);
                 }
             }
 
-            // Log resumen de verificación
+            // Log resumen de verificacion
             if (contadorAlterados > 0 || contadorSinDV > 0)
             {
                 LoggerService.WriteLog(
-                    $"Verificación de integridad completada. Total: {remitos.Count} | OK: {contadorOK} | ALTERADOS: {contadorAlterados} | SIN_DV: {contadorSinDV}",
+                    $"Verificacion de integridad completada. Total: {remitos.Count} | OK: {contadorOK} | ALTERADOS: {contadorAlterados} | SIN_DV: {contadorSinDV}",
                     TraceLevel.Warning);
             }
             else
             {
                 LoggerService.WriteLog(
-                    $"Verificación de integridad completada. Total: {remitos.Count} | Todos OK",
+                    $"Verificacion de integridad completada. Total: {remitos.Count} | Todos OK",
                     TraceLevel.Info);
             }
         }
@@ -305,12 +454,12 @@ namespace BLL.Remito
         /// <returns>Ruta completa de la carpeta de descargas.</returns>
         private string ObtenerCarpetaDescargas()
         {
-            // Intentar obtener la carpeta de descargas estándar de Windows
+            // Intentar obtener la carpeta de descargas estandar de Windows
             string carpetaDescargas = Path.Combine(
                 Environment.GetFolderPath(Environment.SpecialFolder.UserProfile),
                 "Downloads");
 
-            // Si no existe, intentar con el nombre en español
+            // Si no existe, intentar con el nombre en espanol
             if (!Directory.Exists(carpetaDescargas))
             {
                 carpetaDescargas = Path.Combine(
@@ -331,11 +480,11 @@ namespace BLL.Remito
         }
 
         /// <summary>
-        /// Obtiene una ruta única para el archivo, agregando un número secuencial si ya existe.
+        /// Obtiene una ruta unica para el archivo, agregando un numero secuencial si ya existe.
         /// Ejemplo: archivo.pdf -> archivo (1).pdf -> archivo (2).pdf
         /// </summary>
         /// <param name="rutaBase">Ruta base del archivo.</param>
-        /// <returns>Ruta única que no existe en el sistema.</returns>
+        /// <returns>Ruta unica que no existe en el sistema.</returns>
         private string ObtenerRutaUnicaDescarga(string rutaBase)
         {
             if (!File.Exists(rutaBase))

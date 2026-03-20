@@ -9,7 +9,7 @@ using System.Windows.Forms;
 namespace RedAceite_ING_SOFTWARE.Forms
 {
     /// <summary>
-    /// Formulario para la generación de remitos de recolección de residuos.
+    /// Formulario para la generacion de remitos de recoleccion de residuos.
     /// Permite ingresar los datos del generador y los detalles del residuo a recolectar.
     /// </summary>
     public partial class FrmGenerarRemito : Form
@@ -35,7 +35,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
         private void FrmGenerarRemito_Load(object sender, EventArgs e)
         {
-            // (FASE 1) Sin traducción automática
+            // (FASE 1) Sin traduccion automotica
         }
 
         /// <summary>
@@ -43,15 +43,15 @@ namespace RedAceite_ING_SOFTWARE.Forms
         /// </summary>
         private void ConfigurarEstadoInicial()
         {
-            // Por defecto, el checkbox de "Se requiere envío" está desmarcado
+            // Por defecto, el checkbox de "Se requiere envio" esta desmarcado
             chkRequiereEnvio.Checked = false;
 
-            // Deshabilitar los campos de envío al iniciar el formulario
+            // Deshabilitar los campos de envio al iniciar el formulario
             HabilitarCamposEnvio(false);
         }
 
         /// <summary>
-        /// Habilita o deshabilita los campos relacionados con el envío.
+        /// Habilita o deshabilita los campos relacionados con el envio.
         /// </summary>
         /// <param name="habilitar">True para habilitar, False para deshabilitar.</param>
         private void HabilitarCamposEnvio(bool habilitar)
@@ -79,10 +79,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
         /// </summary>
         private void AutocompletarDatosProveedor()
         {
-            // Verificar si hay un proveedor seleccionado (SelectedIndex >= 0 significa que hay selección válida)
+            // Verificar si hay un proveedor seleccionado (SelectedIndex >= 0 significa que hay seleccion valida)
             if (cmbNombreGenerador.SelectedItem == null || cmbNombreGenerador.SelectedIndex < 0)
             {
-                // Limpiar el campo si no hay selección válida
+                // Limpiar el campo si no hay seleccion valida
                 txtDomicilioPlanta.Clear();
                 return;
             }
@@ -92,10 +92,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 // Obtener el proveedor seleccionado
                 var proveedorSeleccionado = (Proveedor)cmbNombreGenerador.SelectedItem;
 
-                // Autocompletar el domicilio de la planta con la dirección del proveedor
+                // Autocompletar el domicilio de la planta con la direccion del proveedor
                 txtDomicilioPlanta.Text = proveedorSeleccionado.Direccion ?? string.Empty;
 
-                // Si el checkbox de envío está marcado, autocompletar también esos campos
+                // Si el checkbox de envio esta marcado, autocompletar tambien esos campos
                 if (chkRequiereEnvio.Checked)
                 {
                     AutocompletarDatosEnvio();
@@ -108,11 +108,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Autocompleta los datos de envío del proveedor seleccionado.
+        /// Autocompleta los datos de envio del proveedor seleccionado.
         /// </summary>
         private void AutocompletarDatosEnvio()
         {
-            // Verificar si hay un proveedor seleccionado (SelectedIndex >= 0 significa que hay selección válida)
+            // Verificar si hay un proveedor seleccionado (SelectedIndex >= 0 significa que hay seleccion valida)
             if (cmbNombreGenerador.SelectedItem == null || cmbNombreGenerador.SelectedIndex < 0)
             {
                 return;
@@ -123,7 +123,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 // Obtener el proveedor seleccionado
                 var proveedorSeleccionado = (Proveedor)cmbNombreGenerador.SelectedItem;
 
-                // Autocompletar los campos de envío
+                // Autocompletar los campos de envio
                 txtCuit.Text = proveedorSeleccionado.CUIT ?? string.Empty;
                 txtNombreFantasia.Text = proveedorSeleccionado.RazonSocial ?? string.Empty;
                 txtDireccion.Text = proveedorSeleccionado.Email ?? string.Empty;
@@ -135,7 +135,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Maneja el evento de cambio de estado del checkbox de "Se requiere envío".
+        /// Maneja el evento de cambio de estado del checkbox de "Se requiere envio".
         /// </summary>
         private void chkRequiereEnvio_CheckedChanged(object sender, EventArgs e)
         {
@@ -153,8 +153,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
             cmbTipoResiduo.DropDownStyle = ComboBoxStyle.DropDownList;
 
             // Configurar ComboBox de Estado
-            cmbEstado.Items.Add("Líquido");
-            cmbEstado.Items.Add("Sólido");
+            cmbEstado.Items.Add("L\u00edquido");
+            cmbEstado.Items.Add("S\u00f3lido");
             cmbEstado.DropDownStyle = ComboBoxStyle.DropDownList;
 
             // Configurar ComboBox de Nombre del Generador
@@ -180,7 +180,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     // Configurar el ComboBox con los proveedores
                     cmbNombreGenerador.DataSource = proveedoresActivos;
                     cmbNombreGenerador.DisplayMember = "Nombre"; // Mostrar el nombre del proveedor
-                    cmbNombreGenerador.ValueMember = "IdProveedor"; // Valor interno será el ID
+                    cmbNombreGenerador.ValueMember = "IdProveedor"; // Valor interno sera el ID
 
                     // Deseleccionar por defecto - esto es importante para evitar que se autocomplete al cargar
                     cmbNombreGenerador.SelectedIndex = -1;
@@ -209,11 +209,11 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Dibuja una línea superior en el panel de firma.
+        /// Dibuja una linea superior en el panel de firma.
         /// </summary>
         private void pnlLineaFirma_Paint(object sender, PaintEventArgs e)
         {
-            // Dibujar solo la línea superior para simular el espacio de firma
+            // Dibujar solo la linea superior para simular el espacio de firma
             using (Pen pen = new Pen(Color.Black, 1))
             {
                 e.Graphics.DrawLine(pen, 0, 0, pnlLineaFirma.Width, 0);
@@ -221,24 +221,24 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Maneja el cambio de selección en el ComboBox de Nombre del Generador.
+        /// Maneja el cambio de seleccion en el ComboBox de Nombre del Generador.
         /// Autocompleta los datos del proveedor seleccionado.
         /// </summary>
         private void cmbNombreGenerador_SelectedIndexChanged(object sender, EventArgs e)
         {
             AutocompletarDatosProveedor();
             
-            // Habilitar o deshabilitar el botón de editar según si hay un proveedor seleccionado
+            // Habilitar o deshabilitar el boton de editar segun si hay un proveedor seleccionado
             ActualizarEstadoBotonEditar();
         }
 
         /// <summary>
-        /// Actualiza el estado del botón Editar Proveedor según la selección actual.
-        /// El botón solo se habilita cuando hay un proveedor válido seleccionado.
+        /// Actualiza el estado del boton Editar Proveedor segun la seleccion actual.
+        /// El boton solo se habilita cuando hay un proveedor valido seleccionado.
         /// </summary>
         private void ActualizarEstadoBotonEditar()
         {
-            // Habilitar el botón solo si hay un proveedor seleccionado
+            // Habilitar el boton solo si hay un proveedor seleccionado
             bool hayProveedorSeleccionado = cmbNombreGenerador.SelectedItem != null && 
                                             cmbNombreGenerador.SelectedIndex >= 0;
             
@@ -248,40 +248,40 @@ namespace RedAceite_ING_SOFTWARE.Forms
             if (hayProveedorSeleccionado)
             {
                 var proveedor = (Proveedor)cmbNombreGenerador.SelectedItem;
-                LoggerService.WriteLog($"Botón editar habilitado para proveedor: {proveedor.Nombre}",
+                LoggerService.WriteLog($"Boton editar habilitado para proveedor: {proveedor.Nombre}",
                     System.Diagnostics.TraceLevel.Verbose);
             }
         }
 
         /// <summary>
-        /// Maneja el cambio de selección en el ComboBox de Tipo de Residuo.
-        /// Establece automáticamente el estado según el tipo seleccionado.
+        /// Maneja el cambio de seleccion en el ComboBox de Tipo de Residuo.
+        /// Establece automoticamente el estado segun el tipo seleccionado.
         /// </summary>
         private void cmbTipoResiduo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Establecer el estado por defecto según el tipo de residuo
+            // Establecer el estado por defecto segun el tipo de residuo
             if (cmbTipoResiduo.SelectedItem != null)
             {
                 if (cmbTipoResiduo.SelectedItem.ToString() == "Aceite")
                 {
-                    cmbEstado.SelectedItem = "Líquido";
+                    cmbEstado.SelectedItem = "L\u00edquido";
                 }
                 else if (cmbTipoResiduo.SelectedItem.ToString() == "Grasa")
                 {
-                    cmbEstado.SelectedItem = "Sólido";
+                    cmbEstado.SelectedItem = "S\u00f3lido";
                 }
             }
         }
 
         /// <summary>
-        /// Maneja el evento de clic del botón Generar Remito.
+        /// Maneja el evento de clic del boton Generar Remito.
         /// Valida los datos ingresados y genera el remito en la base de datos.
         /// </summary>
         private void btnGenerarRemito_Click(object sender, EventArgs e)
         {
             try
             {
-                // Validar que todos los campos estén completos
+                // Validar que todos los campos esten completos
                 if (cmbNombreGenerador.SelectedItem == null)
                 {
                     MessageBox.Show("Debe seleccionar un proveedor como generador.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -310,10 +310,10 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     return;
                 }
 
-                // Validar que la cantidad sea un número válido
+                // Validar que la cantidad sea un numero valido
                 if (!decimal.TryParse(txtCantidad.Text, out decimal cantidad) || cantidad <= 0)
                 {
-                    MessageBox.Show("La cantidad debe ser un número válido mayor a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("La cantidad debe ser un numero valido mayor a 0.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     txtCantidad.Focus();
                     return;
                 }
@@ -325,26 +325,26 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     return;
                 }
 
-                // Validar campos de envío solo si el checkbox está marcado
+                // Validar campos de envio solo si el checkbox esta marcado
                 if (chkRequiereEnvio.Checked)
                 {
                     if (string.IsNullOrWhiteSpace(txtCuit.Text))
                     {
-                        MessageBox.Show("Debe ingresar el CUIT cuando se requiere envío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Debe ingresar el CUIT cuando se requiere envio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtCuit.Focus();
                         return;
                     }
 
                     if (string.IsNullOrWhiteSpace(txtNombreFantasia.Text))
                     {
-                        MessageBox.Show("Debe ingresar el nombre de fantasía cuando se requiere envío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Debe ingresar el nombre de fantasia cuando se requiere envio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtNombreFantasia.Focus();
                         return;
                     }
 
                     if (string.IsNullOrWhiteSpace(txtDireccion.Text))
                     {
-                        MessageBox.Show("Debe ingresar la dirección cuando se requiere envío.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Debe ingresar la direccion cuando se requiere envio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtDireccion.Focus();
                         return;
                     }
@@ -354,7 +354,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 var proveedorSeleccionado = (Proveedor)cmbNombreGenerador.SelectedItem;
                 string nombreGenerador = proveedorSeleccionado.Nombre;
 
-                // **FIX: Si NO se requiere envío, usar los datos del proveedor seleccionado**
+                // **FIX: Si NO se requiere envio, usar los datos del proveedor seleccionado**
                 string cuitFinal = chkRequiereEnvio.Checked ? txtCuit.Text.Trim() : proveedorSeleccionado.CUIT;
                 string nombreFantasiaFinal = chkRequiereEnvio.Checked ? txtNombreFantasia.Text.Trim() : proveedorSeleccionado.RazonSocial;
                 string direccionFinal = chkRequiereEnvio.Checked ? txtDireccion.Text.Trim() : proveedorSeleccionado.Direccion;
@@ -373,18 +373,19 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 );
 
                 // Registrar el evento en el log
-                LoggerService.WriteLog($"Se generó el remito con ID: {idRemito} para el generador {nombreGenerador}.",
+                LoggerService.WriteLog($"Se genero el remito con ID: {idRemito} para el generador {nombreGenerador}.",
                     System.Diagnostics.TraceLevel.Info);
 
-                MessageBox.Show($"Remito generado exitosamente.\nID del Remito: {idRemito}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Remito generado exitosamente.\nID del Remito: {idRemito}", "exito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                // Limpiar los campos después de generar el remito
-                LimpiarFormulario();
+                // Indicar al formulario padre que se creo exitosamente y cerrar
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             catch (Exception ex)
             {
                 // Registrar el error en el log
-                MessageBox.Show($"Ocurrió un error al generar el remito: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Ocurrio un error al generar el remito: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }
         }
@@ -404,12 +405,12 @@ namespace RedAceite_ING_SOFTWARE.Forms
             txtNombreFantasia.Clear();
             txtDireccion.Clear();
 
-            // Actualizar la fecha después de limpiar
+            // Actualizar la fecha despues de limpiar
             MostrarFechaActual();
         }
 
         /// <summary>
-        /// Maneja el evento de clic del botón Cancelar.
+        /// Maneja el evento de clic del boton Cancelar.
         /// Cierra el formulario sin guardar cambios.
         /// </summary>
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -418,26 +419,26 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Maneja el evento de clic del botón Agregar Proveedor (+).
+        /// Maneja el evento de clic del boton Agregar Proveedor (+).
         /// Abre el formulario de alta de proveedor y actualiza la lista al finalizar.
         /// </summary>
         private void btnAgregarProveedor_Click(object sender, EventArgs e)
         {
             try
             {
-                LoggerService.WriteLog("Usuario solicitó agregar nuevo proveedor desde FrmGenerarRemito",
+                LoggerService.WriteLog("Usuario solicito agregar nuevo proveedor desde FrmGenerarRemito",
                     System.Diagnostics.TraceLevel.Info);
 
                 // Crear instancia del formulario de alta de proveedor
                 using (var frmAlta = new FrmAltaProveedor())
                 {
-                    // Mostrar el formulario como diálogo modal
+                    // Mostrar el formulario como dialogo modal
                     var resultado = frmAlta.ShowDialog();
 
-                    // Si el proveedor se creó exitosamente, recargar la lista
+                    // Si el proveedor se creo exitosamente, recargar la lista
                     if (resultado == DialogResult.OK)
                     {
-                        // Obtener el ID del proveedor recién creado
+                        // Obtener el ID del proveedor recien creado
                         Guid idProveedorNuevo = frmAlta.IdProveedorCreado;
 
                         // Recargar la lista de proveedores
@@ -448,7 +449,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     }
                     else
                     {
-                        LoggerService.WriteLog("Usuario canceló la creación de proveedor",
+                        LoggerService.WriteLog("Usuario cancelo la creacion de proveedor",
                             System.Diagnostics.TraceLevel.Info);
                     }
                 }
@@ -462,8 +463,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
         }
 
         /// <summary>
-        /// Maneja el evento de clic del botón Editar Proveedor (??).
-        /// Abre el formulario de modificación con el proveedor seleccionado y actualiza la lista al finalizar.
+        /// Maneja el evento de clic del boton Editar Proveedor (??).
+        /// Abre el formulario de modificacion con el proveedor seleccionado y actualiza la lista al finalizar.
         /// </summary>
         private void btnEditarProveedor_Click(object sender, EventArgs e)
         {
@@ -481,31 +482,31 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 var proveedorSeleccionado = (Proveedor)cmbNombreGenerador.SelectedItem;
                 Guid idProveedorAEditar = proveedorSeleccionado.IdProveedor;
 
-                LoggerService.WriteLog($"Usuario solicitó editar proveedor: {proveedorSeleccionado.Nombre} (ID: {idProveedorAEditar})",
+                LoggerService.WriteLog($"Usuario solicito editar proveedor: {proveedorSeleccionado.Nombre} (ID: {idProveedorAEditar})",
                     System.Diagnostics.TraceLevel.Info);
 
-                // Crear instancia del formulario de modificación pasando el ID del proveedor
+                // Crear instancia del formulario de modificacion pasando el ID del proveedor
                 using (var frmModificar = new FrmModificarProveedor(idProveedorAEditar))
                 {
-                    // Mostrar el formulario como diálogo modal
+                    // Mostrar el formulario como dialogo modal
                     var resultado = frmModificar.ShowDialog();
 
-                    // Si el proveedor se modificó exitosamente, recargar la lista
+                    // Si el proveedor se modifico exitosamente, recargar la lista
                     if (resultado == DialogResult.OK)
                     {
-                        // Recargar la lista de proveedores y mantener seleccionado el que se editó
+                        // Recargar la lista de proveedores y mantener seleccionado el que se edito
                         RecargarProveedoresYSeleccionar(idProveedorAEditar);
 
                         LoggerService.WriteLog($"Proveedor {proveedorSeleccionado.Nombre} modificado exitosamente desde FrmGenerarRemito",
                             System.Diagnostics.TraceLevel.Info);
 
-                        // Mostrar mensaje de confirmación
+                        // Mostrar mensaje de confirmacion
                         MessageBox.Show($"El proveedor '{proveedorSeleccionado.Nombre}' ha sido actualizado correctamente.",
-                            "Modificación Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            "Modificacion Exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        LoggerService.WriteLog($"Usuario canceló la modificación del proveedor {proveedorSeleccionado.Nombre}",
+                        LoggerService.WriteLog($"Usuario cancelo la modificacion del proveedor {proveedorSeleccionado.Nombre}",
                             System.Diagnostics.TraceLevel.Info);
                     }
                 }
@@ -543,14 +544,14 @@ namespace RedAceite_ING_SOFTWARE.Forms
                     cmbNombreGenerador.DisplayMember = "Nombre";
                     cmbNombreGenerador.ValueMember = "IdProveedor";
 
-                    // Buscar y seleccionar el proveedor recién creado/modificado
+                    // Buscar y seleccionar el proveedor recion creado/modificado
                     var proveedorASeleccionar = proveedoresActivos.FirstOrDefault(p => p.IdProveedor == idProveedorASeleccionar);
                     
                     if (proveedorASeleccionar != null)
                     {
                         cmbNombreGenerador.SelectedItem = proveedorASeleccionar;
                         
-                        LoggerService.WriteLog($"Proveedor '{proveedorASeleccionar.Nombre}' preseleccionado automáticamente",
+                        LoggerService.WriteLog($"Proveedor '{proveedorASeleccionar.Nombre}' preseleccionado automoticamente",
                             System.Diagnostics.TraceLevel.Info);
                     }
                     else
@@ -564,7 +565,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 }
                 else
                 {
-                    LoggerService.WriteLog("No se encontraron proveedores activos después de recargar",
+                    LoggerService.WriteLog("No se encontraron proveedores activos despues de recargar",
                         System.Diagnostics.TraceLevel.Warning);
                 }
             }

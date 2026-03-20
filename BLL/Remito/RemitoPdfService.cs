@@ -1,5 +1,4 @@
 using DAL.Contratos;
-using DAL.Implementaciones;
 using DOMAIN;
 using SERVICES.DTO;
 using SERVICES.Facade;
@@ -10,8 +9,8 @@ using System.IO;
 namespace BLL.Remito
 {
     /// <summary>
-    /// Servicio de lógica de negocio para la generación y gestión de PDFs de remitos.
-    /// Coordina la generación del archivo PDF y su registro en la base de datos.
+    /// Servicio de logica de negocio para la generacion y gestion de PDFs de remitos.
+    /// Coordina la generacion del archivo PDF y su registro en la base de datos.
     /// </summary>
     public class RemitoPdfService
     {
@@ -26,26 +25,26 @@ namespace BLL.Remito
         /// </summary>
         public RemitoPdfService()
         {
-            _remitoPdfRepository = new RemitoPdfRepository();
-            _remitoRepository = new RemitoRepository();
+            _remitoPdfRepository = ServiceFactory.RemitoPdfRepository;
+            _remitoRepository = ServiceFactory.RemitoRepository;
             _pdfService = new PdfService();
 
-            // Obtener rutas desde configuración usando el helper
+            // Obtener rutas desde configuracion usando el helper
             _rutaPdfRemitos = ConfigHelper.ObtenerRutaPdfRemitos();
             _rutaLogoRemito = ConfigHelper.ObtenerRutaLogoRemito();
 
-            // Validar que las rutas estén configuradas
+            // Validar que las rutas esten configuradas
             ValidarConfiguracion();
         }
 
         /// <summary>
-        /// Genera un archivo PDF para un remito específico y guarda el registro en la base de datos.
+        /// Genera un archivo PDF para un remito especifico y guarda el registro en la base de datos.
         /// </summary>
         /// <param name="idRemito">ID del remito para el cual generar el PDF.</param>
         /// <returns>El registro RemitoPDF creado.</returns>
         public RemitoPDF GenerarPdfRemito(Guid idRemito)
         {
-            LoggerService.WriteLog($"[RemitoPdfService] Iniciando generación de PDF para remito {idRemito}",
+            LoggerService.WriteLog($"[RemitoPdfService] Iniciando generacion de PDF para remito {idRemito}",
                 System.Diagnostics.TraceLevel.Info);
 
             try
@@ -71,10 +70,10 @@ namespace BLL.Remito
                 // 3. Crear DTO con los datos del remito
                 var datosRemito = MapearRemitoADto(remito);
 
-                LoggerService.WriteLog($"[RemitoPdfService] Datos del remito mapeados. Número: {datosRemito.NumeroRemito}",
+                LoggerService.WriteLog($"[RemitoPdfService] Datos del remito mapeados. Numero: {datosRemito.NumeroRemito}",
                     System.Diagnostics.TraceLevel.Verbose);
 
-                // 4. Generar nombre de archivo único
+                // 4. Generar nombre de archivo unico
                 string nombreArchivo = GenerarNombreArchivo(remito);
                 string rutaCompleta = Path.Combine(_rutaPdfRemitos, nombreArchivo);
 
@@ -101,10 +100,10 @@ namespace BLL.Remito
                 LoggerService.WriteLog($"[RemitoPdfService] Hash MD5 calculado: {hashMD5}",
                     System.Diagnostics.TraceLevel.Verbose);
 
-                // 8. Obtener tamaño del archivo
-                long tamañoBytes = _pdfService.ObtenerTamañoArchivo(rutaCompleta);
+                // 8. Obtener tamaÃ±o del archivo
+                long tamaÃ±oBytes = _pdfService.ObtenerTamaÃ±oArchivo(rutaCompleta);
 
-                LoggerService.WriteLog($"[RemitoPdfService] Tamaño del archivo: {tamañoBytes} bytes ({tamañoBytes / 1024.0:N2} KB)",
+                LoggerService.WriteLog($"[RemitoPdfService] TamaÃ±o del archivo: {tamaÃ±oBytes} bytes ({tamaÃ±oBytes / 1024.0:N2} KB)",
                     System.Diagnostics.TraceLevel.Verbose);
 
                 // 9. Crear registro en la base de datos
@@ -114,7 +113,7 @@ namespace BLL.Remito
                     IdRemito = idRemito,
                     NombreArchivo = nombreArchivo,
                     FechaGeneracion = DateTime.Now,
-                    TamañoBytes = tamañoBytes,
+                    TamaÃ±oBytes = tamaÃ±oBytes,
                     HashMD5 = hashMD5
                 };
 
@@ -123,7 +122,7 @@ namespace BLL.Remito
                 LoggerService.WriteLog($"[RemitoPdfService] Registro PDF guardado en BD. ID: {remitoPdf.IdRemitoPDF}",
                     System.Diagnostics.TraceLevel.Info);
 
-                LoggerService.WriteLog($"[RemitoPdfService] Generación de PDF completada exitosamente para remito {idRemito}",
+                LoggerService.WriteLog($"[RemitoPdfService] Generacion de PDF completada exitosamente para remito {idRemito}",
                     System.Diagnostics.TraceLevel.Info);
 
                 return remitoPdf;
@@ -182,10 +181,10 @@ namespace BLL.Remito
             return Path.Combine(_rutaPdfRemitos, remitoPdf.NombreArchivo);
         }
 
-        #region Métodos Privados
+        #region Metodos Privados
 
         /// <summary>
-        /// Mapea un objeto Remito a un DTO para generación de PDF.
+        /// Mapea un objeto Remito a un DTO para generacion de PDF.
         /// </summary>
         private DatosRemitoPdfDto MapearRemitoADto(DOMAIN.Remito remito)
         {
@@ -204,14 +203,14 @@ namespace BLL.Remito
                 DireccionEnvio = remito.Direccion
             };
 
-            // Generar número de remito
+            // Generar numero de remito
             dto.GenerarNumeroRemito();
 
             return dto;
         }
 
         /// <summary>
-        /// Genera un nombre de archivo único para el PDF del remito.
+        /// Genera un nombre de archivo unico para el PDF del remito.
         /// Formato: {FechaYYYYMMDD}_{IdProveedor8chars}_{IdRemito8chars}.pdf
         /// </summary>
         private string GenerarNombreArchivo(DOMAIN.Remito remito)
@@ -234,20 +233,20 @@ namespace BLL.Remito
         }
 
         /// <summary>
-        /// Valida que las rutas configuradas sean válidas.
+        /// Valida que las rutas configuradas sean validas.
         /// </summary>
         private void ValidarConfiguracion()
         {
             if (string.IsNullOrWhiteSpace(_rutaPdfRemitos))
             {
                 throw new Exception(
-                    "La configuración 'RutaPDFRemitos' no está definida en App.config");
+                    "La configuracion 'RutaPDFRemitos' no esta definida en App.config");
             }
 
             if (string.IsNullOrWhiteSpace(_rutaLogoRemito))
             {
                 throw new Exception(
-                    "La configuración 'RutaLogoRemito' no está definida en App.config");
+                    "La configuracion 'RutaLogoRemito' no esta definida en App.config");
             }
 
             if (!File.Exists(_rutaLogoRemito))
