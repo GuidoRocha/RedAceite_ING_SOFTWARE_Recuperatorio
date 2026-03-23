@@ -31,20 +31,40 @@ namespace SERVICES.Forms
             try
             {
                 _username = txtUsername.Text.Trim();
-                _otpGenerado = UserService.StartPasswordRecovery(_username);
-
-                // TODO: Enviar OTP vía Botmaker API (WhatsApp)
-                // El código generado está disponible en _otpGenerado para ser enviado al usuario.
+                var resultado = UserService.StartPasswordRecovery(_username);
+                _otpGenerado = resultado.otp;
 
                 LoggerService.WriteLog(
                     $"Se generó un código de recuperación para el usuario: {_username}",
                     TraceLevel.Info);
 
-                MessageBox.Show(
-                    "Se ha generado un código de verificación. Pronto lo recibirá por WhatsApp.",
-                    "Código generado",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                // Enviar OTP vía Botmaker API (WhatsApp)
+                bool enviado = BotmakerService.EnviarOTPWhatsApp(resultado.telefono, _otpGenerado);
+
+                if (enviado)
+                {
+                    LoggerService.WriteLog(
+                        $"Código de recuperación enviado por WhatsApp al usuario: {_username}",
+                        TraceLevel.Info);
+
+                    MessageBox.Show(
+                        "Se ha enviado un código de verificación a su WhatsApp.",
+                        "Código enviado",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    LoggerService.WriteLog(
+                        $"No se pudo enviar el código por WhatsApp al usuario: {_username}. El código fue generado en la base de datos.",
+                        TraceLevel.Warning);
+
+                    MessageBox.Show(
+                        "El código fue generado pero no se pudo enviar por WhatsApp. Contacte al administrador.",
+                        "Advertencia",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                }
 
                 MostrarPaso2();
             }

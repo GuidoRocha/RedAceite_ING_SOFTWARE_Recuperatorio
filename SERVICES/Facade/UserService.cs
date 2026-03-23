@@ -153,8 +153,8 @@ namespace SERVICES.Facade
         /// generando un código OTP y almacenándolo en la base de datos.
         /// </summary>
         /// <param name="username">Nombre de usuario.</param>
-        /// <returns>El código OTP generado, para ser enviado al usuario por el canal correspondiente.</returns>
-        public static string StartPasswordRecovery(string username)
+        /// <returns>Tupla con el código OTP generado y el teléfono del usuario.</returns>
+        public static (string otp, string telefono) StartPasswordRecovery(string username)
         {
             return _userLogic.StartPasswordRecovery(username);
         }

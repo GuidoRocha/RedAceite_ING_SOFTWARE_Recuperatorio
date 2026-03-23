@@ -221,8 +221,8 @@ namespace SERVICES.Logic
         /// Inicia el proceso de recuperación de contraseña generando un OTP para el usuario.
         /// </summary>
         /// <param name="username">Nombre de usuario.</param>
-        /// <returns>El código OTP generado, para ser enviado al usuario por el canal correspondiente.</returns>
-        public string StartPasswordRecovery(string username)
+        /// <returns>Tupla con el código OTP generado y el teléfono del usuario.</returns>
+        public (string otp, string telefono) StartPasswordRecovery(string username)
         {
             var usuario = _usuarioRepository.GetUsuarioByUsername(username);
             if (usuario != null)
@@ -233,7 +233,7 @@ namespace SERVICES.Logic
                 // Guardar OTP y fecha de expiración en la base de datos
                 _usuarioRepository.SetOTP(usuario.IdUsuario, otp, expiry);
 
-                return otp;
+                return (otp, usuario.Telefono);
             }
             else
             {
