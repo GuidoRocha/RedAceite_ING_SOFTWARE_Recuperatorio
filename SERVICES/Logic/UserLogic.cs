@@ -9,10 +9,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Twilio;
-using Twilio.Rest.Api.V2010.Account;
-using Twilio.Rest.Verify.V2.Service;
-using Twilio.Types;
 
 namespace SERVICES.Logic
 {
@@ -222,45 +218,11 @@ namespace SERVICES.Logic
         }
 
         /// <summary>
-        /// Envía un código OTP por SMS utilizando Twilio.
-        /// </summary>
-        /// <param name="toPhoneNumber">Número de teléfono del destinatario.</param>
-        /// <param name="otp">Código OTP a enviar.</param>
-        public void SendOTP(string toPhoneNumber, string otp)
-        {
-            const string accountSid = ""; // completar este campo con lo pago de Twilio
-            const string authToken = "";  // completar este campo con lo pago de Twilio
-            TwilioClient.Init(accountSid, authToken);
-
-            try
-            {
-                // Validar que solo se ingresen números y tengan longitud razonable (ej: 10 a 12 dígitos)
-                if (!toPhoneNumber.All(char.IsDigit) || toPhoneNumber.Length < 10 || toPhoneNumber.Length > 12)
-                    throw new Exception("El número de teléfono ingresado no es válido.");
-
-                string formattedPhoneNumber = $"+54{toPhoneNumber}";  // Siempre Argentina
-
-                var message = MessageResource.Create(
-                    body: $"Tu código de verificación es: {otp}. Tenés 20 minutos para ingresarlo en la aplicación.",
-                    from: new PhoneNumber("+12708184665"), // Tu número Twilio
-                    to: new PhoneNumber(formattedPhoneNumber)
-                );
-
-                Console.WriteLine($"Mensaje enviado con SID: {message.Sid}");
-            }
-            catch (Exception ex)
-            {
-
-                LoggerService.WriteException(ex);
-                throw;
-            }
-        }
-
-        /// <summary>
-        /// Inicia el proceso de recuperación de contraseña enviando un OTP al usuario.
+        /// Inicia el proceso de recuperación de contraseña generando un OTP para el usuario.
         /// </summary>
         /// <param name="username">Nombre de usuario.</param>
-        public bool StartPasswordRecovery(string username)
+        /// <returns>El código OTP generado, para ser enviado al usuario por el canal correspondiente.</returns>
+        public string StartPasswordRecovery(string username)
         {
             var usuario = _usuarioRepository.GetUsuarioByUsername(username);
             if (usuario != null)
@@ -271,14 +233,11 @@ namespace SERVICES.Logic
                 // Guardar OTP y fecha de expiración en la base de datos
                 _usuarioRepository.SetOTP(usuario.IdUsuario, otp, expiry);
 
-                // Enviar OTP por SMS
-                // Solo Habilitar Si tenes Twilio Pago     SendOTP(usuario.PhoneNumber, otp);
-                return true;
+                return otp;
             }
             else
             {
                 throw new Exception("Usuario no encontrado");
-
             }
         }
 
@@ -315,57 +274,6 @@ namespace SERVICES.Logic
             else
             {
                 throw new Exception("Contraseña no Cambiada");
-            }
-        }
-
-        public bool SendOTP_VerifyAPI(string phoneNumber)
-        {
-            const string accountSid = "AC9190d8bc1c6c85e0bc7e26158d5c589d"; // tu SID
-            const string authToken = "4bb96f12a316fbff8183c4a224b36954";     // tu token
-            const string serviceSid = "VA0920a5d12f1582f784eb33384de4a220";     // tu Service SID
-
-            TwilioClient.Init(accountSid, authToken);
-
-            try
-            {
-                var verification = VerificationResource.Create(
-                    to: $"+1{phoneNumber}",    // número completo sin el +54 (lo agregamos acá)
-                    channel: "sms",
-                    pathServiceSid: serviceSid
-                );
-
-                return verification.Status == "pending";
-            }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-                MessageBox.Show("Error Twilio: " + ex.Message);  // <-- Agregá esto temporalmente
-                return false;
-            }
-        }
-
-        public bool VerifyOTP_VerifyAPI(string phoneNumber, string code)
-        {
-            const string accountSid = "AC9190d8bc1c6c85e0bc7e26158d5c589d"; // tu SID
-            const string authToken = "4bb96f12a316fbff8183c4a224b36954";     // tu token
-            const string serviceSid = "VA0920a5d12f1582f784eb33384de4a220";     // tu Service SID
-
-            TwilioClient.Init(accountSid, authToken);
-
-            try
-            {
-                var verificationCheck = VerificationCheckResource.Create(
-                    to: $"+1{phoneNumber}",
-                    code: code,
-                    pathServiceSid: serviceSid
-                );
-
-                return verificationCheck.Status == "approved";
-            }
-            catch (Exception ex)
-            {
-                LoggerService.WriteException(ex);
-                return false;
             }
         }
 

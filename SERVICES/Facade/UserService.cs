@@ -150,12 +150,13 @@ namespace SERVICES.Facade
 
         /// <summary>
         /// Inicia el proceso de recuperación de contraseña para un usuario,
-        /// enviando un código OTP por SMS.
+        /// generando un código OTP y almacenándolo en la base de datos.
         /// </summary>
         /// <param name="username">Nombre de usuario.</param>
-        public static void StartPasswordRecovery(string username)
+        /// <returns>El código OTP generado, para ser enviado al usuario por el canal correspondiente.</returns>
+        public static string StartPasswordRecovery(string username)
         {
-            _userLogic.StartPasswordRecovery(username);
+            return _userLogic.StartPasswordRecovery(username);
         }
 
         /// <summary>

@@ -239,6 +239,12 @@
     <Compile Include="Forms\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmRecuperarPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FrmRecuperarPassword.Designer.cs">
+      <DependentUpon>FrmRecuperarPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Patentes\FrmModificarProveedor.cs">
       <SubType>Form</SubType>
     </Compile>

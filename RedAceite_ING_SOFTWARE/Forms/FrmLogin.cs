@@ -125,15 +125,14 @@ namespace SERVICES.Forms
 
         /// <summary>
         /// Maneja el evento de clic en el link de recuperar contraseña.
+        /// Abre el formulario de recuperación de contraseña como diálogo modal.
         /// </summary>
         private void lnkRecuperarPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            MessageBox.Show(
-                "Por favor, contacte al administrador del sistema para recuperar su contraseña.",
-                "Recuperar Contraseña",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            using (var frmRecuperar = new FrmRecuperarPassword())
+            {
+                frmRecuperar.ShowDialog();
+            }
         }
     }
 }
