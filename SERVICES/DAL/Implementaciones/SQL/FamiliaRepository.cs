@@ -185,6 +185,33 @@ namespace SERVICES.DAL.Implementaciones.SQL
                 }
             }
 
+            // Cargar las patentes de cada familia
+            string queryPatentes = @"
+                SELECT p.IdPatente, p.Nombre, p.DataKey, p.TipoAcceso
+                FROM Familia_Patente fp
+                JOIN Patente p ON fp.IdPatente = p.IdPatente
+                WHERE fp.IdFamilia = @IdFamilia";
+
+            foreach (var familia in familias)
+            {
+                var tablaPatentes = SqlHelper.ExecuteDataTable(
+                    queryPatentes,
+                    CommandType.Text,
+                    new SqlParameter("@IdFamilia", familia.Id)
+                );
+
+                foreach (DataRow row in tablaPatentes.Rows)
+                {
+                    var patente = new Patente
+                    {
+                        Id = (Guid)row["IdPatente"],
+                        Nombre = row["Nombre"].ToString(),
+                        DataKey = row["DataKey"].ToString(),
+                    };
+                    familia.Add(patente);
+                }
+            }
+
             return familias;
         }
         public List<Patente> GetAllPatentes()
@@ -207,6 +234,35 @@ namespace SERVICES.DAL.Implementaciones.SQL
             }
 
             return patentes;
+        }
+
+        public void DeleteFamilia(Guid idFamilia)
+        {
+            // Verificar que no tenga usuarios asignados
+            var count = SqlHelper.ExecuteScalar(
+                "SELECT COUNT(*) FROM Usuario_Familia WHERE IdFamilia = @IdFamilia",
+                CommandType.Text,
+                new SqlParameter("@IdFamilia", idFamilia)
+            );
+
+            if (Convert.ToInt32(count) > 0)
+            {
+                throw new Exception("No se puede eliminar el rol porque tiene usuarios asignados. Desasigne los usuarios primero.");
+            }
+
+            // Eliminar patentes asociadas
+            SqlHelper.ExecuteNonQuery(
+                "DELETE FROM Familia_Patente WHERE IdFamilia = @IdFamilia",
+                CommandType.Text,
+                new SqlParameter("@IdFamilia", idFamilia)
+            );
+
+            // Eliminar la familia
+            SqlHelper.ExecuteNonQuery(
+                "DELETE FROM Familia WHERE IdFamilia = @IdFamilia",
+                CommandType.Text,
+                new SqlParameter("@IdFamilia", idFamilia)
+            );
         }
     }
 }

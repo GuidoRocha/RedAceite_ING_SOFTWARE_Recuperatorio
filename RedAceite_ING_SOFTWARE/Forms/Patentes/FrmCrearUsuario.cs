@@ -56,17 +56,34 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
                 // Registrar usuario
                 UserService.RegisterUsuario(usuario, password);
-                
+
                 // Registrar en log
                 LoggerService.WriteLog(
-                    $"Se creó al usuario {username} - {nombre} {apellido} (DNI: {dni ?? "N/A"}).", 
+                    $"Se creó al usuario {username} - {nombre} {apellido} (DNI: {dni ?? "N/A"}).",
                     System.Diagnostics.TraceLevel.Info
                 );
 
-                MessageBox.Show("Usuario creado.", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Obtener el usuario recién creado para tener su Id
+                var usuarioCreado = UserService.GetUsuarioByUsername(username);
 
-                // Limpiar campos
-                LimpiarCampos();
+                if (usuarioCreado != null)
+                {
+                    // Abrir formulario de asignación de permisos
+                    string nombreCompleto = $"{nombre} {apellido} ({username})";
+                    using (var frmPermisos = new FrmAsignarPermisosNuevoUsuario(usuarioCreado.IdUsuario, nombreCompleto))
+                    {
+                        frmPermisos.ShowDialog(this);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Usuario creado exitosamente.",
+                        "Usuario Creado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                // Cerrar el form de crear usuario (vuelve a la grilla de gestión)
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
             catch (Exception ex)
             {

@@ -106,6 +106,7 @@
             this.SeleccionarTodas.Tag = "SeleccionarTodas";
             this.SeleccionarTodas.Text = "Seleccionar todas";
             this.SeleccionarTodas.UseVisualStyleBackColor = true;
+            this.SeleccionarTodas.Click += new System.EventHandler(this.SeleccionarTodas_Click);
             // 
             // txtNombreFamilia
             // 

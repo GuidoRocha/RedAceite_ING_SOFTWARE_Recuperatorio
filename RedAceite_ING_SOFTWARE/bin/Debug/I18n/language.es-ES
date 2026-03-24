@@ -16,14 +16,29 @@ Titulo_FrmAsignarPatentes=Asignar Permisos
 Titulo_FrmAsignarFamilias=Asignar Roles
 Titulo_FrmCrearRol=Crear Rol
 Titulo_FrmCambioIdioma=Cambio de idioma
+Titulo_FrmGestionRoles=Gestión de Roles
 
 # MENU PRINCIPAL
 menu_Idioma=Idioma
+menu_Configuracion=Configuración
+menu_GestionRoles=Gestión de Roles
+menu_ConfigurarPrecios=Configurar Precios
 menu_Espanol=Espanol
 menu_Ingles=Ingles
 
 Idioma_Espanol=Español
 Idioma_Ingles=English
+
+# GESTION DE ROLES
+roles_Nombre=Nombre:
+roles_Filtrar=Filtrar
+roles_Limpiar=Limpiar
+roles_CrearRol=Crear Rol
+roles_EditarRol=Editar Rol
+roles_EliminarRol=Eliminar Rol
+roles_ColNombre=Nombre del Rol
+roles_ColCantPermisos=Cant. Permisos
+roles_ColPermisos=Permisos Incluidos
 
 # BOTONES GENERALES
 btn_Inicio=Inicio

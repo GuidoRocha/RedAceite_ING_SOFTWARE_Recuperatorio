@@ -128,10 +128,19 @@ namespace SERVICES.DAL.Implementaciones.SQL
         {
             List<Patente> patentes = new List<Patente>();
 
+            string query = @"
+                SELECT DISTINCT p.IdPatente, p.Nombre, p.DataKey
+                FROM Patente p
+                WHERE p.IdPatente IN (
+                    SELECT IdPatente FROM Usuario_Patente WHERE IdUsuario = @IdUsuario
+                    UNION
+                    SELECT fp.IdPatente FROM Familia_Patente fp
+                    INNER JOIN Usuario_Familia uf ON fp.IdFamilia = uf.IdFamilia
+                    WHERE uf.IdUsuario = @IdUsuario
+                )";
+
             using (SqlDataReader reader = SqlHelper.ExecuteReader(
-                "SELECT p.IdPatente, p.Nombre, p.DataKey FROM Patente p " +
-                "INNER JOIN Usuario_Patente up ON p.IdPatente = up.IdPatente " +
-                "WHERE up.IdUsuario = @IdUsuario",
+                query,
                 CommandType.Text,
                 new SqlParameter("@IdUsuario", idUsuario)))
             {

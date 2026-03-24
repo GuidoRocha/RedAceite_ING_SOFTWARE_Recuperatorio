@@ -42,7 +42,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.lblFiltroInicio = new System.Windows.Forms.Label();
             this.chkFiltroFecha = new System.Windows.Forms.CheckBox();
             this.panelGeneracion = new System.Windows.Forms.Panel();
-            this.btnConfigurarPrecios = new System.Windows.Forms.Button();
             this.btnGenerarManifiesto = new System.Windows.Forms.Button();
             this.dtpFechaGenerar = new System.Windows.Forms.DateTimePicker();
             this.lblFechaGenerar = new System.Windows.Forms.Label();
@@ -242,7 +241,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // panelGeneracion
             //
             this.panelGeneracion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(245)))), ((int)(((byte)(233)))));
-            this.panelGeneracion.Controls.Add(this.btnConfigurarPrecios);
             this.panelGeneracion.Controls.Add(this.btnGenerarManifiesto);
             this.panelGeneracion.Controls.Add(this.dtpFechaGenerar);
             this.panelGeneracion.Controls.Add(this.lblFechaGenerar);
@@ -253,23 +251,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
             this.panelGeneracion.Padding = new System.Windows.Forms.Padding(15, 10, 15, 10);
             this.panelGeneracion.Size = new System.Drawing.Size(800, 50);
             this.panelGeneracion.TabIndex = 3;
-            //
-            // btnConfigurarPrecios
-            //
-            this.btnConfigurarPrecios.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(152)))), ((int)(((byte)(0)))));
-            this.btnConfigurarPrecios.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnConfigurarPrecios.FlatAppearance.BorderSize = 0;
-            this.btnConfigurarPrecios.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfigurarPrecios.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnConfigurarPrecios.ForeColor = System.Drawing.Color.White;
-            this.btnConfigurarPrecios.Location = new System.Drawing.Point(630, 10);
-            this.btnConfigurarPrecios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.btnConfigurarPrecios.Name = "btnConfigurarPrecios";
-            this.btnConfigurarPrecios.Size = new System.Drawing.Size(150, 30);
-            this.btnConfigurarPrecios.TabIndex = 3;
-            this.btnConfigurarPrecios.Text = "Configurar Precios";
-            this.btnConfigurarPrecios.UseVisualStyleBackColor = false;
-            this.btnConfigurarPrecios.Click += new System.EventHandler(this.btnConfigurarPrecios_Click);
             //
             // btnGenerarManifiesto
             //
@@ -415,7 +396,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
         private System.Windows.Forms.Label lblFiltroInicio;
         private System.Windows.Forms.CheckBox chkFiltroFecha;
         private System.Windows.Forms.Panel panelGeneracion;
-        private System.Windows.Forms.Button btnConfigurarPrecios;
         private System.Windows.Forms.Button btnGenerarManifiesto;
         private System.Windows.Forms.DateTimePicker dtpFechaGenerar;
         private System.Windows.Forms.Label lblFechaGenerar;

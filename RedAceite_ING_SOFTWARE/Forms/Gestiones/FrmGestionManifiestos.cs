@@ -41,7 +41,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
             // Panel de generacion
             if (lblFechaGenerar != null) lblFechaGenerar.Text = "Manifiestos_LblFechaGenerar".Translate();
             if (btnGenerarManifiesto != null) btnGenerarManifiesto.Text = "Manifiestos_BtnGenerar".Translate();
-            if (btnConfigurarPrecios != null) btnConfigurarPrecios.Text = "Manifiestos_BtnConfigurarPrecios".Translate();
 
             // Panel de filtros
             if (chkFiltroFecha != null) chkFiltroFecha.Text = "Manifiestos_ChkFiltroFecha".Translate();
@@ -387,26 +386,6 @@ namespace RedAceite_ING_SOFTWARE.Forms
             catch (Exception ex)
             {
                 MessageBox.Show($"Error al ver detalle: {ex.Message}", "Error",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                LoggerService.WriteException(ex);
-            }
-        }
-
-        /// <summary>
-        /// Boton Configurar Precios: abre el formulario de precios.
-        /// </summary>
-        private void btnConfigurarPrecios_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var frm = new FrmConfigurarPrecios())
-                {
-                    frm.ShowDialog(this);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error al abrir configuracion de precios: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 LoggerService.WriteException(ex);
             }

@@ -46,6 +46,8 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 btnRemitos_Click(this, EventArgs.Empty);
             else if (type == typeof(FrmGestionManifiestos))
                 btnManifiestos_Click(this, EventArgs.Empty);
+            else if (type == typeof(FrmGestionRoles))
+                OpenChildForm(new FrmGestionRoles());
             else
                 VolverAInicio();
         }
@@ -267,6 +269,7 @@ namespace RedAceite_ING_SOFTWARE.Forms
 
             _userMenuControl = new UserMenuControl();
             _userMenuControl.IdiomaClick += UserMenuControl_IdiomaClick;
+            _userMenuControl.ConfiguracionClick += UserMenuControl_ConfiguracionClick;
 
             var host = new ToolStripControlHost(_userMenuControl)
             {
@@ -306,6 +309,36 @@ namespace RedAceite_ING_SOFTWARE.Forms
                 {
                     dlg.EspanolSelected += (s, args) => SetLanguage("es-ES");
                     dlg.EnglishSelected += (s, args) => SetLanguage("en-US");
+
+                    dlg.ShowDialog(this);
+                }
+            }
+            catch (Exception ex)
+            {
+                LoggerService.WriteException(ex);
+            }
+        }
+
+        private void UserMenuControl_ConfiguracionClick(object sender, EventArgs e)
+        {
+            try
+            {
+                CloseUserAndLanguageMenus();
+
+                using (var dlg = new FrmConfiguracion())
+                {
+                    dlg.GestionRolesSelected += (s, args) =>
+                    {
+                        OpenChildForm(new FrmGestionRoles());
+                    };
+
+                    dlg.ConfigurarPreciosSelected += (s, args) =>
+                    {
+                        using (var frmPrecios = new FrmConfigurarPrecios())
+                        {
+                            frmPrecios.ShowDialog(this);
+                        }
+                    };
 
                     dlg.ShowDialog(this);
                 }

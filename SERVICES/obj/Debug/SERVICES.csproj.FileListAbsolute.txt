@@ -138,7 +138,6 @@ C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\System.Text.Encodings
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\System.Text.Json.dll
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\System.Threading.Tasks.Extensions.dll
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\System.ValueTuple.dll
-C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\Twilio.dll
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\DOMAIN.pdb
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\DOMAIN.dll.config
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\BouncyCastle.Cryptography.xml
@@ -182,7 +181,6 @@ C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\System.Text.Encodings
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\System.Text.Json.xml
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\System.ValueTuple.xml
-C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\bin\Debug\Twilio.xml
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\obj\Debug\SERVICES.csproj.AssemblyReference.cache
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\obj\Debug\SERVICES.csproj.CoreCompileInputs.cache
 C:\RedAceite_ING_SOFTWARE_Recuperatorio\SERVICES\obj\Debug\SERVICES.csproj.Up2Date

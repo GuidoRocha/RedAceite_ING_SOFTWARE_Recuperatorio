@@ -16,14 +16,29 @@ Titulo_FrmAsignarPatentes=Assign Permissions
 Titulo_FrmAsignarFamilias=Assign Roles
 Titulo_FrmCrearRol=Create Role
 Titulo_FrmCambioIdioma=Language change
+Titulo_FrmGestionRoles=Role Management
 
 # MAIN MENU
 menu_Idioma=Language
+menu_Configuracion=Settings
+menu_GestionRoles=Role Management
+menu_ConfigurarPrecios=Configure Prices
 menu_Espanol=Spanish
 menu_Ingles=English
 
 Idioma_Espanol=Spanish
 Idioma_Ingles=English
+
+# GESTION DE ROLES
+roles_Nombre=Name:
+roles_Filtrar=Filter
+roles_Limpiar=Clear
+roles_CrearRol=Create Role
+roles_EditarRol=Edit Role
+roles_EliminarRol=Delete Role
+roles_ColNombre=Role Name
+roles_ColCantPermisos=Permissions Count
+roles_ColPermisos=Included Permissions
 
 # GENERAL BUTTONS
 btn_Inicio=Home

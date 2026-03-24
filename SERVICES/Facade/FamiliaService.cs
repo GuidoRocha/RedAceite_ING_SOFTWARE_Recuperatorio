@@ -74,5 +74,14 @@ namespace SERVICES.Facade
         {
             return _familiaLogic.GetAllPatentes();
         }
+
+        /// <summary>
+        /// Elimina una familia del sistema si no tiene usuarios asignados.
+        /// </summary>
+        /// <param name="idFamilia">ID de la familia a eliminar.</param>
+        public static void EliminarFamilia(Guid idFamilia)
+        {
+            _familiaLogic.EliminarFamilia(idFamilia);
+        }
     }
 }

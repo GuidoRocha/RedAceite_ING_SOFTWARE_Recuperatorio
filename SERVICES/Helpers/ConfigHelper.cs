@@ -27,11 +27,19 @@ namespace SERVICES.Helpers
         }
 
         /// <summary>
+        /// Obtiene la ruta configurada para el logo (unificado para remitos y manifiestos).
+        /// </summary>
+        public static string ObtenerRutaLogo()
+        {
+            return ConfigurationManager.AppSettings["RutaLogo"];
+        }
+
+        /// <summary>
         /// Obtiene la ruta configurada para el logo de remitos.
         /// </summary>
         public static string ObtenerRutaLogoRemito()
         {
-            return ConfigurationManager.AppSettings["RutaLogoRemito"];
+            return ObtenerRutaLogo();
         }
 
         /// <summary>
@@ -47,7 +55,7 @@ namespace SERVICES.Helpers
         /// </summary>
         public static string ObtenerRutaLogoManifiesto()
         {
-            return ConfigurationManager.AppSettings["RutaLogoManifiesto"];
+            return ObtenerRutaLogo();
         }
     }
 }

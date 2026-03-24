@@ -173,6 +173,9 @@
     <Compile Include="Forms\Patentes\FrmAltaProveedor.Designer.cs">
       <DependentUpon>FrmAltaProveedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FrmConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Roles\FrmAsignarFamilias.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -185,11 +188,23 @@
     <Compile Include="Forms\Roles\FrmAsignarPatentes.Designer.cs">
       <DependentUpon>FrmAsignarPatentes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Gestiones\FrmGestionRoles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Gestiones\FrmGestionRoles.Designer.cs">
+      <DependentUpon>FrmGestionRoles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Roles\FrmCrearRol.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Roles\FrmCrearRol.Designer.cs">
       <DependentUpon>FrmCrearRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Roles\FrmAsignarPermisosNuevoUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Roles\FrmAsignarPermisosNuevoUsuario.Designer.cs">
+      <DependentUpon>FrmAsignarPermisosNuevoUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Patentes\FrmCrearUsuario.cs">
       <SubType>Form</SubType>

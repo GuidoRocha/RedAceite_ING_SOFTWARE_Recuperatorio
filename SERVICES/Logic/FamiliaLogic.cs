@@ -69,5 +69,14 @@ namespace SERVICES.Logic
         {
             return _familiaRepository.GetAllPatentes();
         }
+
+        /// <summary>
+        /// Elimina una familia si no tiene usuarios asignados.
+        /// </summary>
+        /// <param name="idFamilia">ID de la familia a eliminar.</param>
+        public void EliminarFamilia(Guid idFamilia)
+        {
+            _familiaRepository.DeleteFamilia(idFamilia);
+        }
     }
 }

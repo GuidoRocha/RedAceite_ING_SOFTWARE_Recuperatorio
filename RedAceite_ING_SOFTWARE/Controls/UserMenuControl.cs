@@ -9,8 +9,10 @@ namespace RedAceite_ING_SOFTWARE.Controls
     {
         private readonly FlowLayoutPanel _layout;
         private readonly Button _btnIdioma;
+        private readonly Button _btnConfiguracion;
 
         public event EventHandler IdiomaClick;
+        public event EventHandler ConfiguracionClick;
 
         public UserMenuControl()
         {
@@ -33,7 +35,11 @@ namespace RedAceite_ING_SOFTWARE.Controls
             _btnIdioma = CreateMenuButton("Idioma");
             _btnIdioma.Click += (s, e) => IdiomaClick?.Invoke(this, EventArgs.Empty);
 
+            _btnConfiguracion = CreateMenuButton("Configuraci\u00f3n");
+            _btnConfiguracion.Click += (s, e) => ConfiguracionClick?.Invoke(this, EventArgs.Empty);
+
             _layout.Controls.Add(_btnIdioma);
+            _layout.Controls.Add(_btnConfiguracion);
 
             Controls.Add(_layout);
 
@@ -48,6 +54,8 @@ namespace RedAceite_ING_SOFTWARE.Controls
         {
             if (_btnIdioma != null)
                 _btnIdioma.Text = "menu_Idioma".Translate();
+            if (_btnConfiguracion != null)
+                _btnConfiguracion.Text = "menu_Configuracion".Translate();
         }
 
         private static Button CreateMenuButton(string text)
@@ -73,6 +81,8 @@ namespace RedAceite_ING_SOFTWARE.Controls
             base.OnCreateControl();
             if (_btnIdioma != null)
                 _btnIdioma.FlatAppearance.BorderSize = 0;
+            if (_btnConfiguracion != null)
+                _btnConfiguracion.FlatAppearance.BorderSize = 0;
         }
 
         protected override void OnVisibleChanged(EventArgs e)
