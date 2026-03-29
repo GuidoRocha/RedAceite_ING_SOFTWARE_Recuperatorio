@@ -1,21 +1,38 @@
+using System;
 using System.Configuration;
+using System.IO;
 
 namespace SERVICES.Helpers
 {
     /// <summary>
     /// Helper para acceder a la configuraci�n de la aplicaci�n.
     /// Proporciona m�todos est�ticos para obtener valores de App.config.
+    /// Las rutas configuradas se resuelven como relativas al directorio de ejecuci�n.
     /// </summary>
     public static class ConfigHelper
     {
+        private static readonly string BaseDir = AppDomain.CurrentDomain.BaseDirectory;
+
         /// <summary>
         /// Obtiene un valor de configuraci�n desde AppSettings.
         /// </summary>
-        /// <param name="key">Clave de configuraci�n.</param>
-        /// <returns>El valor de configuraci�n, o null si no existe.</returns>
         public static string ObtenerConfiguracion(string key)
         {
             return ConfigurationManager.AppSettings[key];
+        }
+
+        /// <summary>
+        /// Resuelve una ruta de configuraci�n: si es relativa, la combina con el directorio base.
+        /// </summary>
+        private static string ResolverRuta(string ruta)
+        {
+            if (string.IsNullOrWhiteSpace(ruta))
+                return ruta;
+
+            if (Path.IsPathRooted(ruta))
+                return ruta;
+
+            return Path.Combine(BaseDir, ruta);
         }
 
         /// <summary>
@@ -23,7 +40,7 @@ namespace SERVICES.Helpers
         /// </summary>
         public static string ObtenerRutaPdfRemitos()
         {
-            return ConfigurationManager.AppSettings["RutaPDFRemitos"];
+            return ResolverRuta(ConfigurationManager.AppSettings["RutaPDFRemitos"]);
         }
 
         /// <summary>
@@ -31,7 +48,7 @@ namespace SERVICES.Helpers
         /// </summary>
         public static string ObtenerRutaLogo()
         {
-            return ConfigurationManager.AppSettings["RutaLogo"];
+            return ResolverRuta(ConfigurationManager.AppSettings["RutaLogo"]);
         }
 
         /// <summary>
@@ -47,7 +64,7 @@ namespace SERVICES.Helpers
         /// </summary>
         public static string ObtenerRutaPdfManifiestos()
         {
-            return ConfigurationManager.AppSettings["RutaPDFManifiestos"];
+            return ResolverRuta(ConfigurationManager.AppSettings["RutaPDFManifiestos"]);
         }
 
         /// <summary>
