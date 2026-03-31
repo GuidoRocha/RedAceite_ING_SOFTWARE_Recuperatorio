@@ -8,15 +8,15 @@ using System.Security.Cryptography;
 namespace SERVICES.Facade
 {
     /// <summary>
-    /// Servicio fachada para generaci�n de archivos PDF.
-    /// Expone m�todos simplificados a la capa BLL ocultando la complejidad de iText7.
+    /// Servicio fachada para generacion de archivos PDF.
+    /// Expone metodos simplificados a la capa BLL ocultando la complejidad de iText7.
     /// </summary>
     public class PdfService
     {
         private readonly PdfGeneratorHelper _pdfGenerator;
 
         /// <summary>
-        /// Constructor que inicializa el helper de generaci�n de PDF.
+        /// Constructor que inicializa el helper de generacion de PDF.
         /// </summary>
         public PdfService()
         {
@@ -27,9 +27,9 @@ namespace SERVICES.Facade
         /// Genera un archivo PDF de remito y lo guarda en la ruta especificada.
         /// </summary>
         /// <param name="datos">Datos del remito a incluir en el PDF.</param>
-        /// <param name="rutaDestino">Ruta completa donde se guardar� el archivo PDF.</param>
+        /// <param name="rutaDestino">Ruta completa donde se guardara el archivo PDF.</param>
         /// <param name="rutaLogo">Ruta completa del archivo de logo.</param>
-        /// <returns>True si se gener� exitosamente, false en caso contrario.</returns>
+        /// <returns>True si se genero exitosamente, false en caso contrario.</returns>
         public bool GenerarPdfRemito(DatosRemitoPdfDto datos, string rutaDestino, string rutaLogo)
         {
             try
@@ -37,7 +37,7 @@ namespace SERVICES.Facade
                 // Validar datos de entrada
                 ValidarDatos(datos, rutaDestino, rutaLogo);
 
-                // Generar n�mero de remito si no existe
+                // Generar numero de remito si no existe
                 if (string.IsNullOrWhiteSpace(datos.NumeroRemito))
                 {
                     datos.GenerarNumeroRemito();
@@ -53,10 +53,10 @@ namespace SERVICES.Facade
                 // Generar el PDF
                 _pdfGenerator.CrearRemitoPdf(datos, rutaDestino, rutaLogo);
 
-                // Verificar que el archivo se cre� correctamente
+                // Verificar que el archivo se creo correctamente
                 if (!File.Exists(rutaDestino))
                 {
-                    throw new Exception("El archivo PDF no se gener� correctamente.");
+                    throw new Exception("El archivo PDF no se genero correctamente.");
                 }
 
                 return true;
@@ -68,7 +68,7 @@ namespace SERVICES.Facade
         }
 
         /// <summary>
-        /// Calcula el hash MD5 de un archivo para verificaci�n de integridad.
+        /// Calcula el hash MD5 de un archivo para verificacion de integridad.
         /// </summary>
         /// <param name="rutaArchivo">Ruta completa del archivo.</param>
         /// <returns>Hash MD5 en formato hexadecimal.</returns>
@@ -97,11 +97,11 @@ namespace SERVICES.Facade
         }
 
         /// <summary>
-        /// Obtiene el tama�o de un archivo en bytes.
+        /// Obtiene el tamanio de un archivo en bytes.
         /// </summary>
         /// <param name="rutaArchivo">Ruta completa del archivo.</param>
-        /// <returns>Tama�o del archivo en bytes.</returns>
-        public long ObtenerTama�oArchivo(string rutaArchivo)
+        /// <returns>Tamanio del archivo en bytes.</returns>
+        public long ObtenerTamanioArchivo(string rutaArchivo)
         {
             try
             {
@@ -115,7 +115,7 @@ namespace SERVICES.Facade
             }
             catch (Exception ex)
             {
-                throw new Exception($"Error al obtener tama�o del archivo: {ex.Message}", ex);
+                throw new Exception($"Error al obtener tamanio del archivo: {ex.Message}", ex);
             }
         }
 
@@ -160,13 +160,13 @@ namespace SERVICES.Facade
 
             if (string.IsNullOrWhiteSpace(rutaDestino))
             {
-                throw new ArgumentException("La ruta de destino no puede estar vac�a.", nameof(rutaDestino));
+                throw new ArgumentException("La ruta de destino no puede estar vacia.", nameof(rutaDestino));
             }
 
             if (string.IsNullOrWhiteSpace(rutaLogo) || !File.Exists(rutaLogo))
             {
                 LoggerService.WriteLog(
-                    $"[PdfService] Logo no encontrado en: {rutaLogo ?? "(vac�o)"}. El PDF se generar� sin logo.",
+                    $"[PdfService] Logo no encontrado en: {rutaLogo ?? "(vacio)"}. El PDF se generara sin logo.",
                     TraceLevel.Warning);
             }
 
@@ -186,22 +186,22 @@ namespace SERVICES.Facade
                 throw new ArgumentException("La cantidad debe ser mayor a cero.");
             }
 
-            // Validar datos de env�o si se requiere
+            // Validar datos de envio si se requiere
             if (datos.RequiereEnvio)
             {
                 if (string.IsNullOrWhiteSpace(datos.Cuit))
                 {
-                    throw new ArgumentException("El CUIT es obligatorio cuando se requiere env�o.");
+                    throw new ArgumentException("El CUIT es obligatorio cuando se requiere envio.");
                 }
 
                 if (string.IsNullOrWhiteSpace(datos.NombreFantasia))
                 {
-                    throw new ArgumentException("El nombre de fantas�a es obligatorio cuando se requiere env�o.");
+                    throw new ArgumentException("El nombre de fantasia es obligatorio cuando se requiere envio.");
                 }
 
                 if (string.IsNullOrWhiteSpace(datos.DireccionEnvio))
                 {
-                    throw new ArgumentException("La direcci�n es obligatoria cuando se requiere env�o.");
+                    throw new ArgumentException("La direccion es obligatoria cuando se requiere envio.");
                 }
             }
         }

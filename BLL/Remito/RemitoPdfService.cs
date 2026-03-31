@@ -101,7 +101,7 @@ namespace BLL.Remito
                     System.Diagnostics.TraceLevel.Verbose);
 
                 // 8. Obtener tamaño del archivo
-                long tamañoBytes = _pdfService.ObtenerTamañoArchivo(rutaCompleta);
+                long tamañoBytes = _pdfService.ObtenerTamanioArchivo(rutaCompleta);
 
                 LoggerService.WriteLog($"[RemitoPdfService] Tamaño del archivo: {tamañoBytes} bytes ({tamañoBytes / 1024.0:N2} KB)",
                     System.Diagnostics.TraceLevel.Verbose);
